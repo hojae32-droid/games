@@ -1,0 +1,238 @@
+/* ===== 전체 화면형 게임 화면 + 한 화면 설정(단계별) + 탭 결과 — body.G-full 일 때만 적용 ===== */
+body.G-full{overscroll-behavior:none}
+body.G-full .screen{height:100dvh;bottom:auto}
+/* ---------- 설정: 스크롤 없이 단계별로 ---------- */
+body.G-full #setup{overflow:hidden}
+body.G-full .topbar-mini{top:max(10px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right))}
+body.G-full .topbar-mini .icon-btn{height:40px;min-width:40px;padding:0 10px}
+body.G-full .counter-col{min-height:0;display:flex;align-items:center;justify-content:center;padding:clamp(8px,2.2dvh,22px) clamp(10px,2.4vw,34px)}
+body.G-full .wz{display:flex;flex-direction:column;width:min(560px,100%);height:auto;max-height:100%;min-height:0}
+.wz-steps{flex:0 0 auto;display:flex;gap:6px;margin-bottom:clamp(6px,1.4dvh,12px)}
+.wz-dot{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;height:clamp(32px,5.2dvh,42px);border:var(--bw) solid var(--chip-line);border-radius:999px;background:var(--chip-bg);color:var(--chip-sub);font:700 clamp(12px,1.9dvh,14.5px)/1 var(--sans);box-shadow:none}
+.wz-dot i{display:grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;background:var(--lamp-bg);color:var(--lamp-ink);font-style:normal;font-size:.95em}
+.wz-dot.on{background:var(--sel-bg);color:var(--sel-ink);border-color:var(--sel-line)}
+.wz-dot.on i{background:#fff;color:var(--sel-bg)}
+.wz-dot.past i{background:var(--lamp-on);color:#fff}
+body.G-full .wz-body{flex:0 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;margin:0;width:100%;scrollbar-width:none}
+body.G-full .wz-body::-webkit-scrollbar{display:none}
+.wz-step{display:flex;flex-direction:column;gap:clamp(5px,1.1dvh,10px)}
+body.G-full .stn{margin:0;padding:clamp(6px,1.2dvh,12px) clamp(10px,1.6vw,16px) clamp(7px,1.3dvh,13px)}
+body.G-full .stn-h{margin:0 0 clamp(4px,.8dvh,8px);gap:9px}
+body.G-full .stn-h h2{font-size:clamp(15px,2.3dvh,19px)}
+body.G-full .lamp{width:clamp(22px,3.3dvh,30px);height:clamp(22px,3.3dvh,30px);font-size:clamp(12px,1.9dvh,15px)}
+body.G-full .stn.opt .lamp::before{content:'★'}
+body.G-full .chips{gap:clamp(6px,1.2dvh,10px)}
+body.G-full .chip{min-height:clamp(36px,5.7dvh,52px);padding:6px 12px;font-size:clamp(14.5px,2.35dvh,17px)}
+body.G-full .chip small{font-size:clamp(11px,1.65dvh,12.5px);margin-top:2px}
+body.G-full .chips.lv{grid-template-columns:1fr 1fr}
+body.G-full .chips.lv:has(.chip:nth-child(odd):last-child){grid-template-columns:1fr 1fr}
+body.G-full .chips.md .chip{padding:6px 6px;gap:2px}
+body.G-full .chips.md .chip svg{width:clamp(24px,4.4dvh,32px);height:clamp(24px,4.4dvh,32px)}
+body.G-full .chips.tm .chip{padding:4px 6px}
+body.G-full .nick-row{margin:clamp(3px,.8dvh,6px) 0}
+body.G-full .nick-row .dot{height:clamp(34px,5.4dvh,40px)}
+body.G-full .nick-row input{font-size:clamp(15px,2.4dvh,19px);padding:clamp(6px,1.1dvh,9px) 12px;max-width:none}
+body.G-full .dice{height:clamp(38px,5.8dvh,48px);width:clamp(42px,6dvh,50px)}
+body.G-full .hint{font-size:clamp(12px,1.7dvh,14px);margin-top:4px;line-height:1.45}
+.wz-nav{flex:0 0 auto;display:flex;gap:10px;margin-top:clamp(8px,1.6dvh,14px);align-items:stretch}
+.wz-prev,.wz-next{border:var(--bw) solid var(--line);border-radius:var(--rad);background:var(--btn-bg);color:var(--btn-ink);box-shadow:var(--sh-btn);font:700 clamp(15px,2.4dvh,18px)/1 var(--sans);padding:0 clamp(14px,2vw,22px);min-height:clamp(44px,7dvh,56px)}
+.wz-next{flex:1;background:var(--go-bg);color:var(--go-ink);box-shadow:var(--sh-go);font-family:var(--disp);font-size:clamp(18px,3dvh,24px)}
+.wz-prev:active,.wz-next:active{transform:translateY(3px);box-shadow:var(--sh-btn-down)}
+body.G-full .wz-nav .fire{margin:0;flex:1;padding:6px 14px;min-height:clamp(46px,7.4dvh,60px);font-size:clamp(20px,3.4dvh,29px);gap:9px}
+body.G-full .fire svg{width:clamp(20px,3.2dvh,28px);height:clamp(20px,3.2dvh,28px)}
+body.G-full .wz .maker{margin-top:clamp(4px,1dvh,10px);font-size:12px;flex:0 0 auto}
+body.G-full .sign{pointer-events:none}
+body.G-full .sign .sub{font-size:clamp(11px,1.8dvh,14px);padding:clamp(4px,.8dvh,7px) 13px;margin-bottom:clamp(4px,1dvh,10px)}
+body.G-full .booth-how{display:none}
+/* ----- 배치 ----- */
+body.G-full.L-wsplit #setup,body.G-full.L-wsplitR #setup{flex-direction:row}
+body.G-full.L-wsplitR #setup{flex-direction:row-reverse}
+body.G-full.L-wsplit .booth,body.G-full.L-wsplitR .booth{flex:0 0 44%;height:100%}
+body.G-full.L-wsplit .counter-col,body.G-full.L-wsplitR .counter-col{flex:1;height:100%}
+body.G-full.L-wsplit .sign,body.G-full.L-wsplitR .sign{left:50%;top:clamp(18px,7dvh,70px);transform:translateX(-50%);white-space:nowrap}
+body.G-full.L-wsplit .sign h1,body.G-full.L-wsplitR .sign h1{font-size:clamp(34px,min(4.4vw,9dvh),74px)}
+body.G-full.L-wtop #setup{flex-direction:column}
+body.G-full.L-wtop .booth{flex:0 0 clamp(130px,28dvh,300px);width:100%}
+body.G-full.L-wtop .counter-col{flex:1;width:100%}
+body.G-full.L-wtop .sign{left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;width:100%}
+body.G-full.L-wtop .sign h1{font-size:clamp(28px,min(5.4vw,7.4dvh),64px)}
+body.G-full.L-wcenter .booth,body.G-full.L-wfloat .booth{position:fixed;inset:0}
+body.G-full.L-wcenter .counter-col,body.G-full.L-wfloat .counter-col{position:absolute;inset:0;z-index:2;pointer-events:none}
+body.G-full.L-wcenter .wz,body.G-full.L-wfloat .wz{pointer-events:auto;background:var(--wz-bg,var(--card));color:var(--card-ink);border:var(--bw) solid var(--line);border-radius:calc(var(--rad) + 4px);box-shadow:var(--sh-card);padding:clamp(10px,2dvh,18px);height:auto;max-height:100%}
+body.G-full.L-wcenter .wz-body,body.G-full.L-wfloat .wz-body{flex:0 1 auto}
+body.G-full.L-wcenter .sign{left:50%;top:clamp(10px,3dvh,34px);transform:translateX(-50%);white-space:nowrap}
+body.G-full.L-wcenter .sign h1{font-size:clamp(28px,min(5vw,6.6dvh),60px)}
+body.G-full.L-wcenter .counter-col{padding-top:clamp(100px,21.5dvh,200px)}
+body.G-full.L-wfloat .counter-col{justify-content:flex-end;padding-right:clamp(14px,4vw,64px)}
+body.G-full.L-wfloat .wz{width:min(500px,48vw)}
+body.G-full.L-wfloat .sign{left:clamp(20px,5vw,84px);top:50%;transform:translateY(-50%);text-align:left;white-space:nowrap}
+body.G-full.L-wfloat .sign h1{font-size:clamp(34px,min(5.6vw,11dvh),88px)}
+/* 세로(폰·태블릿 세로) 또는 폭 좁은 화면: 위에 그림, 아래 설정 */
+@media (orientation:portrait),(max-width:700px){
+  body.G-full.L-wsplit #setup,body.G-full.L-wsplitR #setup,body.G-full.L-wtop #setup{flex-direction:column}
+  body.G-full.L-wsplit .booth,body.G-full.L-wsplitR .booth,body.G-full.L-wtop .booth{flex:0 0 clamp(112px,28dvh,300px);width:100%;height:auto}
+  body.G-full.L-wsplit .counter-col,body.G-full.L-wsplitR .counter-col,body.G-full.L-wtop .counter-col{flex:1;width:100%;height:auto}
+  body.G-full.L-wsplit .sign,body.G-full.L-wsplitR .sign,body.G-full.L-wtop .sign{left:50%;top:clamp(6px,2.4dvh,18px);transform:translateX(-50%);width:100%;text-align:center}
+  body.G-full .sign h1{font-size:clamp(28px,min(9.5vw,6.4dvh),64px)!important}
+  body.G-full.L-wcenter .counter-col,body.G-full.L-wfloat .counter-col{padding:clamp(100px,19dvh,220px) 0 0;justify-content:center;align-items:stretch}
+  body.G-full.L-wcenter .wz,body.G-full.L-wfloat .wz{width:100%;max-height:none;height:100%;border-radius:calc(var(--rad) + 8px) calc(var(--rad) + 8px) 0 0;border-bottom:0}
+  body.G-full.L-wcenter .wz-body,body.G-full.L-wfloat .wz-body{flex:1 1 auto}
+  body.G-full.L-wfloat .sign{left:50%;top:clamp(36px,9dvh,90px);transform:translate(-50%,-50%);text-align:center}
+  body.G-full.L-wcenter .sign{top:clamp(30px,8dvh,80px);transform:translate(-50%,-50%)}
+  body.G-full .counter-col{padding:clamp(6px,1.4dvh,14px) 12px 8px}
+}
+@media (max-height:560px){
+  body.G-full .chip small{display:none}
+  body.G-full .chips.md .chip svg{display:none}
+  body.G-full .wz .maker{display:none}
+  body.G-full .sign .sub{display:none}
+}
+@media (max-width:420px){body.G-full .chips.md .chip small{display:none}body.G-full .wz-dot span{display:none}}
+@media (max-width:420px) and (min-height:700px){body.G-full .chips.md .chip small{display:none}}
+
+/* ---------- 게임 화면: 화면 가득 + 덧씌우기(HUD) ---------- */
+body.G-full #play{background:var(--arena);overflow:hidden}
+body.G-full .arena,body.G-full .arena.solo{padding:0;gap:3px;background:var(--arena);position:relative}
+body.G-full .arena.solo{gap:0}
+body.G-full .arena.solo .panel{max-width:none;margin:0}
+body.G-full .panel{border:0;border-radius:0;box-shadow:none;background:var(--stage);overflow:hidden}
+body.G-full .arena:not(.solo) .panel::after{content:'';position:absolute;inset:0;z-index:12;pointer-events:none;box-shadow:inset 0 0 0 3px var(--pc);border-radius:inherit}
+body.G-full .stage{position:absolute;inset:0;display:block}
+body.G-full .cvwrap{position:absolute;inset:0;background:var(--stage)}
+/* 위쪽 HUD */
+body.G-full .pbar{position:absolute;top:0;left:0;right:0;z-index:20;min-height:0;padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) 4px max(10px,env(safe-area-inset-left));background:none;box-shadow:none;pointer-events:none;gap:8px}
+body.G-full .pbar::after{display:none}
+body.G-full .pbar>*{pointer-events:auto}
+body.G-full .ptitle{display:none}
+body.G-full #play:not(.solo) .pbar{position:relative;background:var(--hud-bg,rgba(0,0,0,.55));padding:5px 10px;min-height:46px}
+body.G-full #play:not(.solo) .ptitle{display:flex;height:36px}
+body.G-full .clock{height:42px;padding:0 12px 0 4px;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+body.G-full #play:not(.solo) .clock{height:36px}
+body.G-full .clock .ring{width:30px;height:30px}
+body.G-full .clock b{font-size:24px}
+body.G-full #play:not(.solo) .clock b{font-size:21px}
+body.G-full .pbar .icon-btn{height:42px;min-width:42px;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+body.G-full #play:not(.solo) .pbar .icon-btn{height:36px;min-width:36px}
+body.G-full .pbar .icon-btn.ico:first-of-type{margin-left:auto}
+body.G-full #play:not(.solo) .ptitle{flex:1}
+body.G-full #play:not(.solo) .pbar .icon-btn.ico:first-of-type{margin-left:0}
+body.G-full .icon-btn.quit{padding:0 12px;font-size:15px}
+/* 점수 알약 */
+body.G-full .phead{position:absolute;z-index:6;top:8px;left:8px;right:8px;min-height:0;padding:0;background:none;gap:6px;justify-content:space-between;pointer-events:none}
+body.G-full .phead .no{width:28px;height:28px;font-size:15px}
+body.G-full .phead .nm{flex:0 1 auto;background:var(--pc);color:#fff;border-radius:999px;padding:5px 12px;font-size:clamp(13px,4cqw,17px);box-shadow:0 2px 6px rgba(0,0,0,.3)}
+body.G-full .phead .sc{margin-left:auto;font-size:clamp(17px,5.4cqw,24px);box-shadow:0 2px 8px rgba(0,0,0,.28)}
+body.G-full #play.solo .pbar .phead{position:static;padding:0;flex:0 0 auto}
+body.G-full #play.solo .phead .no,body.G-full #play.solo .phead .nm{display:none}
+body.G-full #play.solo .phead .sc{font-size:clamp(20px,5vw,26px);padding:5px 14px}
+body.G-full .arena:not(.solo) .phead{top:8px}
+body.G-full .prog{position:absolute;left:0;right:0;top:0;height:5px;z-index:19;background:rgba(0,0,0,.2)}
+body.G-full #play:not(.solo) .prog{z-index:7}
+/* 문제 띠 */
+body.G-full .qbox.ask{position:absolute;z-index:5;left:50%;transform:translateX(-50%);width:calc(100% - 20px);max-width:760px;min-height:0;top:calc(var(--qtop,60px));padding:clamp(5px,1dvh,9px) 14px clamp(6px,1.1dvh,10px);
+  border-radius:var(--rad);background:var(--q-bg);color:var(--q-ink);box-shadow:0 6px 18px rgba(0,0,0,.28);font-size:clamp(16px,min(5.2cqw,3.6dvh),28px);transform-origin:50% 0;border:var(--bw) solid var(--line)}
+body.G-full .qbox.ask.flash{animation:pop2 .4s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop2{0%{transform:translateX(-50%) scale(.92);opacity:.4}100%{transform:translateX(-50%);opacity:1}}
+body.G-full #play.solo .panel{--qtop:calc(max(8px,env(safe-area-inset-top)) + 52px)}
+body.G-full #play:not(.solo) .panel{--qtop:46px}
+body.G-full .qbox.ask .s{font-size:clamp(11px,min(3.3cqw,2.2dvh),14px)}
+body.G-full .qbox.ask:empty{display:none}
+/* 아래 도구 단추 */
+body.G-full .ctrl.tools{position:absolute;z-index:5;left:0;right:0;bottom:0;padding:clamp(8px,1.4dvh,12px) clamp(8px,1.6vw,14px) max(clamp(8px,1.4dvh,12px),env(safe-area-inset-bottom));background:var(--tools-fade,linear-gradient(transparent,rgba(0,0,0,.4)));gap:clamp(6px,1.2dvh,10px);pointer-events:none;justify-content:center}
+body.G-full .ctrl.tools .toolbtn{pointer-events:auto;max-width:300px;box-shadow:0 5px 14px rgba(0,0,0,.35),var(--sh-btn)}
+body.G-full .toolbtn{min-height:clamp(46px,min(11cqw,8.6dvh),64px);font-size:clamp(14px,min(4.6cqw,3dvh),22px)}
+body.G-full .tip{bottom:calc(var(--bot,0px) + 10px)}
+body.G-full .streak{top:calc(var(--qtop,60px) + var(--qh,46px) + 8px);right:10px}
+@media (max-height:720px){
+  body.G-full .arena,body.G-full .arena.solo{padding:0}
+  body.G-full .qbox.ask{padding:3px 12px 4px;min-height:0}
+  body.G-full .toolbtn{min-height:clamp(40px,9dvh,56px)}
+}
+@container panel (max-width:420px){
+  body.G-full .toolbtn .e{display:none}
+}
+
+/* ---------- 결과: 탭으로 나눠서 한 화면에 ---------- */
+body.G-full #result{overflow:hidden;padding:0;align-items:stretch}
+body.G-full .res-wrap.tabbed{width:min(960px,100%);margin:0 auto;height:100%;display:flex;flex-direction:column;padding:max(10px,env(safe-area-inset-top)) clamp(10px,2vw,20px) max(10px,env(safe-area-inset-bottom));min-height:0}
+.res-tabs{flex:0 0 auto;display:flex;gap:6px;margin-bottom:clamp(6px,1.4dvh,12px)}
+.res-tab{flex:1;height:clamp(38px,6dvh,48px);border:var(--bw) solid var(--chip-line);border-radius:999px;background:var(--chip-bg);color:var(--chip-ink);font:700 clamp(13px,2.1dvh,16px)/1 var(--sans);box-shadow:var(--sh-btn);padding:0 6px;white-space:nowrap}
+.res-tab.on{background:var(--sel-bg);color:var(--sel-ink);border-color:var(--sel-line)}
+.res-pane{display:none;flex:1 1 auto;min-height:0;overflow-y:auto;scrollbar-width:thin}
+.res-pane.on{display:flex;flex-direction:column;justify-content:center}
+.res-pane.scroll{justify-content:flex-start}
+body.G-full .res-pane .review{margin-top:0;padding:clamp(10px,2dvh,16px) clamp(12px,2vw,20px);font-size:clamp(13.5px,2.2dvh,16.5px);line-height:1.55}
+body.G-full .res-pane .review h3{font-size:clamp(17px,2.9dvh,22px)}
+body.G-full .res-title{font-size:clamp(28px,min(8vw,7dvh),56px);margin:0 0 4px}
+body.G-full .room-note{margin:0 auto clamp(8px,2dvh,16px);padding:5px 14px;font-size:clamp(12px,1.8dvh,15px)}
+body.G-full .podium{gap:clamp(8px,1.6dvh,14px)}
+body.G-full .pcard{flex:1 1 150px;padding:clamp(14px,2.6dvh,22px) 10px clamp(8px,1.6dvh,14px)}
+body.G-full .pcard .rk{font-size:clamp(30px,5.4dvh,46px)}
+body.G-full .pcard .rk img.emj{width:clamp(36px,6.4dvh,58px);height:clamp(36px,6.4dvh,58px)}
+body.G-full .pcard .nm{font-size:clamp(16px,2.6dvh,22px)}
+body.G-full .pcard .pts{font-size:clamp(28px,5.2dvh,44px)}
+body.G-full .res-wrap.tabbed .res-btns{flex:0 0 auto;margin-top:clamp(8px,1.6dvh,14px);gap:10px}
+body.G-full .res-btns button{font-size:clamp(17px,2.8dvh,22px);padding:clamp(8px,1.6dvh,13px) clamp(18px,3vw,32px)}
+body.G-full .res-wrap.tabbed .maker{display:none}
+@media (max-width:560px){.res-tab{font-size:12.5px}}
+
+body.G-full .ctrl.tools:has(.toolbtn:nth-child(4)){grid-template-columns:repeat(2,minmax(0,300px))}
+@container panel (min-width:560px){body.G-full .ctrl.tools:has(.toolbtn:nth-child(4)){display:flex;flex-wrap:nowrap}}
+
+@media (max-height:640px){
+  body.G-full .stn{padding:7px 10px 8px}
+  body.G-full .stn-h{margin-bottom:4px}
+  body.G-full .stn-h h2{font-size:14.5px}
+  body.G-full .lamp{width:22px;height:22px;font-size:12px}
+  body.G-full .chip{min-height:36px;padding:4px 10px}
+  body.G-full .chips.md .chip{padding:4px 4px}
+  body.G-full .wz-steps{margin-bottom:5px}
+  body.G-full .wz-dot{height:30px}
+  body.G-full .wz-step{gap:6px}
+  body.G-full .wz-nav{margin-top:6px}
+}
+@media (max-height:640px) and (orientation:portrait){body.G-full.L-wsplit .booth,body.G-full.L-wsplitR .booth,body.G-full.L-wtop .booth{flex-basis:clamp(96px,19dvh,300px)}}
+@media (max-width:640px){
+  body.G-full .icon-btn.ico{display:inline-flex}
+  body.G-full .pbar .icon-btn.ico:nth-of-type(2){display:none}
+  body.G-full #play:not(.solo) .pbar .icon-btn.ico{display:none}
+  body.G-full .pbar{gap:6px}
+  body.G-full .clock b{font-size:21px;min-width:2.3em}
+  body.G-full .icon-btn.quit{padding:0 9px;font-size:14px}
+}
+@media (max-width:360px){body.G-full #play.solo .phead .sc{padding:4px 9px}body.G-full .clock{padding:0 8px 0 3px}body.G-full .clock .ring{width:26px;height:26px}}
+body.G-full .wz{container-type:inline-size;container-name:wzc}
+@container wzc (min-width:520px){
+  .wz-step:has([data-sec=pace]){display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,1.4dvh,12px)}
+  .wz-step:has([data-sec=pace]) [data-sec=mode],.wz-step:has([data-sec=pace]) [data-sec=n]{grid-column:1/-1}
+  .wz-step:has([data-sec=pace]) [data-sec=dur] .chip,.wz-step:has([data-sec=pace]) [data-sec=pace] .chip{padding:4px 2px;font-size:clamp(13px,2.1dvh,15.5px)}
+  .wz-step:has([data-sec=pace]) .chips.tm{gap:5px}
+}
+body.G-full.L-wcenter .wz,body.G-full.L-wfloat .wz{padding:clamp(8px,1.5dvh,16px) clamp(10px,1.8vw,18px)}
+@media (max-height:760px) and (min-width:701px){
+  body.G-full .chips.md .chip small{display:none}
+  body.G-full .chips.md .chip svg{width:24px;height:24px}
+  body.G-full .stn{padding:7px 12px 9px}
+}
+@media (max-height:560px) and (orientation:landscape) and (min-width:701px){
+  body.G-full.L-wtop #setup{flex-direction:row}
+  body.G-full.L-wtop .booth{flex:0 0 40%;height:100%;width:auto}
+  body.G-full.L-wtop .counter-col{flex:1;height:100%;width:auto}
+  body.G-full.L-wtop .sign{top:50%;left:50%;transform:translate(-50%,-50%)}
+  body.G-full.L-wtop .sign h1{font-size:clamp(26px,min(4.4vw,9dvh),60px)}
+}
+@media (max-height:430px){
+  body.G-full .lamp{display:none}
+  body.G-full .stn-h{margin-bottom:3px}
+  body.G-full .stn-h h2{font-size:13.5px}
+  body.G-full .chip{min-height:32px;font-size:14px;padding:3px 8px}
+  body.G-full .wz-dot{height:26px;font-size:12px}
+  body.G-full .stn{padding:5px 10px 6px}
+  body.G-full .wz-nav{margin-top:4px}
+  body.G-full .wz-prev,body.G-full .wz-next{min-height:38px}
+  body.G-full .wz-nav .fire{min-height:40px;font-size:20px}
+  body.G-full .wz-step{gap:4px}
+  body.G-full .nick-row .dot{height:30px}
+  body.G-full .nick-row input{padding:4px 10px}
+  body.G-full .dice{height:34px}
+}

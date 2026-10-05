@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Gowun+Dodum&display=swap');
+@font-face{font-family:'DH-fb';src:local('Noto Sans CJK KR Black'),local('Noto Sans KR Black'),local('Malgun Gothic Bold'),local('AppleSDGothicNeo-Heavy');}
+:root{
+ --disp:'Bagel Fat One','DH-fb','Noto Sans CJK KR','Malgun Gothic',sans-serif; --sans:'Gowun Dodum','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+ --page:#1b4a9c; --ink:#fff; --sub:#9fb8e6; --focus:#ffb703;
+ --bw:2px; --line:#0f2f6b; --rad:14px; --rad-s:10px;
+ --card:#f5f9ff; --card-ink:#0f2f6b; --hl:#e8590c;
+ --sh-card:0 8px 0 rgba(8,28,70,.35); --sh-btn:0 4px 0 #9db6e0; --sh-btn-down:0 1px 0 #9db6e0; --sh-go:0 6px 0 #b24300;
+ --btn-bg:#f5f9ff; --btn-ink:#0f2f6b; --stage:#cfdbea;
+ --tag-bg:#ffb703; --tag-ink:#3a2500; --title:#fff; --title1:#cfe0ff; --title2:#ffb703;
+ --lamp-r:6px; --lamp-bg:#dbe7fb; --lamp-ink:#0f2f6b; --lamp-on:#2fbf71; --bad:#e5383b;
+ --chip-bg:#fff; --chip-ink:#0f2f6b; --chip-line:#9db6e0; --chip-sub:#5a74a6; --sel-bg:#ff8a00; --sel-ink:#fff; --sel-line:#b24300; --sel-sub:#ffe8cc;
+ --input-bg:#fff; --input-ink:#0f2f6b; --input-ph:#9db0d4;
+ --go-bg:#ff8a00; --go-ink:#fff;
+ --bar-bg:#0f2f6b; --bar-ink:#fff; --bar-sub:#9fb8e6;
+ --clock-bg:#fff; --clock-ring:#ff8a00; --clock-track:#cfdbea; --clock-ink:#0f2f6b;
+ --arena:#0b1f46; --gap:3px;
+ --phead-ink:#fff; --no-r:6px; --sc-bg:#fff; --sc-ink:#0f2f6b; --sc-sub:#5a74a6; --sc-r:8px;
+ --prog-bg:rgba(255,255,255,.2); --prog-fill:linear-gradient(90deg,#ffb703,#ff6b00);
+ --q-bg:#fffbe6; --q-ink:#0f2f6b; --q-hl:#e8590c; --q-sub:#6a7ea8;
+ --tip-bg:#fff; --tip-ink:#0f2f6b; --tip-hl:#e8590c; --tip-bad:#ffe0e0; --tip-good:#dcf8e6;
+ --streak-bg:#ffb703; --streak-ink:#3a2500;
+ --tools-bg:#0f2f6b; --tool-bg:#fff; --tool-ink:#0f2f6b; --tool-line:#0f2f6b; --tool-sel:#ff8a00; --tool-sel-ink:#fff;
+ --veil:rgba(8,28,70,.7); --num:#ff8a00;
+ --done-bg:rgba(8,28,70,.93); --done-ink:#fff; --done-hl:#ffb703;
+ --res-title:#ffb703; --pname-b:.85; --acc:#ff8a00; --hud-bg:rgba(8,28,70,.88); --wz-bg:#f5f9ff;
+ --tools-fade:linear-gradient(transparent,rgba(8,28,70,.55));
+}
+/*==EXTRA==*/
+body{background:#1b4a9c;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px,80px 80px,16px 16px,16px 16px}
+.sign h1{text-shadow:0 4px 0 #0a2147,0 8px 18px rgba(0,0,0,.35);letter-spacing:.01em}
+.sign .sub{font-weight:700;border-radius:6px;border:2px dashed #0f2f6b;transform:rotate(-1.5deg)}
+.stn{border-width:2px;border-style:solid}
+.stn-h h2{font-family:var(--disp);font-size:18px;letter-spacing:.01em}
+.chip{border-radius:10px}
+.chip.sel{box-shadow:0 4px 0 #b24300}
+.wz-dot{border-radius:8px}
+.wz-dot.on{box-shadow:0 3px 0 #b24300}
+.fire{letter-spacing:.03em}
+.toolbtn{font-family:var(--disp);border-radius:12px;border-bottom-width:4px}
+.res-title{text-shadow:0 3px 0 #0a2147}
+.booth{background:#10306b}
+.booth::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.pcard::before{height:12px}
