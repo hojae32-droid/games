@@ -1158,7 +1158,7 @@ const GAME={
     st.fires=st.fires.filter(f=>!(f.out>.8));
     if(p.levelId==='all'&&st.cnt>=6){this.setMode(p,'quiz');}},
   SC:{'🍳':'kit','♨️':'kit','🔌':'room','📦':'room','🕯️':'room','🧪':'lab','🌲':'forest','🔥':'forest'},
-  cell(p){const u=p.u,land=p.W>p.H,cols=land?3:2,rows=land?2:3;return{w:Math.min(u*4.4,p.W/cols*.9),h:Math.min(u*3.3,p.H*.8/rows*.9)};},
+  cell(p){const u=p.u,land=p.W>p.H,cols=land?3:2,rows=land?2:3;return{w:Math.min(u*5.2,p.W/cols*.94),h:Math.min(u*3.9,p.H*.84/rows*.94)};},
   quizScene(p,g){const W=p.W,H=p.H,u=Math.min(p.u,W/8),t=p.state.T;
     g.fillStyle='#15171f';g.fillRect(0,0,W,H);hazard(g,0,0,W,u*.3,t*u*.6);
     const ty=H*.74;g.fillStyle='#3a2a20';g.fillRect(0,ty,W,H);g.fillStyle='#5c4132';g.fillRect(0,ty,W,u*.12);
@@ -1168,8 +1168,8 @@ const GAME={
     g.save();g.strokeStyle='#ffd400';g.lineWidth=Math.max(3,u*.07);g.setLineDash([u*.2,u*.16]);g.lineDashOffset=-t*u*.6;g.beginPath();pts.forEach(([x,y],i)=>g[i?'lineTo':'moveTo'](x,y));g.closePath();g.stroke();g.restore();
     g.fillStyle='rgba(255,170,60,.18)';g.beginPath();g.arc(cx,ty-u*2.2,u*3.2*fl,0,TAU);g.fill();
     g.save();g.translate(cx,ty-u*.2);SRC.candle(g,u*3);g.restore();flame(g,cx,ty-u*2.45,u*1.5*fl,t,1);
-    pts.forEach(([x,y,s])=>pill(g,s,clamp(x,u*2,W-u*2),y,u*.4,'#ffd400','#111'));
-    pill(g,'🔥 연소의 세 가지 조건',cx,cy-R-u*.95,u*.34,'#e5322d','#fff');},
+    pts.forEach(([x,y,s])=>pill(g,s,clamp(x,u*2.4,W-u*2.4),y,Math.max(u*.5,16),'#ffd400','#111'));
+    pill(g,'🔥 연소의 세 가지 조건',cx,cy-R-u*.95,Math.max(u*.46,16),'#e5322d','#fff');},
   draw(p,g,dt){const W=p.W,H=p.H,u=Math.min(p.u,W/7),st=p.state;st.T+=dt;const t=st.T;
     if(st.mode!=='fight'){this.quizScene(p,g);return;}
     city(g,W,H,u,t);
@@ -1185,8 +1185,8 @@ const GAME={
       const bw=Math.min(u*2.6,C.w*.7),bx=x-bw/2,by=cy+C.h-u*.46,bh=Math.max(6,u*.2);
       g.fillStyle='#000';K.rr(g,bx-2,by-2,bw+4,bh+4,bh/2);g.fill();
       hazard(g,bx,by,Math.max(bh,bw*Math.min(1,f.g)),bh,t*u*.5);
-      pill(g,f.f.n,x,cy+u*.02,u*.3,'#ffd400','#111',C.w*.92);g.globalAlpha=1;}
-    if(!st.tool){g.globalAlpha=.75+.25*Math.sin(t*5);pill(g,'⬇ 먼저 끄는 방법을 골라요',W/2,H-u*.42,u*.32,'#e5322d','#fff');g.globalAlpha=1;}},
+      pill(g,f.f.n,x,cy+u*.42,Math.max(u*.5,17),'#ffd400','#111',C.w*.96);g.globalAlpha=1;}
+    if(!st.tool){g.globalAlpha=.75+.25*Math.sin(t*5);pill(g,'⬇ 먼저 끄는 방법을 골라요',W/2,H-u*.5,Math.max(u*.46,16),'#e5322d','#fff');g.globalAlpha=1;}},
   down(p,x,y){const st=p.state,u=p.u;if(st.mode!=='fight')return;const sp=this.spots(p);
     const f=st.fires.find(f=>!f.out&&Math.abs(x-sp[f.s][0])<u*1.7&&Math.abs(y-sp[f.s][1])<u*1.5);if(!f)return;
     if(!st.tool){p.tip('아래에서 <b>끄는 방법</b>을 먼저 골라요!','bad',1300);p.Snd.bad();return;}
