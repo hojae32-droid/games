@@ -3,7 +3,14 @@ U='/root/.claude/uploads/468d8a32-314f-509d-a8d2-96719987af43/'
 C='common/'
 gd=sys.argv[1];out=sys.argv[2]
 cfg=json.load(open(gd+'/theme.json',encoding='utf8'))
-css=open(C+cfg.get('css','head.css'),encoding='utf8').read()
+if cfg.get('skin'):
+    sk=open(C+'skins/'+cfg['skin']+'.css',encoding='utf8').read()
+    a,b=sk.split('/*==EXTRA==*/') if '/*==EXTRA==*/' in sk else (sk,'')
+    imp=''.join(re.findall(r'@import[^;]+;\n?',a));a=a.replace(imp,'')
+    pv=cfg.get('players',['#4da3ff','#ff5c7a','#3fe08a','#c08bff']);a+=':root{'+''.join(f'--p{i+1}:{c};' for i,c in enumerate(pv))+'}\n'
+    css=imp+a+open(C+'structure.css',encoding='utf8').read()+b
+else:
+    css=open(C+cfg.get('css','head.css'),encoding='utf8').read()
 eng=open(C+'engine_body.js',encoding='utf8').read()
 net=open(C+'net_body.js',encoding='utf8').read()
 setup=open(C+'setup_new.js',encoding='utf8').read()
@@ -61,7 +68,7 @@ html=f'''<!doctype html>
 {css}
 </style>
 </head>
-<body>
+<body class="{cfg.get('layout','')}">
 <div id="setup" class="screen"></div>
 <div id="play" class="screen"></div>
 <div id="result" class="screen"></div>

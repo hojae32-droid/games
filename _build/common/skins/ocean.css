@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap');
+@font-face{font-family:'DH-fb';src:local('Noto Sans CJK KR Black'),local('Noto Sans KR Black'),local('Malgun Gothic Bold'),local('AppleSDGothicNeo-Heavy');}
+:root{
+ --disp:'Jua','DH-fb','Noto Sans CJK KR','Malgun Gothic',sans-serif; --sans:'Gowun Dodum','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+ --page:linear-gradient(#cdeef0,#eaf8f5) fixed; --ink:#0b3a4a; --sub:#4d7683; --focus:#ffb300;
+ --bw:2px; --line:#0d6f86; --rad:22px; --rad-s:16px;
+ --card:#ffffff; --card-ink:#0b3a4a; --hl:#e0701b;
+ --sh-card:0 10px 26px rgba(8,90,110,.18); --sh-btn:0 4px 0 rgba(8,90,110,.3); --sh-btn-down:0 1px 0 rgba(8,90,110,.3); --sh-go:0 7px 0 #b5560f;
+ --btn-bg:#ffffff; --btn-ink:#0b3a4a; --stage:#0f6f8f;
+ --tag-bg:#ffd166; --tag-ink:#4a2f00; --title:#fff; --title1:#fff; --title2:#ffd166;
+ --lamp-r:50%; --lamp-bg:#d7eef2; --lamp-ink:#0b3a4a; --lamp-on:#46d39a; --bad:#e5484d;
+ --chip-bg:#f2fbfa; --chip-ink:#0b3a4a; --chip-line:#9fd3dc; --chip-sub:#4d7683; --sel-bg:#0e8aa8; --sel-ink:#fff; --sel-line:#0b6a82; --sel-sub:#d7f4fb;
+ --input-bg:#fff; --input-ink:#0b3a4a; --input-ph:#8fb3bc;
+ --go-bg:#ff8a3d; --go-ink:#fff;
+ --bar-bg:linear-gradient(#0d7a96,#0a6179); --bar-ink:#fff; --bar-sub:#b5e6f0;
+ --clock-bg:#fff; --clock-ring:#ff8a3d; --clock-track:#cfe9ee; --clock-ink:#0b3a4a;
+ --arena:#bfe9ee; --gap:12px;
+ --phead-ink:#fff; --no-r:50%; --sc-bg:#fff; --sc-ink:#0b3a4a; --sc-sub:#4d7683; --sc-r:999px;
+ --prog-bg:#d7eef2; --prog-fill:linear-gradient(90deg,#46d39a,#ffd166);
+ --q-bg:#fffbea; --q-ink:#0b3a4a; --q-hl:#e0701b; --q-sub:#6a7f86;
+ --tip-bg:#fff; --tip-ink:#0b3a4a; --tip-hl:#e0701b; --tip-bad:#ffe6e4; --tip-good:#dffbea;
+ --streak-bg:#ffd166; --streak-ink:#4a2f00;
+ --tools-bg:#d7eef2; --tool-bg:#fff; --tool-ink:#0b3a4a; --tool-line:#0d6f86; --tool-sel:#0e8aa8; --tool-sel-ink:#fff;
+ --veil:rgba(8,70,90,.55); --num:#ff8a3d;
+ --done-bg:rgba(8,70,90,.92); --done-ink:#fff; --done-hl:#ffd166;
+ --res-title:#e0701b; --pname-b:.85; --acc:#0e8aa8;
+}
+/*==EXTRA==*/
+/* 물결 + 밧줄 */
+.pbar{box-shadow:0 4px 12px rgba(8,70,90,.25)}
+.pbar::after{content:'';position:absolute;left:0;right:0;bottom:-9px;height:10px;pointer-events:none;background:radial-gradient(circle at 10px -2px,transparent 9px,#0a6179 9.5px,#0a6179 11px,transparent 11.5px) 0 0/20px 10px repeat-x}
+.panel{border-color:#0d6f86}
+.phead{background:linear-gradient(var(--pc),color-mix(in srgb,var(--pc) 70%,#06384a))}
+.phead .nm{text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.qbox.ask{border-bottom:2px dashed #c9a96a;background:#fffbea}
+.qbox.ask::before{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:repeating-linear-gradient(90deg,#d9b36b 0 10px,#c19a52 10px 14px)}
+.ctrl.tools{border-top:2px dashed #7fc3d0}
+.toolbtn{border-radius:18px}
+.stn{border-color:#a9dce3}
+.stn-h h2::after{content:'';display:inline-block;width:.9em;height:.9em;margin-left:.45em;vertical-align:-.1em;background:radial-gradient(circle at 35% 35%,#fff 0 12%,transparent 13%),radial-gradient(circle,#7fd6e6 0 60%,transparent 62%);border-radius:50%;opacity:.7}
+.counter-col{background:linear-gradient(#cdeef0,#eaf8f5)}
+.sign h1{text-shadow:0 3px 0 #0a5a72,0 6px 14px rgba(0,40,60,.4)}
+.sign .sub{box-shadow:0 3px 0 #b88a1a}
+.booth-how{background:#ffffffee}
+.howcard .in::before{content:'';position:absolute;left:0;right:0;top:0;height:12px;background:repeating-linear-gradient(90deg,#0e8aa8 0 22px,#ffd166 22px 44px)}
+.fire{border-color:#b5560f}
+.chip.sel{box-shadow:0 5px 0 #0a5a72}
+.pcard::before{height:12px}

@@ -62,7 +62,7 @@ svg.logo{display:block;width:100%;height:100%}
 .stn{padding:12px 0 14px;border-bottom:1px dashed #ffffff1f}
 .stn:first-child{padding-top:4px}
 .stn-h{display:flex;align-items:center;gap:12px;margin:0 0 10px}
-.stn-h h2{margin:0;font-size:20px;color:#fff;letter-spacing:.01em}
+.stn-h h2{margin:0;font-family:var(--sans);font-weight:700;font-size:18px;color:#fff;letter-spacing:.01em}
 .lamp{position:relative;flex:0 0 auto;width:36px;height:19px;border-radius:10px;background:#050a1a;box-shadow:inset 0 0 0 2px var(--rim),inset 0 3px 5px #000a;transition:background .2s}
 .lamp::after{content:'';position:absolute;left:3px;top:3px;width:13px;height:13px;border-radius:50%;background:linear-gradient(#8aa0e0,#566ab0);transition:transform .2s,background .2s,box-shadow .2s}
 .stn.done .lamp{background:#3b2f06}
@@ -81,7 +81,7 @@ svg.logo{display:block;width:100%;height:100%}
 .chips.tm{grid-template-columns:repeat(3,1fr)}
 .grade-group .gl{font:600 13px var(--sans);color:var(--sub);margin:0 0 8px}
 .chip{position:relative;display:flex;align-items:center;gap:10px;text-align:left;min-height:54px;padding:8px 13px;border:none;border-radius:12px;
-  background:var(--panel3);color:#eaf0ff;font-family:var(--disp);font-size:18.5px;line-height:1.15;word-break:keep-all;
+  background:var(--panel3);color:#eaf0ff;font-family:var(--sans);font-weight:700;font-size:16.5px;line-height:1.2;word-break:keep-all;
   box-shadow:inset 0 0 0 2px var(--rim),0 4px 0 #02050f;transition:transform .1s,background .12s,box-shadow .12s}
 .chip>span{min-width:0}
 .chip small{display:block;font:500 12.5px/1.35 var(--sans);color:#a9bbee;margin-top:3px}
@@ -95,7 +95,7 @@ svg.logo{display:block;width:100%;height:100%}
 .chips.tm .chip{justify-content:center;text-align:center;white-space:nowrap}
 .nick-row{display:flex;align-items:center;gap:8px;margin:6px 0}
 .nick-row .dot{flex:0 0 auto;width:10px;height:36px;border-radius:4px}
-.nick-row input{flex:1;min-width:0;max-width:380px;font-family:var(--disp);font-size:20px;padding:11px 14px;border-radius:10px;border:none;outline:none;
+.nick-row input{flex:1;min-width:0;max-width:380px;font-family:var(--sans);font-weight:700;font-size:18px;padding:11px 14px;border-radius:10px;border:none;outline:none;
   background:var(--paper);color:var(--ink);box-shadow:inset 0 3px 0 #0b143022}
 .nick-row input::placeholder{color:#8e98b5}
 .nick-row input:focus{box-shadow:0 0 0 3px var(--volt)}
@@ -312,7 +312,7 @@ body #netboard .nl-card,body #lobby .nl-card{background:linear-gradient(#17244d,
 
 </style>
 </head>
-<body>
+<body class="">
 <div id="setup" class="screen"></div>
 <div id="play" class="screen"></div>
 <div id="result" class="screen"></div>
