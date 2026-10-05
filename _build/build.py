@@ -3,7 +3,7 @@ U='/root/.claude/uploads/468d8a32-314f-509d-a8d2-96719987af43/'
 C='common/'
 gd=sys.argv[1];out=sys.argv[2]
 cfg=json.load(open(gd+'/theme.json',encoding='utf8'))
-css=open(C+'head.css',encoding='utf8').read()
+css=open(C+cfg.get('css','head.css'),encoding='utf8').read()
 eng=open(C+'engine_body.js',encoding='utf8').read()
 net=open(C+'net_body.js',encoding='utf8').read()
 setup=open(C+'setup_new.js',encoding='utf8').read()
@@ -36,9 +36,9 @@ def recolor(s,rules):
 if cfg.get('recolor'):css=recolor(css,cfg['recolor'])
 for a,b in cfg.get('css_replace',[]):css=css.replace(a,b)
 css+=cfg.get('extra_css','')
-fd=cfg.get('font','Do Hyeon')
-if fd!='Do Hyeon':
-    css=css.replace('Do+Hyeon',fd.replace(' ','+')).replace("'Do Hyeon'","'"+fd+"'")
+fd=cfg.get('font','Do Hyeon');ff=cfg.get('font_from','Do Hyeon')
+if fd!=ff:
+    css=css.replace('family='+ff.replace(' ','+'),'family='+fd.replace(' ','+')).replace("'"+ff+"'","'"+fd+"'")
 # 엔진
 eng=rep(eng,'''${f||"Jua"},"Gowun Dodum",sans-serif''','''${f||"%s"},"DH-fb","Noto Sans CJK KR",sans-serif'''%fd)
 i=eng.index('  buildSetup(){');j=eng.index("W.appendChild(h('div','maker','제작 : 비춤이샘'));\n  },",i)+len("W.appendChild(h('div','maker','제작 : 비춤이샘'));\n  },")

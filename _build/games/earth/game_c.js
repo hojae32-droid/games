@@ -8,32 +8,29 @@ function orbGeo(p){const A=areaOf(p);const land=A.w>A.h*1.05;const u=Math.min(p.
   return{A,u,land,cx,cy,OR,CRx,CRy,box};}
 function conPos(G,i){const a=CONS[i].a;return[G.cx+Math.cos(a)*G.CRx,G.cy+Math.sin(a)*G.CRy];}
 /* 한밤중 남쪽 하늘 창 */
-function nightBox(g,G,orb,T,show,hl){const b=G.box,u=G.u;g.save();K.rr(g,b.x,b.y,b.w,b.h,u*.3);g.clip();
-  const gr=g.createLinearGradient(0,b.y,0,b.y+b.h);gr.addColorStop(0,'#02030f');gr.addColorStop(1,'#141c64');g.fillStyle=gr;g.fillRect(b.x,b.y,b.w,b.h);
-  let a=19;const r=()=>{a=(a*16807)%2147483647;return a/2147483647;};for(let i=0;i<40;i++){g.globalAlpha=.3+.5*Math.abs(Math.sin(T*1.4+i));g.fillStyle='#fff';g.fillRect(b.x+r()*b.w,b.y+r()*b.h*.9,1.4,1.4);}g.globalAlpha=1;
+function nightBox(g,G,orb,T,show,hl){const b=G.box,u=G.u;g.save();K.rr(g,b.x,b.y+6,b.w,b.h,u*.35);g.fillStyle=INK;g.fill();
+  K.rr(g,b.x,b.y,b.w,b.h,u*.35);g.save();g.clip();g.fillStyle='#1a1760';g.fillRect(b.x,b.y,b.w,b.h);
+  for(let i=0;i<22;i++)sparkle(g,b.x+hash(i*3+9)*b.w,b.y+hash(i*7+4)*b.h*.9,2+hash(i)*3.4,`rgba(255,246,192,${.35+.55*Math.abs(Math.sin(T*1.4+i))})`);
   if(show){CONS.forEach((c,i)=>{const d=angd(c.a,orb);if(Math.abs(d)<PI/2.2){const x=b.x+b.w/2+(-d/(PI/2.2))*b.w*.42,s=Math.min(b.h*.34,b.w*.16);const al=1-Math.abs(d)/(PI/2.2)*.6;
-      drawConst(g,c.id,x,b.y+b.h*.46,s,al,T,hl===i?'#ffe08a':null);K.txt(g,c.n,x,b.y+b.h*.88,{size:clamp(u*.3,10,15),color:'#e8e2ff',alpha:al,maxW:b.w*.4});}});}
-  else K.txt(g,'?',b.x+b.w/2,b.y+b.h*.5,{size:Math.min(b.h*.5,u*1.5),color:'rgba(200,190,255,.5)'});
-  g.restore();K.rr(g,b.x,b.y,b.w,b.h,u*.3);g.lineWidth=2.5;g.strokeStyle='rgba(170,150,255,.65)';g.stroke();
-  if(G.land)K.txt(g,'한밤중 남쪽 하늘',b.x+b.w/2,b.y-u*.3,{size:clamp(u*.3,10,15),color:'#cfc6ff',maxW:b.w});else K.txt(g,'한밤중 남쪽 하늘',b.x+u*2,b.y+u*.35,{size:clamp(u*.28,10,13),color:'#9d94e0',maxW:b.w*.5});}
+      drawConst(g,c.id,x,b.y+b.h*.46,s,al,T,hl===i);g.globalAlpha=al;pill(g,c.n,x,b.y+b.h*.86,clamp(u*.3,10,15),'#fff',INK,b.w*.4);g.globalAlpha=1;}});}
+  else K.txt(g,'?',b.x+b.w/2,b.y+b.h*.5,{size:Math.min(b.h*.5,u*1.6),color:'rgba(255,255,255,.55)'});
+  g.restore();K.rr(g,b.x,b.y,b.w,b.h,u*.35);g.lineWidth=5;g.strokeStyle=INK;g.stroke();g.restore();
+  if(G.land)pill(g,'한밤중 남쪽 하늘',b.x+b.w/2,b.y-u*.5,clamp(u*.3,10,15),'#fff',INK,b.w);else pill(g,'한밤중 남쪽 하늘',b.x+b.w*.28,b.y+u*.05,clamp(u*.28,10,13),'#fff',INK,b.w*.5);}
 function orbitScene(p,g,st,o){const G=orbGeo(p),{cx,cy,OR,u}=G,T=st.T;
-  /* 태양 */
-  const sp=1+Math.sin(T*1.6)*.03;K.glow(g,cx,cy,u*3.6*sp,'#ff9a3d',.5);K.glow(g,cx,cy,u*1.6,'#ffe08a',.95);g.fillStyle='#fff1b8';g.beginPath();g.arc(cx,cy,u*.62,0,TAU);g.fill();K.txt(g,'태양',cx+u*1.25,cy-u*.9,{size:u*.32,color:'#ffe3a0',stroke:'rgba(0,0,0,.6)',lw:3});
   /* 궤도 */
-  g.save();g.strokeStyle='rgba(190,170,255,.5)';g.lineWidth=2;g.setLineDash([u*.14,u*.24]);g.lineDashOffset=-T*8;g.beginPath();g.arc(cx,cy,OR,0,TAU);g.stroke();g.restore();
-  /* 별자리 */
-  CONS.forEach((c,i)=>{const [x,y]=conPos(G,i);const hl=o.hl===i,dim=o.dim===i;
-    g.save();g.fillStyle=hl?'rgba(255,224,130,.2)':'rgba(30,24,90,.8)';g.strokeStyle=hl?'#ffe08a':'rgba(170,150,255,.5)';g.lineWidth=hl?3:2;g.beginPath();g.arc(x,y,u*.95,0,TAU);g.fill();g.stroke();g.restore();
-    drawConst(g,c.id,x,y,u*.64,dim?.35:1,T,hl?'#ffe08a':null);
-    K.box(g,x-u*1.5,y+u*.98,u*3,u*.58,u*.29,'rgba(224,219,255,.95)');K.txt(g,c.n,x,y+u*1.27,{size:u*.3,color:'#1a1250',maxW:u*2.8});});
+  g.save();g.strokeStyle='#fff';g.lineWidth=3.5;g.setLineDash([u*.22,u*.3]);g.lineDashOffset=-T*8;g.beginPath();g.arc(cx,cy,OR,0,TAU);g.stroke();g.restore();
+  /* 별자리 배지 */
+  CONS.forEach((c,i)=>{const [x,y]=conPos(G,i);const hl=o.hl===i;
+    g.save();g.fillStyle=hl?'#4a46b8':NIGHT2;g.strokeStyle=hl?SUN:'#fff';g.lineWidth=hl?5:3.5;g.beginPath();g.arc(x,y,u*.95,0,TAU);g.fill();g.stroke();g.restore();
+    drawConst(g,c.id,x,y,u*.64,1,T,hl);pill(g,c.n,x,y+u*1.25,u*.34,'#fff',INK,u*3.2);});
   /* 계절 표시(궤도 안쪽) */
-  if(o.tags)CONS.forEach(c=>{const x=cx+Math.cos(c.a)*OR*.7,y=cy+Math.sin(c.a)*OR*.7;K.box(g,x-u*.5,y-u*.27,u*1,u*.54,u*.27,SEASONC[c.season]);K.txt(g,c.season,x,y,{size:u*.3,color:'#1a1250'});});
+  /* 태양 */
+  sunFace(g,cx,cy,Math.min(u*.78,OR*.38),T);
   /* 지구에서 한밤중 하늘 방향 */
   const ex=cx+Math.cos(st.orb)*OR,ey=cy+Math.sin(st.orb)*OR;
-  if(o.line){g.save();g.strokeStyle='rgba(255,224,130,.55)';g.lineWidth=2;g.setLineDash([u*.15,u*.2]);g.beginPath();g.moveTo(cx,cy);g.lineTo(cx+Math.cos(st.orb)*Math.max(G.CRx,G.CRy)*1.05,cy+Math.sin(st.orb)*Math.max(G.CRx,G.CRy)*1.05);g.stroke();g.restore();}
+  if(o.line){g.save();g.strokeStyle=SUN;g.lineWidth=3.5;g.setLineDash([u*.2,u*.25]);g.beginPath();g.moveTo(cx,cy);g.lineTo(cx+Math.cos(st.orb)*Math.max(G.CRx,G.CRy)*1.05,cy+Math.sin(st.orb)*Math.max(G.CRx,G.CRy)*1.05);g.stroke();g.restore();}
+  if(o.ring){g.save();g.strokeStyle=SUN;g.lineWidth=4;g.setLineDash([u*.2,u*.2]);g.lineDashOffset=-T*14;g.beginPath();g.arc(ex,ey,u*.92,0,TAU);g.stroke();g.restore();}
   globe(g,ex,ey,u*.62,T*.8,st.orb);
-  if(o.ring){g.save();g.strokeStyle=p.color;g.lineWidth=3;g.shadowColor=p.color;g.shadowBlur=u*.3;g.beginPath();g.arc(ex,ey,u*.8,0,TAU);g.stroke();g.restore();}
-  K.txt(g,'밤',ex+Math.cos(st.orb)*u*1.2,ey+Math.sin(st.orb)*u*1.2,{size:u*.32,color:'#cfc6ff',stroke:'rgba(0,0,0,.6)',lw:3});
   return G;}
 
 MS.place={
@@ -88,22 +85,19 @@ MS.sort={
     p.tools([{e:'🌏',t:'자전'},{e:'☀️',t:'공전'}],(i)=>{if(st.lock)return;st.lock=true;const ok=i===st.it[1];st.fly={dir:i?1:-1,t:0,ok};
       if(ok)goodHit(p,90,p.W/2,p.H*.14,st.it[2]);else p.hit(false,{x:p.W/2,y:p.H*.14,tip:'정답은 <b>'+(st.it[1]?'공전':'자전')+'</b><br>'+st.it[2],tipMs:3200,review:`${st.it[0]} → ${st.it[1]?'공전':'자전'} (${plain(st.it[2])})`});
       nextRound(p,ok?1000:2300);},{toggle:false});},
-  draw(p,g,A,dt){const st=p.state,u=p.u,T=st.T;const a=intro(p);g.save();g.globalAlpha=a;
+  draw(p,g,A,dt){const st=p.state,u=Math.min(p.u,A.w/11,A.h/9),T=st.T;const a=intro(p);g.save();g.globalAlpha=a;
     const land=A.w>A.h*1.05;const cy=A.h*.5;
-    /* 양쪽 안내: 자전(제자리에서 빙글) / 공전(태양 둘레) */
     const ex=A.w*(land?.14:.2),ey=A.h*(land?.5:.78),er=Math.min(A.w*.12,A.h*.17);
-    g.save();g.globalAlpha=a*.95;globe(g,ex,ey,er*.8,T*1.1,0);K.txt(g,'자전',ex,ey+er*1.25,{size:u*.5,color:'#9ff0e0',stroke:'rgba(0,0,0,.6)',lw:3});g.restore();
-    const sx=A.w*(land?.86:.8),sy=ey;K.glow(g,sx,sy,er*1.1,'#ff9a3d',.5);g.fillStyle='#fff1b8';g.beginPath();g.arc(sx,sy,er*.3,0,TAU);g.fill();
-    g.save();g.strokeStyle='rgba(190,170,255,.5)';g.lineWidth=2;g.setLineDash([6,8]);g.beginPath();g.ellipse(sx,sy,er*.9,er*.9,0,0,TAU);g.stroke();g.restore();
-    const oa=-T*.8;globe(g,sx+Math.cos(oa)*er*.9,sy+Math.sin(oa)*er*.9,er*.26,T*2,oa);K.txt(g,'공전',sx,sy+er*1.25,{size:u*.5,color:'#ffd27a',stroke:'rgba(0,0,0,.6)',lw:3});
-    /* 카드 */
-    let cx=A.w/2,cyy=cy-(land?0:A.h*.1),rot=0,al=1;if(st.fly){st.fly.t+=dt;const k=easeIO(st.fly.t/.45);cx+=st.fly.dir*k*A.w*.34;cyy+=k*A.h*(land?0:.16);rot=st.fly.dir*k*.25;al=1-clamp((st.fly.t-.3)/.3,0,1);}
+    globe(g,ex,ey,er*.8,T*1.1,0);pill(g,'자전',ex,ey+er*1.3,u*.55,'#ffd0c8',INK);
+    const sx=A.w*(land?.86:.8),sy=ey;g.save();g.strokeStyle='#fff';g.lineWidth=3;g.setLineDash([7,9]);g.lineDashOffset=-T*10;g.beginPath();g.arc(sx,sy,er*.95,0,TAU);g.stroke();g.restore();
+    sunFace(g,sx,sy,er*.3,T);const oa=-T*.8;globe(g,sx+Math.cos(oa)*er*.95,sy+Math.sin(oa)*er*.95,er*.26,T*2,oa);pill(g,'공전',sx,sy+er*1.3,u*.55,SUN,INK);
+    let cx=A.w/2,cyy=cy-(land?0:A.h*.1),rot=-.03,al=1;if(st.fly){st.fly.t+=dt;const k=easeIO(st.fly.t/.45);cx+=st.fly.dir*k*A.w*.34;cyy+=k*A.h*(land?0:.16);rot=st.fly.dir*k*.25;al=1-clamp((st.fly.t-.3)/.3,0,1);}
     const cw=Math.min(A.w*(land?.46:.84),u*13),ch=Math.min(A.h*(land?.5:.34),u*5.6);
     g.save();g.globalAlpha=a*al;g.translate(cx,cyy);g.rotate(rot);
-    K.card(g,-cw/2,-ch/2,cw,ch,u*.4,'#f6f2ff',{blur:u*.6,dy:u*.2,stroke:'#a99cff',lw:3,hi:false});
+    stk(g,-cw/2,-ch/2,cw,ch,u*.4,'#fffbe8',7);
     const fs=clamp(Math.min(ch*.17,cw*.075),14,34);const lines=wrapLines(g,st.it[0],cw*.86,fs);
-    lines.forEach((l,i)=>K.txt(g,l,0,(i-(lines.length-1)/2)*fs*1.3,{size:fs,color:'#1a1250'}));
-    K.box(g,-cw/2+u*.3,-ch/2-u*.3,u*2.2,u*.6,u*.3,'#7a63ff');K.txt(g,'관측 기록',-cw/2+u*1.4,-ch/2,{size:u*.32,color:'#fff'});
+    lines.forEach((l,i)=>K.txt(g,l,0,(i-(lines.length-1)/2)*fs*1.3,{size:fs,color:INK}));
+    pill(g,'관측 기록',-cw/2+u*1.6,-ch/2,u*.38,CORAL,'#fff');
     g.restore();g.restore();}
 };
 
