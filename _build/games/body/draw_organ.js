@@ -1,0 +1,17 @@
+  drawOrgan(g,n,x,y,s){g.save();g.translate(x,y);
+    const E={뇌:'🧠',심장:'🫀',폐:'🫁',뼈:'🦴',근육:'💪'};
+    const lg=(y0,y1,a,b)=>{const gr=g.createLinearGradient(0,y0,0,y1);gr.addColorStop(0,a);gr.addColorStop(1,b);return gr;};
+    const hi=(hx,hy,rx,ry,r)=>{g.fillStyle='rgba(255,255,255,.45)';g.beginPath();g.ellipse(hx,hy,rx,ry,r||-.4,0,7);g.fill();};
+    g.shadowColor='rgba(80,20,40,.25)';g.shadowBlur=s*.12;g.shadowOffsetY=s*.05;
+    if(E[n]){g.shadowColor='transparent';K.emo(g,E[n],0,0,s);}
+    else if(n==='위'){g.fillStyle=lg(-s*.3,s*.3,'#fda4af','#e11d48');g.beginPath();g.moveTo(-s*.12,-s*.38);g.bezierCurveTo(-s*.1,-s*.1,-s*.45,-s*.05,-s*.4,s*.18);g.bezierCurveTo(-s*.32,s*.42,s*.3,s*.38,s*.4,s*.05);g.bezierCurveTo(s*.45,-s*.2,s*.2,-s*.32,s*.02,-s*.2);g.lineTo(s*.02,-s*.38);g.closePath();g.fill();g.shadowColor='transparent';hi(-s*.15,s*.05,s*.12,s*.06);}
+    else if(n==='간'){g.fillStyle=lg(-s*.3,s*.25,'#c2410c','#7c2d12');g.beginPath();g.moveTo(-s*.46,-s*.12);g.bezierCurveTo(-s*.3,-s*.36,s*.3,-s*.34,s*.44,-s*.16);g.bezierCurveTo(s*.3,s*.02,s*.05,s*.04,-s*.1,s*.24);g.bezierCurveTo(-s*.35,s*.2,-s*.5,s*.05,-s*.46,-s*.12);g.fill();g.shadowColor='transparent';hi(-s*.12,-s*.16,s*.16,s*.05,-.1);}
+    else if(n==='작은창자'){g.lineCap='round';g.strokeStyle='#db2777';g.lineWidth=s*.15;const path=()=>{g.beginPath();for(let a=0;a<18;a+=.25){const r=s*.06+a*s*.019;g.lineTo(Math.cos(a)*r,Math.sin(a)*r*.8);}};path();g.stroke();g.shadowColor='transparent';g.strokeStyle='#f9a8d4';g.lineWidth=s*.09;path();g.stroke();}
+    else if(n==='큰창자'){g.lineCap='round';g.lineJoin='round';const path=()=>{g.beginPath();g.moveTo(-s*.32,s*.38);g.lineTo(-s*.34,-s*.22);g.quadraticCurveTo(-s*.34,-s*.32,-s*.22,-s*.32);g.lineTo(s*.22,-s*.32);g.quadraticCurveTo(s*.34,-s*.32,s*.34,-s*.22);g.lineTo(s*.32,s*.3);g.quadraticCurveTo(s*.2,s*.42,s*.02,s*.36);};
+      g.strokeStyle='#9333ea';g.lineWidth=s*.2;path();g.stroke();g.shadowColor='transparent';g.strokeStyle='#d8b4fe';g.lineWidth=s*.12;path();g.stroke();g.strokeStyle='rgba(147,51,234,.5)';g.lineWidth=1.5;for(let k=-2;k<=2;k++){g.beginPath();g.moveTo(k*s*.12,-s*.38);g.lineTo(k*s*.12,-s*.26);g.stroke();}}
+    else if(n==='콩팥'){[-1,1].forEach(d=>{g.save();g.translate(d*s*.22,0);g.scale(d,1);g.fillStyle=lg(-s*.25,s*.25,'#f87171','#991b1b');g.beginPath();g.moveTo(0,-s*.26);g.bezierCurveTo(s*.2,-s*.28,s*.2,s*.28,0,s*.26);g.bezierCurveTo(-s*.12,s*.24,-s*.05,s*.08,-s*.1,0);g.bezierCurveTo(-s*.05,-s*.08,-s*.12,-s*.24,0,-s*.26);g.fill();g.restore();});g.shadowColor='transparent';hi(-s*.2,-s*.1,s*.04,s*.08,.2);hi(s*.24,-s*.1,s*.04,s*.08,-.2);}
+    else if(n==='방광'){g.shadowColor='transparent';K.orb(g,0,0,s*.27,'#facc15');}
+    else if(n==='식도'){g.lineCap='round';g.strokeStyle='#ea580c';g.lineWidth=s*.17;g.beginPath();g.moveTo(0,-s*.4);g.quadraticCurveTo(s*.05,0,0,s*.4);g.stroke();g.shadowColor='transparent';g.strokeStyle='#fdba74';g.lineWidth=s*.08;g.beginPath();g.moveTo(-s*.02,-s*.38);g.quadraticCurveTo(s*.03,0,-s*.02,s*.38);g.stroke();}
+    else if(n==='기관'){g.lineCap='round';g.strokeStyle='#64748b';g.lineWidth=s*.2;g.beginPath();g.moveTo(0,-s*.4);g.lineTo(0,s*.4);g.stroke();g.shadowColor='transparent';g.strokeStyle='#e2e8f0';g.lineWidth=s*.14;g.beginPath();g.moveTo(0,-s*.38);g.lineTo(0,s*.38);g.stroke();
+      g.strokeStyle='#94a3b8';g.lineWidth=Math.max(1.5,s*.03);for(let k=-3;k<=3;k++){g.beginPath();g.moveTo(-s*.07,k*s*.1);g.lineTo(s*.07,k*s*.1);g.stroke();}}
+    g.restore();},
