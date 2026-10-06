@@ -58,10 +58,10 @@ const GAME={
   mainRects(p,q){const G=this.geo(p),{u,pad,gap}=G;const top=G.Z0+u*.5+u*1.2,bot=G.by-gap;const n=q.sents.length;const h=(bot-top-gap*(n-1))/n;return q.sents.map((s,i)=>({x:pad+u*.3,y:top+i*(h+gap),w:G.W-pad*2-u*.6,h}));},
   init(p){const st=p.state;Object.assign(st,{q:null,n:0,sold:0,shown:0,T:0,lock:false,k:0,res:[],mood:'neutral',mT:0,qt:0,qmax:0,busy:false,stamp:null,sel:null,links:[],pick:-1,rev:false,slide:1});this.newQ(p);},
   make(p,L){const R=p.R,q={};
-    if(L==='a'){const f=R.sample(FACT,2).map(t=>[t,'f']),o=R.sample(OPIN,2).map(t=>[t,'o']);q.ty='fo';q.items=R.shuffle([...f,...o]);
+    if(L==='a'){const f=QK.take(p,FACT,'dk_f',2).map(t=>[t,'f']),o=QK.take(p,OPIN,'dk_o',2).map(t=>[t,'o']);q.ty='fo';q.items=R.shuffle([...f,...o]);
       q.text='문장마다 <b>📰 사실</b>인지 <b>💭 의견</b>인지 도장을 찍어요!';q.reveal=q.items.map(x=>`${x[0]} → ${x[1]==='f'?'사실':'의견'}`).join('<br>');q.review=q.items.map(x=>`${x[0]}(${x[1]==='f'?'사실':'의견'})`).join(' / ');}
-    else if(L==='b'){const g=R.pick(PARA);q.ty='main';q.title=g[0];q.sents=g[1];q.ans=g[2];q.text='이 문단의 <b>중심 문장</b>을 콕! 헤드라인으로 뽑아요.';q.reveal=g[1][g[2]];q.review=`[${g[0]}] ${q.reveal}`;}
-    else{let ps;do{ps=R.sample(CAUSE,3);}while(ps.some((a,j)=>a[2]&&ps.some((b,k)=>k!==j&&b[2]===a[2])));q.ty='cause';q.ps=ps;q.L=R.shuffle([0,1,2]);do{q.Rr=R.shuffle([0,1,2]);}while(q.Rr.some((x,j)=>x===q.L[j]));q.text='<b>원인</b>을 먼저 콕, 그다음 알맞은 <b>결과</b>를 콕! 줄로 이어요.';q.reveal=ps.map(x=>`${x[0]} → ${x[1]}`).join('<br>');q.review=ps.map(x=>`${x[0]} → ${x[1]}`).join(' / ');}
+    else if(L==='b'){const g=p.deck(PARA,'dk_b');q.ty='main';q.title=g[0];q.sents=g[1];q.ans=g[2];q.text='이 문단의 <b>중심 문장</b>을 콕! 헤드라인으로 뽑아요.';q.reveal=g[1][g[2]];q.review=`[${g[0]}] ${q.reveal}`;}
+    else{let ps;do{ps=QK.take(p,CAUSE,'dk_c',3);}while(ps.some((a,j)=>a[2]&&ps.some((b,k)=>k!==j&&b[2]===a[2])));q.ty='cause';q.ps=ps;q.L=R.shuffle([0,1,2]);do{q.Rr=R.shuffle([0,1,2]);}while(q.Rr.some((x,j)=>x===q.L[j]));q.text='<b>원인</b>을 먼저 콕, 그다음 알맞은 <b>결과</b>를 콕! 줄로 이어요.';q.reveal=ps.map(x=>`${x[0]} → ${x[1]}`).join('<br>');q.review=ps.map(x=>`${x[0]} → ${x[1]}`).join(' / ');}
     return q;},
   newQ(p){const st=p.state,L=p.levelId==='all'?['a','b','c'][st.n%3]:p.levelId;st.n++;const q=this.make(p,L);st.q=q;st.lock=false;st.k=0;st.res=[];st.busy=false;st.stamp=null;st.sel=null;st.links=[];st.pick=-1;st.rev=false;st.slide=1;
     st.qmax=({fo:40,main:30,cause:45}[q.ty])/p.pace;st.qt=st.qmax;p.ask('📺 '+q.text,({fo:'사실: 확인할 수 있는 일 · 의견: 사람마다 다른 생각',main:'가장 중요한 한 문장을 골라요',cause:'왼쪽 원인을 누르고, 오른쪽 결과를 눌러요'})[q.ty]);},

@@ -75,10 +75,10 @@ const GAME={
     else{const h=u*1.5;for(let i=0;i<3;i++)out.push({x:pad,y:G.by-gap-(3-i)*h-(2-i)*gap,w:G.W-pad*2,h});}return out;},
   init(p){const st=p.state;Object.assign(st,{q:null,n:0,sales:0,shown:0,T:0,lock:false,got:[],k:0,res:[],mood:'neutral',mT:0,pow:0,powTxt:'',qt:0,qmax:0,busy:false,fly:[],rev:false,pick:-1});this.newQ(p);},
   make(p,L){const R=p.R,q={};
-    if(L==='a'){const s=R.pick(STORY);q.ty='order';q.title=s[0];q.steps=s[1];do{q.mix=R.shuffle([0,1,2,3]);}while(q.mix.every((x,j)=>x===j));q.text=`「${s[0]}」 만화 칸을 <b>일어난 순서</b>대로 콕콕!`;q.reveal=s[1].map((x,k)=>`${k+1}. ${x[1]}`).join(' ');q.review=`「${s[0]}」 `+q.reveal;}
-    else if(L==='b'){const st=R.pick(ELEM);const pick=R.shuffle([...st[1].map(x=>[x,'p']),...st[2].map(x=>[x,'e']),...st[3].map(x=>[x,'b'])]).slice(0,4);
+    if(L==='a'){const s=p.deck(STORY,'dk_a');q.ty='order';q.title=s[0];q.steps=s[1];do{q.mix=R.shuffle([0,1,2,3]);}while(q.mix.every((x,j)=>x===j));q.text=`「${s[0]}」 만화 칸을 <b>일어난 순서</b>대로 콕콕!`;q.reveal=s[1].map((x,k)=>`${k+1}. ${x[1]}`).join(' ');q.review=`「${s[0]}」 `+q.reveal;}
+    else if(L==='b'){const st=p.deck(ELEM,'dk_b');const pick=R.shuffle([...st[1].map(x=>[x,'p']),...st[2].map(x=>[x,'e']),...st[3].map(x=>[x,'b'])]).slice(0,4);
       q.ty='elem';q.title=st[0];q.items=pick;q.text=`「${st[0]}」 원고 조각을 <b>인물 · 사건 · 배경</b> 상자로!`;q.reveal=pick.map(x=>`${x[0]} → ${NM[x[1]]}`).join('<br>');q.review=`「${st[0]}」 `+pick.map(x=>`${x[0]}(${NM[x[1]]})`).join(' / ');}
-    else{const c=R.pick(CHAR);q.ty='char';q.sent=c[0];q.ans=c[1];q.opts=R.shuffle([c[1],c[2],c[3]]).map(t=>({t,ok:t===c[1]}));q.text='이 인물의 <b>성격</b>으로 알맞은 것은?';q.reveal=c[1];q.speak=c[0];q.review=c[0]+' → '+c[1];q.seed=Math.floor(R.f()*100);}
+    else{const c=p.deck(CHAR,'dk_c');q.ty='char';q.sent=c[0];q.ans=c[1];q.opts=R.shuffle([c[1],c[2],c[3]]).map(t=>({t,ok:t===c[1]}));q.text='이 인물의 <b>성격</b>으로 알맞은 것은?';q.reveal=c[1];q.speak=c[0];q.review=c[0]+' → '+c[1];q.seed=Math.floor(R.f()*100);}
     return q;},
   newQ(p){const st=p.state,L=p.levelId==='all'?['a','b','c'][st.n%3]:p.levelId;st.n++;const q=this.make(p,L);st.q=q;st.lock=false;st.got=[];st.k=0;st.res=[];st.busy=false;st.fly=[];st.rev=false;st.pick=-1;
     st.qmax=({order:40,elem:40,char:22}[q.ty])/p.pace;st.qt=st.qmax;

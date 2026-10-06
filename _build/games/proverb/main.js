@@ -59,7 +59,7 @@ const GAME={
   cardRects(p){const G=this.geo(p);return QK.grid(G.W,G.y0,G.y1,G.n,G.cols,G.u*.4,G.u*.25);},
   init(p){const st=p.state;Object.assign(st,{q:null,n:0,coll:0,T:0,mood:'neutral',mT:0,msg:'',pv:0,pvMax:0,open:[],done:new Set(),flips:0,busy:true,fl:[],sparks:[]});this.newQ(p);},
   make(p,L){const R=p.R,q={};const src=L==='a'?PA:L==='b'?PB:PC;const n=p.n===1?4:3;
-    const prs=R.sample(src,n);q.L=L;q.prs=prs;q.cards=R.shuffle(prs.flatMap((pr,k)=>[{k,s:0,t:pr[0]},{k,s:1,t:pr[1]}]));
+    const prs=QK.take(p,src,'dk_'+L,n);q.L=L;q.prs=prs;q.cards=R.shuffle(prs.flatMap((pr,k)=>[{k,s:0,t:pr[0]},{k,s:1,t:pr[1]}]));
     q.text=L==='a'?'속담의 <b>앞</b>과 <b>뒤</b>가 이어지는 카드를 찾아요!':L==='b'?'<b>속담</b>과 알맞은 <b>뜻</b> 카드를 찾아요!':'<b>관용 표현</b>과 알맞은 <b>뜻</b> 카드를 찾아요!';
     q.reveal=prs.map(x=>L==='a'?x[0]+' '+x[1]:x[0]+' = '+x[1]).join(' / ');q.review=q.reveal;return q;},
   newQ(p){const st=p.state,L=p.levelId==='all'?['a','b','c'][st.n%3]:p.levelId;st.n++;const q=this.make(p,L);st.q=q;st.open=[];st.done=new Set();st.flips=0;st.busy=true;

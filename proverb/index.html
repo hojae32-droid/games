@@ -1381,6 +1381,8 @@ window.Net=Net;
 <script>
 /* 퀴즈형 게임 공통 부품: 글자 맞춤·보기 카드·격자 배치 */
 const QK={
+  /* 반복 없이 n개 뽑기 (한 바퀴 다 돌 때까지 같은 문제가 나오지 않아요) */
+  take(p,arr,key,n){const out=[];for(let t=0;out.length<n&&t<60;t++){const x=p.deck(arr,key);if(!out.includes(x))out.push(x);}return out;},
   /* 글자를 상자에 맞춰 줄바꿈/축소. 반환 {lines,fs} */
   fit(g,text,maxW,maxH,fs0,lh,minFs){lh=lh||1.25;minFs=minFs||8;let fs=fs0;g.font=K.font(fs);let lines=K.wrap(g,text,maxW);
     for(let t=0;t<40&&(lines.length*fs*lh>maxH||lines.some(l=>g.measureText(l).width>maxW))&&fs>minFs;t++){fs*=.93;g.font=K.font(fs);lines=K.wrap(g,text,maxW);}
@@ -1472,7 +1474,7 @@ const GAME={
   cardRects(p){const G=this.geo(p);return QK.grid(G.W,G.y0,G.y1,G.n,G.cols,G.u*.4,G.u*.25);},
   init(p){const st=p.state;Object.assign(st,{q:null,n:0,coll:0,T:0,mood:'neutral',mT:0,msg:'',pv:0,pvMax:0,open:[],done:new Set(),flips:0,busy:true,fl:[],sparks:[]});this.newQ(p);},
   make(p,L){const R=p.R,q={};const src=L==='a'?PA:L==='b'?PB:PC;const n=p.n===1?4:3;
-    const prs=R.sample(src,n);q.L=L;q.prs=prs;q.cards=R.shuffle(prs.flatMap((pr,k)=>[{k,s:0,t:pr[0]},{k,s:1,t:pr[1]}]));
+    const prs=QK.take(p,src,'dk_'+L,n);q.L=L;q.prs=prs;q.cards=R.shuffle(prs.flatMap((pr,k)=>[{k,s:0,t:pr[0]},{k,s:1,t:pr[1]}]));
     q.text=L==='a'?'속담의 <b>앞</b>과 <b>뒤</b>가 이어지는 카드를 찾아요!':L==='b'?'<b>속담</b>과 알맞은 <b>뜻</b> 카드를 찾아요!':'<b>관용 표현</b>과 알맞은 <b>뜻</b> 카드를 찾아요!';
     q.reveal=prs.map(x=>L==='a'?x[0]+' '+x[1]:x[0]+' = '+x[1]).join(' / ');q.review=q.reveal;return q;},
   newQ(p){const st=p.state,L=p.levelId==='all'?['a','b','c'][st.n%3]:p.levelId;st.n++;const q=this.make(p,L);st.q=q;st.open=[];st.done=new Set();st.flips=0;st.busy=true;

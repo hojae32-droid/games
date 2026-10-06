@@ -13,3 +13,8 @@ def head(code,title1,txt,levelTitle,title2=None):
     h=h.replace(m.group(0),f"title:'{t}',title1:'{title1}',title2:'{title2 or t}',emoji:LOGO,")
     h=re.sub(r"\n  theme:\{[^}]*\},","\n  theme:{c1:'#e8541a',c2:'#2563eb'},hero:heroScene,vignette:.05,durs:[60,90,120],levelTitle:'"+levelTitle+"',\n  txt:"+txt+",",h,1)
     return h
+
+def load_game(fid):
+    src=open(U+fid+'-index.html',encoding='utf8').read()
+    i=src.index('const GAME={');a=src.rfind('<script>',0,i);b=src.index('</script>',i)
+    return src[a+8:b]

@@ -64,10 +64,10 @@ const GAME={
   optRects(p){const G=this.geo(p);const n=3;const w=(G.W-G.pad*2-G.gap*2)/3;return[0,1,2].map(i=>({x:G.pad+i*(w+G.gap),y:G.optY,w,h:G.optH}));},
   init(p){const st=p.state;Object.assign(st,{q:null,n:0,made:[],T:0,lock:false,pick:-1,qt:0,qmax:0,mood:'neutral',mT:0,drop:null,pour:null,boom:0,rev:false});this.newQ(p);},
   make(p,L){const R=p.R,q={};
-    if(L==='a'){const k=R.pick(['g','h','f']);const w=R.pick(k==='g'?GO:k==='h'?HAN:FOR);q.ty='kind';q.w=w[0];q.hint=w[1]||'';q.ans=k;q.text=`<b>${w[0]}</b>${J(w[0],'은').slice(w[0].length)} 어느 플라스크에 담을까요?`;
+    if(L==='a'){const k=R.pick(['g','h','f']);const w=p.deck(k==='g'?GO:k==='h'?HAN:FOR,'dk_'+k);q.ty='kind';q.w=w[0];q.hint=w[1]||'';q.ans=k;q.text=`<b>${w[0]}</b>${J(w[0],'은').slice(w[0].length)} 어느 플라스크에 담을까요?`;
       q.reveal=`${w[0]} → ${{g:'고유어',h:'한자어',f:'외래어'}[k]}${w[1]?' ('+w[1]+')':''}`;}
-    else if(L==='b'){const c=R.pick(COMP);q.ty='comp';q.a=c[0];q.ans=c[1];q.res=c[0]+c[1];q.words=R.shuffle([c[1],c[2],c[3]]);q.text=`<b>${c[0]}</b> 원소와 합쳐 <b>새 낱말</b>이 되는 것은?`;q.reveal=`${c[0]} + ${c[1]} = ${q.res}`;}
-    else{const d=R.pick(DER);q.ty='der';q.root=d[0];q.ans=d[1];q.pre=d[6]==='pre';q.res=q.pre?d[1]+d[0]:d[0]+d[1];q.mean=d[2];q.words=R.shuffle([d[1],d[3],d[4]]);
+    else if(L==='b'){const c=p.deck(COMP,'dk_b');q.ty='comp';q.a=c[0];q.ans=c[1];q.res=c[0]+c[1];q.words=R.shuffle([c[1],c[2],c[3]]);q.text=`<b>${c[0]}</b> 원소와 합쳐 <b>새 낱말</b>이 되는 것은?`;q.reveal=`${c[0]} + ${c[1]} = ${q.res}`;}
+    else{const d=p.deck(DER,'dk_c');q.ty='der';q.root=d[0];q.ans=d[1];q.pre=d[6]==='pre';q.res=q.pre?d[1]+d[0]:d[0]+d[1];q.mean=d[2];q.words=R.shuffle([d[1],d[3],d[4]]);
       q.text=`<b>“${d[2]}”</b>${J(d[2],'을').slice(d[2].length)} 뜻하는 낱말을 만들어요!`;q.reveal=`${q.pre?d[1]+' + '+d[0]:d[0]+' + '+d[1]} = ${q.res} (${d[2]})`;}
     q.review=strip(q.text)+' → '+strip(q.reveal);return q;},
   newQ(p){const st=p.state,L=p.levelId==='all'?['a','b','c'][st.n%3]:p.levelId;st.n++;const q=this.make(p,L);st.q=q;st.lock=false;st.pick=-1;st.drop={y:0};st.pour=null;st.boom=0;st.rev=false;

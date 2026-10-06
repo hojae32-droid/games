@@ -68,9 +68,9 @@ const GAME={
   ctrlRects(p){const G=this.geo(p),gx=G.u*.3;const out=[];if(G.land){const w=(G.W-gx*2-G.gap*2)/3;for(let i=0;i<3;i++)out.push({x:gx+i*(w+G.gap),y:G.cy0,w,h:G.bh});}else for(let i=0;i<3;i++)out.push({x:gx,y:G.cy0+i*(G.bh+G.gap),w:G.W-gx*2,h:G.bh});return out;},
   init(p){const st=p.state;Object.assign(st,{q:null,n:0,fixed:0,T:0,lock:false,pick:-1,qt:0,qmax:0,mood:'neutral',mT:0,smoke:0,spark:0,enter:1,exit:0,speakT:0,showKey:null});this.newQ(p);},
   make(p,L){const R=p.R,q={};
-    if(L==='a'||L==='b'){const s=R.pick(L==='a'?PAIR:TIME);q.ty='part';q.glue=s[0].endsWith('+');q.head=s[0].replace(/\+$/,'');q.ans=s[1];q.opts=R.shuffle([s[1],s[2],s[3]]).map(t=>({t,ok:t===s[1]}));q.key=s[4]||'';
+    if(L==='a'||L==='b'){const s=p.deck(L==='a'?PAIR:TIME,'dk_'+L);q.ty='part';q.glue=s[0].endsWith('+');q.head=s[0].replace(/\+$/,'');q.ans=s[1];q.opts=R.shuffle([s[1],s[2],s[3]]).map(t=>({t,ok:t===s[1]}));q.key=s[4]||'';
       q.text='앞말과 <b>짝이 맞는</b> 끝 부품을 골라 끼워요!';q.reveal=q.head+(q.glue?'':' ')+s[1];q.speak=q.head;q.review=q.reveal+(q.key?` (${q.key})`:'');}
-    else{const s=R.pick(FIX);q.ty='fix';q.ans=s[0];q.opts=R.shuffle([s[0],s[1],s[2]]).map(t=>({t,ok:t===s[0]}));q.key=s[3];q.text='바르게 <b>고쳐진 문장</b>을 골라 출고해요!';q.reveal=`${s[0]} (${s[3]})`;q.review=q.reveal;q.speak=s[1];}
+    else{const s=p.deck(FIX,'dk_c');q.ty='fix';q.ans=s[0];q.opts=R.shuffle([s[0],s[1],s[2]]).map(t=>({t,ok:t===s[0]}));q.key=s[3];q.text='바르게 <b>고쳐진 문장</b>을 골라 출고해요!';q.reveal=`${s[0]} (${s[3]})`;q.review=q.reveal;q.speak=s[1];}
     return q;},
   newQ(p){const st=p.state,L=p.levelId==='all'?['a','b','c'][st.n%3]:p.levelId;st.n++;const q=this.make(p,L);st.q=q;st.lock=false;st.pick=-1;st.enter=1;st.exit=0;st.showKey=null;
     st.qmax=16/p.pace;st.qt=st.qmax;p.ask('🔧 '+q.text,q.ty==='part'?'끝 부품이 앞말과 어울리는지 살펴봐요':'어색한 곳이 없는 문장이 정답이에요');},

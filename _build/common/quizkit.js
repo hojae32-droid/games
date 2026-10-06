@@ -1,5 +1,7 @@
 /* 퀴즈형 게임 공통 부품: 글자 맞춤·보기 카드·격자 배치 */
 const QK={
+  /* 반복 없이 n개 뽑기 (한 바퀴 다 돌 때까지 같은 문제가 나오지 않아요) */
+  take(p,arr,key,n){const out=[];for(let t=0;out.length<n&&t<60;t++){const x=p.deck(arr,key);if(!out.includes(x))out.push(x);}return out;},
   /* 글자를 상자에 맞춰 줄바꿈/축소. 반환 {lines,fs} */
   fit(g,text,maxW,maxH,fs0,lh,minFs){lh=lh||1.25;minFs=minFs||8;let fs=fs0;g.font=K.font(fs);let lines=K.wrap(g,text,maxW);
     for(let t=0;t<40&&(lines.length*fs*lh>maxH||lines.some(l=>g.measureText(l).width>maxW))&&fs>minFs;t++){fs*=.93;g.font=K.font(fs);lines=K.wrap(g,text,maxW);}

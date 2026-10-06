@@ -89,11 +89,11 @@ const GAME={
   ctrlRects(p){const G=this.geo(p),gx=G.u*.3,n=G.n;const out=[];if(G.rowMode){const w=(G.W-gx*2-G.gap*(n-1))/n;for(let i=0;i<n;i++)out.push({x:gx+i*(w+G.gap),y:G.cy0,w,h:G.bh});}else for(let i=0;i<n;i++)out.push({x:gx,y:G.cy0+i*(G.bh+G.gap),w:G.W-gx*2,h:G.bh});return out;},
   init(p){const st=p.state;Object.assign(st,{q:null,n:0,money:0,served:0,T:0,lock:false,pick:-1,qt:0,qmax:0,mood:'neutral',gMood:'neutral',mT:0,enter:1,exit:0,react:'',ring:0,coins:[],shown:0});this.newQ(p);},
   make(p,L){const R=p.R,q={};
-    if(L==='a'){const s=R.pick(WORDA);q.ty='word';q.g=GUEST[s[0]];q.gk=s[0];q.sent=s[1];q.ans=s[2];q.choices=R.shuffle([s[2],s[3],...(s[4]?[s[4]]:[])]);
+    if(L==='a'){const s=p.deck(WORDA,'dk_a');q.ty='word';q.g=GUEST[s[0]];q.gk=s[0];q.sent=s[1];q.ans=s[2];q.choices=R.shuffle([s[2],s[3],...(s[4]?[s[4]]:[])]);
       q.order=s[5]||'안내원, 도와주세요!';q.text='빈칸에 들어갈 <b>알맞은 높임 낱말</b>은?';q.reveal=s[1].replace('@',s[2]);q.price=3000;}
-    else if(L==='b'){const s=R.pick(TALKB);const gk=R.pick(['old','old','peer']);const gs=gk==='old'?R.pick(['grandpa','grandma','teacher','boss']):R.pick(['friend','kid']);
+    else if(L==='b'){const s=p.deck(TALKB,'dk_b');const gk=R.pick(['old','old','peer']);const gs=gk==='old'?R.pick(['grandpa','grandma','teacher','boss']):R.pick(['friend','kid']);
       q.ty='talk';q.g=GUEST[gs];q.gk=gs;q.order=s[0];q.ans=gk==='old'?s[1]:s[2];q.choices=R.shuffle([s[1],s[2],s[3]]);q.text=`<b>${q.g.n}</b>${gk==='old'?'께':'에게'} 알맞게 말한 것은?`;q.reveal=q.ans;q.price=3500;}
-    else{const s=R.pick(FIXC);q.ty='fix';q.g=GUEST[s[0]];q.gk=s[0];q.order=s[1];q.ans=s[2];q.choices=R.shuffle([s[2],s[3],s[4]]);q.text='손님께 <b>바르게 높여</b> 말한 것은?';q.reveal=s[2];q.price=4000;}
+    else{const s=p.deck(FIXC,'dk_c');q.ty='fix';q.g=GUEST[s[0]];q.gk=s[0];q.order=s[1];q.ans=s[2];q.choices=R.shuffle([s[2],s[3],s[4]]);q.text='손님께 <b>바르게 높여</b> 말한 것은?';q.reveal=s[2];q.price=4000;}
     q.review=(q.g?q.g.n+' · ':'')+strip(q.order)+' → '+strip(q.reveal);return q;},
   newQ(p){const st=p.state,L=p.levelId==='all'?['a','b','c'][st.n%3]:p.levelId;st.n++;const q=this.make(p,L);st.q=q;st.lock=false;st.pick=-1;st.enter=1;st.exit=0;st.react='';st.gMood='neutral';
     st.qmax=30/p.pace;st.qt=st.qmax;p.ask('🛎️ '+q.text,'손님이 기다리고 있어요 · 빠를수록 팁이 많아요');},

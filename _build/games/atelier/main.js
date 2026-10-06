@@ -70,11 +70,11 @@ const GAME={
   ctrlRects(p){const G=this.geo(p),gx=G.u*.3,n=G.n;const out=[];if(G.rowMode){const w=(G.W-gx*2-G.gap*(n-1))/n;for(let i=0;i<n;i++)out.push({x:gx+i*(w+G.gap),y:G.cy0,w,h:G.bh});}else for(let i=0;i<n;i++)out.push({x:gx,y:G.cy0+i*(G.bh+G.gap),w:G.W-gx*2,h:G.bh});return out;},
   init(p){const st=p.state;Object.assign(st,{q:null,n:0,art:[],made:0,T:0,lock:false,pick:-1,qt:0,qmax:0,mood:'neutral',mT:0,flash:0,fly:null});this.newQ(p);},
   make(p,L){const R=p.R,q={};
-    if(L==='a'){const k=R.pick(['s','s','m','m','n']);const s=R.pick(k==='s'?SIM:k==='m'?MET:NON);q.ty='kind';q.k=k;q.sent=s;q.text='이 문장에는 어떤 <b>붓</b>이 어울릴까요?';
+    if(L==='a'){const k=R.pick(['s','s','m','m','n']);const s=p.deck(k==='s'?SIM:k==='m'?MET:NON,'dk_'+k);q.ty='kind';q.k=k;q.sent=s;q.text='이 문장에는 어떤 <b>붓</b>이 어울릴까요?';
       q.opts=[['s','직유','~처럼 · ~같이 · ~듯이','#38bdf8'],['m','은유','A는 B이다','#fb923c'],['n','비유 아님','있는 그대로 말함','#a3a3a3']].map(o=>({t:o[1],sub:o[2],col:o[3],ok:o[0]===k}));
       q.reveal=`${s} → ${k==='s'?'직유':k==='m'?'은유':'비유 아님'}`;}
-    else if(L==='b'){const s=R.pick(FILL);q.ty='fill';q.sent=s[0];q.ans=s[1];q.opts=R.shuffle([s[1],s[2],s[3]]).map(t=>({t,ok:t===s[1]}));q.text='빈칸에 어울리는 <b>비유하는 대상</b>은?';q.reveal=s[0].replace('@',s[1]);}
-    else{const s=R.pick(COMMON);q.ty='common';q.sent=s[0];q.text=`<b>${s[1]}</b>${J(s[1],'과').slice(s[1].length)} <b>${s[2]}</b>의 <b>닮은 점</b>은?`;q.opts=R.shuffle([s[3],s[4],s[5]]).map(t=>({t,ok:t===s[3]}));q.reveal=s[3];}
+    else if(L==='b'){const s=p.deck(FILL,'dk_b');q.ty='fill';q.sent=s[0];q.ans=s[1];q.opts=R.shuffle([s[1],s[2],s[3]]).map(t=>({t,ok:t===s[1]}));q.text='빈칸에 어울리는 <b>비유하는 대상</b>은?';q.reveal=s[0].replace('@',s[1]);}
+    else{const s=p.deck(COMMON,'dk_c');q.ty='common';q.sent=s[0];q.text=`<b>${s[1]}</b>${J(s[1],'과').slice(s[1].length)} <b>${s[2]}</b>의 <b>닮은 점</b>은?`;q.opts=R.shuffle([s[3],s[4],s[5]]).map(t=>({t,ok:t===s[3]}));q.reveal=s[3];}
     q.review=strip(q.sent)+' → '+strip(q.reveal);return q;},
   newQ(p){const st=p.state,L=p.levelId==='all'?['a','b','c'][st.n%3]:p.levelId;st.n++;const q=this.make(p,L);st.q=q;st.lock=false;st.pick=-1;st.fly=null;st.qmax=18/p.pace;st.qt=st.qmax;
     p.ask('🎨 '+q.text,q.ty==='kind'?'알맞은 붓을 골라 칠해요':q.ty==='fill'?'어울리는 말을 넣어 문장을 완성해요':'두 대상의 닮은 점을 찾아요');},

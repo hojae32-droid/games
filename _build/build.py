@@ -17,6 +17,9 @@ setup=open(C+('wiz.js' if cfg.get('full') else 'setup_new.js'),encoding='utf8').
 game=''.join(open(f'{gd}/game_{x}.js',encoding='utf8').read()+'\n' for x in cfg['parts'])
 if cfg.get('emoji_src'):
     emo=open(U+cfg['emoji_src'],encoding='utf8').read().split('\n')[cfg.get('emoji_line',280)].rstrip()
+    if emo.startswith('<script>'):emo=emo[8:]
+    if emo.endswith('</script>'):emo=emo[:-9]
+    emo=emo.rstrip()
 else:
     emo=open(C+'emoji_line.js',encoding='utf8').read().rstrip()
 ref=open(U+'2e6cf02a-index.html',encoding='utf8').read().split('\n')[349]
