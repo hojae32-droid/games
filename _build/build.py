@@ -85,6 +85,7 @@ if cfg.get('full'):
 html=f'''<!doctype html>
 <html lang="ko">
 <head>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
 <meta charset="utf-8">
 <meta name="theme-color" content="{cfg['themeColor']}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

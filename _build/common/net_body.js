@@ -65,9 +65,9 @@ const Net={
     ['lobby','netboard'].forEach(id=>{if(!document.getElementById(id)){const s=h('div','screen');s.id=id;document.body.appendChild(s);}});
     window.addEventListener('beforeunload',()=>this.leave(true));},
   prefix(){return 'bichum-'+String(this.E.G.id).replace(/[^a-z0-9-]/gi,'')+'-';},
-  opts(){return Object.assign({debug:0,config:{iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'},{urls:'stun:stun.cloudflare.com:3478'},{urls:'turn:eu-0.turn.peerjs.com:3478',username:'peerjs',credential:'peerjsp'},{urls:'turn:us-0.turn.peerjs.com:3478',username:'peerjs',credential:'peerjsp'}],iceCandidatePoolSize:2}},window.__PEER_OPTS||{});},
+  opts(){return Object.assign({debug:0,config:{iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}]}},window.__PEER_OPTS||{});},
   load(){return new Promise((res,rej)=>{if(window.Peer)return res();
-    const srcs=window.__PEER_SRC?[window.__PEER_SRC]:['https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js','https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js','https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js','https://fastly.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js'];
+    const srcs=window.__PEER_SRC?[window.__PEER_SRC]:['https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js','https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js','https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js','https://fastly.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js'];
     let i=0;const next=()=>{if(window.Peer)return res();if(i>=srcs.length*2)return rej(new Error('load'));const src=srcs[i++%srcs.length];const sc=h('script');let fin=false;
       const tm=setTimeout(()=>{if(fin)return;fin=true;sc.remove();next();},9000);
       sc.onload=()=>{if(fin)return;fin=true;clearTimeout(tm);if(window.Peer)res();else{sc.remove();next();}};
@@ -122,14 +122,14 @@ const Net={
       const retry=why=>{if(dead)return;dead=true;clearTimeout(ot);try{peer.destroy();}catch(e){}
         if(why==='id'&&k<8){tryHost(k+1);return;}
         if(why!=='id'&&++tries<=3){this.say('연결하는 중… ('+(tries+1)+'번째 시도)',true);setTimeout(()=>tryHost(0),1200*tries);return;}
-        this.say('방을 만들지 못했어요. 인터넷이 불안정한 것 같아요. 잠시 뒤에 다시 눌러 주세요.');};
+        this.say('방을 만들지 못했어요. 잠시 뒤에 다시 눌러 주세요. (오류: '+(this.lastErr||'시간 초과')+')');};
       ot=setTimeout(()=>{if(!opened)retry('net');},12000);
       peer.on('open',()=>{if(dead)return;opened=true;clearTimeout(ot);Object.assign(this,{on:true,role:'host',peer,code,conns:[],roster:[],started:false,final:false,gone:false,set:this.pickSet(cfg)});
         this.setWatch(cfg.watch,cfg.nicks[0]);
-        this.every(3000,()=>{this.bcast({t:'hb'});const now=Date.now();this.roster.forEach(p=>{if(p.id!=='host'&&!p.left&&now-p.seen>10000)this.drop(p.id);});});
+        this.every(3000,()=>{this.bcast({t:'hb'});const now=Date.now();this.roster.forEach(p=>{if(p.id!=='host'&&!p.left&&now-p.seen>30000)this.drop(p.id);});});
         this.say('');this.showLobby();});
       peer.on('connection',c=>this.hostConn(c));
-      peer.on('error',err=>{if(!opened){retry(err.type==='unavailable-id'?'id':'net');return;}
+      peer.on('error',err=>{this.lastErr=err.type;if(!opened){retry(err.type==='unavailable-id'?'id':'net');return;}
         if(['network','server-error','socket-error','socket-closed'].includes(err.type)){try{if(!peer.destroyed)peer.reconnect();}catch(e){}}});
       peer.on('disconnected',()=>{try{if(!peer.destroyed)peer.reconnect();}catch(e){}});};
     tryHost(0);
@@ -167,14 +167,14 @@ const Net={
         conn.on('data',msg=>{if(!msg)return;this.lastHost=Date.now();
           if(msg.t==='deny'){fail(msg.why);return;}
           if(msg.t==='welcome'){done=true;clearTimeout(tm);this.on=true;this.myId=msg.you;this.roster=msg.roster;this.set=msg.set;this.say('');this.showLobby();
-            this.every(3000,()=>{try{conn.send({t:'hb'});}catch(e){}if(Date.now()-this.lastHost>12000)this.hostLost();});return;}
+            this.every(3000,()=>{try{conn.send({t:'hb'});}catch(e){}if(Date.now()-this.lastHost>30000)this.hostLost();});return;}
           if(msg.t==='lobby'){this.roster=msg.roster;this.set=msg.set;if(!this.started||this.final){this.started=false;this.showLobby();}return;}
           if(msg.t==='start'){this.begin(msg);return;}
           if(msg.t==='board'){this.mergeBoard(msg.roster);this.renderLive();return;}
           if(msg.t==='final'){this.roster=msg.roster;this.finalize();return;}
           if(msg.t==='close'){this.hostLost(true);}});
         conn.on('close',()=>{if(this.on&&this.role==='guest')this.hostLost();});});
-      pr.on('error',err=>{if(done||pr!==peer)return;if(err.type==='peer-unavailable')again('그 방 코드는 없어요. 방 코드를 다시 확인해 주세요.');else again('연결하지 못했어요. 인터넷 연결을 확인해 주세요.');});};
+      pr.on('error',err=>{if(done||pr!==peer)return;if(err.type==='peer-unavailable')again('그 방 코드는 없어요. 방 코드를 다시 확인해 주세요.');else again('연결하지 못했어요. 잠시 뒤에 다시 눌러 주세요. (오류: '+err.type+')');});};
     attempt();
   },
   mergeBoard(r){const mine=this.me();this.roster=r;if(mine){const m=this.me();if(m)Object.assign(m,{score:mine.score,prog:mine.prog,done:mine.done,k2:mine.k2,k3:mine.k3,line:mine.line});}},
