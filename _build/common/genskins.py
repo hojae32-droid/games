@@ -590,3 +590,73 @@ body{background:#dcfce7;background-image:radial-gradient(circle at 20% 20%,rgba(
 .qbox.ask{border:3px solid #16a34a;border-radius:22px;font-size:clamp(18px,min(5.8cqw,4.2dvh),36px);box-shadow:0 5px 0 #86c99a}
 .res-title{text-shadow:0 4px 0 #166534}
 """)
+
+# 허들 셈 달리기: 운동회 — 하늘색 + 달리기 트랙 주황
+skin('track','Bagel Fat One','Gowun Dodum','family=Bagel+Fat+One&family=Gowun+Dodum',dict(
+ page='#e5f6ff',ink='#1e2a4a',sub='#5b6b8c',line='#1e2a4a',bw='3px',card='#ffffff',cardInk='#1e2a4a',hl='#e0633f',stage='#cfeaff',
+ shCard='0 6px 0 #1e2a4a',shBtn='0 4px 0 #1e2a4a',shDown='0 1px 0 #1e2a4a',shGo='0 7px 0 #a8391a',rad='20px',rads='14px',
+ tagBg='#e0633f',tagInk='#fff',chipBg='#f4fbff',chipLine='#1e2a4a',sub2='#5b6b8c',acc='#2f80ed',accLine='#1e2a4a',go='#f26b38',hud='#1e2a4a',
+ prog='linear-gradient(90deg,#fde047,#f26b38)',qbg='rgba(255,255,255,.97)',qink='#1e2a4a',veil='rgba(30,42,74,.62)',track='#cfeaff',title='#fff',title1='#fde047',title2='#fff',noR='50%'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#e5f6ff;background-image:linear-gradient(180deg,#bfe6ff,#e5f6ff 55%,#fff6d6)}
+.sign h1{text-shadow:0 4px 0 #1e2a4a,0 7px 0 #1e2a4a;letter-spacing:.02em}
+.sign .sub{border:3px solid #1e2a4a;background:#fde047;color:#1e2a4a;box-shadow:0 4px 0 #1e2a4a}
+.booth{background:#8fd3ff}
+.chip{border-radius:14px}.chip.sel{box-shadow:0 5px 0 #1e2a4a}
+.fire,.wz-next{border-radius:999px;font-size:30px}
+.qbox.ask{border:3px solid #1e2a4a;border-radius:16px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:0 5px 0 #1e2a4a}
+.res-title{text-shadow:0 4px 0 #1e2a4a}
+""")
+
+# 곱셈 부스터 레이싱: 밤 서킷 — 남색 + 형광 빨강/노랑
+skin('racing','Gugi','Gowun Dodum','family=Gugi&family=Gowun+Dodum',dict(
+ page='#0d1128',ink='#fff7e6',sub='#9aa3d6',line='#e8412c',bw='3px',card='#1a2150',cardInk='#fff7e6',hl='#facc15',stage='#0b1030',
+ shCard='0 0 0 1px rgba(250,204,21,.4),0 10px 28px rgba(0,0,0,.6)',shBtn='0 4px 0 #7f1d1d',shDown='0 1px 0 #7f1d1d',shGo='0 7px 0 #7f1d1d',rad='16px',rads='12px',
+ tagBg='#facc15',tagInk='#14182b',chipBg='#232b63',chipLine='#3f4a9e',sub2='#9aa3d6',acc='#e8412c',accLine='#facc15',go='#e8412c',hud='#0b1030',
+ prog='linear-gradient(90deg,#facc15,#e8412c)',qbg='rgba(26,33,80,.96)',qink='#fff7e6',qhl='#facc15',veil='rgba(11,16,48,.75)',track='#232b63',title='#fff',title1='#facc15',title2='#fff',dInk='#14182b',noR='8px',scR='10px',wz='#161c44'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#0d1128;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 14px,transparent 14px 28px)}
+.sign h1{text-shadow:0 0 18px rgba(232,65,44,.8),0 4px 0 #7f1d1d;letter-spacing:.03em;font-style:italic}
+.sign .sub{border:2px solid #facc15;background:rgba(250,204,21,.12);color:#fde68a;box-shadow:none}
+.booth{background:#0b1030}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 0 16px rgba(250,204,21,.6)}
+.fire,.wz-next{border-radius:10px;font-size:30px;font-style:italic}
+.review li b,.hint b{color:#fde68a}.review,.review summary{color:#fff7e6}.hint{color:#9aa3d6}.maker{color:#9aa3d6}
+.qbox.ask{border:2px solid #e8412c;border-radius:12px;font-size:clamp(16px,min(5cqw,3.7dvh),28px);box-shadow:0 0 14px rgba(232,65,44,.45)}
+.res-title{text-shadow:0 0 18px rgba(250,204,21,.7)}
+""")
+
+# 나눗셈 배달 트럭: 종이 상자 크라프트 + 테이프 + 우체국 빨강
+skin('parcel','Cute Font','Gowun Dodum','family=Cute+Font&family=Gowun+Dodum',dict(
+ page='#f3e2c3',ink='#3b2e2a',sub='#8a6b4a',line='#3b2e2a',bw='3px',card='#fffaf0',cardInk='#3b2e2a',hl='#d9482b',stage='#e8cfa0',
+ shCard='0 6px 0 #a16207',shBtn='0 4px 0 #a16207',shDown='0 1px 0 #a16207',shGo='0 7px 0 #7c2d12',rad='12px',rads='10px',
+ tagBg='#d9482b',tagInk='#fff',chipBg='#fff3d9',chipLine='#b89b6a',sub2='#8a6b4a',acc='#2f9e68',accLine='#14532d',go='#d9482b',hud='#5b3a1e',
+ prog='linear-gradient(90deg,#fde68a,#d9482b)',qbg='rgba(255,250,240,.97)',qink='#3b2e2a',veil='rgba(91,58,30,.66)',track='#e8cfa0',title='#fff',title1='#fde68a',title2='#fff',noR='6px',scR='8px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#f3e2c3;background-image:repeating-linear-gradient(0deg,rgba(161,98,7,.05) 0 2px,transparent 2px 9px),linear-gradient(90deg,transparent 48%,rgba(243,217,164,.9) 48% 52%,transparent 52%)}
+.sign h1{text-shadow:0 4px 0 #7c2d12,0 7px 14px rgba(60,30,0,.3);letter-spacing:.03em}
+.sign .sub{border:2px dashed #3b2e2a;background:#f3d9a4;color:#3b2e2a;box-shadow:none}
+.booth{background:#d9a066}
+.chip{border-radius:8px}.chip.sel{box-shadow:0 5px 0 #14532d}
+.fire,.wz-next{border-radius:8px;font-size:32px}
+.qbox.ask{border:3px solid #3b2e2a;border-radius:8px;font-size:clamp(18px,min(5.6cqw,4dvh),32px);box-shadow:0 5px 0 #a16207}
+.res-title{text-shadow:0 4px 0 #7c2d12}
+""")
+
+# 약수·배수 크레인: 보랏빛 오락실 + 금색 코인
+skin('arcade','Jua','Gowun Dodum','family=Jua&family=Gowun+Dodum',dict(
+ page='#130828',ink='#fbefff',sub='#c7b3ea',line='#7c5fc7',bw='3px',card='#231050',cardInk='#fbefff',hl='#ffd23f',stage='#0c041c',
+ shCard='0 0 0 1px rgba(255,210,63,.35),0 10px 28px rgba(0,0,0,.6)',shBtn='0 4px 0 #0c041c',shDown='0 1px 0 #0c041c',shGo='0 7px 0 #8a1f55',rad='18px',rads='12px',
+ tagBg='#ffd23f',tagInk='#4a3300',chipBg='#30186a',chipLine='#5b3fa8',sub2='#c7b3ea',acc='#ff4f9a',accLine='#ffd23f',go='#ff4f9a',hud='#0c041c',
+ prog='linear-gradient(90deg,#ffd23f,#ff4f9a)',qbg='rgba(35,16,80,.96)',qink='#fbefff',qhl='#ffd23f',veil='rgba(12,4,28,.76)',track='#30186a',title='#ffd23f',title1='#ffe9a0',title2='#ffd23f',dInk='#2a1440',noR='50%',wz='#1b0c3f'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#130828;background-image:radial-gradient(ellipse at 50% -10%,#3d1c80,transparent 60%),radial-gradient(circle,rgba(255,255,255,.07) 2px,transparent 3px);background-size:auto,38px 38px}
+.sign h1{text-shadow:0 4px 0 #c42a6e,0 0 22px rgba(255,79,154,.6);letter-spacing:.02em}
+.sign .sub{border:2px solid #ffd23f;background:rgba(255,210,63,.12);color:#ffe9a0;box-shadow:none}
+.booth{background:#1b0c3f}
+.chip{border-radius:12px}.chip.sel{box-shadow:0 0 16px rgba(255,210,63,.6)}
+.fire,.wz-next{border-radius:999px;font-size:30px;color:#fff}
+.review li b,.hint b{color:#ffe9a0}.review,.review summary{color:#fbefff}.hint{color:#c7b3ea}.maker{color:#c7b3ea}
+.qbox.ask{border:2px solid #ffd23f;border-radius:14px;font-size:clamp(16px,min(5cqw,3.7dvh),28px);box-shadow:0 0 14px rgba(255,210,63,.4)}
+.res-title{text-shadow:0 0 18px rgba(255,210,63,.7)}
+""")
