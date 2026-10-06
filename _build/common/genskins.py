@@ -660,3 +660,88 @@ body{background:#130828;background-image:radial-gradient(ellipse at 50% -10%,#3d
 .qbox.ask{border:2px solid #ffd23f;border-radius:14px;font-size:clamp(16px,min(5cqw,3.7dvh),28px);box-shadow:0 0 14px rgba(255,210,63,.4)}
 .res-title{text-shadow:0 0 18px rgba(255,210,63,.7)}
 """)
+
+# 마음 우체국: 분홍 우체국 + 크림 편지지
+skin('post','Gaegu','Gowun Dodum','family=Gaegu:wght@400;700&family=Gowun+Dodum',dict(
+ page='#fde8f3',ink='#7a1d4b',sub='#b0507f',line='#9d174d',bw='3px',card='#fffdf5',cardInk='#7a1d4b',hl='#db2777',stage='#fbcfe8',
+ shCard='0 6px 0 #f9a8d4',shBtn='0 4px 0 #f9a8d4',shDown='0 1px 0 #f9a8d4',shGo='0 7px 0 #9d174d',rad='24px',rads='16px',
+ tagBg='#db2777',tagInk='#fff',chipBg='#fff1f7',chipLine='#f9a8d4',sub2='#b0507f',acc='#ec4899',accLine='#9d174d',go='#ec4899',hud='#9d174d',
+ prog='linear-gradient(90deg,#fcd34d,#ec4899)',qbg='rgba(255,253,245,.97)',qink='#7a1d4b',veil='rgba(122,29,75,.6)',track='#fbcfe8',title='#fff',title1='#fef3c7',title2='#fff',noR='50%'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:#fde8f3;background-image:radial-gradient(circle at 15% 20%,rgba(251,191,36,.25),transparent 30%),radial-gradient(circle,rgba(219,39,119,.1) 2px,transparent 3px);background-size:auto,30px 30px}
+.sign h1{text-shadow:0 4px 0 #9d174d,0 8px 16px rgba(120,20,70,.3);letter-spacing:.03em}
+.sign .sub{border:2px dashed #9d174d;background:#fff7ed;color:#9d174d;box-shadow:none}
+.booth{background:#f9a8d4}
+.chip{border-radius:20px}.chip.sel{box-shadow:0 5px 0 #9d174d}
+.fire,.wz-next{border-radius:999px;font-size:32px}
+.qbox.ask{border:3px solid #9d174d;border-radius:22px;font-size:clamp(18px,min(5.8cqw,4.2dvh),36px);box-shadow:0 5px 0 #f9a8d4}
+.res-title{text-shadow:0 4px 0 #9d174d}
+""")
+
+# 낱말 시소 놀이터: 햇살 놀이터 — 보라 + 노랑 + 연두
+skin('seesaw','Jua','Gowun Dodum','family=Jua&family=Gowun+Dodum',dict(
+ page='#e6f7ff',ink='#3b1d8a',sub='#6d56b8',line='#3b1d8a',bw='3px',card='#ffffff',cardInk='#3b1d8a',hl='#7c3aed',stage='#cdeeff',
+ shCard='0 6px 0 #3b1d8a',shBtn='0 4px 0 #3b1d8a',shDown='0 1px 0 #3b1d8a',shGo='0 7px 0 #4c1d95',rad='22px',rads='16px',
+ tagBg='#fbbf24',tagInk='#3b1d8a',chipBg='#f6f1ff',chipLine='#3b1d8a',sub2='#6d56b8',acc='#7c3aed',accLine='#3b1d8a',go='#7c3aed',hud='#3b1d8a',
+ prog='linear-gradient(90deg,#fbbf24,#7c3aed)',qbg='rgba(255,255,255,.97)',qink='#3b1d8a',veil='rgba(59,29,138,.6)',track='#cdeeff',title='#fff',title1='#fde68a',title2='#fff',noR='50%'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#e6f7ff;background-image:linear-gradient(180deg,#bfe9ff,#e6f7ff 55%,#dcfce7)}
+.sign h1{text-shadow:0 4px 0 #3b1d8a,0 7px 0 #3b1d8a;letter-spacing:.02em}
+.sign .sub{border:3px solid #3b1d8a;background:#fde68a;color:#3b1d8a;box-shadow:0 4px 0 #3b1d8a}
+.booth{background:#8ad0ff}
+.chip{border-radius:16px}.chip.sel{box-shadow:0 5px 0 #3b1d8a}
+.fire,.wz-next{border-radius:999px;font-size:31px}
+.qbox.ask{border:3px solid #3b1d8a;border-radius:18px;font-size:clamp(18px,min(5.6cqw,4dvh),34px);box-shadow:0 5px 0 #3b1d8a}
+.res-title{text-shadow:0 4px 0 #3b1d8a}
+""")
+
+# 국어사전 탐험대: 가죽 표지 + 양피지 + 탐험 청록
+skin('explorer','Hahmlet','Gowun Batang','family=Hahmlet:wght@700;800&family=Gowun+Batang:wght@400;700',dict(
+ page='#f3e2bd',ink='#3b2412',sub='#8a6238',line='#7c3f0c',bw='3px',card='#fff8e6',cardInk='#3b2412',hl='#c2410c',stage='#e8cf9b',
+ shCard='0 6px 0 #92400e',shBtn='0 4px 0 #92400e',shDown='0 1px 0 #92400e',shGo='0 7px 0 #064e3b',rad='14px',rads='10px',
+ tagBg='#0e7490',tagInk='#fff',chipBg='#fdf1d6',chipLine='#b78545',sub2='#8a6238',acc='#0e7490',accLine='#134e4a',go='#0e7490',hud='#5b3213',
+ prog='linear-gradient(90deg,#fbbf24,#0e7490)',qbg='rgba(255,248,230,.97)',qink='#3b2412',veil='rgba(59,36,18,.7)',track='#e8cf9b',title='#fff',title1='#fde68a',title2='#fff',noR='8px',scR='10px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:800}
+body{background:#f3e2bd;background-image:radial-gradient(circle at 50% 0,rgba(180,83,9,.15),transparent 50%),repeating-linear-gradient(0deg,rgba(124,63,12,.04) 0 2px,transparent 2px 7px)}
+.sign h1{text-shadow:0 4px 0 #5b3213,0 8px 16px rgba(60,30,0,.4);letter-spacing:.02em}
+.sign .sub{border:2px solid #fde68a;background:rgba(91,50,19,.6);color:#fde68a;box-shadow:none}
+.booth{background:#7c4a1e}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 5px 0 #134e4a}
+.fire,.wz-next{border-radius:10px;font-size:29px}
+.qbox.ask{border:3px solid #7c3f0c;border-radius:12px;font-size:clamp(17px,min(5.2cqw,3.8dvh),31px);box-shadow:0 5px 0 #92400e}
+.res-title{text-shadow:0 4px 0 #5b3213}
+""")
+
+# 문장 로봇 조립소: 하늘색 공장 + 로봇 노랑
+skin('robolab','Do Hyeon','Gowun Dodum','family=Do+Hyeon&family=Gowun+Dodum',dict(
+ page='#dff1ff',ink='#0c3a63',sub='#476b8f',line='#0c3a63',bw='3px',card='#ffffff',cardInk='#0c3a63',hl='#0369a1',stage='#bfe3ff',
+ shCard='0 6px 0 #0c3a63',shBtn='0 4px 0 #0c3a63',shDown='0 1px 0 #0c3a63',shGo='0 7px 0 #b45309',rad='14px',rads='10px',
+ tagBg='#f59e0b',tagInk='#0c3a63',chipBg='#eef8ff',chipLine='#0c3a63',sub2='#476b8f',acc='#0ea5e9',accLine='#0c3a63',go='#f59e0b',goInk='#0c3a63',hud='#0c3a63',
+ prog='linear-gradient(90deg,#fbbf24,#0ea5e9)',qbg='rgba(255,255,255,.97)',qink='#0c3a63',veil='rgba(12,58,99,.65)',track='#bfe3ff',title='#fff',title1='#fde68a',title2='#fff',noR='8px',scR='10px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#dff1ff;background-image:linear-gradient(rgba(3,105,161,.06) 2px,transparent 2px),linear-gradient(90deg,rgba(3,105,161,.06) 2px,transparent 2px);background-size:36px 36px}
+.sign h1{text-shadow:0 4px 0 #0c3a63,0 8px 16px rgba(0,40,80,.3);letter-spacing:.02em}
+.sign .sub{border:3px solid #0c3a63;background:#fbbf24;color:#0c3a63;box-shadow:0 4px 0 #0c3a63}
+.booth{background:#7dc4f2}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 5px 0 #0c3a63}
+.fire,.wz-next{border-radius:10px;font-size:30px}
+.qbox.ask{border:3px solid #0c3a63;border-radius:12px;font-size:clamp(17px,min(5.2cqw,3.8dvh),31px);box-shadow:0 5px 0 #0c3a63}
+.res-title{text-shadow:0 4px 0 #0c3a63}
+""")
+
+# 모양 택배 공장: 주황 공장 + 안전 노랑 줄무늬 + 하늘색
+skin('shipping','Gasoek One','Gowun Dodum','family=Gasoek+One&family=Gowun+Dodum',dict(
+ page='#fff1dc',ink='#7c2d12',sub='#b45309',line='#7c2d12',bw='3px',card='#fffaf0',cardInk='#7c2d12',hl='#ea580c',stage='#fed7aa',
+ shCard='0 6px 0 #7c2d12',shBtn='0 4px 0 #7c2d12',shDown='0 1px 0 #7c2d12',shGo='0 7px 0 #7c2d12',rad='14px',rads='10px',
+ tagBg='#facc15',tagInk='#1f2937',chipBg='#fff3e0',chipLine='#7c2d12',sub2='#b45309',acc='#ea580c',accLine='#7c2d12',go='#ea580c',hud='#7c2d12',
+ prog='linear-gradient(90deg,#facc15,#ea580c)',qbg='rgba(255,250,240,.97)',qink='#7c2d12',veil='rgba(124,45,18,.66)',track='#fed7aa',title='#fff',title1='#fde047',title2='#fff',noR='8px',scR='10px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#fff1dc;background-image:repeating-linear-gradient(135deg,rgba(250,204,21,.18) 0 18px,transparent 18px 36px)}
+.sign h1{text-shadow:0 4px 0 #7c2d12,0 8px 14px rgba(80,30,0,.35);letter-spacing:.02em}
+.sign .sub{border:3px solid #1f2937;background:#facc15;color:#1f2937;box-shadow:0 4px 0 #1f2937}
+.booth{background:#9bd8ff}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 5px 0 #7c2d12}
+.fire,.wz-next{border-radius:10px;font-size:29px}
+.qbox.ask{border:3px solid #7c2d12;border-radius:10px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:0 5px 0 #7c2d12}
+.res-title{text-shadow:0 4px 0 #7c2d12}
+""")
