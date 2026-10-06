@@ -556,3 +556,37 @@ body{background:#2a0a14;background-image:radial-gradient(circle at 50% -10%,rgba
 .qbox.ask{border:1px solid rgba(212,167,44,.65);font-size:clamp(16px,min(5cqw,3.7dvh),28px)}
 .res-title{text-shadow:0 0 20px rgba(242,193,78,.6)}
 """)
+
+# 한글 블록 공장: 블록 장난감 느낌 (노랑·파랑·빨강 원색, 두툼한 외곽선)
+skin('blocks','Hi Melody','Gowun Dodum','family=Hi+Melody&family=Gowun+Dodum',dict(
+ page='#fff3c4',ink='#1e3a8a',sub='#5b6fa8',line='#1e3a8a',bw='3px',card='#ffffff',cardInk='#1e3a8a',hl='#e11d48',stage='#ffe58a',
+ shCard='0 6px 0 #1e3a8a',shBtn='0 4px 0 #1e3a8a',shDown='0 1px 0 #1e3a8a',shGo='0 7px 0 #9f1239',rad='16px',rads='12px',
+ tagBg='#e11d48',tagInk='#fff',chipBg='#fff9e0',chipLine='#1e3a8a',sub2='#5b6fa8',acc='#2563eb',accLine='#1e3a8a',go='#e11d48',hud='#1e3a8a',
+ prog='linear-gradient(90deg,#facc15,#e11d48)',qbg='rgba(255,255,255,.97)',qink='#1e3a8a',veil='rgba(30,58,138,.65)',track='#ffe58a',title='#fff',title1='#fde047',title2='#fff',noR='10px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#fff3c4;background-image:radial-gradient(circle,rgba(30,58,138,.12) 3px,transparent 4px);background-size:34px 34px}
+.sign h1{text-shadow:0 4px 0 #1e3a8a,0 7px 0 #1e3a8a;letter-spacing:.02em}
+.sign .sub{border:3px solid #1e3a8a;background:#fde047;color:#1e3a8a;box-shadow:0 4px 0 #1e3a8a}
+.booth{background:#2563eb}
+.chip{border-radius:12px}.chip.sel{box-shadow:0 5px 0 #1e3a8a}
+.fire,.wz-next{border-radius:14px;font-size:30px}
+.qbox.ask{border:3px solid #1e3a8a;border-radius:14px;font-size:clamp(18px,min(5.6cqw,4dvh),34px);box-shadow:0 5px 0 #1e3a8a}
+.res-title{text-shadow:0 4px 0 #1e3a8a}
+""")
+
+# 흉내 내는 말 동물원: 초록 풀밭 + 해바라기 노랑 + 말랑한 둥근 모양
+skin('zoo','Poor Story','Gowun Dodum','family=Poor+Story&family=Gowun+Dodum',dict(
+ page='#dcfce7',ink='#14532d',sub='#4d7c5a',line='#15803d',bw='3px',card='#ffffff',cardInk='#14532d',hl='#ea580c',stage='#bbf7d0',
+ shCard='0 6px 0 #86c99a',shBtn='0 4px 0 #86c99a',shDown='0 1px 0 #86c99a',shGo='0 7px 0 #b45309',rad='26px',rads='18px',
+ tagBg='#f59e0b',tagInk='#fff',chipBg='#f0fdf4',chipLine='#86c99a',sub2='#4d7c5a',acc='#16a34a',accLine='#14532d',go='#f59e0b',hud='#14532d',
+ prog='linear-gradient(90deg,#86efac,#f59e0b)',qbg='rgba(255,255,255,.97)',qink='#14532d',veil='rgba(20,83,45,.62)',track='#bbf7d0',title='#fff',title1='#fef08a',title2='#fff',noR='50%'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#dcfce7;background-image:radial-gradient(circle at 20% 20%,rgba(250,204,21,.35),transparent 28%),radial-gradient(circle at 85% 80%,rgba(34,197,94,.25),transparent 30%)}
+.sign h1{text-shadow:0 4px 0 #166534,0 8px 18px rgba(0,60,20,.35);letter-spacing:.03em}
+.sign .sub{border:0;background:#fef08a;color:#713f12;box-shadow:0 4px 0 #ca8a04}
+.booth{background:#16a34a}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 5px 0 #14532d}
+.fire,.wz-next{border-radius:999px;font-size:32px}
+.qbox.ask{border:3px solid #16a34a;border-radius:22px;font-size:clamp(18px,min(5.8cqw,4.2dvh),36px);box-shadow:0 5px 0 #86c99a}
+.res-title{text-shadow:0 4px 0 #166534}
+""")
