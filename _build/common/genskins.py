@@ -321,3 +321,75 @@ body{background:#f4f8fb;background-image:radial-gradient(rgba(8,145,178,.12) 2px
 .qbox.ask{border:2px solid #0f2a3d;font-size:clamp(17px,min(5.4cqw,3.9dvh),30px);box-shadow:0 4px 0 #0f2a3d}
 .res-title{text-shadow:0 3px 0 #67e8f9}
 """)
+
+# 소리 리듬 탭: 팝스타 무대 (분홍·노랑·하늘, 굵은 보라 테두리)
+skin('popstar','Do Hyeon','Gowun Dodum','family=Do+Hyeon&family=Gowun+Dodum',dict(
+ page='#fff0f7',ink='#3b0764',sub='#8b5fb0',line='#3b0764',bw='3px',card='#ffffff',cardInk='#3b0764',hl='#ec4899',stage='#fde7f3',
+ shCard='0 7px 0 #3b0764',shBtn='0 4px 0 #3b0764',shDown='0 1px 0 #3b0764',shGo='0 7px 0 #9d174d',rad='22px',rads='14px',
+ tagBg='#facc15',tagInk='#3b0764',chipBg='#ffffff',chipLine='#3b0764',sub2='#8b5fb0',acc='#ec4899',accLine='#9d174d',go='#ec4899',hud='#3b0764',
+ prog='linear-gradient(90deg,#ec4899,#facc15,#22d3ee)',qbg='#ffffff',qink='#3b0764',veil='rgba(59,7,100,.7)',track='#f3d4ea',title='#fff',title1='#fde68a',title2='#fff'),
+ """body{background:#fff0f7;background-image:radial-gradient(circle,rgba(236,72,153,.16) 3px,transparent 3.5px),radial-gradient(circle,rgba(34,211,238,.18) 3px,transparent 3.5px);background-size:44px 44px,44px 44px;background-position:0 0,22px 22px}
+.sign h1{text-shadow:0 5px 0 #3b0764,3px 3px 0 #3b0764,-2px -2px 0 #3b0764;letter-spacing:.03em}
+.sign .sub{border-radius:999px;box-shadow:0 3px 0 #3b0764}
+.booth{background:#5b21b6}
+.chip{border-radius:999px;font-weight:700}.chip.sel{box-shadow:0 5px 0 #9d174d}
+.fire,.wz-next{border-radius:999px;font-size:30px}
+.toolbtn{border-radius:18px;border-bottom-width:6px}
+.qbox.ask{border:3px solid #3b0764;border-radius:999px;font-size:clamp(17px,min(5.4cqw,3.9dvh),30px);box-shadow:0 5px 0 #3b0764}
+.res-title{text-shadow:0 4px 0 #3b0764}
+""")
+
+# 화산 돌 새총: 현무암 + 용암 (어두운 돌색, 주황 포인트)
+skin('lava','Gasoek One','Gowun Dodum','family=Gasoek+One&family=Gowun+Dodum',dict(
+ page='#1f1412',ink='#ffe9d6',sub='#c9a592',line='#ff7a3d',bw='2px',card='#2e1c18',cardInk='#ffe9d6',hl='#ff9e5e',stage='#170d0b',
+ shCard='0 0 0 1px rgba(255,122,61,.4),0 12px 28px rgba(0,0,0,.55)',shBtn='0 3px 0 #120a08',shDown='0 1px 0 #120a08',shGo='0 6px 0 #9a3412',rad='12px',rads='8px',
+ tagBg='#ff6a2b',tagInk='#2a0f05',chipBg='#3a2420',chipLine='#6b4036',sub2='#c9a592',acc='#ff6a2b',accInk='#2a0f05',accLine='#ffb27a',accSub='#7c2d12',go='#ff6a2b',goInk='#2a0f05',hud='#120a08',
+ prog='linear-gradient(90deg,#fbbf24,#ef4444)',qbg='rgba(31,20,18,.94)',qink='#ffe9d6',qhl='#ffb27a',veil='rgba(18,10,8,.74)',track='#3a2420',title='#fff',title1='#ffd2a8',title2='#fff',dInk='#2a1410',noR='6px',scR='8px',wz='#2a1814'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#1f1412;background-image:radial-gradient(circle at 50% 110%,rgba(255,106,43,.35),transparent 55%),repeating-linear-gradient(115deg,rgba(255,255,255,.025) 0 2px,transparent 2px 26px)}
+.sign h1{text-shadow:0 0 24px rgba(255,106,43,.8),0 4px 0 #7c2d12;letter-spacing:.02em}
+.sign .sub{border:1px solid rgba(255,122,61,.7);background:rgba(255,106,43,.14);color:#ffd2a8;box-shadow:none}
+.booth{background:#170d0b}
+.chip{border-radius:8px}.chip.sel{box-shadow:0 0 16px rgba(255,106,43,.7)}
+.fire,.wz-next{border-radius:8px;letter-spacing:.04em}
+.review li b,.hint b{color:#ffb27a}.review,.review summary{color:#ffe9d6}.hint{color:#c9a592}.maker{color:#c9a592}
+.pcard .nm{filter:none;color:#fff}
+.qbox.ask{border:1px solid rgba(255,122,61,.6);font-size:clamp(16px,min(5cqw,3.7dvh),28px)}
+.res-title{text-shadow:0 0 20px rgba(255,106,43,.8)}
+""")
+
+# 물방울 변신 러너: 산뜻한 물빛 + 주황 포인트
+skin('dew','Jua','Gowun Dodum','family=Jua&family=Gowun+Dodum',dict(
+ page='#e8fbff',ink='#05445e',sub='#4f93ad',line='#0e7490',bw='2px',card='#ffffff',cardInk='#05445e',hl='#0891b2',stage='#cdf3fb',
+ shCard='0 8px 22px rgba(5,68,94,.18)',shBtn='0 3px 0 #9dd9e8',shDown='0 1px 0 #9dd9e8',shGo='0 6px 0 #c2410c',rad='26px',rads='16px',
+ tagBg='#fb923c',tagInk='#fff',chipBg='#f0fcff',chipLine='#9dd9e8',sub2='#4f93ad',acc='#06b6d4',accLine='#0e7490',go='#fb923c',hud='#075985',
+ prog='linear-gradient(90deg,#67e8f9,#fb923c)',qbg='rgba(255,255,255,.96)',qink='#05445e',veil='rgba(7,89,133,.65)',track='#c4eaf4',title='#fff',title1='#cffafe',title2='#fff',noR='50%'),
+ """body{background:#e8fbff;background-image:radial-gradient(circle at 20% 20%,rgba(6,182,212,.14),transparent 40%),radial-gradient(circle at 85% 80%,rgba(251,146,60,.12),transparent 40%)}
+.sign h1{text-shadow:0 4px 0 #0e7490,0 10px 22px rgba(5,68,94,.3);letter-spacing:.01em}
+.sign .sub{border:0;box-shadow:0 3px 0 #c2410c}
+.booth{background:#0e7490}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 5px 0 #155e75}
+.fire,.wz-next{border-radius:999px}
+.toolbtn{border-radius:22px;border-bottom-width:6px}
+.qbox.ask{border:0;border-radius:24px;font-size:clamp(17px,min(5.4cqw,3.9dvh),30px);box-shadow:0 5px 0 rgba(5,68,94,.25)}
+.res-title{text-shadow:0 3px 0 #67e8f9}
+""")
+
+# 토론 배틀 아레나: 토론 무대 (짙은 남색 + 금색, 찬성 파랑/반대 빨강)
+skin('arena','Noto Serif KR','Gowun Dodum','family=Noto+Serif+KR:wght@700;900&family=Gowun+Dodum',dict(
+ page='#0f172a',ink='#f8fafc',sub='#94a3b8',line='#d4a72c',bw='2px',card='#1e293b',cardInk='#f8fafc',hl='#fbbf24',stage='#0b1220',
+ shCard='0 0 0 1px rgba(212,167,44,.5),0 12px 30px rgba(0,0,0,.55)',shBtn='0 3px 0 #0b1220',shDown='0 1px 0 #0b1220',shGo='0 6px 0 #9f1239',rad='10px',rads='8px',
+ tagBg='#d4a72c',tagInk='#0f172a',chipBg='#27364f',chipLine='#3b4d6e',sub2='#94a3b8',acc='#d4a72c',accInk='#0f172a',accLine='#fde68a',accSub='#5b4710',go='#e11d48',goInk='#fff',hud='#080e1c',
+ prog='linear-gradient(90deg,#3b82f6,#fbbf24,#ef4444)',qbg='rgba(15,23,42,.94)',qink='#f8fafc',qhl='#fde68a',veil='rgba(8,14,28,.74)',track='#27364f',title='#fff',title1='#fde68a',title2='#fff',dInk='#0f172a',noR='6px',scR='8px',wz='#16203a'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:900}
+body{background:#0f172a;background-image:linear-gradient(90deg,rgba(59,130,246,.18),transparent 40%,transparent 60%,rgba(239,68,68,.18))}
+.sign h1{text-shadow:0 3px 0 #000,0 0 22px rgba(251,191,36,.45);letter-spacing:.02em}
+.sign .sub{border:1px solid rgba(212,167,44,.7);background:rgba(212,167,44,.12);color:#fde68a;box-shadow:none}
+.booth{background:#080e1c}
+.chip{border-radius:6px}.chip.sel{box-shadow:0 0 16px rgba(212,167,44,.6)}
+.fire,.wz-next{border-radius:6px;letter-spacing:.05em}
+.review li b,.hint b{color:#fde68a}.review,.review summary{color:#f8fafc}.hint{color:#94a3b8}.maker{color:#94a3b8}
+.pcard .nm{filter:none;color:#fff}
+.qbox.ask{border:1px solid rgba(212,167,44,.6);font-size:clamp(16px,min(5cqw,3.7dvh),28px)}
+.res-title{text-shadow:0 0 20px rgba(251,191,36,.55)}
+""")
