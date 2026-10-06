@@ -393,3 +393,78 @@ body{background:#0f172a;background-image:linear-gradient(90deg,rgba(59,130,246,.
 .qbox.ask{border:1px solid rgba(212,167,44,.6);font-size:clamp(16px,min(5cqw,3.7dvh),28px)}
 .res-title{text-shadow:0 0 20px rgba(251,191,36,.55)}
 """)
+
+FRCSS=""".fr{display:inline-block;vertical-align:middle;white-space:nowrap}.fs{display:inline-flex;flex-direction:column;text-align:center;line-height:1.05;font-size:.82em;vertical-align:middle;margin:0 .1em}.fs i{font-style:normal;padding:0 .2em}.fs i:first-child{border-bottom:.1em solid currentColor}
+.tg{font-weight:900;color:var(--q-hl);font-size:1.15em}
+"""
+# 약수·배수 두더지: 칠판 + 나무 틀
+skin('mole','Gamja Flower','Gowun Dodum','family=Gamja+Flower&family=Gowun+Dodum',dict(
+ page='#1e3a2a',ink='#f6f1e0',sub='#b9d4be',line='#e8d9a8',bw='2px',card='#27483a',cardInk='#f6f1e0',hl='#fde68a',stage='#16301f',
+ shCard='0 0 0 3px #a16207,0 10px 24px rgba(0,0,0,.45)',shBtn='0 3px 0 #122418',shDown='0 1px 0 #122418',shGo='0 6px 0 #92400e',rad='14px',rads='10px',
+ tagBg='#fde68a',tagInk='#3b2a14',chipBg='#2f5744',chipLine='#527a64',sub2='#b9d4be',acc='#f59e0b',accInk='#2b1a05',accLine='#fde68a',accSub='#6b3f05',go='#f59e0b',goInk='#2b1a05',hud='#122418',
+ prog='linear-gradient(90deg,#86efac,#fde68a)',qbg='rgba(30,58,42,.95)',qink='#f6f1e0',qhl='#fde68a',veil='rgba(18,36,24,.74)',track='#2f5744',title='#fff',title1='#fde68a',title2='#fff',dInk='#1e3a2a',noR='6px',scR='8px',wz='#223f31'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#1e3a2a;background-image:radial-gradient(circle at 20% 15%,rgba(255,255,255,.08),transparent 40%),repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 2px,transparent 2px 30px)}
+.sign h1{text-shadow:0 4px 0 #14532d,0 0 18px rgba(253,230,138,.35);letter-spacing:.02em}
+.sign .sub{border:2px dashed rgba(253,230,138,.8);background:transparent;color:#fde68a;box-shadow:none}
+.booth{background:#2d6a3e}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 0 0 3px #fde68a}
+.fire,.wz-next{border-radius:12px;font-size:30px}
+.review li b,.hint b{color:#fde68a}.review,.review summary{color:#f6f1e0}.hint{color:#b9d4be}.maker{color:#b9d4be}
+.pcard .nm{filter:none;color:#fff}
+.qbox.ask{border:4px solid #a16207;border-radius:12px;font-size:clamp(20px,min(6.2cqw,4.4dvh),38px);box-shadow:0 5px 0 rgba(0,0,0,.4)}
+.res-title{text-shadow:0 3px 0 #92400e}
+"""+FRCSS)
+
+# 상자 공장: 파란 설계도 + 주황 포인트
+skin('blueprint','IBM Plex Sans KR','IBM Plex Sans KR','family=IBM+Plex+Sans+KR:wght@400;700&display=swap',dict(
+ page='#0b2a52',ink='#e8f1ff',sub='#9cc2f5',line='#7fb2ff',bw='2px',card='#12396f',cardInk='#e8f1ff',hl='#ffb34d',stage='#082042',
+ shCard='0 0 0 1px rgba(127,178,255,.55),0 12px 28px rgba(0,0,0,.45)',shBtn='0 3px 0 #061a38',shDown='0 1px 0 #061a38',shGo='0 6px 0 #9a3f00',rad='8px',rads='6px',
+ tagBg='#ff8a1f',tagInk='#2a1200',chipBg='#164a8a',chipLine='#3f77c4',sub2='#9cc2f5',acc='#ff8a1f',accInk='#2a1200',accLine='#ffd199',accSub='#7a3a00',go='#ff8a1f',goInk='#2a1200',hud='#061a38',
+ prog='linear-gradient(90deg,#60a5fa,#ff8a1f)',qbg='rgba(11,42,82,.95)',qink='#e8f1ff',qhl='#ffd199',veil='rgba(6,26,56,.74)',track='#164a8a',title='#fff',title1='#ffd199',title2='#fff',dInk='#0b2a52',noR='4px',scR='6px',wz='#0f3366'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:#0b2a52;background-image:linear-gradient(rgba(127,178,255,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(127,178,255,.13) 1px,transparent 1px),linear-gradient(rgba(127,178,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(127,178,255,.06) 1px,transparent 1px);background-size:80px 80px,80px 80px,16px 16px,16px 16px}
+.sign h1{text-shadow:0 0 0 #000,2px 2px 0 #ff8a1f;letter-spacing:.01em}
+.sign .sub{border:1px solid rgba(127,178,255,.8);background:rgba(127,178,255,.12);color:#cfe3ff;box-shadow:none;border-radius:4px}
+.booth{background:#061a38}
+.chip{border-radius:4px}.chip.sel{box-shadow:0 0 0 2px #ffd199}
+.fire,.wz-next{border-radius:4px;letter-spacing:.04em}
+.review li b,.hint b{color:#ffd199}.review,.review summary{color:#e8f1ff}.hint{color:#9cc2f5}.maker{color:#9cc2f5}
+.pcard .nm{filter:none;color:#fff}
+.qbox.ask{border:1px solid rgba(127,178,255,.7);font-size:clamp(16px,min(5cqw,3.7dvh),28px)}
+.res-title{text-shadow:2px 2px 0 #ff8a1f}
+""")
+
+# 문장 수리 공방: 종이 + 타자기 + 슬레이트
+skin('workshop','Nanum Myeongjo','Gowun Batang','family=Nanum+Myeongjo:wght@700;800&family=Gowun+Batang',dict(
+ page='#f4ead8',ink='#3b2f26',sub='#7d6b5a',line='#3b2f26',bw='2px',card='#fffaf0',cardInk='#3b2f26',hl='#c2410c',stage='#eadcc2',
+ shCard='5px 5px 0 #3b2f26',shBtn='3px 3px 0 #3b2f26',shDown='1px 1px 0 #3b2f26',shGo='5px 5px 0 #1e293b',rad='4px',rads='3px',
+ tagBg='#334155',tagInk='#fff',chipBg='#fffaf0',chipLine='#3b2f26',sub2='#7d6b5a',acc='#c2410c',accLine='#7c2d12',accSub='#ffe7d6',go='#334155',goInk='#fff',hud='#2b3340',
+ prog='linear-gradient(90deg,#c2410c,#f59e0b)',qbg='#fffaf0',qink='#3b2f26',veil='rgba(43,51,64,.7)',track='#e0d1b5',title='#fff',title1='#fed7aa',title2='#fff',noR='3px',scR='4px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:800}
+body{background:#f4ead8;background-image:repeating-linear-gradient(0deg,transparent 0 31px,rgba(125,107,90,.14) 31px 32px)}
+.sign h1{text-shadow:3px 3px 0 #1e293b;letter-spacing:.01em}
+.sign .sub{border:2px solid #3b2f26;background:#fffaf0;color:#3b2f26;box-shadow:3px 3px 0 #3b2f26;border-radius:2px}
+.booth{background:#475569}
+.chip{border-radius:2px}.chip.sel{box-shadow:3px 3px 0 #7c2d12}
+.fire,.wz-next{border-radius:3px;letter-spacing:.03em}
+.qbox.ask{border:2px solid #3b2f26;border-radius:3px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:4px 4px 0 #3b2f26}
+.res-title{text-shadow:3px 3px 0 #1e293b}
+""")
+
+# 이야기 만화 편집부: 만화책 (하프톤 점, 굵은 테두리, 오프셋 그림자)
+skin('comic','Dokdo','Gowun Dodum','family=Dokdo&family=Gowun+Dodum',dict(
+ page='#fff3c4',ink='#1a1a2e',sub='#6b6b8a',line='#1a1a2e',bw='3px',card='#ffffff',cardInk='#1a1a2e',hl='#e11d48',stage='#ffe58a',
+ shCard='6px 6px 0 #1a1a2e',shBtn='4px 4px 0 #1a1a2e',shDown='1px 1px 0 #1a1a2e',shGo='6px 6px 0 #1a1a2e',rad='8px',rads='6px',
+ tagBg='#facc15',tagInk='#1a1a2e',chipBg='#ffffff',chipLine='#1a1a2e',sub2='#6b6b8a',acc='#e11d48',accLine='#1a1a2e',accSub='#ffe4e9',go='#4338ca',goInk='#fff',hud='#1a1a2e',
+ prog='linear-gradient(90deg,#e11d48,#facc15,#4338ca)',qbg='#ffffff',qink='#1a1a2e',veil='rgba(26,26,46,.72)',track='#f3e3a0',title='#fff',title1='#fde047',title2='#fff',noR='4px',scR='6px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#fff3c4;background-image:radial-gradient(circle,rgba(225,29,72,.22) 2.5px,transparent 3px);background-size:20px 20px}
+.sign h1{text-shadow:3px 3px 0 #1a1a2e,-2px -2px 0 #1a1a2e,2px -2px 0 #1a1a2e,-2px 2px 0 #1a1a2e;letter-spacing:.03em;transform:rotate(-2deg)}
+.sign .sub{border:3px solid #1a1a2e;background:#facc15;color:#1a1a2e;box-shadow:3px 3px 0 #1a1a2e;transform:rotate(1.5deg)}
+.booth{background:#4338ca}
+.chip{border-radius:6px;font-weight:700}.chip.sel{box-shadow:4px 4px 0 #1a1a2e}
+.fire,.wz-next{border-radius:8px;font-size:32px}
+.qbox.ask{border:3px solid #1a1a2e;border-radius:18px 18px 18px 4px;font-size:clamp(18px,min(5.6cqw,4dvh),34px);box-shadow:5px 5px 0 #1a1a2e}
+.res-title{text-shadow:3px 3px 0 #1a1a2e,-1px -1px 0 #1a1a2e}
+""")
