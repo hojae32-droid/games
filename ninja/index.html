@@ -1470,7 +1470,7 @@ function heroScene(cv){const g=cv.getContext('2d');let raf=0,W=0,H=0,dpr=1,last=
     lantern(g,W*.07,H*.1,u*.7,T);lantern(g,W*.93,H*.14,u*.6,T+1);};
   return{start(){if(run)return;run=true;last=performance.now();raf=requestAnimationFrame(frame);},stop(){run=false;cancelAnimationFrame(raf);}};}
 const GAME={
-  id:'sci3-ninja',title:'물질 닌자',title1:'물질 닌자',title2:'물질 닌자',emoji:LOGO,
+  id:'sci3-ninja',title:'물질 닌자',title1:'쓱싹 베어라!',title2:'물질 닌자',emoji:LOGO,
   subtitle:'3학년 · 물체와 물질',
   howto:'하늘로 튀어 오르는 물건 중에서 <b>위에 나온 조건에 맞는 것만</b> 손가락으로 쓱 베어요! 틀린 것을 베면 점수가 깎여요.',
   how:'조건에 맞는 물건만<br>손가락으로 <b>쓱</b> 베어요!',

@@ -1456,9 +1456,11 @@ function bubble(g,b,t,glow){g.save();g.globalAlpha=b.leave?.4:1;const r=b.r;
   g.fillStyle=gr;g.beginPath();g.arc(b.x,b.y,r,0,7);g.fill();g.shadowColor='transparent';
   g.strokeStyle=glow?'#22c55e':'rgba(255,255,255,.95)';g.lineWidth=Math.max(1.5,r*(glow?.09:.05));g.stroke();
   g.strokeStyle='rgba(125,211,252,.55)';g.lineWidth=Math.max(1.5,r*.06);g.beginPath();g.arc(b.x,b.y,r*.9,.3,1.6);g.stroke();
-  K.emo(g,b.e,b.x,b.y-r*.38,r*.72);
-  const L=b.t.length,two=L>8;if(!two)K.txt(g,b.t,b.x,b.y+r*.42,{size:r*.42,maxW:r*1.85,color:'#0c4a6e'});
-  else{let cut=Math.round(L/2);const sp=b.t.indexOf(' ',cut-3);if(sp>0&&sp<cut+4)cut=sp;const a=b.t.slice(0,cut).trim(),c=b.t.slice(cut).trim();K.txt(g,a,b.x,b.y+r*.28,{size:r*.36,maxW:r*1.85,color:'#0c4a6e'});K.txt(g,c,b.x,b.y+r*.6,{size:r*.36,maxW:r*1.85,color:'#0c4a6e'});}
+  const ws=b.t.split(' '),ls=[];let cur='';for(const w of ws){if(cur&&(cur+' '+w).length>8){ls.push(cur);cur=w;}else cur=cur?cur+' '+w:w;}if(cur)ls.push(cur);
+  const L2=[];for(const l of ls){if(l.length>9){for(let i=0;i<l.length;i+=8)L2.push(l.slice(i,i+8));}else L2.push(l);}
+  const nl=Math.min(3,L2.length),fs=r*(nl===1?.42:nl===2?.34:.28);
+  K.emo(g,b.e,b.x,b.y-r*(nl===1?.38:nl===2?.5:.58),r*(nl===1?.72:nl===2?.56:.46));
+  L2.slice(0,3).forEach((l,i)=>K.txt(g,l,b.x,b.y+r*(nl===1?.42:nl===2?.14+i*.36:.02+i*.3),{size:fs,maxW:r*1.8,color:'#0c4a6e'}));
   g.fillStyle='rgba(255,255,255,.9)';g.beginPath();g.ellipse(b.x-r*.5,b.y-r*.55,r*.16,r*.09,-.7,0,7);g.fill();g.restore();}
 /* ───────── 첫 화면 그림 ───────── */
 function heroScene(cv){const g=cv.getContext('2d');let raf=0,W=0,H=0,dpr=1,last=0,T=0,run=false;
@@ -1472,7 +1474,7 @@ function heroScene(cv){const g=cv.getContext('2d');let raf=0,W=0,H=0,dpr=1,last=
     jelly(g,W*.85,H*.4+Math.sin(T)*u*.4,u*1.1,T,1,false);};
   return{start(){if(run)return;run=true;last=performance.now();raf=requestAnimationFrame(frame);},stop(){run=false;cancelAnimationFrame(raf);}};}
 const GAME={
-  id:'sci3-sea',title:'바다 탐험 잠수정',title1:'바다 탐험 잠수정',title2:'바다 탐험 잠수정',emoji:LOGO,
+  id:'sci3-sea',title:'바다 탐험 잠수정',title1:'두근두근',title2:'바다 탐험 잠수정',emoji:LOGO,
   subtitle:'3학년 · 지구와 바다',
   howto:'손가락으로 화면을 누른 채 움직이면 잠수정이 따라와요. 위의 질문에 <b>맞는 거품만</b> 모으고, 틀린 거품과 해파리 🪼는 피해요!',
   how:'손가락을 누른 채 움직여<br><b>맞는 거품</b>만 모아요 · 🪼 조심!',
@@ -1495,8 +1497,8 @@ const GAME={
     let q;do{q=p.deck(pool,'sea');}while(st.q&&q===st.q&&pool.length>1);st.q=q;st.got=0;st.rev=false;st.qmax=28/p.pace;st.qt=st.qmax;st.bubs.forEach(b=>b.leave=true);st.spawnT=.2;st.qN++;
     p.ask('🚤 '+q.q,'맞는 거품만 모아요!');},
   spawn(p){const st=p.state,R=p.Rf,u=p.u,W=p.W,Z=this.Z(p);const good=R.chance(.45);const it=R.pick(good?st.q.g:st.q.b);
-    const left=R.chance(.5);const r=u*(1.05+Math.min(.3,it[1].length*.018));
-    st.bubs.push({x:left?-r:W+r,y:R.num(Z.y0+r,Z.y1-r),vx:(left?1:-1)*R.num(u*.9,u*1.6)*p.pace,ph:R.num(0,6),r,e:it[0],t:it[1],good});
+    const left=R.chance(.5);const r=u*(1.05+Math.min(.5,it[1].length*.03));let yy=0;for(let k=0;k<10;k++){yy=R.num(Z.y0+r,Z.y1-r);if(!st.bubs.some(o=>Math.abs(o.y-yy)<(o.r+r)*.95&&(left?o.x<r*3:o.x>W-r*3)))break;}
+    st.bubs.push({x:left?-r:W+r,y:yy,vx:(left?1:-1)*R.num(u*.9,u*1.6)*p.pace,ph:R.num(0,6),r,e:it[0],t:it[1],good});
     st.spawnT=R.num(.7,1.2)/Math.sqrt(p.pace);},
   update(p,dt){const st=p.state,u=p.u,W=p.W,H=p.H,Z=this.Z(p);st.T+=dt;if(st.moodT>0){st.moodT-=dt;if(st.moodT<=0)st.mood='neutral';}
     st.ty=clamp(st.ty,Z.y0,Z.y1);

@@ -1472,7 +1472,7 @@ function heroScene(cv){const g=cv.getContext('2d');let raf=0,W=0,H=0,dpr=1,last=
     sleuth(g,wide?W*.12:W*.8,wide?H*.78:H*.88,u*1.3,Math.sin(T*.8)>.2?'happy':'neutral',T,[Math.cos(T)*.5,Math.sin(T)*.5]);};
   return{start(){if(run)return;run=true;last=performance.now();raf=requestAnimationFrame(frame);},stop(){run=false;cancelAnimationFrame(raf);}};}
 const GAME={
-  id:'sci4-microbe',title:'현미경 탐정',title1:'현미경 탐정',title2:'현미경 탐정',emoji:LOGO,
+  id:'sci4-microbe',title:'현미경 탐정',title1:'수상한 미생물',title2:'현미경 탐정',emoji:LOGO,
   subtitle:'4학년 · 다양한 생물과 우리 생활',
   howto:'화면이 어두워요! 손가락으로 <b>렌즈</b>를 움직여 비춰 보고, 찾는 생물을 발견하면 <b>톡</b> 눌러요. 다른 것을 누르면 점수가 깎여요.',
   how:'손가락으로 <b>렌즈</b>를 움직여 찾고<br>찾았으면 <b>톡!</b>',

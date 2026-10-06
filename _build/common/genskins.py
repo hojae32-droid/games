@@ -228,3 +228,96 @@ skin('magnet','Do Hyeon','Gowun Dodum','family=Do+Hyeon&family=Gowun+Dodum',dict
 .qbox.ask{border:3px solid #1b2a4a;font-size:clamp(18px,min(5.6cqw,4dvh),32px);box-shadow:0 5px 0 #1b2a4a}
 .res-title{text-shadow:0 3px 0 #facc15}
 """)
+
+# 현미경 탐정: 탐정 사무소 (짙은 남청 + 형광 라임, 명조 굵은 글씨)
+skin('noir','Hahmlet','Gowun Dodum','family=Hahmlet:wght@700;900&family=Gowun+Dodum',dict(
+ page='#0d1b2a',ink='#e7f6ee',sub='#8fb3a4',line='#a3e635',card='#13283d',cardInk='#e7f6ee',hl='#a3e635',stage='#0a1522',
+ shCard='0 0 0 1px rgba(163,230,53,.35),0 12px 30px rgba(0,0,0,.5)',shBtn='0 3px 0 #0a1522',shDown='0 1px 0 #0a1522',shGo='0 6px 0 #4d7c0f',rad='10px',rads='8px',
+ tagBg='#a3e635',tagInk='#0d1b2a',chipBg='#1b3550',chipLine='#2f5a7c',sub2='#8fb3a4',acc='#a3e635',accInk='#0d1b2a',accLine='#d9f99d',accSub='#365314',go='#a3e635',goInk='#0d1b2a',hud='#07111c',
+ prog='linear-gradient(90deg,#34d399,#a3e635)',qbg='rgba(13,27,42,.94)',qink='#e7f6ee',qhl='#bef264',veil='rgba(7,17,28,.7)',track='#1b3550',title='#fff',title1='#bef264',title2='#fff',dInk='#0d1b2a',noR='6px',scR='8px',wz='#10233a'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:900}
+body{background:#0d1b2a;background-image:radial-gradient(circle at 15% 20%,rgba(163,230,53,.12),transparent 40%),radial-gradient(circle at 85% 80%,rgba(56,189,248,.1),transparent 40%)}
+.sign h1{text-shadow:0 0 22px rgba(163,230,53,.6);letter-spacing:.02em}
+.sign .sub{border:1px solid rgba(163,230,53,.6);background:rgba(163,230,53,.12);color:#d9f99d;box-shadow:none}
+.booth{background:#06101a}
+.chip{border-radius:8px}.chip.sel{box-shadow:0 0 16px rgba(163,230,53,.6)}
+.fire,.wz-next{border-radius:8px;letter-spacing:.04em}
+.review li b,.hint b{color:#bef264}.review,.review summary{color:#e7f6ee}.hint{color:#8fb3a4}.maker{color:#8fb3a4}
+.pcard .nm{filter:none;color:#fff}
+.qbox.ask{border:1px solid rgba(163,230,53,.55);font-size:clamp(16px,min(5cqw,3.6dvh),28px)}
+.toolbtn{border-radius:10px}
+.res-title{text-shadow:0 0 20px rgba(163,230,53,.6)}
+""")
+
+# 물질 닌자: 대나무 숲 + 붉은 도장 (붓글씨)
+skin('ninja','East Sea Dokdo','Gowun Dodum','family=East+Sea+Dokdo&family=Gowun+Dodum',dict(
+ page='#f3ead2',ink='#2b1d14',sub='#7a6347',line='#2b1d14',bw='3px',card='#fffaf0',cardInk='#2b1d14',hl='#c81e1e',stage='#e9dcb8',
+ shCard='0 6px 0 #2b1d14',shBtn='0 4px 0 #2b1d14',shDown='0 1px 0 #2b1d14',shGo='0 7px 0 #7f1212',rad='6px',rads='4px',
+ tagBg='#c81e1e',tagInk='#fff',chipBg='#fffaf0',chipLine='#2b1d14',sub2='#7a6347',acc='#c81e1e',accLine='#7f1212',accSub='#ffe0d6',go='#c81e1e',hud='#1c1410',
+ prog='linear-gradient(90deg,#16a34a,#facc15,#c81e1e)',qbg='#fffaf0',qink='#2b1d14',veil='rgba(28,20,16,.7)',track='#e3d6b0',title='#fff',title1='#ffe9a8',title2='#fff',noR='4px',scR='6px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#f3ead2;background-image:repeating-linear-gradient(90deg,rgba(60,90,40,.07) 0 14px,transparent 14px 46px)}
+.sign h1{text-shadow:0 4px 0 #2b1d14,3px 3px 0 #2b1d14;letter-spacing:.03em;font-size-adjust:none}
+.sign .sub{border-radius:4px;box-shadow:0 3px 0 #2b1d14;border:2px solid #2b1d14}
+.booth{background:#1f3a24}
+.chip{border-radius:4px;font-weight:700}.chip.sel{box-shadow:0 4px 0 #7f1212}
+.fire,.wz-next{border-radius:4px;font-size:34px}
+.toolbtn{border-radius:6px;border-bottom-width:6px}
+.qbox.ask{border:3px solid #2b1d14;font-size:clamp(18px,min(5.6cqw,4dvh),34px);box-shadow:0 5px 0 #2b1d14}
+.res-title{text-shadow:0 3px 0 #facc15}
+""")
+
+# 바다 탐험 잠수정: 깊은 바다 + 노란 잠수정 (둥글고 귀여운)
+skin('deepsea','Dongle','Gowun Dodum','family=Dongle:wght@400;700&family=Gowun+Dodum',dict(
+ page='#0b3a5e',ink='#fff',sub='#a5d8f5',line='#0b3a5e',card='#ffffff',cardInk='#0b3a5e',hl='#f59e0b',stage='#06263f',
+ shCard='0 7px 0 #062b47',shBtn='0 4px 0 #0a5a8a',shDown='0 1px 0 #0a5a8a',shGo='0 7px 0 #b45309',rad='26px',rads='18px',
+ tagBg='#fcd34d',tagInk='#0b3a5e',chipBg='#e6f6ff',chipLine='#7cc4ee',sub2='#4d86ad',acc='#0ea5e9',accLine='#0369a1',go='#f59e0b',goInk='#3b1d00',hud='#06263f',
+ prog='linear-gradient(90deg,#22d3ee,#fcd34d)',qbg='rgba(255,255,255,.96)',qink='#0b3a5e',veil='rgba(6,38,63,.7)',track='#bfe6fb',title='#fff',title1='#bdeaff',title2='#fff',noR='50%',wz='#ffffff'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:linear-gradient(#0e5a8c,#06263f)}
+.sign h1{text-shadow:0 5px 0 #062b47,0 10px 20px rgba(0,20,40,.4);letter-spacing:.02em;font-size-adjust:none}
+.sign .sub{border:0;box-shadow:0 4px 0 #b45309}
+.booth{background:#0a4a78}
+.chip{border-radius:999px;font-size:1.12em}.chip.sel{box-shadow:0 5px 0 #075985}
+.fire,.wz-next{border-radius:999px;font-size:1.3em}
+.toolbtn{border-radius:999px;font-size:1.25em}
+.qbox.ask{border:0;font-size:clamp(20px,min(6.4cqw,4.6dvh),38px);border-radius:999px;box-shadow:0 5px 0 #062b47}
+.res-title{text-shadow:0 4px 0 #062b47}
+""")
+
+# 밤하늘 탐험대: 보랏빛 밤하늘 + 금빛 별
+skin('night','Song Myung','Gowun Batang','family=Song+Myung&family=Gowun+Batang',dict(
+ page='#120a2e',ink='#f5f0ff',sub='#b3a5e6',line='#fcd34d',card='#1f1550',cardInk='#f5f0ff',hl='#fcd34d',stage='#0c0620',
+ shCard='0 0 0 1px rgba(252,211,77,.45),0 12px 30px rgba(0,0,0,.55)',shBtn='0 3px 0 #0c0620',shDown='0 1px 0 #0c0620',shGo='0 6px 0 #92400e',rad='16px',rads='12px',
+ tagBg='#fcd34d',tagInk='#1e1245',chipBg='#2a1d6a',chipLine='#5a47b8',sub2='#b3a5e6',acc='#fcd34d',accInk='#1e1245',accLine='#fde68a',accSub='#6b4f0a',go='#fcd34d',goInk='#1e1245',hud='#0a0520',
+ prog='linear-gradient(90deg,#a78bfa,#fcd34d)',qbg='rgba(20,12,56,.92)',qink='#f5f0ff',qhl='#fde68a',veil='rgba(10,5,32,.72)',track='#2a1d6a',title='#fff',title1='#fde68a',title2='#fff',dInk='#1e1245',noR='50%',wz='#190f45'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#120a2e;background-image:radial-gradient(circle at 20% 15%,rgba(167,139,250,.25),transparent 40%),radial-gradient(circle at 80% 85%,rgba(252,211,77,.12),transparent 40%)}
+.sign h1{text-shadow:0 0 26px rgba(252,211,77,.7);letter-spacing:.06em;font-size-adjust:none}
+.sign .sub{border:1px solid rgba(252,211,77,.7);background:rgba(252,211,77,.12);color:#fde68a;box-shadow:none}
+.booth{background:#0a0520}
+.chip.sel{box-shadow:0 0 18px rgba(252,211,77,.6)}
+.fire,.wz-next{border-radius:999px;letter-spacing:.08em}
+.review li b,.hint b{color:#fde68a}.review,.review summary{color:#f5f0ff}.hint{color:#b3a5e6}.maker{color:#b3a5e6}
+.pcard .nm{filter:none;color:#fff}
+.qbox.ask{border:1px solid rgba(252,211,77,.55);font-size:clamp(17px,min(5.2cqw,3.8dvh),30px)}
+.res-title{text-shadow:0 0 22px rgba(252,211,77,.7)}
+""")
+
+# 비커 받기 대작전: 하얀 실험실 + 청록 (Gothic A1 굵게)
+skin('lab','Gothic A1','Gowun Dodum','family=Gothic+A1:wght@700;900&family=Gowun+Dodum',dict(
+ page='#f4f8fb',ink='#0f2a3d',sub='#5b7a90',line='#0f2a3d',bw='2px',card='#ffffff',cardInk='#0f2a3d',hl='#0891b2',stage='#e3eef6',
+ shCard='0 8px 24px rgba(15,42,61,.16)',shBtn='0 3px 0 #bcd2e0',shDown='0 1px 0 #bcd2e0',shGo='0 6px 0 #0e7490',rad='14px',rads='10px',
+ tagBg='#0891b2',tagInk='#fff',chipBg='#f1f7fb',chipLine='#bcd2e0',sub2='#5b7a90',acc='#0891b2',accLine='#0e7490',go='#f97316',hud='#0f2a3d',
+ prog='linear-gradient(90deg,#22d3ee,#f97316)',qbg='rgba(255,255,255,.97)',qink='#0f2a3d',veil='rgba(15,42,61,.65)',track='#d3e4ef',title='#fff',title1='#cffafe',title2='#fff',noR='6px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:900}
+body{background:#f4f8fb;background-image:radial-gradient(rgba(8,145,178,.12) 2px,transparent 2px);background-size:26px 26px}
+.sign h1{text-shadow:0 3px 0 #0e7490,0 8px 18px rgba(15,42,61,.3);letter-spacing:-.01em}
+.sign .sub{border:0;box-shadow:0 3px 0 #9a3412;background:#f97316;color:#fff}
+.booth{background:#0e7490}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 4px 0 #155e75}
+.fire,.wz-next{border-radius:12px}
+.toolbtn{border-radius:12px}
+.qbox.ask{border:2px solid #0f2a3d;font-size:clamp(17px,min(5.4cqw,3.9dvh),30px);box-shadow:0 4px 0 #0f2a3d}
+.res-title{text-shadow:0 3px 0 #67e8f9}
+""")
