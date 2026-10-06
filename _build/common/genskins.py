@@ -21,7 +21,7 @@ def skin(name,disp,sans,imports,P,extra):
      **{'tools-bg':P['hud'],'tool-bg':'#fff','tool-ink':P.get('dInk',P['cardInk']),'tool-line':P['line'],'tool-sel':P['acc'],'tool-sel-ink':P.get('accInk','#fff')},
      veil=P['veil'],num=P['go'],
      **{'done-bg':P['veil'].replace('.6','.93').replace('.7','.93'),'done-ink':'#fff','done-hl':P['tagBg']},
-     **{'res-title':P['hl'],'pname-b':P.get('pnb','.9'),'acc':P['acc'],'hud-bg':P['hud'],'wz-bg':P['card'],'tools-fade':'linear-gradient(transparent,rgba(0,0,0,.45))'},
+     **{'res-title':P['hl'],'pname-b':P.get('pnb','.9'),'acc':P['acc'],'hud-bg':P['hud'],'wz-bg':P.get('wz',P['card']),'tools-fade':'linear-gradient(transparent,rgba(0,0,0,.45))'},
     )
     css=f"@import url('https://fonts.googleapis.com/css2?{imports}&display=swap');\n@font-face{{font-family:'DH-fb';src:local('Noto Sans CJK KR Black'),local('Noto Sans KR Black'),local('Malgun Gothic Bold'),local('AppleSDGothicNeo-Heavy');}}\n:root{{\n --disp:'{disp}','DH-fb','Noto Sans CJK KR','Malgun Gothic',sans-serif; --sans:'{sans}','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;\n"
     css+=''.join(f" --{k}:{v};\n" for k,v in d.items())+"}\n/*==EXTRA==*/\n"+extra
@@ -135,4 +135,96 @@ body{background:#3a2a1d;background-image:repeating-linear-gradient(0deg,rgba(255
 .review,.review summary,.pcard{color:#3a2a1d}
 .stn-h h2{letter-spacing:.02em}
 .maker{color:#d9bf94}.hint{color:#7a6244}
+""")
+
+# ---- 3차 묶음 ----
+# 열기구: 노을 + 하늘
+skin('balloon','Gamja Flower','Gowun Dodum','family=Gamja+Flower&family=Gowun+Dodum',dict(
+ page='linear-gradient(#ffd9b8,#ffeedd 45%,#cfeaff) fixed',ink='#5a2d1a',sub='#9a6a4c',line='#c2410c',bw='2px',card='#fffaf2',cardInk='#5a2d1a',hl='#e0451f',stage='#8fcfff',
+ shCard='0 8px 22px rgba(194,65,12,.18)',shBtn='0 4px 0 #f0b98a',shDown='0 1px 0 #f0b98a',shGo='0 7px 0 #b32d10',rad='24px',rads='16px',
+ tagBg='#ffcf6b',tagInk='#5a2d1a',chipBg='#fff1e0',chipLine='#f0b98a',sub2='#9a6a4c',acc='#ff7a45',accLine='#c2410c',accSub='#fff0e6',go='#ff5a36',hud='#7c2d12',
+ prog='linear-gradient(90deg,#ffd36b,#ff5a36)',qbg='rgba(255,250,242,.96)',qink='#5a2d1a',veil='rgba(124,45,18,.6)',track='#f6d9bf',title='#fff',title1='#fff1c9',title2='#fff'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+.sign h1{text-shadow:0 3px 0 #c2410c,0 6px 16px rgba(120,40,0,.4);letter-spacing:.02em}
+.sign .sub{border:0;box-shadow:0 3px 0 #b8860b}
+.booth{background:#ffb27a}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 4px 0 #b32d10}
+.fire,.wz-next{border-radius:999px}
+.wz-dot{border-radius:999px}
+.qbox.ask{border:0;font-size:clamp(17px,min(5.4cqw,3.8dvh),30px)}
+.res-title{text-shadow:0 3px 0 #ffe29a}
+""")
+
+# 세균 방어대: 비누 거품 + 민트·핑크
+skin('germ','Jua','Gowun Dodum','family=Jua&family=Gowun+Dodum',dict(
+ page='#d7f7ee',ink='#0f5a4a',sub='#4d8f7f',line='#0f9e82',bw='3px',card='#ffffff',cardInk='#0f5a4a',hl='#e11d6a',stage='#bff0e4',
+ shCard='0 7px 0 #8fdcc9',shBtn='0 4px 0 #8fdcc9',shDown='0 1px 0 #8fdcc9',shGo='0 7px 0 #b0124f',rad='28px',rads='20px',
+ tagBg='#ffe066',tagInk='#5a4300',chipBg='#effcf8',chipLine='#8fdcc9',sub2='#4d8f7f',acc='#ff5c8a',accLine='#b0124f',accSub='#ffe3ec',go='#ff5c8a',hud='#0b6b57',
+ prog='linear-gradient(90deg,#7ee8c9,#ff5c8a)',qbg='#ffffff',qink='#0f5a4a',veil='rgba(11,107,87,.6)',track='#c6efe4',title='#fff',title1='#e6fff7',title2='#fff'),
+ """body{background:#d7f7ee;background-image:radial-gradient(circle,rgba(255,255,255,.9) 14px,transparent 15px),radial-gradient(circle,rgba(143,220,201,.5) 8px,transparent 9px);background-size:90px 90px;background-position:0 0,45px 45px}
+.sign h1{text-shadow:0 5px 0 #0b6b57,3px 3px 0 #0b6b57,-3px 3px 0 #0b6b57,0 8px 14px rgba(0,60,50,.3);letter-spacing:.02em}
+.sign .sub{border-radius:999px;box-shadow:0 3px 0 #b8860b}
+.booth{background:#7ee8c9}
+.stn{border-radius:30px}.chip{border-radius:22px;font-weight:700}.chip.sel{box-shadow:0 4px 0 #b0124f}
+.fire,.wz-next{border-radius:999px;font-family:var(--disp);letter-spacing:.03em}
+.toolbtn{border-radius:999px;border-bottom-width:6px}
+.qbox.ask{border:3px solid #0f9e82;font-size:clamp(17px,min(5.6cqw,3.9dvh),32px)}
+.res-title{text-shadow:0 4px 0 #ffe066}
+.nick-row .dot{border-radius:50%;width:16px;height:16px}
+""")
+
+# 한살이 탑: 그림책(색연필)
+skin('storybook','Gaegu','Gowun Dodum','family=Gaegu:wght@400;700&family=Gowun+Dodum',dict(
+ page='#fdf1d8',ink='#4b3a7a',sub='#8a7bb8',line='#7a63c9',bw='3px',card='#fffdf6',cardInk='#4b3a7a',hl='#d9436a',stage='#cfc4ff',
+ shCard='5px 5px 0 #cfc4ff',shBtn='3px 3px 0 #cfc4ff',shDown='0 0 0 #cfc4ff',shGo='5px 6px 0 #b4506a',rad='18px',rads='12px',
+ tagBg='#ffd36b',tagInk='#4b3a7a',chipBg='#fff8e6',chipLine='#b7a8f0',sub2='#8a7bb8',acc='#8b6bea',accLine='#4b3a7a',accSub='#ece6ff',go='#ff8fa3',hud='#5b47b0',
+ prog='linear-gradient(90deg,#ffd36b,#ff8fa3)',qbg='#fffdf6',qink='#4b3a7a',veil='rgba(75,58,122,.6)',track='#e8e0ff',title='#fff',title1='#fff1c9',title2='#fff'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:#fdf1d8;background-image:repeating-linear-gradient(0deg,rgba(122,99,201,.07) 0 1px,transparent 1px 28px)}
+.stn,.wz,.review,.pcard,.qbox.ask,.chip,.fire,.wz-next,.wz-dot{border-style:dashed}
+.sign h1{text-shadow:3px 3px 0 #4b3a7a,0 8px 14px rgba(40,20,90,.3);letter-spacing:.03em;transform:rotate(-1.5deg)}
+.sign .sub{border-radius:8px;box-shadow:3px 3px 0 #4b3a7a}
+.booth{background:#cfc4ff}
+.chip.sel{box-shadow:2px 2px 0 #4b3a7a}
+.qbox.ask{font-size:clamp(18px,min(5.8cqw,4dvh),34px)}
+.res-title{text-shadow:3px 3px 0 #ffd36b}
+""")
+
+# 빛 반사: 어두운 광학 실험실 + 무지개
+skin('laser','Orbit','Gowun Dodum','family=Orbit&family=Gowun+Dodum',dict(
+ page='#0b0a1a',ink='#e8e6ff',sub='#a9a4d8',line='rgba(180,170,255,.5)',bw='1.5px',card='rgba(255,255,255,.07)',cardInk='#f0eeff',hl='#fde047',stage='#14123a',
+ shCard='0 10px 30px rgba(0,0,0,.5)',shBtn='0 3px 10px rgba(0,0,0,.4)',shDown='0 1px 2px rgba(0,0,0,.4)',shGo='0 8px 26px rgba(167,139,250,.5)',rad='16px',rads='12px',
+ tagBg='#fde047',tagInk='#1e1b4b',chipBg='rgba(255,255,255,.08)',chipLine='rgba(180,170,255,.4)',sub2='#b6b1e6',acc='#a78bfa',accInk='#10092e',accLine='#ddd6fe',accSub='#2a1d66',go='linear-gradient(90deg,#f472b6,#a78bfa,#38bdf8)',goInk='#10092e',hud='rgba(10,8,30,.92)',
+ prog='linear-gradient(90deg,#f472b6,#fde047,#38bdf8)',qbg='rgba(22,20,60,.94)',qink='#f0eeff',qhl='#fde047',veil='rgba(8,6,28,.72)',track='#4a4580',title='#fff',title1='#c7d2fe',title2='#fff',dInk='#10092e',pnb='1.4',wz='rgba(16,13,48,.86)'),
+ """.stn,.wz,.review,.pcard,.room-note,body .nl-card,.howcard .in{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.howcard .in{background:rgba(20,18,60,.9)}
+body{background:#0b0a1a;background-image:radial-gradient(circle at 20% 10%,rgba(167,139,250,.18),transparent 40%),radial-gradient(circle at 80% 90%,rgba(56,189,248,.14),transparent 40%)}
+.sign h1{text-shadow:0 0 24px rgba(167,139,250,.7);letter-spacing:.04em;font-weight:700}
+.sign .sub{border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1);color:#fff;box-shadow:none}
+.chip{border-radius:12px}.chip.sel{box-shadow:0 0 18px rgba(167,139,250,.7)}
+.fire,.wz-next{border-radius:12px;font-weight:700;letter-spacing:.06em}
+.wz-dot.on{color:#10092e}
+.pcard .nm{filter:none;color:#fff}
+.review li b,.hint b{color:#fde047}.review,.review summary{color:#f0eeff}.hint{color:#b6b1e6}.maker{color:#a9a4d8}
+.qbox.ask{border:1px solid rgba(180,170,255,.5);font-size:clamp(16px,min(5cqw,3.6dvh),28px)}
+.booth{background:#0b0a1a}
+.toolbtn{border-radius:12px}
+.res-title{text-shadow:0 0 22px rgba(167,139,250,.7)}
+""")
+
+# 자석: 빨강·파랑 장난감 실험실
+skin('magnet','Do Hyeon','Gowun Dodum','family=Do+Hyeon&family=Gowun+Dodum',dict(
+ page='#f4efe6',ink='#1b2a4a',sub='#6a7592',line='#1b2a4a',bw='3px',card='#ffffff',cardInk='#1b2a4a',hl='#dc2626',stage='#dbe7ff',
+ shCard='0 7px 0 #1b2a4a',shBtn='0 4px 0 #1b2a4a',shDown='0 1px 0 #1b2a4a',shGo='0 7px 0 #1a3fa8',rad='14px',rads='10px',
+ tagBg='#facc15',tagInk='#1b2a4a',chipBg='#ffffff',chipLine='#1b2a4a',sub2='#6a7592',acc='#dc2626',accLine='#7f1d1d',accSub='#ffe4e4',go='#2563eb',hud='#1b2a4a',
+ prog='linear-gradient(90deg,#dc2626,#2563eb)',qbg='#ffffff',qink='#1b2a4a',veil='rgba(27,42,74,.65)',track='#dfe6f5',title='#fff',title1='#ffd9d9',title2='#cfe0ff'),
+ """body{background:#f4efe6;background-image:linear-gradient(90deg,rgba(220,38,38,.07) 50%,rgba(37,99,235,.07) 50%);background-size:80px 80px}
+.sign h1{text-shadow:0 4px 0 #1b2a4a,3px 3px 0 #1b2a4a;letter-spacing:.02em}
+.sign .sub{border-radius:6px;box-shadow:0 3px 0 #1b2a4a}
+.booth{background:#2b3f73}
+.chip{border-radius:10px;font-weight:700}.chip.sel{box-shadow:0 4px 0 #7f1d1d}
+.fire,.wz-next{border-radius:10px;font-size:30px}
+.toolbtn{border-radius:12px;border-bottom-width:6px}
+.qbox.ask{border:3px solid #1b2a4a;font-size:clamp(18px,min(5.6cqw,4dvh),32px);box-shadow:0 5px 0 #1b2a4a}
+.res-title{text-shadow:0 3px 0 #facc15}
 """)
