@@ -745,3 +745,20 @@ body{background:#fff1dc;background-image:repeating-linear-gradient(135deg,rgba(2
 .qbox.ask{border:3px solid #7c2d12;border-radius:10px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:0 5px 0 #7c2d12}
 .res-title{text-shadow:0 4px 0 #7c2d12}
 """)
+
+# 문장 기차: 알록달록 장난감 기차 — 빨강 + 노랑 + 하늘
+skin('train','Single Day','Gowun Dodum','family=Single+Day&family=Gowun+Dodum',dict(
+ page='#e3f6ff',ink='#7f1d1d',sub='#a04a4a',line='#7f1d1d',bw='3px',card='#ffffff',cardInk='#7f1d1d',hl='#dc2626',stage='#bfe9ff',
+ shCard='0 6px 0 #7f1d1d',shBtn='0 4px 0 #7f1d1d',shDown='0 1px 0 #7f1d1d',shGo='0 7px 0 #7f1d1d',rad='24px',rads='16px',
+ tagBg='#fbbf24',tagInk='#7f1d1d',chipBg='#fff5f5',chipLine='#7f1d1d',sub2='#a04a4a',acc='#2563eb',accLine='#1e3a8a',go='#dc2626',hud='#7f1d1d',
+ prog='linear-gradient(90deg,#fbbf24,#dc2626)',qbg='rgba(255,255,255,.97)',qink='#7f1d1d',veil='rgba(127,29,29,.62)',track='#bfe9ff',title='#fff',title1='#fde68a',title2='#fff',noR='50%'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#e3f6ff;background-image:linear-gradient(180deg,#a5e1ff,#e3f6ff 55%,#d8f5d8)}
+.sign h1{text-shadow:0 4px 0 #7f1d1d,0 8px 16px rgba(120,20,20,.3);letter-spacing:.03em}
+.sign .sub{border:3px solid #7f1d1d;background:#fde68a;color:#7f1d1d;box-shadow:0 4px 0 #7f1d1d}
+.booth{background:#8ed3ff}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 5px 0 #1e3a8a}
+.fire,.wz-next{border-radius:999px;font-size:32px}
+.qbox.ask{border:3px solid #7f1d1d;border-radius:20px;font-size:clamp(18px,min(5.8cqw,4.2dvh),36px);box-shadow:0 5px 0 #7f1d1d}
+.res-title{text-shadow:0 4px 0 #7f1d1d}
+""")
