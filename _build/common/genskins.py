@@ -468,3 +468,91 @@ body{background:#fff3c4;background-image:radial-gradient(circle,rgba(225,29,72,.
 .qbox.ask{border:3px solid #1a1a2e;border-radius:18px 18px 18px 4px;font-size:clamp(18px,min(5.6cqw,4dvh),34px);box-shadow:5px 5px 0 #1a1a2e}
 .res-title{text-shadow:3px 3px 0 #1a1a2e,-1px -1px 0 #1a1a2e}
 """)
+
+# 낱말 연구소: 짙은 청록 콘솔 + 마젠타·청록 원소 타일
+skin('chem','Do Hyeon','Gowun Dodum','family=Do+Hyeon&family=Gowun+Dodum',dict(
+ page='#0f2a2e',ink='#e6fffb',sub='#8bc9c3',line='#5eead4',bw='2px',card='#17393f',cardInk='#e6fffb',hl='#5eead4',stage='#0a1d20',
+ shCard='0 0 0 1px rgba(94,234,212,.4),0 12px 28px rgba(0,0,0,.5)',shBtn='0 3px 0 #08181a',shDown='0 1px 0 #08181a',shGo='0 6px 0 #86198f',rad='12px',rads='8px',
+ tagBg='#d946ef',tagInk='#fff',chipBg='#1d4a52',chipLine='#2f7c86',sub2='#8bc9c3',acc='#d946ef',accInk='#fff',accLine='#f0abfc',accSub='#fae8ff',go='#d946ef',goInk='#fff',hud='#08181a',
+ prog='linear-gradient(90deg,#5eead4,#d946ef)',qbg='rgba(15,42,46,.95)',qink='#e6fffb',qhl='#5eead4',veil='rgba(8,24,26,.74)',track='#1d4a52',title='#fff',title1='#99f6e4',title2='#fff',dInk='#0f2a2e',noR='6px',scR='8px',wz='#123237'),
+ """body{background:#0f2a2e;background-image:radial-gradient(circle at 15% 20%,rgba(217,70,239,.16),transparent 40%),radial-gradient(circle at 85% 80%,rgba(94,234,212,.14),transparent 40%)}
+.sign h1{text-shadow:0 0 22px rgba(94,234,212,.6);letter-spacing:.03em}
+.sign .sub{border:1px solid rgba(94,234,212,.7);background:rgba(94,234,212,.12);color:#99f6e4;box-shadow:none}
+.booth{background:#08181a}
+.chip{border-radius:8px}.chip.sel{box-shadow:0 0 16px rgba(217,70,239,.7)}
+.fire,.wz-next{border-radius:8px;letter-spacing:.04em}
+.review li b,.hint b{color:#99f6e4}.review,.review summary{color:#e6fffb}.hint{color:#8bc9c3}.maker{color:#8bc9c3}
+.pcard .nm{filter:none;color:#fff}
+.qbox.ask{border:1px solid rgba(94,234,212,.6);font-size:clamp(17px,min(5.2cqw,3.8dvh),30px)}
+.res-title{text-shadow:0 0 20px rgba(94,234,212,.6)}
+""")
+
+# 비유 화가의 아틀리에: 크림 종이 + 보라·주황 물감
+skin('atelier','Gaegu','Gowun Dodum','family=Gaegu:wght@400;700&family=Gowun+Dodum',dict(
+ page='#fbf3e4',ink='#3b1d5a',sub='#8a6aa8',line='#3b1d5a',bw='3px',card='#ffffff',cardInk='#3b1d5a',hl='#c026d3',stage='#f3e6cc',
+ shCard='0 6px 0 #3b1d5a',shBtn='0 4px 0 #3b1d5a',shDown='0 1px 0 #3b1d5a',shGo='0 6px 0 #581c87',rad='22px',rads='14px',
+ tagBg='#f97316',tagInk='#fff',chipBg='#ffffff',chipLine='#3b1d5a',sub2='#8a6aa8',acc='#c026d3',accLine='#581c87',go='#7e22ce',hud='#3b1d5a',
+ prog='linear-gradient(90deg,#c026d3,#f97316,#facc15)',qbg='#ffffff',qink='#3b1d5a',veil='rgba(59,29,90,.68)',track='#eadcf5',title='#fff',title1='#fde68a',title2='#fff'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:#fbf3e4;background-image:radial-gradient(circle at 12% 18%,rgba(192,38,211,.16),transparent 22%),radial-gradient(circle at 88% 22%,rgba(249,115,22,.18),transparent 22%),radial-gradient(circle at 70% 85%,rgba(34,211,238,.14),transparent 24%)}
+.sign h1{text-shadow:0 4px 0 #581c87,3px 3px 0 #3b1d5a;letter-spacing:.02em}
+.sign .sub{border-radius:999px;box-shadow:0 3px 0 #3b1d5a}
+.booth{background:#7e22ce}
+.chip{border-radius:18px;font-weight:700;font-size:1.1em}.chip.sel{box-shadow:0 5px 0 #581c87}
+.fire,.wz-next{border-radius:999px;font-size:1.3em}
+.qbox.ask{border:3px solid #3b1d5a;border-radius:24px;font-size:clamp(19px,min(5.8cqw,4.2dvh),34px);box-shadow:0 5px 0 #3b1d5a}
+.res-title{text-shadow:0 4px 0 #581c87}
+""")
+
+# 어린이 뉴스룸: 신문 인쇄 느낌 (파랑·빨강)
+skin('news','Black Han Sans','Gowun Dodum','family=Black+Han+Sans&family=Gowun+Dodum',dict(
+ page='#eef2ff',ink='#0f1f5c',sub='#5b6aa6',line='#0f1f5c',bw='3px',card='#fffffa',cardInk='#0f1f5c',hl='#dc2626',stage='#dfe6ff',
+ shCard='5px 5px 0 #0f1f5c',shBtn='3px 3px 0 #0f1f5c',shDown='1px 1px 0 #0f1f5c',shGo='5px 5px 0 #7f1d1d',rad='4px',rads='3px',
+ tagBg='#dc2626',tagInk='#fff',chipBg='#fffffa',chipLine='#0f1f5c',sub2='#5b6aa6',acc='#1e3a8a',accLine='#0f1f5c',go='#dc2626',hud='#0f1f5c',
+ prog='linear-gradient(90deg,#1e3a8a,#dc2626)',qbg='#fffffa',qink='#0f1f5c',veil='rgba(15,31,92,.7)',track='#cfd8f5',title='#fff',title1='#fecaca',title2='#fff',noR='3px',scR='4px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#eef2ff;background-image:repeating-linear-gradient(0deg,transparent 0 19px,rgba(15,31,92,.07) 19px 20px)}
+.sign h1{text-shadow:3px 3px 0 #0f1f5c;letter-spacing:.01em}
+.sign .sub{border:2px solid #0f1f5c;background:#fffffa;color:#0f1f5c;box-shadow:3px 3px 0 #0f1f5c;border-radius:2px}
+.booth{background:#1e3a8a}
+.chip{border-radius:2px}.chip.sel{box-shadow:3px 3px 0 #7f1d1d}
+.fire,.wz-next{border-radius:3px;font-size:28px}
+.qbox.ask{border:3px solid #0f1f5c;border-radius:3px;font-size:clamp(18px,min(5.4cqw,3.9dvh),32px);box-shadow:5px 5px 0 #0f1f5c}
+.res-title{text-shadow:3px 3px 0 #0f1f5c}
+""")
+
+# 속담 카드 짝 맞추기: 한지 + 먹 + 도장 빨강
+skin('hanji','Yeon Sung','Gowun Batang','family=Yeon+Sung&family=Gowun+Batang',dict(
+ page='#f3e6c8',ink='#3a2414',sub='#8a6a47',line='#3a2414',bw='2px',card='#fff8e6',cardInk='#3a2414',hl='#b91c1c',stage='#ead8b0',
+ shCard='0 6px 14px rgba(58,36,20,.28)',shBtn='0 3px 0 #b89b6a',shDown='0 1px 0 #b89b6a',shGo='0 6px 0 #7f1d1d',rad='10px',rads='8px',
+ tagBg='#b91c1c',tagInk='#fff',chipBg='#fff8e6',chipLine='#b89b6a',sub2='#8a6a47',acc='#0f766e',accLine='#134e4a',go='#b91c1c',hud='#3a2414',
+ prog='linear-gradient(90deg,#0f766e,#b91c1c)',qbg='rgba(255,248,230,.97)',qink='#3a2414',veil='rgba(58,36,20,.7)',track='#e3d0a4',title='#fff',title1='#fde7c8',title2='#fff'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#f3e6c8;background-image:linear-gradient(rgba(139,106,71,.08) 2px,transparent 2px),linear-gradient(90deg,rgba(139,106,71,.08) 2px,transparent 2px);background-size:38px 38px}
+.sign h1{text-shadow:3px 3px 0 #7f1d1d,0 0 14px rgba(0,0,0,.3);letter-spacing:.04em}
+.sign .sub{border:2px solid #fde7c8;background:rgba(58,36,20,.55);color:#fde7c8;box-shadow:none}
+.booth{background:#0f766e}
+.chip{border-radius:8px}.chip.sel{box-shadow:0 4px 0 #134e4a}
+.fire,.wz-next{border-radius:8px;font-size:30px}
+.qbox.ask{border:2px solid #3a2414;border-radius:8px;font-size:clamp(18px,min(5.5cqw,4dvh),32px);box-shadow:0 5px 0 rgba(58,36,20,.3)}
+.res-title{text-shadow:0 3px 0 #7f1d1d}
+""")
+
+# 높임말 호텔: 자주색 + 금색 (우아한 호텔 로비)
+skin('hotel','Gowun Batang','Gowun Batang','family=Gowun+Batang:wght@400;700',dict(
+ page='#2a0a14',ink='#fdeccf',sub='#d2a99a',line='#d4a72c',bw='2px',card='#3d1020',cardInk='#fdeccf',hl='#f2c14e',stage='#1d0710',
+ shCard='0 0 0 1px rgba(212,167,44,.5),0 12px 30px rgba(0,0,0,.55)',shBtn='0 3px 0 #1d0710',shDown='0 1px 0 #1d0710',shGo='0 6px 0 #854d0e',rad='14px',rads='10px',
+ tagBg='#d4a72c',tagInk='#2a0a14',chipBg='#51162b',chipLine='#7d2a45',sub2='#d2a99a',acc='#d4a72c',accInk='#2a0a14',accLine='#fde68a',accSub='#5b4710',go='#d4a72c',goInk='#2a0a14',hud='#1d0710',
+ prog='linear-gradient(90deg,#9f1239,#f2c14e)',qbg='rgba(42,10,20,.95)',qink='#fdeccf',qhl='#f2c14e',veil='rgba(29,7,16,.74)',track='#51162b',title='#fff',title1='#fde68a',title2='#fff',dInk='#2a0a14',noR='50%',scR='10px',wz='#350d1a'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:#2a0a14;background-image:radial-gradient(circle at 50% -10%,rgba(242,193,78,.25),transparent 45%),repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 2px,transparent 2px 40px)}
+.sign h1{text-shadow:0 0 20px rgba(242,193,78,.55),0 3px 0 #000;letter-spacing:.04em}
+.sign .sub{border:1px solid rgba(212,167,44,.8);background:rgba(212,167,44,.12);color:#fde68a;box-shadow:none}
+.booth{background:#1d0710}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 0 16px rgba(212,167,44,.65)}
+.fire,.wz-next{border-radius:10px;letter-spacing:.05em}
+.review li b,.hint b{color:#fde68a}.review,.review summary{color:#fdeccf}.hint{color:#d2a99a}.maker{color:#d2a99a}
+.pcard .nm{filter:none;color:#fff}
+.qbox.ask{border:1px solid rgba(212,167,44,.65);font-size:clamp(16px,min(5cqw,3.7dvh),28px)}
+.res-title{text-shadow:0 0 20px rgba(242,193,78,.6)}
+""")
