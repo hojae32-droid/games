@@ -9,14 +9,22 @@ const DYN=/*@@DYN@@*/;
 const TEMPO=/*@@TEMPO@@*/;
 const GOLD='#ffd166',PINK='#ef476f';
 MX_SONGS.mary.title='메리의 어린 양';
-const LV={
-  dyn_mary:{mode:'dyn',song:'mary',label:'셈여림 지휘 · 메리의 어린 양',desc:'8마디 짧은 곡 · pp~ff, 점점 세게·여리게',tag:'4학년',ic:'🎚️'},
-  dyn_twinkle:{mode:'dyn',song:'twinkle',label:'셈여림 지휘 · 작은 별',desc:'12마디 · 곡 끝까지 지휘해요',tag:'4~5학년',ic:'⭐'},
-  dyn_ode:{mode:'dyn',song:'ode',label:'셈여림 지휘 · 환희의 송가',desc:'16마디 · 베토벤을 지휘해요',tag:'5~6학년',ic:'🎼'},
-  tempo_mary:{mode:'tempo',song:'mary',label:'빠르기 지휘 · 메리의 어린 양',desc:'박을 저어 빠르기말 맞추기',tag:'5학년',ic:'🥢'},
-  tempo_twinkle:{mode:'tempo',song:'twinkle',label:'빠르기 지휘 · 작은 별',desc:'구간마다 바뀌는 빠르기',tag:'5~6학년',ic:'🪄'},
-  listen:{mode:'listen',label:'듣고 맞히기',desc:'연주를 듣고 셈여림·빠르기 찾기',tag:'4~6학년',ic:'👂'},
-};
+Object.assign(MX_SONGS,{
+  nabiya:{title:'나비야',sub:'독일 민요 · 8마디',bpm:108,m:4,n:'G4:1 E4:1 E4:2 F4:1 D4:1 D4:2 C4:1 D4:1 E4:1 F4:1 G4:1 G4:1 G4:2'},
+  school:{title:'학교종',sub:'김메리 작곡 · 8마디',bpm:112,m:4,n:'G4:1 G4:1 A4:1 A4:1 G4:1 G4:1 E4:2 G4:1 G4:1 E4:1 E4:1 D4:3 R:1 G4:1 G4:1 A4:1 A4:1 G4:1 G4:1 E4:2 G4:1 E4:1 D4:1 E4:1 C4:3 R:1'},
+  macdonald:{title:'올드 맥도날드',sub:'미국 민요 · 8마디',bpm:104,m:4,n:'C4:1 C4:1 C4:1 G3:1 A3:1 A3:1 G3:2 E4:1 E4:1 D4:1 D4:1 C4:3 R:1 G3:1 C4:1 C4:1 C4:1 G3:1 A3:1 A3:1 G3:2 E4:1 E4:1 D4:1 D4:1 C4:4'},
+  silent:{title:'고요한 밤',sub:'그루버 · 3박자',bpm:76,m:3,n:'G4:1.5 A4:.5 G4:1 E4:3 G4:1.5 A4:.5 G4:1 E4:3 D5:2 D5:1 B4:3 C5:2 C5:1 G4:3'},
+  arirang:{title:'아리랑',sub:'우리 민요 · 3박자',bpm:84,m:3,n:'G4:1.5 A4:.5 G4:.5 A4:.5 C5:1.5 D5:.5 C5:.5 D5:.5 E5:.5 D5:.5 C5:.5 A4:.5 G4:.5 A4:.5 C5:3'},
+  london:{title:'런던 다리',sub:'영국 민요 · 8마디',bpm:104,m:4,n:'G4:1.5 A4:.5 G4:1 F4:1 E4:1 F4:1 G4:2 D4:1 E4:1 F4:2 E4:1 F4:1 G4:2'},
+  elise:{title:'엘리제를 위하여',sub:'베토벤 · 앞부분',bpm:116,m:3,n:'E5:.5 D#5:.5 E5:.5 D#5:.5 E5:.5 B4:.5 D5:.5 C5:.5 A4:1.5 C4:.5 E4:.5 A4:.5 B4:1.5 E4:.5 G#4:.5 B4:.5 C5:1.5 R:.5 E4:.5 E5:.5 D#5:.5 E5:.5 D#5:.5 E5:.5 B4:.5 D5:.5 C5:.5 A4:1.5 C4:.5 E4:.5 A4:.5 B4:1.5 E4:.5 C5:.5 B4:.5 A4:3'},
+  birthday:{title:'생일 축하 노래',sub:'전통 노래 · 8마디',bpm:100,m:3,n:'G4:.75 G4:.25 A4:1 G4:1 C5:1 B4:2 G4:.75 G4:.25 A4:1 G4:1 D5:1 C5:2 G4:.75 G4:.25 G5:1 E5:1 C5:1 B4:1 A4:1 F5:.75 F5:.25 E5:1 C5:1 D5:1 C5:3'},
+});
+Object.values(MX_SONGS).forEach(s=>{if(!s.ev){const p=mxParse(s.n);s.ev=p.ev;s.total=p.total;}});
+const SHORT={mary:'🐑 메리의 어린 양',twinkle:'⭐ 작은 별',nabiya:'🦋 나비야',school:'🔔 학교종',macdonald:'🐄 올드 맥도날드',jingle:'🛎️ 징글벨',ode:'🎼 환희의 송가',silent:'🌙 고요한 밤',arirang:'🏔️ 아리랑',london:'🌉 런던 다리',elise:'🎹 엘리제를 위하여',birthday:'🎂 생일 축하 노래'};
+const LV={};
+['mary','nabiya','school','twinkle','macdonald','london','jingle','silent','birthday','arirang','ode','elise'].forEach(k=>{LV['dyn_'+k]={mode:'dyn',song:k,label:'셈여림 지휘 · '+MX_SONGS[k].title,desc:MX_SONGS[k].sub,tag:'',ic:'',short:SHORT[k],grp:'🎚️ 셈여림 지휘 (곡을 골라요)'};});
+['mary','nabiya','school','twinkle'].forEach(k=>{LV['tempo_'+k]={mode:'tempo',song:k,label:'빠르기 지휘 · '+MX_SONGS[k].title,desc:MX_SONGS[k].sub,tag:'',ic:'',short:SHORT[k],grp:'🥢 빠르기 지휘 · 👂 듣기'};});
+LV.listen={mode:'listen',label:'듣고 맞히기',desc:'연주를 듣고 셈여림·빠르기 찾기',tag:'4~6학년',ic:'👂',short:'👂 듣고 맞히기',grp:'🥢 빠르기 지휘 · 👂 듣기'};
 const LOGO='<svg class="logo" viewBox="0 0 48 48"><path d="M10 40L36 10" stroke="#ffd166" stroke-width="4" stroke-linecap="round"/><circle cx="38" cy="8" r="4" fill="#ef476f"/><path d="M6 44h36" stroke="#fff4d6" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="30" r="3" fill="#fff4d6"/><circle cx="24" cy="36" r="3" fill="#fff4d6"/></svg>';
 const AN=[['#c68642','🎻'],['#f5f0e6','🎺'],['#e8913a','🥁'],['#3a3a3a','🎹'],['#ffb3c1','🎻'],['#9ad1ff','🎺']];
 function critter(g,x,y,s,col,i,bob){g.save();g.translate(x,y-bob);g.lineJoin='round';g.lineWidth=Math.max(2,s*.07);g.strokeStyle='#08081a';g.fillStyle=col;
@@ -35,9 +43,10 @@ const GAME={
   subtitle:'4~6학년 음악 · 셈여림과 빠르기',
   howto:'🎚️ <b>셈여림</b>: 곡이 흐르는 동안 악보의 pp~ff, 점점 세게·여리게를 보고 지휘봉을 <b>위아래로 끌어</b> 소리 크기를 지휘해요. 곡이 끝나면 게임도 끝나요.<br>🥢 <b>빠르기</b>: 구간마다 바뀌는 빠르기말에 맞춰 <b>박마다 톡톡!</b> 내가 친 박대로 곡이 연주돼요.<br>👂 <b>듣고 맞히기</b>: 연주를 듣고 골라요.',
   how:p=>(LV[p.levelId].label+' — '+LV[p.levelId].desc),
-  theme:{c1:'#ef476f',c2:'#ffd166'},hero:heroScene,vignette:.1,durs:[120,180,300],levelTitle:'어떤 곡을 지휘할까요?',
+  theme:{c1:'#ef476f',c2:'#ffd166'},hero:heroScene,vignette:.1,durs:[90,120,180],levelTitle:'어떤 곡을 지휘할까요?',
   txt:{who:'누가 지휘자일까요?',dur:'연주회 시간',pace:'생각하는 시간',seat:'번 지휘자 ',go:'지휘 시작!',s1:'1. 곡',s2:'2. 방법',s3:'3. 이름'},
-  levels:Object.entries(LV).map(([k,v])=>({id:k,g:'4~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
+  levels:Object.entries(LV).map(([k,v])=>({id:k,g:v.grp,t:v.short,d:''})),
+  untimed(id){return LV[id]&&LV[id].mode!=='listen';},
   summary:`<ul><li><b>셈여림</b>은 소리의 세기예요: pp(아주 여리게) p(여리게) mp(조금 여리게) mf(조금 세게) f(세게) ff(아주 세게). 점점 세게는 <b>cresc.</b>, 점점 여리게는 <b>decresc.</b>예요.</li>
     <li><b>빠르기말</b>: Adagio(느리게) · Andante(걷는 빠르기로) · Moderato(보통 빠르기로) · Allegro(빠르게). 숫자가 클수록 빨라요(♩=박의 개수).</li>
     <li>지휘자는 지휘봉으로 <b>박</b>을 저어 연주의 빠르기와 세기를 모두에게 알려 줘요.</li></ul>`,

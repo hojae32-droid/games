@@ -236,3 +236,10 @@ body.G-full.L-wcenter .wz,body.G-full.L-wfloat .wz{padding:clamp(8px,1.5dvh,16px
   body.G-full .nick-row input{padding:4px 10px}
   body.G-full .dice{height:34px}
 }
+
+body.lv-many .chips.lv,body.G-full.lv-many .chips.lv{grid-template-columns:1fr 1fr 1fr;gap:5px}
+body.lv-many .chips.lv .chip{min-height:30px;padding:3px 5px;gap:3px;font-size:clamp(11.5px,1.9dvh,14px);line-height:1.15}
+body.lv-many .chips.lv .chip small{display:none}
+body.lv-many .grade-group .gl{margin-bottom:4px;font-size:12px}
+body.lv-many .grade-group{margin-bottom:4px}
+@media (max-height:640px){body.lv-many .chips.lv .chip{min-height:26px;padding:2px 4px;font-size:11.5px}body.lv-many .grade-group .gl{font-size:11px;margin-bottom:2px}body.lv-many .grade-group{margin-bottom:2px}body.lv-many .chips.lv{gap:3px}}

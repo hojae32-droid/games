@@ -1137,3 +1137,13 @@ mk('quizshow','Gasoek One','family=Gasoek+One&family=Gowun+Dodum','#2d0a5c','#ff
 .fire,.wz-next{border-radius:999px;font-size:32px}
 .qbox.ask{border:3px solid #ffe14d;border-radius:16px;background:#4a1a8c;color:#fff6d6;box-shadow:0 0 16px rgba(255,225,77,.5)}
 """,rad='20px',veil='rgba(18,3,46,.74)',sub='#d6bdff',bw='3px',chip='#5a2aa0',chipLine='#7a3dc8',tag='#ffe14d',tagInk='#2d0a5c',dInk='#2d0a5c')
+
+mk('ink','Nanum Myeongjo','family=Nanum+Myeongjo:wght@700;800&family=Gowun+Batang','#eef0ea','#1c2a2a','#fbfcf8','#c1272d','#2a9d8f','#c1272d','#1c3a3a','#2e4a4a',
+ extra="""h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:800}
+body{background:#e4e8df;background-image:radial-gradient(circle at 80% 20%,rgba(42,157,143,.18),transparent 40%),radial-gradient(circle at 15% 85%,rgba(28,58,58,.12),transparent 45%)}
+.sign h1{text-shadow:0 3px 0 #2e4a4a;letter-spacing:.05em}
+.sign .sub{border:2px solid #1c3a3a;background:#fbfcf8;color:#c1272d;box-shadow:0 3px 0 #2e4a4a;border-radius:2px}
+.chip{border-radius:3px}.chip.sel{box-shadow:0 4px 0 #0f3d38}
+.fire,.wz-next{border-radius:4px;font-size:28px}
+.qbox.ask{border:2px solid #1c3a3a;border-radius:2px;box-shadow:0 4px 0 #2e4a4a}
+""",rad='6px',veil='rgba(28,58,58,.66)',bw='2px',sans='Gowun Batang')

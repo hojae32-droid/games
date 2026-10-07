@@ -38,7 +38,7 @@ const GAME={
   subtitle:'3~6학년 음악 · 듣고 따라 연주하기',
   howto:'토끼 선생님이 실로폰으로 가락을 들려줘요. <b>잘 듣고 똑같은 순서로</b> 내 실로폰을 쳐요! 성공할 때마다 가락이 점점 길어져요. 모두 함께 듣고 동시에 쳐요. (키보드: A S D F G H J K)',
   how:p=>({sml:'<b>솔·미·라</b> 세 음 가락을 따라 쳐요',penta:'<b>도레미솔라</b> 다섯 음 가락을 따라 쳐요',ear:'<b>소리만 듣고</b> 도~높은 도를 따라 쳐요',read:'<b>계이름을 읽고</b> 소리 없이 쳐요'}[p.levelId]),
-  theme:{c1:'#34a853',c2:'#ff7a3d'},hero:heroScene,vignette:.03,durs:[120,180,300],levelTitle:'어떤 메아리를 칠까요?',
+  theme:{c1:'#34a853',c2:'#ff7a3d'},hero:heroScene,vignette:.03,durs:[90,120,180],levelTitle:'어떤 메아리를 칠까요?',
   txt:{who:'누가 연주자일까요?',dur:'연주 시간',pace:'생각하는 시간',seat:'번 연주자 ',go:'연주 시작!',s1:'1. 메아리',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li><b>계이름</b>은 음의 이름이에요: 도·레·미·파·솔·라·시·도. 낮은 도에서 높은 도까지 <b>한 옥타브</b>예요.</li>

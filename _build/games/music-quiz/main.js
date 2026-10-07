@@ -32,7 +32,7 @@ const GAME={
   subtitle:'3~6학년 음악 · 감상과 음악 요소',
   howto:'퀴즈쇼에 오신 걸 환영해요! 가락이 나오는 동안 <b>알 것 같으면 바로</b> 정답 버튼을 눌러요. 먼저 맞힐수록 점수가 커요. 한 화면 대결에서는 <b>가장 먼저 맞힌 사람</b>에게 보너스 불이 켜져요! (키보드: 1~4)',
   how:p=>(LV[p.levelId].label+' — '+LV[p.levelId].desc),
-  theme:{c1:'#ff3d7f',c2:'#ffe14d'},hero:heroScene,vignette:.1,durs:[120,180,300],levelTitle:'어떤 퀴즈를 풀까요?',
+  theme:{c1:'#ff3d7f',c2:'#ffe14d'},hero:heroScene,vignette:.1,durs:[90,120,180],levelTitle:'어떤 퀴즈를 풀까요?',
   txt:{who:'누가 출연자일까요?',dur:'방송 시간',pace:'문제 시간',seat:'번 출연자 ',go:'방송 시작!',s1:'1. 코너',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li>같은 곡도 <b>가락</b>을 끝까지 들으면 더 잘 알 수 있어요. 처음 나오는 몇 음만으로도 곡을 알아맞히는 귀를 길러요.</li>

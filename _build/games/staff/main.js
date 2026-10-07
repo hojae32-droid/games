@@ -25,7 +25,7 @@ const GAME={
   subtitle:'3~6학년 음악 · 오선 위 계이름 읽기',
   howto:'오선 위로 음표 별똥별이 날아와요. <b>맨 앞 음표</b>의 계이름 버튼을 눌러 빛으로 바꿔요! 음표가 높은음자리표에 닿기 전에 맞혀요. 시간이 갈수록 빨라지고, 틀리면 1.5초 동안 쉬어요. (키보드: 1~7)',
   how:p=>({basic:'<b>도~높은 도</b> 음표 읽기',wide:'<b>낮은 솔~높은 솔</b> 넓게 읽기',speed:'<b>스피드</b>로 빠르게 읽기',keyG:'<b>사장조</b>(♯ 1개)로 읽기',keyF:'<b>바장조</b>(♭ 1개)로 읽기'}[p.levelId]),
-  theme:{c1:'#7b5cff',c2:'#ffd166'},hero:heroScene,vignette:.08,durs:[60,120,180],levelTitle:'어떤 별을 잡을까요?',
+  theme:{c1:'#7b5cff',c2:'#ffd166'},hero:heroScene,vignette:.08,durs:[90,120,180],levelTitle:'어떤 별을 잡을까요?',
   txt:{who:'누가 별지기일까요?',dur:'관측 시간',pace:'별똥별 속도',seat:'번 별지기 ',go:'별 잡기 시작!',s1:'1. 별자리',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li><b>높은음자리표</b>는 오선의 둘째 줄이 <b>솔</b>이라는 표예요. 줄과 칸에 따라 음 이름이 정해져요: 아래부터 미·솔·시·레·파(줄), 파·라·도·미(칸).</li>

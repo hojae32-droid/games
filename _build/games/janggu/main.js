@@ -45,7 +45,7 @@ const GAME={
   subtitle:'3~6학년 음악 · 국악 장단 치기',
   howto:'처음 한 장단은 선생님이 시범을 보여요. 그다음부터 <b>빛이 지나가는 칸</b>의 구음대로 장구를 쳐요. <b>왼쪽 = 쿵(북편)</b>, <b>오른쪽 = 덕(채편)</b>, <b>가운데(또는 두 쪽을 함께) = 덩</b>. 기덕·더러러러는 덕으로 쳐요. (키보드: 왼손 F · 오른손 J · 스페이스 = 덩)',
   how:p=>(JD[p.levelId].label+' · '+JD[p.levelId].desc),
-  theme:{c1:'#c1272d',c2:'#1d4e89'},hero:heroScene,vignette:.05,durs:[60,120,180],levelTitle:'어떤 장단을 칠까요?',
+  theme:{c1:'#c1272d',c2:'#1d4e89'},hero:heroScene,vignette:.05,durs:[90,120,180],levelTitle:'어떤 장단을 칠까요?',
   txt:{who:'누가 연주자일까요?',dur:'연주 시간',pace:'장단 빠르기',seat:'번 연주자 ',go:'장단 시작!',s1:'1. 장단',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(JD).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li><b>장단</b>은 우리 음악의 리듬틀이에요. 세마치장단은 3박(덩 · 덩 덕 · 쿵 덕), 굿거리장단은 느리고 흥겨운 4박, 자진모리장단은 빠르고 신나는 4박이에요.</li>

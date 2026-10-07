@@ -36,7 +36,7 @@ const GAME={
   subtitle:'3~6학년 음악 · 박자와 음표·쉼표의 길이',
   howto:'마디의 <b>?</b> 빈칸에 길이가 꼭 맞는 음표(쉼표) 블록을 골라요. 블록은 <b>길이가 곧 박자</b>예요! 박자표만큼 딱 채워야 해요. 마디가 완성되면 내가 만든 리듬이 연주돼요.',
   how:p=>({basic:'<b>음표</b> 블록으로 마디 채우기',rest:'<b>쉼표</b>도 함께 마디 채우기',adv:'<b>점음표·16분음표</b>, 6/8박자'}[p.levelId]),
-  theme:{c1:'#e63946',c2:'#1d6fd1'},hero:heroScene,vignette:.03,durs:[90,150,210],levelTitle:'어떤 블록으로 만들까요?',
+  theme:{c1:'#e63946',c2:'#1d6fd1'},hero:heroScene,vignette:.03,durs:[90,120,180],levelTitle:'어떤 블록으로 만들까요?',
   txt:{who:'누가 블록 장인일까요?',dur:'작업 시간',pace:'생각하는 시간',seat:'번 장인 ',go:'블록 쌓기 시작!',s1:'1. 블록',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li><b>박자표</b>(4/4)의 위 숫자는 한 마디의 박 수, 아래 숫자는 <b>4분음표를 한 박</b>으로 센다는 뜻이에요.</li>

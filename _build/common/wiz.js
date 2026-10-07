@@ -25,9 +25,10 @@
     const st1=h('div','wz-step');W.appendChild(st1);
     const s1=sec('level',G.levelTitle||'무엇을 할까요?',st1);
     const groups={};G.levels.forEach(l=>{(groups[l.g]=groups[l.g]||[]).push(l);});
+    if(G.levels.length>8)document.body.classList.add('lv-many');
     const allChipBoxes=[];const many=Object.keys(groups).length>1;
     Object.entries(groups).forEach(([g,ls])=>{const gg=h('div','grade-group');if(many)gg.appendChild(h('div','gl',g));s1.appendChild(gg);
-      const box=chips(gg,ls.map(l=>({label:l.t,small:l.d,v:l.id,ic:l.ic})),v=>{allChipBoxes.forEach(b=>b!==box&&b.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel')));cfg.level=v;lit('level',1);},'lv');
+      const box=chips(gg,ls.map(l=>({label:l.t,small:l.d,v:l.id,ic:l.ic})),v=>{allChipBoxes.forEach(b=>b!==box&&b.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel')));cfg.level=v;lit('level',1);if(typeof refresh==='function')refresh();},'lv');
       allChipBoxes.push(box);});
     /* 단계 2: 방법 */
     const st2=h('div','wz-step');W.appendChild(st2);
@@ -63,7 +64,7 @@
       if(keys.includes('level')&&!cfg.level&&!guest)miss.push('level');
       if(keys.includes('mode')&&!cfg.mode)miss.push('mode');
       if(keys.includes('n')&&cfg.mode==='board'&&!cfg.n)miss.push('n');
-      if(keys.includes('dur')&&!cfg.dur&&!guest)miss.push('dur');
+      if(keys.includes('dur')&&!cfg.dur&&!guest&&!(G.untimed&&cfg.level&&G.untimed(cfg.level)))miss.push('dur');
       if(keys.includes('nick')&&cfg.mode&&(cfg.nicks.some(x=>!x)||(cfg.mode==='device'&&Net.need(cfg).length)))miss.push('nick');
       return miss;};
     const flag=miss=>{Object.values(secs).forEach(s=>s.classList.remove('need'));miss.forEach(k=>{const s=secs[k];void s.offsetWidth;s.classList.add('need');});if(miss.length)Snd.bad();};
@@ -78,7 +79,7 @@
     const refresh=()=>{
       s3.style.display=cfg.mode==='board'?'':'none';
       roomWrap.style.display=cfg.mode==='device'?'':'none';
-      const guest=Net.isGuestSetup(cfg);s1.style.display=guest?'none':'';s4.style.display=guest?'none':'';if(s6)s6.style.display=guest?'none':'';
+      const guest=Net.isGuestSetup(cfg);s1.style.display=guest?'none':'';s4.style.display=(guest||(G.untimed&&cfg.level&&G.untimed(cfg.level)))?'none':'';if(s6)s6.style.display=guest?'none':'';
       const n=cfg.mode==='board'?(cfg.n||0):(cfg.mode?(Net.isWatchSetup(cfg)?0:1):0);
       while(cfg.nicks.length<n)cfg.nicks.push('');cfg.nicks.length=n;
       nickBox.innerHTML=n?'':(cfg.mode?(cfg.mode==='board'?'<div class="hint">'+X.pickN+'</div>':'<div class="hint">진행만 하면 닉네임이 필요 없어요.</div>'):'<div class="hint">'+X.pickWho+'</div>');

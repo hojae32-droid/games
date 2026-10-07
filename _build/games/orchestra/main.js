@@ -34,7 +34,7 @@ const GAME={
   subtitle:'3~6학년 음악 · 악기의 종류와 소리',
   howto:'무대 위로 악기가 올라와요. 이 악기가 앉을 <b>알맞은 자리</b>를 눌러요. 악기 카드를 누르면 <b>그 악기 소리</b>를 미리 들을 수 있어요! 맞히면 악기 소리가 나고 자리에 앉아요. 「소리만 듣고 맞히기」에서는 이름 없이 소리만 듣고 자리를 찾아요.',
   how:p=>(LV[p.levelId].label+' — '+LV[p.levelId].desc),
-  theme:{c1:'#a4161a',c2:'#2a1f17'},hero:heroScene,vignette:.05,durs:[90,150,240],levelTitle:'어떤 연주단을 만들까요?',
+  theme:{c1:'#a4161a',c2:'#2a1f17'},hero:heroScene,vignette:.05,durs:[90,120,180],levelTitle:'어떤 연주단을 만들까요?',
   txt:{who:'누가 단원일까요?',dur:'연습 시간',pace:'생각하는 시간',seat:'번 단원 ',go:'연주회 시작!',s1:'1. 연주단',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li>악기는 소리 내는 방법에 따라 <b>켜는(활로 켜는) · 뜯는 · 부는 · 치는</b> 악기로 나눌 수 있어요.</li>
