@@ -39,7 +39,7 @@
  --sel-line:#05031a;
  --sel-sub:#fff;
  --input-bg:#fff;
- --input-ink:#fff2c4;
+ --input-ink:#150d38;
  --input-ph:#9aa;
  --go-bg:#ff5fa2;
  --go-ink:#fff;
@@ -49,13 +49,13 @@
  --clock-bg:#fff;
  --clock-ring:#7b5cff;
  --clock-track:rgba(0,0,0,.15);
- --clock-ink:#fff2c4;
+ --clock-ink:#150d38;
  --arena:#0e0828;
  --gap:3px;
  --phead-ink:#fff;
  --no-r:50%;
  --sc-bg:#fff;
- --sc-ink:#fff2c4;
+ --sc-ink:#150d38;
  --sc-sub:#b9acff;
  --sc-r:999px;
  --prog-bg:rgba(255,255,255,.25);
@@ -65,7 +65,7 @@
  --q-hl:#ffd166;
  --q-sub:#b9acff;
  --tip-bg:#fff;
- --tip-ink:#fff2c4;
+ --tip-ink:#150d38;
  --tip-hl:#ffd166;
  --tip-bad:#ffe3e0;
  --tip-good:#dcf7ea;
@@ -73,7 +73,7 @@
  --streak-ink:#150d38;
  --tools-bg:#0e0828;
  --tool-bg:#fff;
- --tool-ink:#fff2c4;
+ --tool-ink:#150d38;
  --tool-line:#05031a;
  --tool-sel:#7b5cff;
  --tool-sel-ink:#fff;

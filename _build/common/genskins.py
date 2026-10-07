@@ -1081,4 +1081,13 @@ mk('stardust','Gugi','family=Gugi&family=Gowun+Dodum','#150d38','#fff2c4','#241a
 .chip{border-radius:12px;border-color:#5a45c8}.chip.sel{box-shadow:0 0 14px #7b5cff}
 .fire,.wz-next{border-radius:12px;font-size:30px}
 .qbox.ask{border:2px solid #7b5cff;border-radius:12px;background:#241a5e;color:#fff2c4;box-shadow:0 0 16px rgba(123,92,255,.5)}
-""",rad='14px',veil='rgba(5,3,26,.72)',sub='#b9acff',bw='2px',chip='#2d2170',chipLine='#5a45c8',tag='#ffd166',tagInk='#150d38')
+""",rad='14px',veil='rgba(5,3,26,.72)',sub='#b9acff',bw='2px',chip='#2d2170',chipLine='#5a45c8',tag='#ffd166',tagInk='#150d38',dInk='#150d38')
+
+mk('djbooth','Do Hyeon','family=Do+Hyeon&family=Gowun+Dodum','#1a1033','#f5f0ff','#2a1b52','#00e5ff','#ff2e93','#ff2e93','#0f0a24','#07041a',
+ extra="""body{background:#1a1033;background-image:conic-gradient(from 0deg at 50% 120%,#ff2e9355,#00e5ff55,#ffd16655,#ff2e9355)}
+.sign h1{text-shadow:0 0 18px #ff2e93,0 0 32px #00e5ff,0 4px 0 #07041a}
+.sign .sub{border:2px solid #00e5ff;background:#2a1b52;color:#00e5ff;box-shadow:0 0 14px rgba(0,229,255,.6)}
+.chip{border-radius:14px;border-color:#6b4bd1}.chip.sel{box-shadow:0 0 16px #ff2e93}
+.fire,.wz-next{border-radius:999px;font-size:32px}
+.qbox.ask{border:2px solid #00e5ff;border-radius:14px;background:#2a1b52;color:#f5f0ff;box-shadow:0 0 16px rgba(0,229,255,.5)}
+""",rad='16px',veil='rgba(7,4,26,.74)',sub='#c6b8ff',bw='2px',chip='#34236a',chipLine='#6b4bd1',tag='#00e5ff',tagInk='#0f0a24',goInk='#fff',dInk='#1a1033')
