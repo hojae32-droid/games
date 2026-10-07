@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>모자이크 메이커</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1F2A44;--paper:#FFFDF8;--accent:#06AED5}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden}
+body{font-family:'Do Hyeon','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--ink);background:#DDE7EE;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+button,select{font-family:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid #2F80ED;outline-offset:2px}
+.app{position:fixed;inset:0;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+.top{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--ink);color:#fff;flex-wrap:wrap}
+.top h1{margin:0 6px 0 2px;font-weight:400;font-size:clamp(16px,2.4vw,24px);white-space:nowrap}
+.top h1 em{font-style:normal;color:#7FE3FF}
+.mode{display:flex;background:rgba(255,255,255,.12);border-radius:12px;padding:3px}
+.mode button{border:0;background:none;color:#fff;border-radius:9px;padding:6px 12px;font-size:clamp(13px,1.7vw,17px)}
+.mode button.on{background:#7FE3FF;color:var(--ink)}
+.sp{flex:1}
+.tb{border:0;background:rgba(255,255,255,.12);border-radius:10px;padding:7px 11px;font-size:clamp(13px,1.7vw,17px);color:#fff;white-space:nowrap}
+.tb:disabled{opacity:.35}
+.tb.save{background:#06AED5}
+.side{grid-row:2;width:clamp(160px,20vw,230px);background:var(--paper);border-right:3px solid var(--ink);overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:12px}
+.grp h3{margin:0 0 6px;font-weight:400;font-size:14px;color:#6B7690}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.seg button{border:2px solid #D3DCE6;background:#fff;border-radius:10px;padding:6px 2px;font-size:13px}
+.seg button.on{border-color:var(--ink);background:#DDF6FF}
+.pal{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.pal button{aspect-ratio:1;border-radius:6px;border:2px solid rgba(0,0,0,.15);padding:0;position:relative;font-size:10px;color:#fff;text-shadow:0 0 2px #000}
+.pal button.on{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ink)}
+.drop{display:block;border:3px dashed #9FB3C8;border-radius:14px;padding:14px 8px;text-align:center;background:#F3F8FC;font-size:15px;line-height:1.4;cursor:pointer}
+.drop:hover{background:#E6F4FB}
+.drop input{display:none}
+.chk{display:flex;align-items:center;gap:6px;font-size:14px;margin-top:4px}
+.chk input{width:20px;height:20px;accent-color:var(--accent)}
+.legend{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;font-size:12px}
+.legend span{display:flex;align-items:center;gap:4px}
+.legend i{width:18px;height:18px;border-radius:4px;border:1px solid rgba(0,0,0,.2);display:grid;place-items:center;font-style:normal;font-size:10px;color:#fff;text-shadow:0 0 2px #000;flex:none}
+.stage{grid-row:2;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,#EDF3F7,#CBD7E1)}
+.board{position:relative;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25);touch-action:none}
+.board canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated}
+.hint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);background:rgba(31,42,68,.85);color:#fff;border-radius:999px;padding:6px 16px;font-size:15px;white-space:nowrap;pointer-events:none}
+.maker{position:fixed;right:10px;bottom:6px;font-size:12px;color:rgba(31,42,68,.55);pointer-events:none}
+.toast{position:fixed;left:50%;top:70px;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:999px;padding:8px 18px;font-size:16px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
+.toast.on{opacity:1}
+.hidden{display:none!important}
+@media (max-width:760px),(max-aspect-ratio:4/5){
+  .app{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto}
+  .side{grid-row:3;width:auto;max-height:38vh;border-right:0;border-top:3px solid var(--ink);flex-direction:row;flex-wrap:wrap}
+  .grp{flex:1 1 100%;min-width:0}
+  .pal{grid-template-columns:repeat(9,1fr)}
+  .top h1{font-size:15px}
+  .hint{display:none}
+}
+@media print{
+  body{background:#fff;overflow:visible}
+  .top,.side,.hint,.maker,.toast{display:none!important}
+  .app{position:static;display:block}
+  .stage{background:#fff;display:block}
+  .board{box-shadow:none;width:100%!important;height:auto!important}
+  #printSheet{display:block!important}
+  .board{display:none}
+}
+#printSheet{display:none}
+/* ── 새 디자인: 모자이크 타일 공방 (어두운 석판 · 타일 모양 · 오른쪽 도구함) ── */
+:root{--ink:#e8f1ff;--paper:#1e2a44;--accent:#22d3ee}
+body{background:#0f1830;background-image:linear-gradient(rgba(34,211,238,.06) 2px,transparent 2px),linear-gradient(90deg,rgba(34,211,238,.06) 2px,transparent 2px);background-size:34px 34px;color:#e8f1ff}
+.app{grid-template-columns:minmax(0,1fr) auto}
+.top{background:#0a1226;color:#e8f1ff;border-bottom:4px solid #22d3ee}
+.top h1{font-size:clamp(18px,2.8vw,30px)}.top h1 em{color:#22d3ee}
+.mode button{background:#1e2a44;color:#e8f1ff;border:2px solid #334a7a;border-radius:6px}.mode button.on{background:#22d3ee;color:#0a1226;border-color:#22d3ee}
+.tb{background:#1e2a44;color:#e8f1ff;border:2px solid #334a7a;border-radius:6px}.tb.save{background:#f472b6;color:#0a1226;border-color:#f472b6}
+.side{grid-column:2;border-right:0;border-left:4px solid #22d3ee;background:#16213a;color:#e8f1ff;width:clamp(210px,24vw,300px)}
+.stage{grid-column:1;background:radial-gradient(circle at 50% 40%,#1b2a4c,#0d1630)}
+.board{box-shadow:0 0 0 6px #334a7a,0 0 0 9px #22d3ee,0 0 40px rgba(34,211,238,.35)}
+.grp h3{color:#7dd3fc;letter-spacing:.06em}
+.seg button,.mode button,.tools button{background:#1e2a44;color:#e8f1ff;border:2px solid #334a7a;border-radius:6px}
+.seg button.on{background:#22d3ee;color:#0a1226;border-color:#22d3ee}
+.pal button{border:3px solid #0a1226;border-radius:8px}.pal button.on{box-shadow:0 0 0 3px #22d3ee}
+.drop{background:#1e2a44;border:3px dashed #22d3ee;color:#e8f1ff;border-radius:10px}
+.chk{color:#cfe2ff}
+.hint{color:#9fb7e6}
+.maker{left:12px;right:auto;bottom:4px;color:rgba(232,241,255,.55)}
+@media (max-width:760px),(max-aspect-ratio:4/5){.app{grid-template-columns:1fr}.side{grid-column:1;border-left:0;border-top:4px solid #22d3ee;width:auto}.stage{grid-column:1}}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <h1>🧩 모자이크 <em>메이커</em></h1>
+    <div class="mode"><button data-m="pixel" class="on">✏️ 픽셀 그리기</button><button data-m="photo">🖼️ 사진 → 도안</button></div>
+    <div class="sp"></div>
+    <button class="tb" id="undo">↶</button>
+    <button class="tb" id="clear">🗑️</button>
+    <button class="tb" id="print">🖨️ 인쇄</button>
+    <button class="tb save" id="save">💾 저장</button>
+  </div>
+  <div class="side">
+    <div class="grp"><h3>칸 수</h3><div class="seg" id="sizes"></div></div>
+    <div class="grp" id="photoGrp"><h3>사진 넣기</h3><label class="drop" id="drop">📷 여기를 눌러 사진을 고르거나<br>사진을 끌어다 놓아요<input type="file" id="file" accept="image/*"></label>
+      <div style="margin-top:8px"><h3>색 개수</h3><div class="seg" id="ncol"></div></div></div>
+    <div class="grp" id="toolGrp"><h3>도구</h3><div class="seg" id="tools"></div></div>
+    <div class="grp"><h3>색 <small id="palNote"></small></h3><div class="pal" id="pal"></div></div>
+    <div class="grp"><h3>보기</h3><label class="chk"><input type="checkbox" id="showNum" checked> 숫자 도안으로 보기 (끄면 색으로 미리보기)</label><label class="chk"><input type="checkbox" id="showGrid" checked> 칸 선 보이기</label></div>
+    <div class="grp" id="legendGrp"><h3>도안 색 번호</h3><div class="legend" id="legend"></div></div>
+  </div>
+  <div class="stage" id="stage"><div class="board" id="board"><canvas id="cv"></canvas></div><div class="hint" id="hint"></div><div id="printSheet"></div></div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="maker">제작 : 비춤이샘</div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const BASE=['#1B1B1B','#FFFFFF','#9AA5B1','#E63946','#FF7F50','#FFB703','#FFE66D','#8AC926','#2A9D8F','#06AED5','#1D4ED8','#7209B7','#F15BB5','#9C6644','#F4D6B5','#FFC8DD','#BDE0FE','#D0F4DE'];
+let mode='pixel',N=24,grid=[],pal=BASE.slice(),cur=3,tool='pen',ncol=8,showNum=false,showGrid=true,photo=null;
+const undo=[];
+const cv=$('cv'),ctx=cv.getContext('2d');
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),1800);}
+function fit(){const r=$('stage').getBoundingClientRect(),s=Math.min(r.width-30,r.height-60);$('board').style.width=$('board').style.height=Math.max(100,s)+'px';draw();}
+new ResizeObserver(fit).observe($('stage'));
+function reset(){grid=Array.from({length:N},()=>Array(N).fill(-1));undo.length=0;}
+/* ---------- 그리기 ---------- */
+function draw(){
+  const px=Math.round($('board').clientWidth*devicePixelRatio)||600;cv.width=cv.height=px;const c=px/N;
+  ctx.fillStyle='#fff';ctx.fillRect(0,0,px,px);
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){const v=grid[y][x];
+    if(v>=0){ctx.fillStyle=showNum&&mode==='photo'?'#fff':pal[v];ctx.fillRect(x*c,y*c,c+.5,c+.5);}
+    else if(mode==='pixel'&&(x+y)%2){ctx.fillStyle='#F4F6F8';ctx.fillRect(x*c,y*c,c,c);}
+    if(showNum&&mode==='photo'&&v>=0){ctx.fillStyle='#333';ctx.font=`${Math.max(7,c*.5)}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v+1,x*c+c/2,y*c+c/2+1);}
+  }
+  if(showGrid){ctx.strokeStyle='rgba(0,0,0,.18)';ctx.lineWidth=Math.max(1,devicePixelRatio*.6);for(let i=0;i<=N;i++){ctx.beginPath();ctx.moveTo(i*c,0);ctx.lineTo(i*c,px);ctx.stroke();ctx.beginPath();ctx.moveTo(0,i*c);ctx.lineTo(px,i*c);ctx.stroke();}
+    ctx.strokeStyle='rgba(0,0,0,.35)';for(let i=0;i<=N;i+=5){ctx.beginPath();ctx.moveTo(i*c,0);ctx.lineTo(i*c,px);ctx.stroke();ctx.beginPath();ctx.moveTo(0,i*c);ctx.lineTo(px,i*c);ctx.stroke();}}
+}
+function uiPal(){
+  $('pal').innerHTML=pal.map((c,i)=>`<button data-i="${i}" class="${i===cur?'on':''}" style="background:${c}">${mode==='photo'?i+1:''}</button>`).join('');
+  $('legend').innerHTML=mode==='photo'?pal.map((c,i)=>`<span><i style="background:${c}">${i+1}</i>${i+1}번</span>`).join(''):'';
+  $('legendGrp').classList.toggle('hidden',mode!=='photo');
+  $('palNote').textContent=mode==='photo'?'(사진에서 뽑은 색)':'';
+}
+function uiAll(){
+  $('sizes').innerHTML=[16,24,32,48,64].map(n=>`<button data-n="${n}" class="${n===N?'on':''}">${n}×${n}</button>`).join('');
+  $('ncol').innerHTML=[4,6,8,10,12,16].map(n=>`<button data-n="${n}" class="${n===ncol?'on':''}">${n}색</button>`).join('');
+  $('tools').innerHTML=[['pen','✏️ 칠하기'],['erase','🧽 지우기'],['fill','🪣 채우기'],['mirror','🪞 좌우 대칭'],['pick','💧 색 뽑기']].map(([k,l])=>`<button data-k="${k}" class="${k===tool?'on':''}">${l}</button>`).join('');
+  $('photoGrp').classList.toggle('hidden',mode!=='photo');
+  $('hint').textContent=mode==='pixel'?'칸을 누르거나 쓱 문질러 색칠해요':(photo?'숫자 색칠 도안이 만들어졌어요. 인쇄해서 색칠해 봐요!':'왼쪽에서 사진을 골라요');
+  document.querySelectorAll('.mode button').forEach(b=>b.classList.toggle('on',b.dataset.m===mode));
+  $('showNum').checked=showNum;
+  uiPal();
+}
+document.querySelector('.mode').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;mode=b.dataset.m;
+  if(mode==='pixel'){pal=BASE.slice();cur=3;showNum=false;reset();}else{showNum=true;if(photo)convert();else reset();}
+  uiAll();draw();};
+$('sizes').onclick=e=>{const b=e.target.closest('[data-n]');if(!b)return;if(mode==='pixel'&&grid.flat().some(v=>v>=0)&&!confirm('칸 수를 바꾸면 그림이 지워져요. 바꿀까요?'))return;N=+b.dataset.n;reset();if(mode==='photo'&&photo)convert();uiAll();draw();};
+$('ncol').onclick=e=>{const b=e.target.closest('[data-n]');if(!b)return;ncol=+b.dataset.n;if(photo)convert();uiAll();draw();};
+$('tools').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;tool=b.dataset.k;uiAll();};
+$('pal').onclick=e=>{const b=e.target.closest('[data-i]');if(!b)return;cur=+b.dataset.i;if(tool==='erase'||tool==='pick'){tool='pen';}uiAll();};
+$('showNum').onchange=()=>{showNum=$('showNum').checked;draw();};
+$('showGrid').onchange=()=>{showGrid=$('showGrid').checked;draw();};
+/* ---------- 칠하기 ---------- */
+function cell(e){const r=cv.getBoundingClientRect();const x=Math.floor((e.clientX-r.left)/r.width*N),y=Math.floor((e.clientY-r.top)/r.height*N);return x>=0&&y>=0&&x<N&&y<N?[x,y]:null;}
+function set(x,y,v){grid[y][x]=v;if(tool==='mirror')grid[y][N-1-x]=v;}
+function flood(x,y,v){const t=grid[y][x];if(t===v)return;const st=[[x,y]];while(st.length){const [a,b]=st.pop();if(a<0||b<0||a>=N||b>=N||grid[b][a]!==t)continue;grid[b][a]=v;st.push([a+1,b],[a-1,b],[a,b+1],[a,b-1]);}}
+let down=false;
+cv.addEventListener('pointerdown',e=>{e.preventDefault();const c=cell(e);if(!c)return;try{cv.setPointerCapture(e.pointerId);}catch(_){}undo.push(grid.map(r=>r.slice()));if(undo.length>30)undo.shift();
+  if(tool==='fill'){flood(c[0],c[1],cur);draw();return;}
+  if(tool==='pick'){const v=grid[c[1]][c[0]];if(v>=0){cur=v;tool='pen';uiAll();}return;}
+  down=true;set(c[0],c[1],tool==='erase'?-1:cur);draw();});
+cv.addEventListener('pointermove',e=>{if(!down)return;const c=cell(e);if(!c)return;const v=tool==='erase'?-1:cur;if(grid[c[1]][c[0]]!==v){set(c[0],c[1],v);draw();}});
+const up=()=>down=false;cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+$('undo').onclick=()=>{if(undo.length){grid=undo.pop();draw();}};
+$('clear').onclick=()=>{if(confirm('모두 지울까요?')){reset();if(mode==='photo'){photo=null;uiAll();}draw();}};
+/* ---------- 사진 → 도안 ---------- */
+function loadFile(f){if(!f||!f.type.startsWith('image/'))return;const img=new Image();img.onload=()=>{photo=img;mode='photo';showNum=true;convert();uiAll();draw();toast('도안을 만들었어요!');};img.src=URL.createObjectURL(f);}
+$('file').onchange=()=>loadFile($('file').files[0]);
+$('drop').addEventListener('dragover',e=>{e.preventDefault();});
+document.addEventListener('dragover',e=>e.preventDefault());
+document.addEventListener('drop',e=>{e.preventDefault();loadFile(e.dataTransfer.files[0]);});
+function convert(){
+  const s=Math.min(photo.width,photo.height),sx=(photo.width-s)/2,sy=(photo.height-s)/2;
+  const t=document.createElement('canvas');t.width=t.height=N;const tc=t.getContext('2d');tc.imageSmoothingQuality='high';tc.drawImage(photo,sx,sy,s,s,0,0,N,N);
+  const d=tc.getImageData(0,0,N,N).data,px=[];for(let i=0;i<N*N;i++)px.push([d[i*4],d[i*4+1],d[i*4+2]]);
+  // k-평균으로 대표 색 뽑기
+  let cent=[];for(let k=0;k<ncol;k++)cent.push(px[Math.floor((k+.5)/ncol*px.length*.999)].slice());
+  const lum=c=>c[0]*.3+c[1]*.59+c[2]*.11;const sorted=px.slice().sort((a,b)=>lum(a)-lum(b));cent=cent.map((_,k)=>sorted[Math.floor((k+.5)/ncol*sorted.length)].slice());
+  let asg=new Array(px.length).fill(0);
+  for(let it=0;it<14;it++){
+    for(let i=0;i<px.length;i++){let b=0,bd=1e9;for(let k=0;k<ncol;k++){const c=cent[k],dd=(px[i][0]-c[0])**2*.3+(px[i][1]-c[1])**2*.59+(px[i][2]-c[2])**2*.11;if(dd<bd){bd=dd;b=k;}}asg[i]=b;}
+    const sum=cent.map(()=>[0,0,0,0]);for(let i=0;i<px.length;i++){const s2=sum[asg[i]];s2[0]+=px[i][0];s2[1]+=px[i][1];s2[2]+=px[i][2];s2[3]++;}
+    cent=cent.map((c,k)=>sum[k][3]?[sum[k][0]/sum[k][3],sum[k][1]/sum[k][3],sum[k][2]/sum[k][3]]:c);
+  }
+  const order=cent.map((c,k)=>k).sort((a,b)=>lum(cent[b])-lum(cent[a]));const rank=[];order.forEach((k,i)=>rank[k]=i);
+  pal=order.map(k=>'#'+cent[k].map(v=>Math.round(v).toString(16).padStart(2,'0')).join(''));
+  grid=Array.from({length:N},(_,y)=>Array.from({length:N},(_,x)=>rank[asg[y*N+x]]));cur=0;
+}
+/* ---------- 저장 / 인쇄 ---------- */
+function render(sz,numbers){const c=document.createElement('canvas');c.width=c.height=sz;const x=c.getContext('2d'),s=sz/N;x.fillStyle='#fff';x.fillRect(0,0,sz,sz);
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){const v=grid[j][i];if(v<0)continue;x.fillStyle=numbers?'#fff':pal[v];x.fillRect(i*s,j*s,s+.5,s+.5);if(numbers){x.fillStyle='#444';x.font=`${Math.max(8,s*.5)}px sans-serif`;x.textAlign='center';x.textBaseline='middle';x.fillText(v+1,i*s+s/2,j*s+s/2+1);}}
+  if(numbers||showGrid){x.strokeStyle=numbers?'#999':'rgba(0,0,0,.18)';x.lineWidth=1;for(let k=0;k<=N;k++){x.beginPath();x.moveTo(k*s,0);x.lineTo(k*s,sz);x.stroke();x.beginPath();x.moveTo(0,k*s);x.lineTo(sz,k*s);x.stroke();}}
+  return c;}
+$('save').onclick=()=>{const c=render(1200,mode==='photo'&&showNum);const d=new Date();c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`모자이크_${d.getMonth()+1}월${d.getDate()}일_${d.getHours()}시${d.getMinutes()}분.png`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);toast('저장했어요! (다운로드 폴더)');});};
+$('print').onclick=()=>{
+  const numbers=mode==='photo';
+  const sheet=$('printSheet');
+  sheet.innerHTML=`<div style="font-family:Jua,sans-serif;padding:10px"><h2 style="margin:0 0 6px">🧩 ${numbers?'숫자 색칠 모자이크 도안':'픽셀 아트'} <small style="font-size:14px;color:#666">이름: ______________</small></h2>
+    <img src="${render(1400,numbers).toDataURL()}" style="width:100%;max-width:180mm;display:block">
+    ${numbers?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${pal.map((c,i)=>`<span style="display:flex;align-items:center;gap:4px;font-size:14px"><i style="display:inline-block;width:22px;height:22px;background:${c};border:1px solid #333;-webkit-print-color-adjust:exact;print-color-adjust:exact"></i>${i+1}번</span>`).join('')}</div>`:''}
+    <div style="font-size:11px;color:#888;margin-top:6px">제작 : 비춤이샘</div></div>`;
+  setTimeout(()=>window.print(),300);
+};
+reset();uiAll();fit();
+window.__mm={convertFrom:url=>{const img=new Image();img.onload=()=>{photo=img;mode='photo';showNum=true;convert();uiAll();draw();};img.src=url;}};
+})();
+</script>
+</body>
+</html>
