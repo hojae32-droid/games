@@ -1309,3 +1309,12 @@ mk('fruitmarket','Kirang Haerang','family=Kirang+Haerang&family=Gowun+Dodum','#f
 .fire,.wz-next{border-radius:999px;font-size:34px}
 .qbox.ask{border:3px solid #7c2d12;border-radius:20px;box-shadow:0 5px 0 #9a3412;background:#fffdf4}
 """,rad='20px',veil='rgba(124,45,18,.62)',bw='3px')
+
+mk('palette','Jua','family=Jua&family=Gowun+Dodum','#fffaf0','#3b2a50','#ffffff','#ef4444','#3b82f6','#ef4444','#4c1d95','#6d28d9',
+ extra="""body{background:#fffaf0;background-image:radial-gradient(circle at 10% 15%,#fecaca 0 50px,transparent 52px),radial-gradient(circle at 90% 20%,#bfdbfe 0 70px,transparent 72px),radial-gradient(circle at 85% 85%,#fef08a 0 60px,transparent 62px),radial-gradient(circle at 12% 88%,#bbf7d0 0 80px,transparent 82px),radial-gradient(circle at 50% 50%,#e9d5ff 0 40px,transparent 42px)}
+.sign h1{text-shadow:0 4px 0 #4c1d95;-webkit-text-stroke:2px #4c1d95;color:#fff;background:linear-gradient(90deg,#ef4444,#f59e0b,#22c55e,#3b82f6,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 4px 0 #4c1d95)}
+.sign .sub{border:3px solid #4c1d95;background:#fff;color:#3b2a50;box-shadow:0 4px 0 #6d28d9;border-radius:999px}
+.chip{border-radius:16px}.chip.sel{box-shadow:0 5px 0 #4c1d95}
+.fire,.wz-next{border-radius:999px;font-size:34px}
+.qbox.ask{border:3px solid #4c1d95;border-radius:20px;box-shadow:0 5px 0 #6d28d9}
+""",rad='20px',veil='rgba(76,29,149,.6)',bw='3px')
