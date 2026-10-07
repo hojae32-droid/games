@@ -945,3 +945,35 @@ body{background:#fff1cf;background-image:radial-gradient(circle,#ffe2a1 2.5px,tr
 .qbox.ask{border:3px solid #1f3b4d;border-radius:18px;font-size:clamp(20px,min(6cqw,4.3dvh),34px);box-shadow:0 5px 0 #1f3b4d}
 .res-title{text-shadow:0 4px 0 #1f3b4d}
 """)
+
+# 계절 돌림판: 계절 놀이공원 (포스터 느낌)
+skin('seasonpark','Poor Story','Gowun Dodum','family=Poor+Story&family=Gowun+Dodum',dict(
+ page='#e9f7ff',ink='#2b3a55',sub='#5b7090',line='#2b3a55',bw='3px',card='#ffffff',cardInk='#2b3a55',hl='#ff6b8b',stage='#cfeaff',
+ shCard='0 6px 0 #2b3a55',shBtn='0 4px 0 #2b3a55',shDown='0 1px 0 #2b3a55',shGo='0 7px 0 #b3203f',rad='24px',rads='16px',
+ tagBg='#ff6b8b',tagInk='#fff',chipBg='#f4fbff',chipLine='#2b3a55',sub2='#5b7090',acc='#3bb273',accInk='#fff',accLine='#1f7a4d',accSub='#eafff3',go='#ff6b8b',goInk='#fff',hud='#2b3a55',
+ prog='linear-gradient(90deg,#8bd36b,#3ba7e8,#f39a3d,#b9d7f2)',qbg='#ffffff',qink='#2b3a55',veil='rgba(43,58,85,.6)',track='#d4e9f7',title='#fff',title1='#fff',title2='#fff',noR='50%',dInk='#2b3a55'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#e9f7ff;background-image:linear-gradient(135deg,#ffd1dc 0 25%,#fff3b0 25% 50%,#ffc999 50% 75%,#cfeaff 75%);background-size:100% 100%}
+.sign h1{text-shadow:0 4px 0 #2b3a55,0 8px 0 rgba(43,58,85,.25);-webkit-text-stroke:2px #2b3a55}
+.sign .sub{border:3px solid #2b3a55;background:#fff;color:#2b3a55;box-shadow:0 4px 0 #2b3a55}
+.chip{border-radius:20px}.chip.sel{box-shadow:0 5px 0 #1f7a4d}
+.fire,.wz-next{border-radius:999px;font-size:34px}
+.qbox.ask{border:3px solid #2b3a55;border-radius:20px;font-size:clamp(18px,min(5.4cqw,4dvh),31px);box-shadow:0 5px 0 #2b3a55}
+.res-title{text-shadow:0 4px 0 #2b3a55}
+""")
+
+# 한 칸씩 계단 오르기: 구름 위 성
+skin('cloudcastle','Cute Font','Gowun Dodum','family=Cute+Font&family=Gowun+Dodum',dict(
+ page='#efe8ff',ink='#3b2f6b',sub='#6b5fa0',line='#3b2f6b',bw='3px',card='#ffffff',cardInk='#3b2f6b',hl='#ff5fa2',stage='#d9ccff',
+ shCard='0 6px 0 #5b46b8',shBtn='0 4px 0 #5b46b8',shDown='0 1px 0 #5b46b8',shGo='0 7px 0 #b0286b',rad='26px',rads='16px',
+ tagBg='#ff5fa2',tagInk='#fff',chipBg='#f8f4ff',chipLine='#5b46b8',sub2='#6b5fa0',acc='#7c5cff',accInk='#fff',accLine='#4a35b0',accSub='#ece6ff',go='#ff5fa2',goInk='#fff',hud='#4a35b0',
+ prog='linear-gradient(90deg,#ffd6e8,#7c5cff)',qbg='#ffffff',qink='#3b2f6b',veil='rgba(59,47,107,.62)',track='#e0d6ff',title='#fff',title1='#fff',title2='#ffe3f1',noR='50%',dInk='#3b2f6b'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#efe8ff;background-image:radial-gradient(ellipse at 20% 12%,#fff 0 6%,transparent 7%),radial-gradient(ellipse at 28% 12%,#fff 0 5%,transparent 6%),radial-gradient(ellipse at 78% 22%,#fff 0 7%,transparent 8%),radial-gradient(ellipse at 86% 22%,#fff 0 5%,transparent 6%),linear-gradient(180deg,#a8d4ff,#e9d9ff 60%,#ffd9ec)}
+.sign h1{text-shadow:0 4px 0 #5b46b8,0 8px 0 rgba(91,70,184,.25);-webkit-text-stroke:2px #5b46b8}
+.sign .sub{border:3px solid #5b46b8;background:#fff;color:#3b2f6b;box-shadow:0 4px 0 #5b46b8}
+.chip{border-radius:22px}.chip.sel{box-shadow:0 5px 0 #4a35b0}
+.fire,.wz-next{border-radius:999px;font-size:34px}
+.qbox.ask{border:3px solid #5b46b8;border-radius:22px;font-size:clamp(18px,min(5.4cqw,4dvh),31px);box-shadow:0 5px 0 #5b46b8}
+.res-title{text-shadow:0 4px 0 #5b46b8}
+""")
