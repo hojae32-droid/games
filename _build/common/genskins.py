@@ -1228,3 +1228,12 @@ mk('potion','Do Hyeon','family=Do+Hyeon&family=Gowun+Dodum','#2a1250','#f5e9ff',
 .fire,.wz-next{border-radius:999px;font-size:32px}
 .qbox.ask{border:3px solid #a3e635;border-radius:18px;background:#3f2178;color:#f5e9ff;box-shadow:0 0 14px rgba(163,230,53,.45)}
 """,rad='20px',veil='rgba(21,8,41,.76)',sub='#e9d5ff',bw='3px',chip='#4c2a94',chipLine='#7c3aed',tag='#a3e635',tagInk='#150829',dInk='#150829',accInk='#150829',goInk='#150829')
+
+mk('auction','Stylish','family=Stylish&family=Gowun+Batang','#4a0d1a','#fff1c9','#6e1426','#facc15','#b91c1c','#facc15','#2a060e','#1f040a',
+ extra="""body{background:#4a0d1a;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 24px,rgba(255,255,255,.03) 24px 48px),radial-gradient(ellipse at 50% 0,rgba(250,204,21,.28),transparent 55%)}
+.sign h1{color:#ffe9a8;text-shadow:0 0 16px rgba(250,204,21,.7),0 4px 0 #1f040a;letter-spacing:.04em}
+.sign .sub{border:3px solid #facc15;background:#2a060e;color:#ffe9a8;box-shadow:0 0 12px rgba(250,204,21,.5);border-radius:4px}
+.chip{border-radius:4px;border-color:#facc15}.chip.sel{box-shadow:0 0 16px #facc15}
+.fire,.wz-next{border-radius:6px;font-size:30px}
+.qbox.ask{border:3px solid #facc15;border-radius:4px;background:#2a060e;color:#ffe9a8;box-shadow:0 0 14px rgba(250,204,21,.45)}
+""",rad='8px',veil='rgba(31,4,10,.76)',sub='#ffe9a8',bw='3px',chip='#7a1a30',chipLine='#facc15',tag='#facc15',tagInk='#2a060e',dInk='#2a060e',accInk='#fff',goInk='#2a060e')
