@@ -864,3 +864,19 @@ body{background:#ffe9d2;background-image:linear-gradient(180deg,#ff9a62,#ffd9a8 
 .qbox.ask{border:3px solid #9a3412;border-radius:16px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:0 5px 0 #9a3412}
 .res-title{text-shadow:0 4px 0 #9a3412}
 """)
+
+# 지구본: 깊은 우주 + 놋쇠(황동) 아틀라스
+skin('atlas','Black And White Picture','Gowun Dodum','family=Black+And+White+Picture&family=Gowun+Dodum',dict(
+ page='#050b1f',ink='#f6e7b4',sub='#9fb4d9',line='#c89b3c',bw='2px',card='#0f1d3f',cardInk='#f6e7b4',hl='#ffd166',stage='#0a1633',
+ shCard='0 5px 0 #6b4e16',shBtn='0 4px 0 #6b4e16',shDown='0 1px 0 #6b4e16',shGo='0 6px 0 #8a5a00',rad='14px',rads='10px',
+ tagBg='#c89b3c',tagInk='#1a1204',chipBg='#14264f',chipLine='#3b5188',sub2='#9fb4d9',acc='#c89b3c',accInk='#1a1204',accLine='#ffe08a',accSub='#3b2a06',go='#ffd166',goInk='#1a1204',hud='#07112b',
+ prog='linear-gradient(90deg,#c89b3c,#ffe08a)',qbg='rgba(10,20,48,.96)',qink='#f6e7b4',veil='rgba(3,8,24,.7)',track='#1d2d57',title='#ffe08a',title1='#9fb4d9',title2='#fff',noR='8px',dInk='#14264f'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400;letter-spacing:.02em}
+body{background:#050b1f;background-image:radial-gradient(circle at 20% 15%,rgba(255,224,138,.10),transparent 28%),radial-gradient(circle at 80% 80%,rgba(80,140,255,.14),transparent 35%),radial-gradient(1px 1px at 12% 30%,#fff8,transparent),radial-gradient(1px 1px at 70% 20%,#fff8,transparent),radial-gradient(1.5px 1.5px at 40% 75%,#fff8,transparent),radial-gradient(1px 1px at 88% 55%,#fff8,transparent)}
+.sign h1{text-shadow:0 3px 0 #6b4e16,0 10px 24px rgba(255,200,80,.35)}
+.sign .sub{border:1px solid #c89b3c;background:#0f1d3f;color:#ffe08a;box-shadow:0 3px 0 #6b4e16}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 4px 0 #6b4e16}
+.fire,.wz-next{border-radius:12px;font-size:30px}
+.qbox.ask{border:2px solid #c89b3c;border-radius:12px;font-size:clamp(17px,min(5cqw,3.7dvh),29px);box-shadow:0 4px 0 #6b4e16}
+.res-title{text-shadow:0 3px 0 #6b4e16}
+""")
