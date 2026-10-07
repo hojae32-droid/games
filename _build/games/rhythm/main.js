@@ -62,14 +62,14 @@ const GAME={
       st.sched+=spb;}},
   update(p,dt){const st=p.state;if(!st.started)return;st.T+=dt;st.clk+=dt;M.decay(st,dt);if(st.judgeT>0)st.judgeT-=dt;if(st.flash>0)st.flash-=dt*3;const G=this.geo(p);this.schedule(p);
     const beatNow=st.clk/st.spb;while((st.nextBar-beatNow)*G.ppb<G.lane.w*1.6)this.addBar(p);
-    for(const n of st.notes){if(!n.hit&&!n.rest&&!n.missed&&st.clk-n.t>.15){n.missed=true;st.streak=0;this.judge(p,'놓쳤어요','miss');p.hit(false,{review:'박자에 맞춰 치지 못했어요 · '+LV[p.levelId].met+'/4박자 ♩='+LV[p.levelId].bpm,tip:undefined,quiet:true});}}
+    for(const n of st.notes){if(!n.hit&&!n.rest&&!n.missed&&st.clk-n.t>.15){n.missed=true;st.streak=0;this.judge(p,'놓쳤어요','miss');p.hit(false,{pen:8,shake:false,review:'박자에 맞춰 치지 못했어요 · '+LV[p.levelId].met+'/4박자 ♩='+LV[p.levelId].bpm,tip:undefined,quiet:true});}}
     st.notes=st.notes.filter(n=>st.clk-n.t<st.spb*LV[p.levelId].met*2);st.fx=st.fx.filter(f=>(f.t+=dt)<.6);},
   judge(p,txt,cls){const st=p.state;st.judge=txt;st.judgeC=cls;st.judgeT=.7;},
   tap(p){const st=p.state;if(!st.started||!p.active)return;const G=this.geo(p);M.press(st,'d',.12);M.hit('clap',null,.5,{vol:M.vol(p)*.9});st.hitN++;const t=st.clk;let best=null,bd=1;for(const n of st.notes){if(n.hit||n.rest||n.missed)continue;const d=Math.abs(n.t-t);if(d<bd){bd=d;best=n;}}
     const px=G.lineX,py=G.lane.y;
     if(best&&bd<=.075){best.hit=true;best.q='perfect';st.streak++;st.okN++;this.judge(p,'딱 맞아요!','perfect');p.hit(true,{pts:30,x:px,y:py,quiet:true});st.flash=1;for(let k=0;k<8;k++)st.fx.push({x:px,y:G.lane.y+G.lane.h*.5,a:k/8*TAU,t:0});this.combo(p);}
     else if(best&&bd<=.15){best.hit=true;best.q='good';st.streak++;st.okN++;this.judge(p,'좋아요','good');p.hit(true,{pts:15,x:px,y:py,quiet:true});this.combo(p);}
-    else if(t>-.2){const inRest=st.notes.some(n=>n.rest&&t>=n.t-.05&&t<n.t+n.len*st.spb-.05);st.streak=0;this.judge(p,inRest?'쉿! 쉼표예요':'박자가 어긋났어요','off');p.hit(false,{review:inRest?'쉼표에서는 치지 않고 쉬어요':'음표가 노란 선에 닿는 순간에 쳐요',quiet:true});}},
+    else if(t>-.2){const inRest=st.notes.some(n=>n.rest&&t>=n.t-.05&&t<n.t+n.len*st.spb-.05);st.streak=0;this.judge(p,inRest?'쉿! 쉼표예요':'박자가 어긋났어요','off');p.hit(false,{pen:8,shake:false,review:inRest?'쉼표에서는 치지 않고 쉬어요':'음표가 노란 선에 닿는 순간에 쳐요',quiet:true});}},
   combo(p){const st=p.state;if(st.streak>0&&st.streak%8===0){p.hit(true,{pts:20,x:p.W/2,y:this.geo(p).lane.y,tip:'🔥 '+st.streak+'연속! +20',tipMs:900});}},
   down(p,x,y){this.tap(p);},
   key(p,e){if(e.code==='Space'||e.key==='j'||e.key==='f'){e.preventDefault&&e.preventDefault();this.tap(p);}},

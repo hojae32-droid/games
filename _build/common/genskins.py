@@ -1099,3 +1099,13 @@ mk('stagelight','Bagel Fat One','family=Bagel+Fat+One&family=Gowun+Dodum','#ffe9
 .chip{border-radius:18px}.fire,.wz-next{border-radius:999px;font-size:34px}
 .qbox.ask{border:3px solid #8a2f0a;border-radius:18px;box-shadow:0 5px 0 #8a2f0a}
 """,rad='22px',veil='rgba(74,29,10,.62)',bw='3px')
+
+mk('gugak','Hahmlet','family=Hahmlet:wght@700;900&family=Gowun+Batang','#f3e7cf','#2b1b12','#fff9ec','#c1272d','#1d4e89','#c1272d','#2b1b12','#7a5230',
+ extra="""h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:900}
+body{background:#efe0c0;background-image:repeating-linear-gradient(90deg,rgba(150,110,60,.08) 0 2px,transparent 2px 28px),linear-gradient(180deg,#c1272d 0 14px,#1d4e89 14px 22px,#f3e7cf 22px)}
+.sign h1{text-shadow:0 4px 0 #7a5230;letter-spacing:.04em}
+.sign .sub{border:3px double #7a5230;background:#fff9ec;color:#2b1b12;box-shadow:0 4px 0 #7a5230;border-radius:4px}
+.chip{border-radius:6px;border-style:double;border-width:4px}.chip.sel{box-shadow:0 5px 0 #0f2d52}
+.fire,.wz-next{border-radius:8px;font-size:30px}
+.qbox.ask{border:3px double #7a5230;border-radius:6px;box-shadow:0 4px 0 #7a5230;background:#fff9ec}
+""",rad='8px',veil='rgba(43,27,18,.66)',bw='3px',sans='Gowun Batang')
