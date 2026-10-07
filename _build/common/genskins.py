@@ -813,3 +813,20 @@ body{background:#ede9fe;background-image:radial-gradient(circle at 20% 15%,rgba(
 .qbox.ask{border:3px solid #7c3aed;border-radius:20px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:0 5px 0 #c4b5fd}
 .res-title{text-shadow:0 4px 0 #4c1d95}
 """)
+
+# 방위 탐험대: 보물 지도 — 바다색 + 양피지 + 먹갈색
+skin('treasuremap','Gamja Flower','Gowun Dodum','family=Gamja+Flower&family=Gowun+Dodum',dict(
+ page='#e0f0eb',ink='#4a2f12',sub='#7a6342',line='#4a2f12',bw='3px',card='#fffaf0',cardInk='#4a2f12',hl='#0f766e',stage='#bfe0d8',
+ shCard='0 6px 0 #4a2f12',shBtn='0 4px 0 #4a2f12',shDown='0 1px 0 #4a2f12',shGo='0 7px 0 #134e4a',rad='16px',rads='12px',
+ tagBg='#b45309',tagInk='#fff',chipBg='#fdf6e3',chipLine='#4a2f12',sub2='#7a6342',acc='#0f766e',accLine='#134e4a',go='#0f766e',hud='#134e4a',
+ prog='linear-gradient(90deg,#fde68a,#0f766e)',qbg='rgba(255,250,240,.97)',qink='#4a2f12',veil='rgba(19,78,74,.65)',track='#bfe0d8',title='#fff',title1='#fde68a',title2='#fff',noR='8px',scR='10px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#e0f0eb;background-image:radial-gradient(circle at 50% 120%,rgba(180,83,9,.2),transparent 50%),repeating-linear-gradient(0deg,rgba(15,118,110,.07) 0 3px,transparent 3px 22px)}
+.sign h1{text-shadow:0 4px 0 #134e4a,0 8px 16px rgba(0,50,40,.3);letter-spacing:.03em}
+.sign .sub{border:2px dashed #4a2f12;background:#fdf0cf;color:#4a2f12;box-shadow:none}
+.booth{background:#5fb5a8}
+.chip{border-radius:12px}.chip.sel{box-shadow:0 5px 0 #134e4a}
+.fire,.wz-next{border-radius:12px;font-size:32px}
+.qbox.ask{border:3px solid #4a2f12;border-radius:14px;font-size:clamp(17px,min(5.2cqw,3.8dvh),31px);box-shadow:0 5px 0 #4a2f12}
+.res-title{text-shadow:0 4px 0 #134e4a}
+""")

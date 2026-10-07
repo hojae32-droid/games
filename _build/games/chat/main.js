@@ -45,7 +45,7 @@ const GAME={
   make(p,L){const R=p.R,it=p.deck(Q[L],'dk_'+L);const f=FR[Math.floor(R.f()*FR.length)];const ch=R.shuffle([it[1],...it[2]]);return{it,f,text:it[0],ans:it[1],ch,okIdx:ch.indexOf(it[1]),reveal:it[1],note:it[3],review:it[0]+' → '+it[1],speak:it[0]};},
   qtime(){return 16;},askHtml(){return '💬 친구에게 알맞은 답장을 보내요!';},askSub(){return '가장 알맞은 답장을 눌러요';},
   isOk(q,i){return i===q.okIdx;},tipOf(q){return '더 좋은 답장: '+q.ans;},hold(p){return !p.state.ready;},
-  later(p,fn,ms){const st=p.state;st.timers.push(setTimeout(()=>{if(p.active)fn();},ms));},
+  later(p,fn,ms){const st=p.state;st.timers.push(setTimeout(()=>{if(!p.finished)fn();},ms));},
   push(st,o){o.a=0;st.items.push(o);while(st.items.length>10)st.items.shift();},
   onNew(p,q){const st=p.state;st.ready=false;st.f=q.f;const typ={k:'typing',f:q.f};this.push(st,typ);this.later(p,()=>{const i=st.items.indexOf(typ);if(i>=0)st.items.splice(i,1);this.push(st,{k:'in',f:q.f,t:q.text});st.ready=true;p.Snd.tap&&p.Snd.tap();},650);},
   onVerdict(p,q,ok,i,to){const st=p.state;st.ready=false;if(i>=0)this.push(st,{k:'out',t:q.ch[i]});

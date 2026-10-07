@@ -7,7 +7,7 @@ const QZ={
       p.ask((this.askHtml?this.askHtml(q):q.text),this.askSub?this.askSub(q):'');if(this.onNew)this.onNew(p,q);
       if(p.n===1&&q.speak&&o.say)setTimeout(()=>{if(p.active&&st.q===q)QK.say(q.speak);},350);},
     verdict(p,i,timeout){const st=p.state,q=st.q;if(!q||st.lock)return;st.lock=true;st.pick=i;const ok=!timeout&&this.isOk(q,i,p);st.res=ok?'ok':'bad';st.rT=0;st.mood=ok?'happy':'oops';st.mT=1.6;
-      const frac=st.qmax>0?Math.max(0,st.qt/st.qmax):.5;const pts=ok?Math.round((o.pts0||60)+(o.pts1==null?60:o.pts1)*frac):undefined;
+      const frac=st.qmax>0?Math.max(0,st.qt/st.qmax):.5;const pts=ok?(this.ptsOf?this.ptsOf(p,q,frac):Math.round((o.pts0||60)+(o.pts1==null?60:o.pts1)*frac)):undefined;
       if(ok)st.okN=(st.okN||0)+1;
       p.hit(ok,{pts,x:p.W/2,y:(p.top||0)+p.u*3,tip:ok?(this.goodTip?this.goodTip(q):undefined):(timeout?'시간이 다 됐어요! ':'')+(this.tipOf?this.tipOf(q):q.reveal),review:q.review,tipMs:ok?1000:3200,pen:o.pen});
       if(this.onVerdict)this.onVerdict(p,q,ok,i,timeout);
