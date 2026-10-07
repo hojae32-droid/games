@@ -1219,3 +1219,12 @@ mk('lilypond','Gaegu','family=Gaegu:wght@400;700&family=Gowun+Dodum','#d9f7ee','
 .fire,.wz-next{border-radius:999px;font-size:34px;font-weight:700}
 .qbox.ask{border:3px solid #115e59;border-radius:22px;box-shadow:0 5px 0 #0f766e;font-weight:700}
 """,rad='20px',veil='rgba(17,94,89,.6)',bw='3px')
+
+mk('potion','Do Hyeon','family=Do+Hyeon&family=Gowun+Dodum','#2a1250','#f5e9ff','#3f2178','#a3e635','#c084fc','#a3e635','#150829','#12062a',
+ extra="""body{background:#2a1250;background-image:radial-gradient(circle,#fff 0 1.5px,transparent 2px),radial-gradient(circle,#e9d5ff 0 1px,transparent 2px),radial-gradient(ellipse at 50% 110%,rgba(163,230,53,.28),transparent 55%);background-size:120px 120px,70px 70px,auto;background-position:10px 20px,50px 60px,0 0}
+.sign h1{text-shadow:0 0 18px #a3e635,0 4px 0 #150829;color:#f7ffd6}
+.sign .sub{border:3px solid #a3e635;background:#150829;color:#e9ffb3;box-shadow:0 0 12px rgba(163,230,53,.5);border-radius:999px}
+.chip{border-radius:16px;border-color:#7c3aed}.chip.sel{box-shadow:0 0 16px #a3e635}
+.fire,.wz-next{border-radius:999px;font-size:32px}
+.qbox.ask{border:3px solid #a3e635;border-radius:18px;background:#3f2178;color:#f5e9ff;box-shadow:0 0 14px rgba(163,230,53,.45)}
+""",rad='20px',veil='rgba(21,8,41,.76)',sub='#e9d5ff',bw='3px',chip='#4c2a94',chipLine='#7c3aed',tag='#a3e635',tagInk='#150829',dInk='#150829',accInk='#150829',goInk='#150829')
