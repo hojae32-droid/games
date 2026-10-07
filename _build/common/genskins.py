@@ -1183,3 +1183,12 @@ mk('jewel','Single Day','family=Single+Day&family=Gowun+Dodum','#fdeaf6','#6b1d5
 .fire,.wz-next{border-radius:999px;font-size:32px}
 .qbox.ask{border:3px solid #9d174d;border-radius:24px;box-shadow:0 5px 0 #9d174d;font-size:clamp(20px,min(5.8cqw,4.3dvh),34px)}
 """,rad='20px',veil='rgba(131,24,67,.6)',bw='3px')
+
+mk('stitch','Gamja Flower','family=Gamja+Flower&family=Gowun+Dodum','#fff1c9','#134e4a','#fffdf5','#f43f5e','#0d9488','#f43f5e','#115e59','#0f766e',
+ extra="""body{background:#fff1c9;background-image:radial-gradient(circle at 50% 50%,#fde68a 0 5px,transparent 6px),repeating-linear-gradient(45deg,rgba(13,148,136,.07) 0 14px,transparent 14px 28px);background-size:48px 48px,auto}
+.sign h1{text-shadow:0 4px 0 #115e59,0 8px 0 rgba(17,94,89,.2);-webkit-text-stroke:2px #115e59}
+.sign .sub{border:3px dashed #115e59;background:#fffdf5;color:#134e4a;box-shadow:0 4px 0 #0f766e;border-radius:999px}
+.chip{border-radius:16px;border-style:dashed}.chip.sel{box-shadow:0 5px 0 #0f766e}
+.fire,.wz-next{border-radius:999px;font-size:34px}
+.qbox.ask{border:3px dashed #115e59;border-radius:22px;box-shadow:0 5px 0 #0f766e;font-size:clamp(20px,min(5.8cqw,4.3dvh),34px)}
+""",rad='18px',veil='rgba(17,94,89,.6)',bw='3px')
