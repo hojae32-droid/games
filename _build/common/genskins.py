@@ -1073,3 +1073,12 @@ mk('bricks','Black Han Sans','family=Black+Han+Sans&family=Gowun+Dodum','#fff2b8
 .chip{border-radius:10px}.fire,.wz-next{border-radius:12px;font-size:32px}
 .qbox.ask{border:4px solid #1b2a49;border-radius:10px;box-shadow:0 5px 0 #1b2a49;background:#fff}
 """,rad='12px',veil='rgba(27,42,73,.62)',bw='4px')
+
+mk('stardust','Gugi','family=Gugi&family=Gowun+Dodum','#150d38','#fff2c4','#241a5e','#ffd166','#7b5cff','#ff5fa2','#0e0828','#05031a',
+ extra="""body{background:#150d38;background-image:radial-gradient(1.5px 1.5px at 15% 25%,#fff,transparent),radial-gradient(1px 1px at 65% 15%,#fff,transparent),radial-gradient(2px 2px at 80% 60%,#ffd166,transparent),radial-gradient(1px 1px at 35% 80%,#fff,transparent),radial-gradient(ellipse at 70% 20%,rgba(123,92,255,.35),transparent 55%)}
+.sign h1{text-shadow:0 0 18px #7b5cff,0 4px 0 #05031a;font-size:1.1em}
+.sign .sub{border:2px solid #7b5cff;background:#241a5e;color:#ffd166;box-shadow:0 0 14px rgba(123,92,255,.6)}
+.chip{border-radius:12px;border-color:#5a45c8}.chip.sel{box-shadow:0 0 14px #7b5cff}
+.fire,.wz-next{border-radius:12px;font-size:30px}
+.qbox.ask{border:2px solid #7b5cff;border-radius:12px;background:#241a5e;color:#fff2c4;box-shadow:0 0 16px rgba(123,92,255,.5)}
+""",rad='14px',veil='rgba(5,3,26,.72)',sub='#b9acff',bw='2px',chip='#2d2170',chipLine='#5a45c8',tag='#ffd166',tagInk='#150d38')
