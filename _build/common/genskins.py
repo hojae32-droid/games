@@ -1165,3 +1165,12 @@ mk('court','Sunflower','family=Sunflower:wght@300;500;700&family=Gowun+Dodum','#
 .fire,.wz-next{border-radius:10px;font-size:32px}
 .qbox.ask{border:3px solid #1c2a5e;border-radius:8px;box-shadow:0 5px 0 #1c2a5e;background:#fff8ec}
 """,rad='10px',veil='rgba(28,42,94,.62)',bw='3px')
+
+mk('pond','Poor Story','family=Poor+Story&family=Gowun+Dodum','#d4f3ff','#0b4a6f','#ffffff','#f97316','#0284c7','#f97316','#075985','#0369a1',
+ extra="""body{background:linear-gradient(180deg,#bae6fd 0 38%,#38bdf8 38% 100%);background-image:radial-gradient(ellipse 120px 14px at 20% 58%,rgba(255,255,255,.45),transparent 70%),radial-gradient(ellipse 160px 16px at 75% 70%,rgba(255,255,255,.4),transparent 70%),radial-gradient(ellipse 100px 12px at 55% 88%,rgba(255,255,255,.35),transparent 70%),linear-gradient(180deg,#bae6fd 0 38%,#38bdf8 38% 100%)}
+.sign h1{text-shadow:0 4px 0 #075985,0 8px 0 rgba(7,89,133,.22);-webkit-text-stroke:2px #075985}
+.sign .sub{border:3px solid #075985;background:#fff7d6;color:#0b4a6f;box-shadow:0 4px 0 #0369a1;border-radius:999px}
+.chip{border-radius:22px}.chip.sel{box-shadow:0 6px 0 #075985}
+.fire,.wz-next{border-radius:999px;font-size:36px}
+.qbox.ask{border:3px solid #075985;border-radius:26px;box-shadow:0 5px 0 #0369a1;font-size:clamp(20px,min(5.8cqw,4.3dvh),34px)}
+""",rad='24px',veil='rgba(7,89,133,.6)',bw='3px')

@@ -88,7 +88,7 @@ const GAME={
     else{const pc=genPc(R,R.int(4,6));const hole=norm(R.pick(TF)(pc));let piece;do{piece=norm(R.pick(TF)(pc));}while(pkey(piece)===pkey(hole));const wrong=[];let t=0;while(wrong.length<2&&t++<300){const w=norm(R.pick(TF)(mutate(pc,R)));if(!isCong(w,pc)&&!wrong.some(x=>isCong(x,w)))wrong.push(w);}
       q={ty:'cong',hole,pcs:R.shuffle([piece,...wrong]),good:piece};q.m=Math.max(...[q.hole,...q.pcs].map(x=>Math.max(...norm(x).flat())+1));}
     q.text='';q.okIdx=0;q.reveal={line:'대응하는 점은 대칭축에서 같은 거리, 반대쪽에 있어요',point:'대응하는 점은 대칭의 중심에서 같은 거리, 정반대쪽에 있어요',axis:'접었을 때 겹치는 직선이 대칭축이에요',center:'대응하는 점을 이은 선분들이 만나는 점이 대칭의 중심이에요',cong:'모양과 크기가 같은 조각을 돌리고 뒤집으면 꼭 맞아요'}[q.ty];q.review={line:'선대칭도형: 대칭축에서 같은 거리에 반대쪽 점 찍기',point:'점대칭도형: 대칭의 중심에서 같은 거리, 정반대쪽 점 찍기',axis:'선대칭도형의 대칭축 긋기',center:'점대칭도형의 대칭의 중심 찾기',cong:'합동인 조각 찾기(돌리고 뒤집기)'}[q.ty];return q;},
-  qtime(){return LV[this._p.levelId].time;},level(p){this._p=p;return p.levelId;},
+  qtime(){return this._p.levelId==='cong'?LV.cong.time:3600;},practice(id){return id!=='cong';},hold(p){return p.levelId!=='cong';},level(p){this._p=p;return p.levelId;},
   askHtml(q){return {line:(q.axis?'🦋 <b>'+q.axis.name+'</b>을 기준으로 선대칭이 되도록 점을 찍어요':''),point:'🌀 <b>대칭의 중심(●)</b>을 기준으로 점대칭이 되도록 점을 찍어요',axis:'📏 이 도형의 <b>대칭축</b>을 모눈 위에 그어요',center:'🎯 이 도형의 <b>대칭의 중심</b>을 찍어요',cong:'🧩 빈 자리와 <b>합동</b>인 조각을 골라 돌리고 뒤집어 끼워요'}[q.ty];},
   askSub(q){return {line:'모눈의 점을 눌러 찍어요 (다시 누르면 지워져요)',point:'모눈의 점을 눌러 찍어요 (다시 누르면 지워져요)',axis:'모눈의 점에서 점까지 끌어서 직선을 그어요',center:'모눈의 점이나 칸의 가운데를 눌러요',cong:'조각을 고르고 ↻ 돌리기, ⇋ 뒤집기'}[q.ty];},
   isOk(q,i){return i===0;},tipOf(q){return q.reveal;},goodTip(q){return '딱 맞아요! '+q.reveal;},
@@ -161,9 +161,9 @@ const GAME={
     this.btns(p).forEach(b=>{if(b.piece!=null){const pc=q&&q.pcs[b.piece];const on=st.sel===b.piece;K.card(g,b.x,b.y,b.w,b.h,u*.2,on?'#ede9fe':'#fff',{stroke:on?VIO:INK,lw:on?5:3,blur:0,dy:0});if(pc)this.polyomino(g,pc,b.x+b.w/2,b.y+b.h/2,Math.min(b.w,b.h)*.85/(q.m||4),'#c084fc',INK);K.txt(g,String(b.piece+1),b.x+u*.35,b.y+u*.35,{size:u*.4,color:'rgba(59,31,94,.5)'});return;}
       const pr=st.pr['b'+b.id]>0;K.rr(g,b.x,b.y+(pr?u*.05:0),b.w,b.h,u*.25);g.fillStyle=b.col||(b.hl?'#f97316':b.on?'#ede9fe':'#ffffff');g.fill();g.lineWidth=b.on?5:3;g.strokeStyle=b.on?VIO:INK;g.stroke();
       if(b.t)K.txt(g,b.t,b.x+b.w/2,b.y+b.h/2+1,{size:Math.min(b.h*.42,u*.75),color:b.hl?'#fff':INK,maxW:b.w*.9});});
-    if(!st.lock&&st.qmax>0&&L!=='studio'){const bw=Math.min(W*.5,u*10);QZ.bar(g,W/2-bw/2,(p.top||0)+u*.12,bw,Math.max(5,u*.2),st.qt/st.qmax,{good:VIO});}
+    if(!st.lock&&st.qmax>0&&L==='cong'){const bw=Math.min(W*.5,u*10);QZ.bar(g,W/2-bw/2,(p.top||0)+u*.12,bw,Math.max(5,u*.2),st.qt/st.qmax,{good:VIO});}
     if(st.msgT>0&&st.msg)K.txt(g,st.msg,G.panel.x+G.panel.w/2,G.panel.y+G.panel.h-u*.5,{size:Math.min(u*.55,G.panel.w*.07),color:'#fff',stroke:INK,lw:u*.13,maxW:G.panel.w*.98});
-    K.card(g,u*.3,(p.top||0)+u*.5,u*3.6,u*.8,u*.3,'rgba(255,255,255,.92)',{stroke:INK,lw:3,blur:0,dy:0});K.txt(g,L==='studio'?'🎨 작품 '+(st.S.done||0)+'점':'⭐ '+(st.okN||0)+'문제 완성',u*.3+u*1.8,(p.top||0)+u*.9,{size:u*.42,color:INK,maxW:u*3.3});},
+    K.card(g,u*.3,(p.top||0)+u*.5,u*3.6,u*.8,u*.3,'rgba(255,255,255,.92)',{stroke:INK,lw:3,blur:0,dy:0});K.txt(g,L==='studio'?'🎨 작품 '+(st.S.done||0)+'개':'⭐ '+(st.okN||0)+'문제 완성',u*.3+u*1.8,(p.top||0)+u*.9,{size:u*.42,color:INK,maxW:u*3.3});},
   drawGrid(p,g,G){const st=p.state;K.card(g,G.gx0-G.u*.3,G.gy0-G.u*.3,G.gs+G.u*.6,G.gs+G.u*.6,G.u*.25,'#ffffff',{stroke:INK,lw:3,blur:G.u*.2,dy:G.u*.1});
     g.lineWidth=1.2;for(let i=0;i<=N;i++){g.strokeStyle=(i%5===0)?'rgba(124,58,237,.45)':'rgba(124,58,237,.2)';g.beginPath();g.moveTo(this.X(G,i),this.Y(G,0));g.lineTo(this.X(G,i),this.Y(G,N));g.stroke();g.beginPath();g.moveTo(this.X(G,0),this.Y(G,i));g.lineTo(this.X(G,N),this.Y(G,i));g.stroke();}
     g.fillStyle='rgba(124,58,237,.35)';for(let i=0;i<=N;i++)for(let j=0;j<=N;j++){g.beginPath();g.arc(this.X(G,i),this.Y(G,j),Math.max(1.4,G.cs*.045),0,TAU);g.fill();}},
