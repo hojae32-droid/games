@@ -1210,3 +1210,12 @@ mk('depot','Gugi','family=Gugi&family=Gowun+Dodum','#1e3a5f','#fff4cc','#274a75'
 .fire,.wz-next{border-radius:8px;font-size:30px}
 .qbox.ask{border:3px solid #fbbf24;border-radius:6px;background:#0f2238;color:#ffe9a8;box-shadow:0 0 14px rgba(251,191,36,.45)}
 """,rad='10px',veil='rgba(11,28,48,.74)',sub='#ffe9a8',bw='3px',chip='#315b8e',chipLine='#fbbf24',tag='#fbbf24',tagInk='#0f2238',dInk='#0f2238',accInk='#0f2238',goInk='#0f2238')
+
+mk('lilypond','Gaegu','family=Gaegu:wght@400;700&family=Gowun+Dodum','#d9f7ee','#0b4f48','#fbfffd','#ec4899','#0f766e','#ec4899','#115e59','#0f766e',
+ extra="""body{background:#cdf3e6;background-image:radial-gradient(ellipse 80px 38px at 12% 22%,#4ade80 0 98%,transparent 100%),radial-gradient(ellipse 100px 46px at 86% 30%,#34d399 0 98%,transparent 100%),radial-gradient(ellipse 70px 32px at 78% 82%,#4ade80 0 98%,transparent 100%),radial-gradient(ellipse 90px 40px at 18% 86%,#34d399 0 98%,transparent 100%),radial-gradient(circle at 12% 22%,#f9a8d4 0 14px,transparent 15px),radial-gradient(circle at 78% 82%,#f9a8d4 0 12px,transparent 13px)}
+.sign h1{text-shadow:0 4px 0 #115e59,0 8px 0 rgba(17,94,89,.2);-webkit-text-stroke:1.5px #115e59;font-weight:700}
+.sign .sub{border:3px solid #115e59;background:#fff;color:#0b4f48;box-shadow:0 4px 0 #0f766e;border-radius:999px}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 5px 0 #0b4f48}
+.fire,.wz-next{border-radius:999px;font-size:34px;font-weight:700}
+.qbox.ask{border:3px solid #115e59;border-radius:22px;box-shadow:0 5px 0 #0f766e;font-weight:700}
+""",rad='20px',veil='rgba(17,94,89,.6)',bw='3px')
