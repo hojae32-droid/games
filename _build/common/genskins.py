@@ -830,3 +830,20 @@ body{background:#e0f0eb;background-image:radial-gradient(circle at 50% 120%,rgba
 .qbox.ask{border:3px solid #4a2f12;border-radius:14px;font-size:clamp(17px,min(5.2cqw,3.8dvh),31px);box-shadow:0 5px 0 #4a2f12}
 .res-title{text-shadow:0 4px 0 #134e4a}
 """)
+
+# 등고선 깃발 꽂기: 산악 탐험 — 숲 초록 + 나무 갈색 + 깃발 빨강
+skin('summit','Stylish','Gowun Dodum','family=Stylish&family=Gowun+Dodum',dict(
+ page='#e0efe0',ink='#2b2118',sub='#6b5a43',line='#2b2118',bw='3px',card='#fffdf5',cardInk='#2b2118',hl='#b45309',stage='#c9e2cb',
+ shCard='0 6px 0 #5b3a1a',shBtn='0 4px 0 #5b3a1a',shDown='0 1px 0 #5b3a1a',shGo='0 7px 0 #14532d',rad='14px',rads='10px',
+ tagBg='#ef4444',tagInk='#fff',chipBg='#f3f8ee',chipLine='#5b3a1a',sub2='#6b5a43',acc='#166534',accLine='#14532d',go='#166534',hud='#14532d',
+ prog='linear-gradient(90deg,#fbbf24,#166534)',qbg='rgba(255,253,245,.97)',qink='#2b2118',veil='rgba(20,83,45,.65)',track='#c9e2cb',title='#fff',title1='#fde68a',title2='#fff',noR='8px',scR='10px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#e0efe0;background-image:linear-gradient(180deg,#cfe6f5,#e0efe0 50%,#d9c9a3)}
+.sign h1{text-shadow:0 4px 0 #14532d,0 8px 16px rgba(0,50,20,.3);letter-spacing:.03em}
+.sign .sub{border:2px solid #fff;background:rgba(20,83,45,.7);color:#fff;box-shadow:none}
+.booth{background:#4f9a5d}
+.chip{border-radius:10px}.chip.sel{box-shadow:0 5px 0 #14532d}
+.fire,.wz-next{border-radius:10px;font-size:31px}
+.qbox.ask{border:3px solid #5b3a1a;border-radius:12px;font-size:clamp(17px,min(5.2cqw,3.8dvh),31px);box-shadow:0 5px 0 #5b3a1a}
+.res-title{text-shadow:0 4px 0 #14532d}
+""")
