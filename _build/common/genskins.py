@@ -977,3 +977,19 @@ body{background:#efe8ff;background-image:radial-gradient(ellipse at 20% 12%,#fff
 .qbox.ask{border:3px solid #5b46b8;border-radius:22px;font-size:clamp(18px,min(5.4cqw,4dvh),31px);box-shadow:0 5px 0 #5b46b8}
 .res-title{text-shadow:0 4px 0 #5b46b8}
 """)
+
+# 옛날↔오늘날: 시간 여행 (한지 + 유리 도시)
+skin('timetravel','Yeon Sung','Gowun Dodum','family=Yeon+Sung&family=Gowun+Dodum',dict(
+ page='#f4e6c8',ink='#4a2f16',sub='#8a6a3a',line='#4a2f16',bw='3px',card='#fff8e6',cardInk='#4a2f16',hl='#2f80ed',stage='#e8d3a6',
+ shCard='0 6px 0 #4a2f16',shBtn='0 4px 0 #4a2f16',shDown='0 1px 0 #4a2f16',shGo='0 7px 0 #1b4f9c',rad='22px',rads='14px',
+ tagBg='#2f80ed',tagInk='#fff',chipBg='#fff8e6',chipLine='#4a2f16',sub2='#8a6a3a',acc='#2f80ed',accInk='#fff',accLine='#1b4f9c',accSub='#e3f0ff',go='#2f80ed',goInk='#fff',hud='#4a2f16',
+ prog='linear-gradient(90deg,#c9a46a,#2f80ed)',qbg='#fff8e6',qink='#4a2f16',veil='rgba(60,38,16,.62)',track='#e8d3a6',title='#fff',title1='#ffe9bf',title2='#fff',noR='50%',dInk='#4a2f16'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:linear-gradient(90deg,#d9b676 0 50%,#9fd0ff 50%);background-image:linear-gradient(90deg,transparent 49.4%,#fff 49.4% 50.6%,transparent 50.6%),linear-gradient(90deg,#d9b676 0 50%,#9fd0ff 50%)}
+.sign h1{text-shadow:0 4px 0 #4a2f16,0 8px 0 rgba(74,47,22,.25);-webkit-text-stroke:2px #4a2f16}
+.sign .sub{border:3px solid #4a2f16;background:#fff8e6;color:#4a2f16;box-shadow:0 4px 0 #4a2f16}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 5px 0 #1b4f9c}
+.fire,.wz-next{border-radius:999px;font-size:34px}
+.qbox.ask{border:3px solid #4a2f16;border-radius:18px;font-size:clamp(19px,min(5.6cqw,4.1dvh),32px);box-shadow:0 5px 0 #4a2f16}
+.res-title{text-shadow:0 4px 0 #4a2f16}
+""")
