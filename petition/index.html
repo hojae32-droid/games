@@ -1498,7 +1498,7 @@ const GAME={
   how:p=>({office:'<b>공공 기관</b>(경찰서·소방서·행정복지센터)에 서류 보내기',village:'<b>농촌·어촌·산지촌</b> 소식 나누기',city:'<b>도시</b>와 <b>촌락</b> 소식 나누기',rights:'<b>기본권</b>과 <b>국민의 의무</b> 나누기',economy:'<b>가계</b>와 <b>기업</b>의 활동 나누기',power:'<b>국회·정부·법원</b>이 하는 일 나누기'}[p.levelId]),
   theme:{c1:'#2f6f4f',c2:'#c0392b'},hero:heroScene,vignette:.06,durs:[90,150,240],levelTitle:'어느 부서의 서류를 처리할까요?',
   txt:{who:'누가 담당자일까요?',dur:'근무 시간',pace:'한 장 처리 시간',seat:'번 담당자 ',go:'업무 시작!',s1:'1. 부서',s2:'2. 방법',s3:'3. 이름'},
-  levels:DECKS.map(d=>({id:d.key,g:d.tag,t:d.ic+' '+d.label,d:d.desc})),
+  levels:DECKS.map(d=>({id:d.key,g:'4~6학년',t:d.ic+' '+d.label,d:d.tag+' · '+d.desc})),
   summary:`<ul><li><b>공공 기관</b>: 경찰서(안전·범죄 예방), 소방서(불·구조·구급), 행정복지센터(주민 등록·복지)가 우리 생활을 도와줘요.</li>
     <li><b>촌락</b>은 농촌·어촌·산지촌으로 나뉘고, <b>도시</b>는 사람과 건물이 많고 교통이 복잡해요.</li>
     <li>헌법의 <b>기본권</b>(평등·자유·참정·사회권·청구권)과 <b>국민의 의무</b>(국방·납세·교육·근로·환경 보전)를 구분해요.</li>
