@@ -29,12 +29,12 @@ function hero(g,W,H,T,u){K.vgrad(g,0,0,W,H,['#bae6fd','#38bdf8']);g.fillStyle='#
   g.fillStyle='#ef4444';g.beginPath();g.arc(bx,by,u*.3,Math.PI,TAU);g.fill();g.fillStyle='#fff';g.beginPath();g.arc(bx,by,u*.3,0,Math.PI);g.fill();g.strokeStyle=INK;g.lineWidth=2;g.beginPath();g.arc(bx,by,u*.3,0,TAU);g.stroke();
   g.fillStyle='#92400e';g.fillRect(0,H*.3,W*.28,u*.4);g.strokeStyle='#78350f';g.lineWidth=u*.12;g.beginPath();g.moveTo(W*.12,H*.1);g.lineTo(W*.2,H*.1);g.stroke();}
 const GAME={
-  id:'fishlen',title:'꼬마 낚시왕',title1:'동글동글 연못 낚시터',title2:'꼬마 낚시왕',emoji:LOGO,
+  id:'fishlen',title:'꼬마 낚시왕',title1:'연못 낚시터',title2:'꼬마 낚시왕',emoji:LOGO,
   subtitle:'1~2학년 수학 · 비교하기 · 길이 재기',
   howto:'🎣 낚싯대를 던지고 찌가 <b>쏙!</b> 들어가면 당겨요. 잡은 물고기의 <b>길이</b>를 재서 맞히면 양동이에 쏙! <b>황금 물고기</b>는 2배!',
   how:p=>LV[p.levelId].t+' — '+LV[p.levelId].d,
   theme:{c1:'#0284c7',c2:'#f97316'},hero:gkHero(hero),vignette:.03,durs:[120,180,300],levelTitle:'어떤 물고기를 낚을까요?',
-  txt:{who:'누가 낚시왕일까요?',dur:'낚시 시간',pace:'생각하는 시간',seat:'번 낚시꾼 ',go:'낚시 시작!',s1:'1. 낚시터',s2:'2. 방법',s3:'3. 이름'},
+  txt:{who:'누가 낚시왕일까요?',dur:'낚시 시간',pace:'낚는 속도',seat:'번 낚시꾼 ',go:'낚시 시작!',s1:'1. 낚시터',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:v.g,t:v.t,d:v.d})),
   summary:`<ul><li><b>길이 비교</b>: 한쪽 끝을 맞추고 다른 쪽 끝을 보면 어느 것이 더 길고 짧은지 알 수 있어요.</li>
     <li><b>자로 재기</b>: 물건의 한쪽 끝을 자의 눈금 <b>0</b>에 맞추고, 다른 쪽 끝이 가리키는 눈금을 읽어요. 0이 아닌 눈금에서 시작하면 (끝 눈금 − 시작 눈금)이 길이예요.</li>
