@@ -1360,6 +1360,7 @@ mk('signal','Yeon Sung','family=Yeon+Sung&family=Gowun+Dodum','#1b1f2a','#f4f6fb
 .sign .sub{border:3px solid #3ddc84;background:#14171f;color:#c7f7da;box-shadow:0 0 14px rgba(61,220,132,.4);border-radius:999px}
 .chip{border-radius:16px}.chip.sel{box-shadow:0 0 14px rgba(61,220,132,.55)}
 .fire,.wz-next{border-radius:999px;font-size:34px;color:#06240f}
+.clock,body.G-full .phead .sc{background:#0d1017!important;color:#3ddc84!important;box-shadow:inset 0 0 0 2px #3ddc84}.clock b{color:#3ddc84!important}
 .qbox.ask{border:3px solid #ffd54a;border-radius:16px;box-shadow:0 0 14px rgba(255,213,74,.35);background:#14171f;color:#ffe9a3}
 """,rad='18px',veil='rgba(5,8,14,.75)',goInk='#06240f',cardInk='#f4f6fb',qbg='#14171f',qink='#ffe9a3',accInk='#06240f')
 
