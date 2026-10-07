@@ -847,3 +847,20 @@ body{background:#e0efe0;background-image:linear-gradient(180deg,#cfe6f5,#e0efe0 
 .qbox.ask{border:3px solid #5b3a1a;border-radius:12px;font-size:clamp(17px,min(5.2cqw,3.8dvh),31px);box-shadow:0 5px 0 #5b3a1a}
 .res-title{text-shadow:0 4px 0 #14532d}
 """)
+
+# 개념 낚시: 노을 항구 — 주황 노을 + 바다 청록
+skin('harbor','Do Hyeon','Gowun Dodum','family=Do+Hyeon&family=Gowun+Dodum',dict(
+ page='#ffe9d2',ink='#7c2d12',sub='#b45309',line='#7c2d12',bw='3px',card='#fffaf2',cardInk='#7c2d12',hl='#f97316',stage='#fed7aa',
+ shCard='0 6px 0 #9a3412',shBtn='0 4px 0 #9a3412',shDown='0 1px 0 #9a3412',shGo='0 7px 0 #075985',rad='20px',rads='14px',
+ tagBg='#0ea5e9',tagInk='#fff',chipBg='#fff3e6',chipLine='#9a3412',sub2='#b45309',acc='#0ea5e9',accLine='#075985',go='#f97316',hud='#0c4a6e',
+ prog='linear-gradient(90deg,#fdba74,#0ea5e9)',qbg='rgba(255,250,242,.97)',qink='#7c2d12',veil='rgba(12,74,110,.62)',track='#fed7aa',title='#fff',title1='#fed7aa',title2='#fff',noR='50%'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#ffe9d2;background-image:linear-gradient(180deg,#ff9a62,#ffd9a8 40%,#2aa7c8 41%,#0a3d66)}
+.sign h1{text-shadow:0 4px 0 #9a3412,0 8px 16px rgba(120,40,0,.35);letter-spacing:.03em}
+.sign .sub{border:0;background:#fff3b0;color:#7c2d12;box-shadow:0 4px 0 #f59e0b}
+.booth{background:#2aa7c8}
+.chip{border-radius:16px}.chip.sel{box-shadow:0 5px 0 #075985}
+.fire,.wz-next{border-radius:999px;font-size:31px}
+.qbox.ask{border:3px solid #9a3412;border-radius:16px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:0 5px 0 #9a3412}
+.res-title{text-shadow:0 4px 0 #9a3412}
+""")
