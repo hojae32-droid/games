@@ -993,3 +993,19 @@ body{background:linear-gradient(90deg,#d9b676 0 50%,#9fd0ff 50%);background-imag
 .qbox.ask{border:3px solid #4a2f16;border-radius:18px;font-size:clamp(19px,min(5.6cqw,4.1dvh),32px);box-shadow:0 5px 0 #4a2f16}
 .res-title{text-shadow:0 4px 0 #4a2f16}
 """)
+
+# 연표 두루마리: 역사 교실 칠판 + 분필
+skin('chalkboard','Nanum Pen Script','Gowun Dodum','family=Nanum+Pen+Script&family=Gowun+Dodum',dict(
+ page='#17382c',ink='#f4f1de',sub='#b9cfc2',line='#e8d9a8',bw='2px',card='#1f4a39',cardInk='#f4f1de',hl='#ffd166',stage='#143027',
+ shCard='0 5px 0 #0b2118',shBtn='0 4px 0 #0b2118',shDown='0 1px 0 #0b2118',shGo='0 6px 0 #a3541d',rad='12px',rads='8px',
+ tagBg='#ffd166',tagInk='#17382c',chipBg='#245a45',chipLine='#e8d9a8',sub2='#b9cfc2',acc='#ff8fab',accInk='#17382c',accLine='#ffd6e0',accSub='#4a1a2a',go='#ffd166',goInk='#17382c',hud='#0f2a20',
+ prog='linear-gradient(90deg,#7bdff2,#ffd166)',qbg='#1f4a39',qink='#f4f1de',veil='rgba(8,28,20,.7)',track='#2b5d49',title='#ffd166',title1='#b9cfc2',title2='#f4f1de',noR='8px',dInk='#17382c',qhl='#ffd166'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#17382c;background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.07),transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(255,255,255,.05),transparent 45%)}
+.sign h1{text-shadow:0 3px 0 #0b2118;letter-spacing:.03em;font-size:1.25em}
+.sign .sub{border:2px dashed #e8d9a8;background:transparent;color:#ffd166;box-shadow:none;border-radius:10px}
+.chip{border-radius:10px;border-style:dashed}.chip.sel{box-shadow:0 4px 0 #a3395a}
+.fire,.wz-next{border-radius:12px;font-size:34px}
+.qbox.ask{border:3px solid #8b5a2b;border-radius:10px;font-size:clamp(20px,min(5.8cqw,4.2dvh),34px);box-shadow:0 4px 0 #0b2118}
+.res-title{text-shadow:0 3px 0 #0b2118}
+""")
