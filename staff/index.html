@@ -1754,14 +1754,14 @@ const GAME={
     st.spawnAcc-=dt;const tail=st.notes.length?st.notes[st.notes.length-1].x:-1e9;if(G.W+G.gap*2-tail>=G.gap*5.2&&st.spawnAcc<=0){this.spawn(p);st.spawnAcc=.2;}
     st.notes.forEach(n=>{n.t+=dt;if(n.alive)n.x-=v*dt;});
     const fr=this.front(p);if(fr&&fr.x<G.clefX+G.gap*2.2){fr.alive=false;fr.lost=true;st.streak=0;M.play('musicbox',this.posToMidi(p,fr.k)+12,null,.4,.35,{vol:.4});st.mood='oops';st.msg='놓쳤어요! 그 음은 '+this.posName(p,fr.k);st.msgT=1.6;
-      p.hit(false,{review:'오선의 이 음표는 '+this.posName(p,fr.k)+' ('+(LV[p.levelId].key==='C'?'다장조':LV[p.levelId].key==='G'?'사장조':'바장조')+')',tip:st.msg,tipMs:1300,quiet:false});}
+      p.hit(false,{pen:15,shake:false,review:'오선의 이 음표는 '+this.posName(p,fr.k)+' ('+(LV[p.levelId].key==='C'?'다장조':LV[p.levelId].key==='G'?'사장조':'바장조')+')',tip:st.msg,tipMs:1300,quiet:false});}
     st.notes=st.notes.filter(n=>n.alive||n.t<999&&(n.gone==null||n.gone<.5));st.notes.forEach(n=>{if(!n.alive)n.gone=(n.gone||0)+dt;});
     st.fx=st.fx.filter(f=>(f.t+=dt)<.7);},
   press(p,i){const st=p.state,G=this.geo(p);M.press(st,'k'+i,.15);if(!p.active||st.lockT>0)return;const n=this.front(p);if(!n)return;const ok=this.posName(p,n.k)===NAMES[i];
     if(ok){n.alive=false;n.hit=true;st.hits++;st.okN++;st.streak++;st.star=(st.star+1)%8;M.play('musicbox',this.posToMidi(p,n.k)+12,null,.6,.75,{vol:M.vol(p)});for(let k=0;k<10;k++)st.fx.push({x:n.x,y:this.yOf(G,n.k),a:k/10*TAU,t:0,c:k%3});
       const left=Math.max(0,(n.x-G.clefX)/(G.W-G.clefX));p.hit(true,{pts:20+Math.round(30*left),x:n.x,y:this.yOf(G,n.k)-G.gap*1.2,tip:this.posName(p,n.k)+'! 딩동',tipMs:600,quiet:false});st.msg=NAMES[i]+'! 딩동';st.msgT=1;st.mood='happy';
       if(st.star===0){p.hit(true,{pts:30,x:G.W/2,y:G.top+G.skyH*.3,tip:'⭐ 별자리 완성! +30',tipMs:1400});}}
-    else{st.lockT=1.5;st.mood='oops';n.shake=.4;M.play('pad',45,null,.25,.6,{vol:.5});st.streak=0;st.msg='이 음은 '+NAMES[i]+'가 아니에요';st.msgT=1.6;p.hit(false,{review:'이 음표의 이름은 '+this.posName(p,n.k),tip:st.msg,tipMs:1100,quiet:false});}},
+    else{st.lockT=1.5;st.mood='oops';n.shake=.4;M.play('pad',45,null,.25,.6,{vol:.5});st.streak=0;st.msg='이 음은 '+NAMES[i]+'가 아니에요';st.msgT=1.6;p.hit(false,{pen:15,shake:false,review:'이 음표의 이름은 '+this.posName(p,n.k),tip:st.msg,tipMs:1100,quiet:false});}},
   down(p,x,y){const G=this.geo(p);const i=G.keys.findIndex(k=>K.inRect(x,y,k));if(i>=0)this.press(p,i);},
   key(p,e){const m={c:0,d:1,e:2,f:3,g:4,a:5,b:6,1:0,2:1,3:2,4:3,5:4,6:5,7:6}[String(e.key).toLowerCase()];if(m!=null){e.preventDefault&&e.preventDefault();this.press(p,m);}},
   botAct(p){const st=p.state,G=this.geo(p);if(st.lockT>0)return null;const n=this.front(p);if(!n||n.x>G.W*.85)return null;const i=NAMES.indexOf(this.posName(p,n.k));const k=G.keys[i];const rc=p.cv.getBoundingClientRect();return{k:'click',x:rc.left+k.x+k.w/2,y:rc.top+k.y+k.h/2};},
