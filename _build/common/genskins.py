@@ -1174,3 +1174,12 @@ mk('pond','Poor Story','family=Poor+Story&family=Gowun+Dodum','#d4f3ff','#0b4a6f
 .fire,.wz-next{border-radius:999px;font-size:30px}
 .qbox.ask{border:3px solid #075985;border-radius:26px;box-shadow:0 5px 0 #0369a1;font-size:clamp(20px,min(5.8cqw,4.3dvh),34px)}
 """,rad='18px',veil='rgba(7,89,133,.6)',bw='3px')
+
+mk('jewel','Single Day','family=Single+Day&family=Gowun+Dodum','#fdeaf6','#6b1d5c','#ffffff','#db2777','#7c3aed','#db2777','#831843','#9d174d',
+ extra="""body{background:#fdeaf6;background-image:radial-gradient(circle,#fff 0 3px,transparent 4px),radial-gradient(circle,#f9a8d4 0 4px,transparent 5px),radial-gradient(circle,#c4b5fd 0 3px,transparent 4px);background-size:90px 90px,130px 130px,170px 170px;background-position:10px 20px,60px 70px,100px 30px}
+.sign h1{text-shadow:0 4px 0 #9d174d,0 8px 0 rgba(157,23,77,.2);-webkit-text-stroke:2px #9d174d}
+.sign .sub{border:3px solid #9d174d;background:#fff;color:#6b1d5c;box-shadow:0 4px 0 #9d174d;border-radius:999px}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 5px 0 #6d28d9}
+.fire,.wz-next{border-radius:999px;font-size:32px}
+.qbox.ask{border:3px solid #9d174d;border-radius:24px;box-shadow:0 5px 0 #9d174d;font-size:clamp(20px,min(5.8cqw,4.3dvh),34px)}
+""",rad='20px',veil='rgba(131,24,67,.6)',bw='3px')
