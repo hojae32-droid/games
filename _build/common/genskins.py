@@ -928,3 +928,20 @@ body{background:#8a5a33;background-image:repeating-linear-gradient(0deg,rgba(0,0
 .qbox.ask{border:3px solid #3b2a1c;border-radius:4px;font-size:clamp(17px,min(5cqw,3.7dvh),29px);box-shadow:0 4px 0 #6b4f2d}
 .res-title{text-shadow:0 3px 0 #3b2412}
 """)
+
+# 시·도 탐험: 보드게임 판 (헥사곤 타일)
+skin('boardgame','Dongle','Gowun Dodum','family=Dongle:wght@400;700&family=Gowun+Dodum',dict(
+ page='#fff1cf',ink='#1f3b4d',sub='#4b6b7d',line='#1f3b4d',bw='3px',card='#ffffff',cardInk='#1f3b4d',hl='#e8590c',stage='#bfe6e3',
+ shCard='0 6px 0 #1f3b4d',shBtn='0 4px 0 #1f3b4d',shDown='0 1px 0 #1f3b4d',shGo='0 7px 0 #9a3412',rad='22px',rads='14px',
+ tagBg='#e8590c',tagInk='#fff',chipBg='#e6f6f4',chipLine='#1f3b4d',sub2='#4b6b7d',acc='#12a594',accInk='#fff',accLine='#0a6b60',accSub='#e0fffb',go='#e8590c',goInk='#fff',hud='#0f4c5c',
+ prog='linear-gradient(90deg,#ffd43b,#12a594)',qbg='#ffffff',qink='#1f3b4d',veil='rgba(15,76,92,.62)',track='#c7e8e4',title='#fff',title1='#fff1cf',title2='#fff',noR='50%',dInk='#1f3b4d'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700;letter-spacing:.01em}
+h1,.big,.qbox.ask,.fire,.wz-next{font-size:1.18em}
+body{background:#fff1cf;background-image:radial-gradient(circle,#ffe2a1 2.5px,transparent 3px);background-size:26px 26px}
+.sign h1{text-shadow:0 4px 0 #1f3b4d;-webkit-text-stroke:2px #1f3b4d}
+.sign .sub{border:3px solid #1f3b4d;background:#ffd43b;color:#1f3b4d;box-shadow:0 4px 0 #1f3b4d}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 5px 0 #0a6b60}
+.fire,.wz-next{border-radius:999px;font-size:36px}
+.qbox.ask{border:3px solid #1f3b4d;border-radius:18px;font-size:clamp(20px,min(6cqw,4.3dvh),34px);box-shadow:0 5px 0 #1f3b4d}
+.res-title{text-shadow:0 4px 0 #1f3b4d}
+""")
