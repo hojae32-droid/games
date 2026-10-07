@@ -912,3 +912,19 @@ body{background:#0b1d33;background-image:linear-gradient(180deg,#0b1d33,#143a63)
 .qbox.ask{background:#0a1628;color:#ffd23f;border:2px solid #34608f;border-radius:8px;font-size:clamp(17px,min(5cqw,3.7dvh),29px);box-shadow:0 4px 0 #06101f;letter-spacing:.01em}
 .res-title{text-shadow:0 3px 0 #06101f}
 """)
+
+# 결재 서류 휙휙: 관공서 나무 책상 + 고무 도장
+skin('office','Nanum Gothic','Gowun Dodum','family=Nanum+Gothic:wght@700;800&family=Gowun+Dodum',dict(
+ page='#e9dcc3',ink='#3b2a1c',sub='#7a6246',line='#3b2a1c',bw='3px',card='#fffaf0',cardInk='#3b2a1c',hl='#2f6f4f',stage='#d9c7a2',
+ shCard='0 5px 0 #6b4f2d',shBtn='0 4px 0 #6b4f2d',shDown='0 1px 0 #6b4f2d',shGo='0 6px 0 #7f1d1d',rad='6px',rads='4px',
+ tagBg='#2f6f4f',tagInk='#fff',chipBg='#f4e8cc',chipLine='#6b4f2d',sub2='#7a6246',acc='#2f6f4f',accInk='#fff',accLine='#14452c',accSub='#d7f2e1',go='#c0392b',goInk='#fff',hud='#3b2a1c',
+ prog='linear-gradient(90deg,#d9c7a2,#2f6f4f)',qbg='#fffaf0',qink='#3b2a1c',veil='rgba(40,26,12,.66)',track='#d9c7a2',title='#fffaf0',title1='#f4e8cc',title2='#fff',noR='4px',dInk='#3b2a1c'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:800}
+body{background:#8a5a33;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 3px,transparent 3px 22px),linear-gradient(180deg,#9c6a3e,#6f4524)}
+.sign h1{text-shadow:0 3px 0 #3b2412,0 8px 14px rgba(0,0,0,.35)}
+.sign .sub{border:3px dashed #3b2a1c;background:#fffaf0;color:#3b2a1c;box-shadow:0 4px 0 #3b2412;border-radius:4px;transform:rotate(-1.2deg)}
+.chip{border-radius:4px}.chip.sel{box-shadow:0 4px 0 #14452c}
+.fire,.wz-next{border-radius:6px;font-size:28px}
+.qbox.ask{border:3px solid #3b2a1c;border-radius:4px;font-size:clamp(17px,min(5cqw,3.7dvh),29px);box-shadow:0 4px 0 #6b4f2d}
+.res-title{text-shadow:0 3px 0 #3b2412}
+""")
