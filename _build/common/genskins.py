@@ -1156,3 +1156,12 @@ mk('decal','Hi Melody','family=Hi+Melody&family=Gowun+Dodum','#fbf3ff','#3b1f5e'
 .fire,.wz-next{border-radius:999px;font-size:34px}
 .qbox.ask{border:3px solid #6d28d9;border-radius:16px;box-shadow:0 5px 0 #6d28d9;font-size:clamp(19px,min(5.6cqw,4.1dvh),32px)}
 """,rad='20px',veil='rgba(76,29,149,.62)',bw='3px')
+
+mk('court','Sunflower','family=Sunflower:wght@300;500;700&family=Gowun+Dodum','#f1d3a1','#1c2a5e','#fff8ec','#ea580c','#1d4ed8','#ea580c','#1c2a5e','#1c2a5e',
+ extra="""body{background:#f1d3a1;background-image:repeating-linear-gradient(90deg,rgba(150,90,30,.16) 0 2px,transparent 2px 70px),radial-gradient(circle at 50% 120%,rgba(234,88,12,.25),transparent 55%)}
+.sign h1{text-shadow:0 4px 0 #1c2a5e;-webkit-text-stroke:1.5px #1c2a5e}
+.sign .sub{border:3px solid #1c2a5e;background:#fff8ec;color:#1c2a5e;box-shadow:0 4px 0 #1c2a5e;border-radius:6px}
+.chip{border-radius:8px}.chip.sel{box-shadow:0 5px 0 #7c2d12}
+.fire,.wz-next{border-radius:10px;font-size:32px}
+.qbox.ask{border:3px solid #1c2a5e;border-radius:8px;box-shadow:0 5px 0 #1c2a5e;background:#fff8ec}
+""",rad='10px',veil='rgba(28,42,94,.62)',bw='3px')
