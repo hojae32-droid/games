@@ -1119,3 +1119,21 @@ body{background:#f5ecd7;background-image:repeating-linear-gradient(90deg,rgba(16
 .fire,.wz-next{border-radius:4px;font-size:28px}
 .qbox.ask{border:3px solid #2a1f17;border-radius:3px;box-shadow:0 4px 0 #6b1010}
 """,rad='6px',veil='rgba(42,31,23,.66)',bw='3px',sans='Gowun Batang')
+
+mk('podium','Stylish','family=Stylish&family=Gowun+Dodum','#1b1a2e','#fff4d6','#2b2950','#ffd166','#ef476f','#ef476f','#10101f','#08081a',
+ extra="""body{background:#1b1a2e;background-image:radial-gradient(ellipse at 50% -10%,rgba(255,209,102,.35),transparent 50%),linear-gradient(180deg,#1b1a2e,#2b2950)}
+.sign h1{text-shadow:0 0 16px #ffd166,0 4px 0 #08081a}
+.sign .sub{border:2px solid #ffd166;background:#2b2950;color:#ffd166;box-shadow:0 3px 0 #08081a}
+.chip{border-radius:14px;border-color:#5b57a8}.chip.sel{box-shadow:0 0 14px #ef476f}
+.fire,.wz-next{border-radius:999px;font-size:30px}
+.qbox.ask{border:2px solid #ffd166;border-radius:14px;background:#2b2950;color:#fff4d6;box-shadow:0 0 14px rgba(255,209,102,.4)}
+""",rad='16px',veil='rgba(8,8,26,.74)',sub='#c9c4ff',bw='2px',chip='#34316a',chipLine='#5b57a8',tag='#ffd166',tagInk='#1b1a2e',dInk='#1b1a2e')
+
+mk('quizshow','Gasoek One','family=Gasoek+One&family=Gowun+Dodum','#2d0a5c','#fff6d6','#4a1a8c','#ffe14d','#ff3d7f','#ff3d7f','#1a0538','#12032e',
+ extra="""body{background:#2d0a5c;background-image:radial-gradient(ellipse at 50% 0,#ff3d7f66,transparent 60%),repeating-conic-gradient(from 0deg at 50% 110%,rgba(255,225,77,.1) 0 7deg,transparent 7deg 14deg)}
+.sign h1{text-shadow:0 0 20px #ff3d7f,0 5px 0 #12032e;-webkit-text-stroke:1px #12032e}
+.sign .sub{border:3px solid #ffe14d;background:#4a1a8c;color:#ffe14d;box-shadow:0 0 14px rgba(255,225,77,.6)}
+.chip{border-radius:16px;border-color:#7a3dc8}.chip.sel{box-shadow:0 0 16px #ff3d7f}
+.fire,.wz-next{border-radius:999px;font-size:32px}
+.qbox.ask{border:3px solid #ffe14d;border-radius:16px;background:#4a1a8c;color:#fff6d6;box-shadow:0 0 16px rgba(255,225,77,.5)}
+""",rad='20px',veil='rgba(18,3,46,.74)',sub='#d6bdff',bw='3px',chip='#5a2aa0',chipLine='#7a3dc8',tag='#ffe14d',tagInk='#2d0a5c',dInk='#2d0a5c')
