@@ -762,3 +762,20 @@ body{background:#e3f6ff;background-image:linear-gradient(180deg,#a5e1ff,#e3f6ff 
 .qbox.ask{border:3px solid #7f1d1d;border-radius:20px;font-size:clamp(18px,min(5.8cqw,4.2dvh),36px);box-shadow:0 5px 0 #7f1d1d}
 .res-title{text-shadow:0 4px 0 #7f1d1d}
 """)
+
+# 시계로 떠나는 하루 여행: 새벽 보라 + 아침 노랑 하늘
+skin('clockday','Jua','Gowun Dodum','family=Jua&family=Gowun+Dodum',dict(
+ page='#ede9fe',ink='#3b1d8a',sub='#6d56b8',line='#3b1d8a',bw='3px',card='#ffffff',cardInk='#3b1d8a',hl='#7c3aed',stage='#ddd6fe',
+ shCard='0 6px 0 #5b3fb0',shBtn='0 4px 0 #5b3fb0',shDown='0 1px 0 #5b3fb0',shGo='0 7px 0 #92400e',rad='22px',rads='16px',
+ tagBg='#f59e0b',tagInk='#3b1d8a',chipBg='#f6f1ff',chipLine='#5b3fb0',sub2='#6d56b8',acc='#7c3aed',accLine='#3b1d8a',go='#f59e0b',goInk='#3b1d8a',hud='#3b1d8a',
+ prog='linear-gradient(90deg,#fbbf24,#7c3aed)',qbg='rgba(255,255,255,.97)',qink='#3b1d8a',veil='rgba(59,29,138,.62)',track='#ddd6fe',title='#fff',title1='#fde68a',title2='#fff',noR='50%'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#ede9fe;background-image:linear-gradient(180deg,#fed7aa,#ede9fe 40%,#c4b5fd)}
+.sign h1{text-shadow:0 4px 0 #3b1d8a,0 8px 16px rgba(60,30,140,.3);letter-spacing:.02em}
+.sign .sub{border:3px solid #3b1d8a;background:#fde68a;color:#3b1d8a;box-shadow:0 4px 0 #3b1d8a}
+.booth{background:#c4b5fd}
+.chip{border-radius:16px}.chip.sel{box-shadow:0 5px 0 #3b1d8a}
+.fire,.wz-next{border-radius:999px;font-size:30px}
+.qbox.ask{border:3px solid #3b1d8a;border-radius:18px;font-size:clamp(18px,min(5.5cqw,4dvh),33px);box-shadow:0 5px 0 #5b3fb0}
+.res-title{text-shadow:0 4px 0 #3b1d8a}
+""")
