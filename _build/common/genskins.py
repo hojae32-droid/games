@@ -1192,3 +1192,12 @@ mk('stitch','Gamja Flower','family=Gamja+Flower&family=Gowun+Dodum','#fff1c9','#
 .fire,.wz-next{border-radius:999px;font-size:34px}
 .qbox.ask{border:3px dashed #115e59;border-radius:22px;box-shadow:0 5px 0 #0f766e;font-size:clamp(20px,min(5.8cqw,4.3dvh),34px)}
 """,rad='18px',veil='rgba(17,94,89,.6)',bw='3px')
+
+mk('bunker','Black Han Sans','family=Black+Han+Sans&family=Gowun+Dodum','#d9dcc4','#2b3320','#f2f1e3','#dc2626','#4d5d2a','#dc2626','#2b3320','#2b3320',
+ extra="""body{background:#c9cdb0;background-image:repeating-linear-gradient(135deg,rgba(77,93,42,.18) 0 22px,transparent 22px 44px),radial-gradient(circle at 20% 20%,rgba(220,38,38,.08),transparent 40%)}
+.sign h1{text-shadow:0 4px 0 #2b3320;-webkit-text-stroke:1.5px #2b3320;letter-spacing:.02em}
+.sign .sub{border:3px solid #2b3320;background:#f2f1e3;color:#2b3320;box-shadow:0 4px 0 #2b3320;border-radius:4px}
+.chip{border-radius:6px}.chip.sel{box-shadow:0 5px 0 #7f1d1d}
+.fire,.wz-next{border-radius:8px;font-size:30px}
+.qbox.ask{border:3px solid #2b3320;border-radius:6px;box-shadow:0 5px 0 #2b3320;background:#f2f1e3}
+""",rad='8px',veil='rgba(43,51,32,.66)',bw='3px')

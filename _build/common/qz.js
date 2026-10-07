@@ -11,7 +11,7 @@ const QZ={
       if(ok)st.okN=(st.okN||0)+1;
       p.hit(ok,{pts,x:p.W/2,y:(p.top||0)+p.u*3,tip:ok?(this.goodTip?this.goodTip(q):undefined):(timeout?'시간이 다 됐어요! ':'')+(this.tipOf?this.tipOf(q):q.reveal),review:q.review,tipMs:ok?1000:3200,pen:o.pen});
       if(this.onVerdict)this.onVerdict(p,q,ok,i,timeout);
-      setTimeout(()=>{if(p.active)this.newQ(p);},ok?(o.okMs||1300):(o.badMs||2700));},
+      {const ms=ok?o.okMs:o.badMs;const dl=typeof ms==='function'?ms.call(this,p,q):(ms||(ok?1300:2700));setTimeout(()=>{if(p.active)this.newQ(p);},dl);}},
     update(p,dt){const st=p.state;st.T+=dt;if(st.mT>0){st.mT-=dt;if(st.mT<=0)st.mood='neutral';}if(st.res)st.rT+=dt;if(st.press){st.press.t-=dt;if(st.press.t<=0)st.press=null;}
       if(this.upd)this.upd(p,dt);
       if(st.q&&!st.lock&&st.qmax>0&&!(this.hold&&this.hold(p))){st.qt-=dt;if(st.qt<=0)this.verdict(p,-1,true);}},
