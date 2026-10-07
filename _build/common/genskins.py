@@ -1147,3 +1147,12 @@ body{background:#e4e8df;background-image:radial-gradient(circle at 80% 20%,rgba(
 .fire,.wz-next{border-radius:4px;font-size:28px}
 .qbox.ask{border:2px solid #1c3a3a;border-radius:2px;box-shadow:0 4px 0 #2e4a4a}
 """,rad='6px',veil='rgba(28,58,58,.66)',bw='2px',sans='Gowun Batang')
+
+mk('decal','Hi Melody','family=Hi+Melody&family=Gowun+Dodum','#fbf3ff','#3b1f5e','#ffffff','#e11d8c','#7c3aed','#f97316','#4c1d95','#6d28d9',
+ extra="""body{background:#fbf3ff;background-image:radial-gradient(circle at 12% 18%,#fbcfe8 0 60px,transparent 62px),radial-gradient(circle at 88% 22%,#bfdbfe 0 80px,transparent 82px),radial-gradient(circle at 80% 85%,#fde68a 0 70px,transparent 72px),radial-gradient(circle at 15% 88%,#ddd6fe 0 90px,transparent 92px)}
+.sign h1{text-shadow:0 4px 0 #6d28d9,0 8px 0 rgba(109,40,217,.2);-webkit-text-stroke:1.5px #6d28d9}
+.sign .sub{border:3px solid #6d28d9;background:#fff;color:#3b1f5e;box-shadow:0 4px 0 #6d28d9}
+.chip{border-radius:16px}.chip.sel{box-shadow:0 5px 0 #4c1d95}
+.fire,.wz-next{border-radius:999px;font-size:34px}
+.qbox.ask{border:3px solid #6d28d9;border-radius:16px;box-shadow:0 5px 0 #6d28d9;font-size:clamp(19px,min(5.6cqw,4.1dvh),32px)}
+""",rad='20px',veil='rgba(76,29,149,.62)',bw='3px')
