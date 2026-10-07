@@ -1,5 +1,5 @@
 import re,os
-Z='/tmp/claude-0/-home-user-games/468d8a32-314f-509d-a8d2-96719987af43/scratchpad/zip/'
+Z=__import__('os').environ.get('ZDIR','/tmp/claude-0/-home-user-games/468d8a32-314f-509d-a8d2-96719987af43/scratchpad/zip/')
 def script1(name):
     s=open(Z+name+'/index.html',encoding='utf8').read()
     return [m for m in re.finditer(r'<script[^>]*>(.*?)</script>',s,re.S)][0].group(1)

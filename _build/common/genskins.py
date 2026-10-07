@@ -1041,3 +1041,27 @@ body{background:#c99a5f;background-image:radial-gradient(circle at 20% 30%,rgba(
 .qbox.ask{border:3px solid #3a2512;border-radius:3px;font-size:clamp(19px,min(5.6cqw,4.1dvh),32px);box-shadow:0 4px 0 #6b4520;transform:rotate(-.4deg)}
 .res-title{text-shadow:0 3px 0 #6b4520}
 """)
+
+# ── 간편 스킨 (음악 게임용): 핵심 색만 정하면 나머지는 채워요 ──
+def mk(name,disp,imports,page,ink,card,hl,acc,go,hud,sh,extra='',sub=None,line=None,rad='18px',cardInk=None,qbg=None,qink=None,veil='rgba(0,0,0,.6)',sans='Gowun Dodum',bw='3px',dInk=None,accInk='#fff',goInk='#fff',tag=None,tagInk='#fff',chip=None,chipLine=None,stage=None,title='#fff',track=None):
+    ci=cardInk or ink
+    skin(name,disp,sans,imports,dict(page=page,ink=ink,sub=sub or ink,line=line or sh,bw=bw,card=card,cardInk=ci,hl=hl,stage=stage or card,
+      shCard='0 6px 0 '+sh,shBtn='0 4px 0 '+sh,shDown='0 1px 0 '+sh,shGo='0 7px 0 '+sh,rad=rad,rads='12px',
+      tagBg=tag or acc,tagInk=tagInk,chipBg=chip or card,chipLine=chipLine or sh,sub2=sub or ink,acc=acc,accInk=accInk,accLine=sh,accSub=accInk,go=go,goInk=goInk,hud=hud,
+      prog='linear-gradient(90deg,%s,%s)'%(hl,acc),qbg=qbg or card,qink=qink or ci,veil=veil,track=track or 'rgba(0,0,0,.15)',title=title,title1=title,title2=title,noR='50%',dInk=dInk or ci),extra)
+
+mk('meadow','Jua','family=Jua&family=Gowun+Dodum','#e3f6d1','#2f4a1e','#fffef4','#ff7a3d','#34a853','#ff7a3d','#2f6b2c','#4d7a2a',
+ extra="""body{background:linear-gradient(180deg,#bfe9ff 0 45%,#a9e08a 45% 100%)}
+.sign h1{text-shadow:0 4px 0 #2f6b2c,0 8px 0 rgba(47,107,44,.25);-webkit-text-stroke:2px #2f6b2c}
+.sign .sub{border:3px solid #2f6b2c;background:#fff6c9;color:#2f4a1e;box-shadow:0 4px 0 #4d7a2a}
+.chip{border-radius:20px}.fire,.wz-next{border-radius:999px;font-size:34px}
+.qbox.ask{border:3px solid #2f6b2c;border-radius:20px;box-shadow:0 5px 0 #4d7a2a}
+""",rad='22px',veil='rgba(30,70,20,.6)')
+
+mk('skybird','Gamja Flower','family=Gamja+Flower&family=Gowun+Dodum','#d7efff','#1f4b7a','#ffffff','#ff8a3d','#4aa8ff','#ff8a3d','#2a6fb0','#2a6fb0',
+ extra="""body{background:linear-gradient(180deg,#8fd0ff,#e8f6ff 70%,#fff8d6)}
+.sign h1{text-shadow:0 4px 0 #2a6fb0,0 8px 0 rgba(42,111,176,.25);-webkit-text-stroke:2px #2a6fb0;font-size:1.2em}
+.sign .sub{border:3px solid #2a6fb0;background:#fff;color:#1f4b7a;box-shadow:0 4px 0 #2a6fb0}
+.chip{border-radius:22px}.fire,.wz-next{border-radius:999px;font-size:36px}
+.qbox.ask{border:3px solid #2a6fb0;border-radius:22px;box-shadow:0 5px 0 #2a6fb0;font-size:clamp(20px,min(6cqw,4.4dvh),34px)}
+""",rad='24px',veil='rgba(20,60,110,.6)')
