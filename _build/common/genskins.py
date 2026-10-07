@@ -1109,3 +1109,13 @@ body{background:#efe0c0;background-image:repeating-linear-gradient(90deg,rgba(15
 .fire,.wz-next{border-radius:8px;font-size:30px}
 .qbox.ask{border:3px double #7a5230;border-radius:6px;box-shadow:0 4px 0 #7a5230;background:#fff9ec}
 """,rad='8px',veil='rgba(43,27,18,.66)',bw='3px',sans='Gowun Batang')
+
+mk('hall','Noto Serif KR','family=Noto+Serif+KR:wght@700;900&family=Gowun+Batang','#f5ecd7','#2a1f17','#fffaf0','#a4161a','#a4161a','#a4161a','#2a1f17','#6b1010',
+ extra="""h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:900}
+body{background:#f5ecd7;background-image:repeating-linear-gradient(90deg,rgba(164,22,26,.05) 0 40px,transparent 40px 80px),radial-gradient(ellipse at 50% -10%,#fff 0,transparent 60%)}
+.sign h1{text-shadow:0 3px 0 #6b1010;letter-spacing:.03em}
+.sign .sub{border:2px solid #2a1f17;background:#fffaf0;color:#a4161a;box-shadow:0 3px 0 #6b1010;border-radius:2px}
+.chip{border-radius:4px}.chip.sel{box-shadow:0 4px 0 #3b0a0a}
+.fire,.wz-next{border-radius:4px;font-size:28px}
+.qbox.ask{border:3px solid #2a1f17;border-radius:3px;box-shadow:0 4px 0 #6b1010}
+""",rad='6px',veil='rgba(42,31,23,.66)',bw='3px',sans='Gowun Batang')

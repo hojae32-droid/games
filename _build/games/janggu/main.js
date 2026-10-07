@@ -27,7 +27,7 @@ function janggu(g,cx,cy,jw,jh,pr,hint,t){g.save();g.translate(cx,cy);g.lineJoin=
     if(on||hn)K.glow(g,0,0,hr*1.1,on?'#fff3a0':sd==='left'?'#7ab8ff':'#ff9a9a',on?.9:.55+.2*Math.sin(t*10));
     g.fillStyle=on?'#fff6c4':'#fffaf0';g.strokeStyle=INK;g.lineWidth=Math.max(3,jh*.03);g.beginPath();g.ellipse(0,0,hr*.26,hr*.95,0,0,TAU);g.fill();g.stroke();
     g.strokeStyle=sd==='left'?BLUE:RED;g.lineWidth=Math.max(2,jh*.03);g.beginPath();g.ellipse(0,0,hr*.17,hr*.62,0,0,TAU);g.stroke();
-    K.txt(g,sd==='left'?'쿵':'덕',0,0,{size:hr*.42,color:sd==='left'?BLUE:RED,maxW:hr*.45});g.restore();}
+    K.txt(g,sd==='left'?'쿵':'덕',0,0,{size:hr*.3,color:sd==='left'?BLUE:RED,maxW:hr*.36});g.restore();}
   /* 가운데 덩 */
   const onB=(pr.both>0),hb=hint==='both';K.rr(g,-hx*.2,-hr*.14,hx*.4,hr*.28,hr*.1);g.fillStyle=onB?'#fff3a0':'#7a3db8';g.fill();g.lineWidth=Math.max(2,jh*.025);g.strokeStyle=INK;g.stroke();
   if(hb&&!onB)K.glow(g,0,0,hr*.5,'#d1a0ff',.6+.2*Math.sin(t*10));
@@ -45,15 +45,15 @@ const GAME={
   subtitle:'3~6학년 음악 · 국악 장단 치기',
   howto:'처음 한 장단은 선생님이 시범을 보여요. 그다음부터 <b>빛이 지나가는 칸</b>의 구음대로 장구를 쳐요. <b>왼쪽 = 쿵(북편)</b>, <b>오른쪽 = 덕(채편)</b>, <b>가운데(또는 두 쪽을 함께) = 덩</b>. 기덕·더러러러는 덕으로 쳐요. (키보드: 왼손 F · 오른손 J · 스페이스 = 덩)',
   how:p=>(JD[p.levelId].label+' · '+JD[p.levelId].desc),
-  theme:{c1:'#c1272d',c2:'#1d4e89'},hero:heroScene,vignette:.05,durs:[90,150,240],levelTitle:'어떤 장단을 칠까요?',
+  theme:{c1:'#c1272d',c2:'#1d4e89'},hero:heroScene,vignette:.05,durs:[60,120,180],levelTitle:'어떤 장단을 칠까요?',
   txt:{who:'누가 연주자일까요?',dur:'연주 시간',pace:'장단 빠르기',seat:'번 연주자 ',go:'장단 시작!',s1:'1. 장단',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(JD).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li><b>장단</b>은 우리 음악의 리듬틀이에요. 세마치장단은 3박(덩 · 덩 덕 · 쿵 덕), 굿거리장단은 느리고 흥겨운 4박, 자진모리장단은 빠르고 신나는 4박이에요.</li>
     <li><b>장구</b>는 왼쪽 북편(쿵, 낮은 소리)과 오른쪽 채편(덕, 높은 소리)으로 이루어져 있어요. 두 쪽을 함께 치면 <b>덩</b> 소리가 나요.</li>
     <li>장단의 <b>구음</b>(덩·쿵·덕·기덕·더러러러)은 장구 소리를 입으로 부르는 말이에요.</li></ul>`,
   geo(p){const W=p.W,H=p.H,u=p.u;const L=JD[p.levelId];const top=(p.top||0)+u*.7;const pad=u*.35;const land=W>=H*1.1;const N=L.cells.length;const cols=land||N<=9?N:Math.ceil(N/2);const rows=Math.ceil(N/cols);const cw=Math.min((W-pad*2)/cols,u*3.4);const ch=Math.min(cw*1.05,u*3);const cx0=W/2-cols*cw/2;
-    const cells=L.cells.map((c,i)=>({x:cx0+(i%cols)*cw+3,y:top+u*1.2+Math.floor(i/cols)*(ch+u*.2),w:cw-6,h:ch}));const cellsBottom=top+u*1.2+rows*(ch+u*.2);
-    const jy=cellsBottom+u*.4;const jh=Math.min(H-jy-u*.5,u*5.5,W*.35);const jw=Math.min(W-pad*2-jh*.6,u*14);const jc={x:W/2,y:jy+jh*.55};
+    const cells=L.cells.map((c,i)=>({x:cx0+(i%cols)*cw+3,y:top+(land?u*1.2:u*2)+Math.floor(i/cols)*(ch+u*.2),w:cw-6,h:ch}));const cellsBottom=top+(land?u*1.2:u*2)+rows*(ch+u*.2);
+    const jy=cellsBottom+u*.4;const jh=Math.min(H-jy-u*.5,u*7,W*.42);const jw=Math.min(W-pad*2-jh*.45,u*14);const jc={x:W/2,y:jy+(H-jy)*.5};
     return{W,H,u,L,top,pad,N,cells,cellsBottom,jc,jw,jh,land,hx:jw/2};},
   init(p){const st=p.state;Object.assign(st,{T:0,clk:0,strokes:[],schedT:0,a0:0,pend:null,pr:{},judge:'',judgeT:0,judgeC:'',okN:0,streak:0,lastCell:-1,cyc:-9,started:false,msg:'',mood:'neutral',fx:[]});},
   start(p){const st=p.state,L=JD[p.levelId];const sb=L.sobak/Math.max(.8,Math.min(1.3,p.pace));st.sb=sb;st.N=L.cells.length;st.CYC=st.N*sb;st.started=true;const lead=.4+L.beats*3*sb;st.a0=M.now()+lead;st.schedT=-st.CYC;st.clk=-lead;p.ask('🪘 <b>'+L.label+'</b>','선생님 시범을 듣고, 빛이 지나가는 칸의 구음대로 쳐요');},
@@ -85,7 +85,7 @@ const GAME={
   botAct(p){const st=p.state;if(!st.started||st.clk<0)return null;const G=this.geo(p);const s=st.strokes.find(s=>!s.hit&&!s.missed&&s.t-st.clk<.09&&s.t-st.clk>-.05);if(!s)return null;const rc=p.cv.getBoundingClientRect();const x=s.side==='both'?G.jc.x:s.side==='left'?G.jc.x-G.hx*.7:G.jc.x+G.hx*.7;return{k:'click',x:rc.left+x,y:rc.top+G.jc.y};},
   draw(p,g){const st=p.state,G=this.geo(p),W=G.W,H=G.H,u=G.u,t=st.T,L=G.L;hanji(g,W,H,u,t);
     K.card(g,u*.3,(p.top||0)+u*.5,u*3.6,u*.8,u*.2,'#fff9ec',{stroke:WOOD,lw:3,blur:0,dy:0});K.txt(g,L.ic+' '+L.label,u*.3+u*1.8,(p.top||0)+u*.9,{size:u*.42,color:INK,maxW:u*3.4});
-    const ph=!st.started?'':st.clk<0?'준비…':st.cyc===0?'👂 선생님 시범':'🙌 같이 쳐요! '+st.cyc+'장단';K.txt(g,ph,W/2,G.top+u*.5,{size:Math.min(u*.8,W*.05),color:st.cyc===0&&st.clk>=0?BLUE:RED,maxW:W*.7});
+    const ph=!st.started?'':st.clk<0?'준비…':st.cyc===0?'👂 선생님 시범':'🙌 같이 쳐요! '+st.cyc+'장단';K.txt(g,ph,W/2,G.top+(G.land?u*.5:u*1.3),{size:Math.min(u*.8,W*.05),color:st.cyc===0&&st.clk>=0?BLUE:RED,maxW:W*.7});
     /* 구음 칸 */
     G.cells.forEach((c,i)=>{const name=L.cells[i];const side=SIDE[name];const now=st.cur===i;const strk=st.strokes.find(s=>s.i===i&&s.cyc===Math.max(1,st.cyc));let col='#fff9ec';
       if(strk&&strk.q==='perfect')col='#d8f3dc';else if(strk&&strk.q==='good')col='#dbeafe';else if(strk&&strk.q==='miss')col='#ffe0e0';if(now)col='#ffe9a8';

@@ -40,7 +40,7 @@ const GAME={
   subtitle:'3~6학년 음악 · 박자와 리듬 치기',
   howto:'음표가 오른쪽에서 흘러와요. 음표가 <b>노란 선</b>에 닿는 순간 큰북을 톡! 쳐요. (스페이스바나 화면 아무 곳도 돼요) <b>쉼표</b>에서는 쉬어요. 정확할수록 <b>딱 맞아요!</b> 점수가 커지고, 8번 연속으로 맞히면 보너스!',
   how:p=>(LV[p.levelId].label+' · ♩='+LV[p.levelId].bpm+' · '+LV[p.levelId].met+'/4박자'),
-  theme:{c1:'#ff5a1f',c2:'#3a86ff'},hero:heroScene,vignette:.04,durs:[90,150,240],levelTitle:'어떤 리듬을 칠까요?',
+  theme:{c1:'#ff5a1f',c2:'#3a86ff'},hero:heroScene,vignette:.04,durs:[60,90,120],levelTitle:'어떤 리듬을 칠까요?',
   txt:{who:'누가 드러머일까요?',dur:'공연 시간',pace:'빠르기 조절',seat:'번 드러머 ',go:'공연 시작!',s1:'1. 리듬',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li><b>박</b>은 음악의 규칙적인 흐름이에요. 4분음표 한 개가 한 박이고, 8분음표는 두 개가 한 박이에요.</li>

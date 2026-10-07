@@ -38,7 +38,7 @@ const GAME={
   subtitle:'3~6학년 음악 · 가락의 높낮이',
   howto:'새가 부르는 노래를 잘 들어요. 음이 <b>올라가는지, 내려가는지, 그대로인지</b> 생각해서 골라요. 마지막 단계에서는 들은 가락을 손가락으로 콕콕 찍어 <b>가락선을 직접 그려요</b>! 모두 함께 듣고 동시에 답해요.',
   how:p=>({pair:'두 음의 <b>높낮이</b> 비교하기',pick:'알맞은 <b>가락선</b> 고르기',draw:'들은 가락의 <b>가락선 그리기</b>'}[p.levelId]),
-  theme:{c1:'#4aa8ff',c2:'#ff8a3d'},hero:heroScene,vignette:.03,durs:[90,150,240],levelTitle:'어떤 노래를 들을까요?',
+  theme:{c1:'#4aa8ff',c2:'#ff8a3d'},hero:heroScene,vignette:.03,durs:[90,120,180],levelTitle:'어떤 노래를 들을까요?',
   txt:{who:'누가 노래 친구일까요?',dur:'노래 시간',pace:'생각하는 시간',seat:'번 친구 ',go:'노래 시작!',s1:'1. 노래',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:'3~6학년',t:v.ic+' '+v.label,d:v.tag+' · '+v.desc})),
   summary:`<ul><li><b>가락</b>은 높고 낮은 음이 이어져 만들어져요. 가락의 오르내림을 선으로 나타낸 것이 <b>가락선</b>이에요.</li>
