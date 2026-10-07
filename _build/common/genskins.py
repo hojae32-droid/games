@@ -1091,3 +1091,11 @@ mk('djbooth','Do Hyeon','family=Do+Hyeon&family=Gowun+Dodum','#1a1033','#f5f0ff'
 .fire,.wz-next{border-radius:999px;font-size:32px}
 .qbox.ask{border:2px solid #00e5ff;border-radius:14px;background:#2a1b52;color:#f5f0ff;box-shadow:0 0 16px rgba(0,229,255,.5)}
 """,rad='16px',veil='rgba(7,4,26,.74)',sub='#c6b8ff',bw='2px',chip='#34236a',chipLine='#6b4bd1',tag='#00e5ff',tagInk='#0f0a24',goInk='#fff',dInk='#1a1033')
+
+mk('stagelight','Bagel Fat One','family=Bagel+Fat+One&family=Gowun+Dodum','#ffe9d1','#4a1d0a','#fff7ec','#ff5a1f','#e8590c','#ff5a1f','#4a1d0a','#8a2f0a',
+ extra="""body{background:#ff9a52;background-image:radial-gradient(ellipse at 50% -20%,#fff3c4 0,transparent 55%),repeating-conic-gradient(from 0deg at 50% 120%,rgba(255,255,255,.14) 0 6deg,transparent 6deg 12deg)}
+.sign h1{text-shadow:0 5px 0 #8a2f0a,0 10px 0 rgba(74,29,10,.25);-webkit-text-stroke:2px #8a2f0a;font-size:1.1em}
+.sign .sub{border:3px solid #8a2f0a;background:#fff7ec;color:#4a1d0a;box-shadow:0 4px 0 #8a2f0a}
+.chip{border-radius:18px}.fire,.wz-next{border-radius:999px;font-size:34px}
+.qbox.ask{border:3px solid #8a2f0a;border-radius:18px;box-shadow:0 5px 0 #8a2f0a}
+""",rad='22px',veil='rgba(74,29,10,.62)',bw='3px')
