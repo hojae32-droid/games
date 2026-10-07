@@ -1025,3 +1025,19 @@ body{background:#e9c58b;background-image:repeating-linear-gradient(90deg,rgba(12
 .qbox.ask{border:3px solid #7a4f22;border-radius:20px;font-size:clamp(19px,min(5.6cqw,4.1dvh),32px);box-shadow:0 5px 0 #a47a3d}
 .res-title{text-shadow:0 4px 0 #7a4f22}
 """)
+
+# 역사 인물 스무고개: 탐정 수사 코르크 보드
+skin('corkboard','Gaegu','Gowun Dodum','family=Gaegu:wght@400;700&family=Gowun+Dodum',dict(
+ page='#c99a5f',ink='#3a2512',sub='#7a5a33',line='#3a2512',bw='3px',card='#fffdf3',cardInk='#3a2512',hl='#d62828',stage='#b98649',
+ shCard='0 5px 0 #6b4520',shBtn='0 4px 0 #6b4520',shDown='0 1px 0 #6b4520',shGo='0 6px 0 #7f1d1d',rad='6px',rads='4px',
+ tagBg='#d62828',tagInk='#fff',chipBg='#fff4d6',chipLine='#6b4520',sub2='#7a5a33',acc='#d62828',accInk='#fff',accLine='#7f1d1d',accSub='#ffe3e3',go='#d62828',goInk='#fff',hud='#4a2f14',
+ prog='linear-gradient(90deg,#f4d58d,#d62828)',qbg='#fff4b8',qink='#3a2512',veil='rgba(50,30,12,.66)',track='#e2c48f',title='#fff',title1='#ffe9bf',title2='#fff',noR='4px',dInk='#3a2512'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:#c99a5f;background-image:radial-gradient(circle at 20% 30%,rgba(110,70,30,.35) 0 2px,transparent 3px),radial-gradient(circle at 70% 60%,rgba(110,70,30,.3) 0 2px,transparent 3px),radial-gradient(circle at 45% 80%,rgba(255,255,255,.25) 0 2px,transparent 3px);background-size:38px 38px,52px 52px,44px 44px}
+.sign h1{text-shadow:0 3px 0 #6b4520,0 7px 12px rgba(0,0,0,.3);font-size:1.15em}
+.sign .sub{border:2px dashed #3a2512;background:#fff4b8;color:#3a2512;box-shadow:0 3px 0 #6b4520;transform:rotate(-1.5deg);border-radius:2px}
+.chip{border-radius:3px}.chip.sel{box-shadow:0 4px 0 #7f1d1d}
+.fire,.wz-next{border-radius:4px;font-size:32px}
+.qbox.ask{border:3px solid #3a2512;border-radius:3px;font-size:clamp(19px,min(5.6cqw,4.1dvh),32px);box-shadow:0 4px 0 #6b4520;transform:rotate(-.4deg)}
+.res-title{text-shadow:0 3px 0 #6b4520}
+""")
