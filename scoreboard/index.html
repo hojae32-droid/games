@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>전광판</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Bungee&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden}
+body{font-family:'Do Hyeon','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#fff;background:#05070D;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+button,input{font-family:inherit;color:inherit}
+button{cursor:pointer}
+button:focus-visible{outline:3px solid #60A5FA;outline-offset:2px}
+.app{position:fixed;inset:0;display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;gap:1vh;padding:1.2vh 1.2vw}
+.bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bar h1{margin:0;font-weight:400;font-size:clamp(16px,2.2vw,24px);color:#FDE047}
+.sp{flex:1}
+.tb{border:0;border-radius:10px;padding:7px 12px;font-size:clamp(13px,1.5vw,16px);background:rgba(255,255,255,.12)}
+.tb.on{background:#FDE047;color:#111}
+.clockbox{display:flex;align-items:center;justify-content:center;gap:2vw;background:linear-gradient(180deg,#111827,#0B0F19);border:3px solid #1F2937;border-radius:2vh;padding:1vh 2vw;box-shadow:inset 0 0 30px rgba(0,0,0,.8)}
+.clock{font-family:Orbitron,monospace;font-weight:900;font-size:clamp(48px,13vh,150px);color:#FDE047;text-shadow:0 0 18px rgba(253,224,71,.6);letter-spacing:.04em;line-height:1;cursor:pointer;min-width:4.6ch;text-align:center}
+.clock.low{color:#F87171;text-shadow:0 0 18px rgba(248,113,113,.7);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.55}}
+.ccol{display:flex;flex-direction:column;gap:6px;align-items:center}
+.cbtn{border:0;border-radius:12px;padding:8px 16px;font-size:clamp(16px,2.6vh,24px);background:#22C55E;color:#062;min-width:7em}
+.cbtn.pause{background:#F59E0B;color:#3A2300}
+.mini{display:flex;gap:4px}
+.mini button{border:0;border-radius:8px;background:rgba(255,255,255,.12);padding:4px 8px;font-size:14px}
+.period{display:flex;flex-direction:column;align-items:center;font-size:clamp(14px,2.2vh,20px);color:#93C5FD}
+.period b{font-family:Orbitron,monospace;font-size:clamp(30px,7vh,70px);color:#fff;line-height:1}
+.teams{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:1.2vw;min-height:0}
+.team{position:relative;border-radius:2.2vh;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 30%,#0B0F19),#0B0F19 70%);border:4px solid var(--c);display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}
+.tname{background:var(--c);color:#0B0F19;text-align:center;font-size:clamp(18px,4vh,40px);padding:.3vh 0;border:0;width:100%;outline:none}
+.score{font-family:Orbitron,monospace;font-weight:900;display:grid;place-items:center;font-size:min(30vh,calc(30vw / var(--n) * 1.6));color:#fff;text-shadow:0 0 30px color-mix(in srgb,var(--c) 80%,transparent);cursor:pointer;line-height:1;touch-action:manipulation}
+.score.bump{animation:bump .35s cubic-bezier(.2,1.6,.5,1)}
+@keyframes bump{from{transform:scale(1.25)}}
+.btns{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px}
+.btns button{border:0;border-radius:12px;padding:1.2vh 0;font-size:clamp(16px,3vh,28px);background:rgba(255,255,255,.12)}
+.btns button.plus{background:var(--c);color:#0B0F19}
+.lead::after{content:'🔥';position:absolute;right:10px;top:4vh;font-size:clamp(20px,4vh,40px)}
+.foot{display:flex;justify-content:center;gap:10px;font-size:13px;color:#64748B}
+.end{position:fixed;inset:0;display:none;place-items:center;background:rgba(5,7,13,.85);z-index:5;text-align:center}
+.end.on{display:grid}
+.end div{font-size:clamp(40px,10vh,110px);color:#FDE047;animation:bump .5s ease}
+.end small{display:block;font-size:.35em;color:#fff;margin-top:1vh}
+.foot{flex-wrap:wrap;text-align:center}
+@media (max-aspect-ratio:4/5){
+  .teams{grid-template-columns:1fr;grid-template-rows:repeat(var(--n),minmax(0,1fr))}
+  .team{grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto minmax(0,1fr)}
+  .tname{grid-column:1/-1}
+  .score{font-size:min(16vh,calc(46vh / var(--n)))}
+  .btns{grid-template-columns:repeat(2,1fr);align-content:center}
+  .clockbox{flex-wrap:wrap;gap:8px}
+  .clock{font-size:clamp(40px,9vh,90px)}
+  .bar h1{display:none}.foot{display:none}
+}
+.maker{position:fixed;right:10px;bottom:4px;font-size:12px;color:rgba(255,255,255,.4)}
+dialog{border:0;border-radius:16px;padding:18px;font-family:inherit}
+dialog input{font-size:22px;width:4em;text-align:center;border-radius:8px;border:2px solid #ccc;padding:4px}
+dialog button{border:0;border-radius:10px;padding:8px 14px;font-size:18px;margin:4px;background:#E5E7EB;color:#111}
+dialog .pre{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+/* ── 새 디자인: 체육관 낮 전광판 (크림 + 나무 + 검정 시계판) ── */
+body{background:#f4ead2;background-image:repeating-linear-gradient(90deg,rgba(120,80,30,.07) 0 3px,transparent 3px 46px);color:#3b2a14}
+.bar h1{color:#7a3e0c}
+.bar span{color:#7a5a30!important}
+.tb{background:#e5d3a8;color:#3b2a14;border-radius:8px;border-bottom:3px solid #b99a5c}
+.tb.on{background:#d9480f;color:#fff;border-bottom-color:#8f2f06}
+.clockbox{background:#161616;border:6px solid #8a5a2b;border-radius:16px;box-shadow:0 6px 0 #5e3b17,inset 0 0 20px #000}
+.clock{font-family:'Bungee',Orbitron,monospace;font-weight:400;color:#ffb703;text-shadow:0 0 14px rgba(255,183,3,.55)}
+.clock.low{color:#ff5d5d}
+.period{color:#cdd6e0}.period b{font-family:'Bungee',Orbitron,monospace;font-weight:400;color:#7ee081}
+.cbtn{background:#2ec4b6;color:#073b36;border-radius:8px}.cbtn.pause{background:#ffb703;color:#3a2300}
+.mini button{background:rgba(255,255,255,.16);color:#fff}
+.ccol label{color:#cdd6e0!important}
+.team{background:#fffaf0;border:5px solid var(--c);border-radius:14px;box-shadow:0 7px 0 color-mix(in srgb,var(--c) 55%,#3b2a14)}
+.tname{color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.25);border-radius:0}
+.score{font-family:'Bungee',Orbitron,sans-serif;font-weight:400;color:var(--c);text-shadow:0 5px 0 rgba(0,0,0,.12)}
+.btns button{background:#efe2bf;color:#3b2a14;border-bottom:3px solid #c9b07a}
+.btns button.plus{background:var(--c);color:#fff;border-bottom:3px solid rgba(0,0,0,.3)}
+.foot{color:#8a6c3f}
+.maker{color:rgba(60,40,20,.5)}
+.end{background:rgba(244,234,210,.92)}.end div{color:#d9480f}.end small{color:#3b2a14}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="bar"><h1>🏟️ 전광판</h1><div class="sp"></div>
+    <span style="font-size:14px;color:#94A3B8">팀 수</span><button class="tb" data-n="2">2</button><button class="tb" data-n="3">3</button><button class="tb" data-n="4">4</button>
+    <button class="tb" id="swap">⇄ 자리 바꾸기</button><button class="tb" id="reset">↺ 점수 0</button><button class="tb" id="fs">⛶ 전체 화면</button></div>
+  <div class="clockbox">
+    <div class="period"><span>세트</span><b id="per">1</b><div class="mini"><button id="perM">−</button><button id="perP">+</button></div></div>
+    <div class="clock" id="clock" title="눌러서 시간 정하기">05:00</div>
+    <div class="ccol"><button class="cbtn" id="startBtn">▶ 시작</button><div class="mini"><button id="m1">−1분</button><button id="p1">+1분</button><button id="setT">⏱ 설정</button></div><label style="font-size:13px;color:#94A3B8"><input type="checkbox" id="up"> 올라가는 시계</label></div>
+  </div>
+  <div class="teams" id="teams"></div>
+  <div class="foot">점수 숫자를 누르면 +1 · 키보드: Q/W/E/R 팀별 +1, 스페이스 시계 시작/멈춤</div>
+</div>
+<div class="end" id="end"><div>⏰ 경기 끝!<small id="endTxt"></small></div></div>
+<dialog id="dlg"><div style="font-size:20px;margin-bottom:8px">경기 시간</div><input id="mm" type="number" min="0" max="99" value="5"> 분 <input id="ss" type="number" min="0" max="59" value="0"> 초
+  <div class="pre" id="pre"></div><div style="text-align:right;margin-top:10px"><button id="ok" style="background:#22C55E;color:#fff">확인</button></div></dialog>
+<div class="maker">제작 : 비춤이샘</div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const C=['#EF4444','#3B82F6','#22C55E','#F59E0B'];
+let N=2,teams=[{n:'빨강팀',s:0},{n:'파랑팀',s:0},{n:'초록팀',s:0},{n:'노랑팀',s:0}],cols=C.slice();
+let total=300,left=300,run=false,last=0,up=false,ac=null,per=1;
+try{const sv=JSON.parse(localStorage.getItem('bichum-score')||'null');if(sv){N=sv.N;teams=sv.teams;total=sv.total;left=sv.left;per=sv.per||1;}}catch(e){}
+function save(){try{localStorage.setItem('bichum-score',JSON.stringify({N,teams,total,left,per}));}catch(e){}}
+function beep(f,d,v=.2,type='square'){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d);}catch(e){}}
+function buzzer(){[0,350,700].forEach(t=>setTimeout(()=>beep(220,.32,.25,'sawtooth'),t));}
+function render(){
+  const el=$('teams');el.style.setProperty('--n',N);
+  const top=Math.max(...teams.slice(0,N).map(t=>t.s));
+  el.innerHTML=teams.slice(0,N).map((t,i)=>`<div class="team${t.s===top&&top>0&&teams.slice(0,N).filter(x=>x.s===top).length===1?' lead':''}" style="--c:${cols[i]}"><input class="tname" data-i="${i}" value="${t.n}" maxlength="8" aria-label="팀 이름"><div class="score" data-i="${i}">${t.s}</div><div class="btns"><button data-i="${i}" data-d="-1">−1</button><button class="plus" data-i="${i}" data-d="1">+1</button><button class="plus" data-i="${i}" data-d="2">+2</button><button class="plus" data-i="${i}" data-d="3">+3</button></div></div>`).join('');
+  document.querySelectorAll('[data-n]').forEach(b=>b.classList.toggle('on',+b.dataset.n===N));
+  $('per').textContent=per;
+}
+function add(i,d,bump=true){teams[i].s=Math.max(0,teams[i].s+d);save();render();if(bump){const s=document.querySelector(`.score[data-i="${i}"]`);s&&s.classList.add('bump');}beep(d>0?880:330,.08,.12,'sine');}
+$('teams').addEventListener('click',e=>{const b=e.target.closest('[data-d]');if(b){add(+b.dataset.i,+b.dataset.d);return;}const s=e.target.closest('.score');if(s)add(+s.dataset.i,1);});
+$('teams').addEventListener('input',e=>{const t=e.target.closest('.tname');if(t){teams[+t.dataset.i].n=t.value;save();}});
+document.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{N=+b.dataset.n;save();render();});
+$('swap').onclick=()=>{const a=teams.slice(0,N).reverse(),c=cols.slice(0,N).reverse();teams.splice(0,N,...a);cols.splice(0,N,...c);render();};
+$('reset').onclick=()=>{if(!confirm('점수를 모두 0으로 할까요?'))return;teams.forEach(t=>t.s=0);per=1;left=up?0:total;save();render();drawClock();};
+$('perP').onclick=()=>{per++;save();render();};$('perM').onclick=()=>{per=Math.max(1,per-1);save();render();};
+/* 시계 */
+const fmt=s=>{s=Math.max(0,Math.ceil(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');};
+function drawClock(){$('clock').textContent=fmt(left);$('clock').classList.toggle('low',!up&&run&&left<=10);}
+function toggle(){
+  if(!up&&left<=0){left=total;}
+  run=!run;last=performance.now();$('startBtn').textContent=run?'⏸ 멈춤':'▶ 시작';$('startBtn').classList.toggle('pause',run);beep(run?660:440,.12,.15,'sine');
+}
+$('startBtn').onclick=toggle;
+$('up').onchange=()=>{up=$('up').checked;run=false;left=up?0:total;$('startBtn').textContent='▶ 시작';$('startBtn').classList.remove('pause');drawClock();};
+$('m1').onclick=()=>{left=Math.max(0,left-60);if(!run)total=Math.max(60,total-60);drawClock();save();};
+$('p1').onclick=()=>{left+=60;if(!run)total+=60;drawClock();save();};
+function openSet(){$('mm').value=Math.floor(total/60);$('ss').value=total%60;$('pre').innerHTML=[1,2,3,5,7,10,15,20].map(m=>`<button data-m="${m}">${m}분</button>`).join('');$('dlg').showModal();}
+$('setT').onclick=openSet;$('clock').onclick=()=>{if(!run)openSet();};
+$('pre').onclick=e=>{const b=e.target.closest('[data-m]');if(b){$('mm').value=b.dataset.m;$('ss').value=0;}};
+$('ok').onclick=()=>{total=Math.max(5,(+$('mm').value||0)*60+(+$('ss').value||0));left=up?0:total;drawClock();save();$('dlg').close();};
+let lastSec=-1;
+function tick(t){
+  if(run){const dt=(t-last)/1000;last=t;
+    if(up)left+=dt;else{left-=dt;const s=Math.ceil(left);if(s<=5&&s>0&&s!==lastSec){lastSec=s;beep(1000,.1,.15,'sine');}
+      if(left<=0){left=0;run=false;$('startBtn').textContent='▶ 시작';$('startBtn').classList.remove('pause');buzzer();
+        const sc=teams.slice(0,N),top=Math.max(...sc.map(x=>x.s)),w=sc.filter(x=>x.s===top);
+        $('endTxt').textContent=w.length>1?`${w.map(x=>x.n).join(', ')} 무승부! (${top}점)`:`🏆 ${w[0].n} 승리! (${sc.map(x=>x.s).join(' : ')})`;$('end').classList.add('on');}}
+    drawClock();save();}
+  requestAnimationFrame(tick);
+}
+$('end').onclick=()=>$('end').classList.remove('on');
+$('fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}catch(e){}};
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const k='qwer'.indexOf(e.key.toLowerCase());if(k>=0&&k<N){add(k,1);}else if(e.code==='Space'){e.preventDefault();toggle();}});
+render();drawClock();requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

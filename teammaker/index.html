@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>팀 나누기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F172A;--bg:#0B1324;--card:#FFFFFF}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:'Gamja Flower','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#fff;background:radial-gradient(ellipse at 50% -20%,#1E3A8A 0,#0B1324 60%);min-height:100vh;-webkit-tap-highlight-color:transparent}
+button,input,textarea{font-family:inherit}
+button{cursor:pointer;color:inherit}
+button:focus-visible{outline:3px solid #60A5FA;outline-offset:2px}
+.wrap{max-width:1400px;margin:0 auto;padding:14px 16px 40px}
+header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+header h1{margin:0;font-weight:400;font-size:clamp(22px,3.4vw,36px)}
+header h1 em{font-style:normal;color:#FDE047}
+.sp{flex:1}
+.tb{border:0;border-radius:12px;padding:9px 14px;font-size:16px;background:rgba(255,255,255,.12)}
+.tb.big{background:#22C55E;color:#04210F;font-size:20px;padding:10px 22px;box-shadow:0 4px 0 #15803D}
+.panel{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:18px;padding:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:14px}
+.panel h3{margin:0 0 8px;font-weight:400;font-size:16px;color:#BFDBFE}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:2px solid rgba(255,255,255,.25);background:transparent;border-radius:999px;padding:6px 14px;font-size:17px}
+.seg button.on{background:#FDE047;color:var(--ink);border-color:#FDE047}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.num{width:90px;font-size:22px;text-align:center;border-radius:10px;border:2px solid rgba(255,255,255,.25);background:rgba(0,0,0,.25);color:#fff;padding:6px}
+textarea{width:100%;min-height:86px;border-radius:12px;border:2px solid rgba(255,255,255,.25);background:rgba(0,0,0,.25);color:#fff;font-size:16px;padding:8px;resize:vertical}
+.hint{font-size:13px;color:#93A4C3;margin-top:4px;line-height:1.4}
+.absent{display:flex;flex-wrap:wrap;gap:4px;max-height:130px;overflow:auto}
+.absent button{width:38px;height:34px;border-radius:8px;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);font-size:15px}
+.absent button.off{background:#7F1D1D;border-color:#EF4444;text-decoration:line-through}
+.teams{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px}
+@media (max-width:900px){.teams{grid-template-columns:repeat(min(var(--n),3),minmax(0,1fr))}}
+@media (max-width:560px){.teams{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.team{border-radius:18px;background:var(--c);padding:10px;box-shadow:0 6px 0 rgba(0,0,0,.35);color:#0F172A;min-height:120px;display:flex;flex-direction:column}
+.team h2{margin:0 0 8px;font-weight:400;font-size:clamp(18px,2.4vw,28px);display:flex;align-items:center;justify-content:space-between;gap:6px}
+.team h2 small{font-size:.6em;background:rgba(255,255,255,.6);border-radius:999px;padding:0 .6em}
+.members{display:flex;flex-wrap:wrap;gap:6px}
+.m{background:#fff;border-radius:12px;padding:6px 10px;font-size:clamp(16px,2.1vw,26px);box-shadow:0 3px 0 rgba(0,0,0,.2);animation:drop .45s cubic-bezier(.2,1.4,.5,1) backwards;position:relative}
+.m.cap::before{content:'👑';position:absolute;left:-6px;top:-12px;font-size:16px}
+@keyframes drop{from{transform:translateY(-60px) rotate(-12deg);opacity:0}}
+.shuffle{position:fixed;inset:0;display:none;place-items:center;background:rgba(11,19,36,.85);z-index:5;font-size:clamp(60px,14vw,180px)}
+.shuffle.on{display:grid}
+.shuffle span{animation:spin .25s linear infinite}
+@keyframes spin{50%{transform:scale(1.2) rotate(10deg)}}
+.maker{position:fixed;right:10px;bottom:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.toast{position:fixed;left:50%;top:16px;transform:translateX(-50%);background:#fff;color:#0F172A;border-radius:999px;padding:8px 18px;opacity:0;transition:.25s;z-index:9}
+.toast.on{opacity:1}
+.empty{grid-column:1/-1;text-align:center;color:#93A4C3;padding:30px;font-size:20px}
+/* ── 새 디자인: 하늘색 공책 + 포스트잇 팀 보드 ── */
+:root{--ink:#27406b}
+body{background:#cfe8ff;background-image:linear-gradient(rgba(60,110,190,.12) 2px,transparent 2px),linear-gradient(90deg,rgba(60,110,190,.12) 2px,transparent 2px);background-size:34px 34px;color:#27406b}
+header h1 em{color:#e8590c}
+.tb{background:#fff;color:#27406b;border:2px solid #27406b;border-radius:999px;box-shadow:0 3px 0 #27406b}
+.tb.big{background:#ff922b;color:#fff;box-shadow:0 4px 0 #b25a0a;border-color:#27406b}
+.panel{background:#fff;border:3px solid #27406b;border-radius:20px;box-shadow:0 6px 0 #27406b}
+.panel h3{color:#1c5fd4}
+.seg button{border:2px solid #27406b;color:#27406b;background:#fff}
+.seg button.on{background:#ffd43b;border-color:#27406b;color:#27406b}
+.num,textarea{background:#f2f8ff;color:#27406b;border:2px solid #27406b}
+.hint,.empty{color:#5a76a3}
+.absent button{background:#eef5ff;border:2px solid #9bb6dc;color:#27406b}
+.absent button.off{background:#ffc9c9;border-color:#e03131;color:#a61e1e}
+.team{border:3px solid #27406b;border-radius:6px 6px 18px 18px;box-shadow:0 6px 0 #27406b;position:relative}
+.team::before{content:'';position:absolute;left:50%;top:-9px;width:46px;height:16px;margin-left:-23px;background:rgba(255,255,255,.7);border:2px solid #27406b;border-radius:3px;transform:rotate(-3deg)}
+.m{border:2px solid #27406b;box-shadow:0 3px 0 #27406b}
+.shuffle{background:rgba(207,232,255,.92)}
+.maker{color:rgba(39,64,107,.65)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><h1>🧑‍🤝‍🧑 팀 <em>나누기</em></h1><div class="sp"></div>
+    <button class="tb" id="hideSet">⚙️ 설정 숨기기</button>
+    <button class="tb" id="copy">📋 복사</button>
+    <button class="tb" id="fs">⛶ 전체 화면</button>
+    <button class="tb big" id="go">🎲 팀 나누기!</button></header>
+  <div class="panel" id="settings">
+    <div><h3>① 누구로 나눌까요?</h3><div class="seg" id="src"><button data-v="num" class="on">번호로</button><button data-v="names">이름(닉네임) 목록</button></div>
+      <div id="numBox" style="margin-top:10px" class="row">1번부터 <input class="num" id="count" type="number" min="2" max="60" value="24"> 번까지</div>
+      <div id="nameBox" style="margin-top:10px;display:none"><textarea id="names" placeholder="한 줄에 한 명씩, 또는 쉼표로 나눠 적어요"></textarea><div class="hint">이 목록은 이 컴퓨터(브라우저)에만 저장돼요.</div></div></div>
+    <div><h3>② 몇 팀으로?</h3><div class="seg" id="tn"></div>
+      <h3 style="margin-top:12px">조끼 색</h3><div class="seg" id="bib"><button data-v="color" class="on">무지개 색</button><button data-v="two">청·백</button></div>
+      <h3 style="margin-top:12px">덤</h3><div class="seg"><button id="capBtn" data-on="1" class="on">👑 팀장 뽑기</button></div></div>
+    <div id="absWrap"><h3>③ 오늘 빠지는 번호 <small style="color:#93A4C3">(눌러서 빼요)</small></h3><div class="absent" id="absent"></div></div>
+  </div>
+  <div class="teams" id="teams" style="--n:2"><div class="empty">🎲 팀 나누기를 눌러요</div></div>
+</div>
+<div class="shuffle" id="shuffle"><span>🎲</span></div>
+<div class="toast" id="toast"></div>
+<div class="maker">제작 : 비춤이샘</div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const COL=[['빨강','#FCA5A5'],['파랑','#93C5FD'],['초록','#86EFAC'],['노랑','#FDE68A'],['보라','#D8B4FE'],['주황','#FDBA74'],['분홍','#F9A8D4'],['하늘','#A5F3FC']];
+const TWO=[['청팀','#93C5FD'],['백팀','#F1F5F9']];
+let src='num',teamsN=2,bib='color',cap=true,absent=new Set(),last=null;
+try{const sv=JSON.parse(localStorage.getItem('bichum-team')||'{}');if(sv.names)$('names').value=sv.names;if(sv.count)$('count').value=sv.count;}catch(e){}
+function save(){try{localStorage.setItem('bichum-team',JSON.stringify({names:$('names').value,count:$('count').value}));}catch(e){}}
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1600);}
+$('tn').innerHTML=[2,3,4,5,6,8].map(n=>`<button data-v="${n}" class="${n===teamsN?'on':''}">${n}팀</button>`).join('');
+function seg(id,fn){$(id).onclick=e=>{const b=e.target.closest('[data-v]');if(!b)return;$(id).querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x===b));fn(b.dataset.v);};}
+seg('src',v=>{src=v;$('numBox').style.display=v==='num'?'':'none';$('nameBox').style.display=v==='names'?'':'none';$('absWrap').style.display=v==='num'?'':'none';});
+seg('tn',v=>{teamsN=+v;if(teamsN!==2&&bib==='two'){bib='color';$('bib').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v==='color'));}});
+seg('bib',v=>{bib=v;if(v==='two'){teamsN=2;$('tn').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v==='2'));}});
+$('capBtn').onclick=()=>{cap=!cap;$('capBtn').classList.toggle('on',cap);};
+function absentUI(){const n=Math.max(2,Math.min(60,+$('count').value||0));$('absent').innerHTML=Array.from({length:n},(_,i)=>`<button data-i="${i+1}" class="${absent.has(i+1)?'off':''}">${i+1}</button>`).join('');}
+$('count').oninput=()=>{absentUI();save();};$('names').oninput=save;
+$('absent').onclick=e=>{const b=e.target.closest('[data-i]');if(!b)return;const i=+b.dataset.i;absent.has(i)?absent.delete(i):absent.add(i);b.classList.toggle('off');};
+absentUI();
+function people(){
+  if(src==='num'){const n=Math.max(2,Math.min(60,+$('count').value||0));return Array.from({length:n},(_,i)=>i+1).filter(i=>!absent.has(i)).map(i=>i+'번');}
+  return $('names').value.split(/[\n,]+/).map(s=>s.trim()).filter(Boolean);
+}
+function shuffle(a){const r=new Uint32Array(a.length);crypto.getRandomValues(r);for(let i=a.length-1;i>0;i--){const j=r[i]%(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
+$('go').onclick=()=>{
+  const ps=people();if(ps.length<teamsN){toast('사람 수가 팀 수보다 적어요');return;}
+  $('shuffle').classList.add('on');
+  setTimeout(()=>{
+    $('shuffle').classList.remove('on');
+    const list=shuffle(ps.slice()),T=Array.from({length:teamsN},()=>[]);
+    // 팀 시작 위치를 섞어 남는 사람이 늘 같은 팀으로 가지 않게
+    const off=Math.floor(Math.random()*teamsN);list.forEach((p,i)=>T[(i+off)%teamsN].push(p));
+    const names=bib==='two'?TWO:COL;
+    last=T.map((m,i)=>({name:names[i][0]+(bib==='two'?'':'팀'),c:names[i][1],m,cap:cap?Math.floor(Math.random()*m.length):-1}));
+    $('teams').style.setProperty('--n',teamsN);
+    $('teams').innerHTML=last.map((t,ti)=>`<div class="team" style="--c:${t.c}"><h2>${t.name}<small>${t.m.length}명</small></h2><div class="members">${t.m.map((p,i)=>`<span class="m${i===t.cap?' cap':''}" style="animation-delay:${(i*teamsN+ti)*55}ms">${p}</span>`).join('')}</div></div>`).join('');
+  },900);
+};
+$('copy').onclick=()=>{if(!last){toast('먼저 팀을 나눠요');return;}const txt=last.map(t=>`[${t.name}] ${t.m.map((p,i)=>i===t.cap?p+'(팀장)':p).join(', ')}`).join('\n');navigator.clipboard&&navigator.clipboard.writeText(txt).then(()=>toast('복사했어요!'),()=>toast('복사하지 못했어요'));};
+$('hideSet').onclick=()=>{const s=$('settings');const h=s.style.display==='none';s.style.display=h?'':'none';$('hideSet').textContent=h?'⚙️ 설정 숨기기':'⚙️ 설정 보이기';};
+$('fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}catch(e){}};
+})();
+</script>
+</body>
+</html>
