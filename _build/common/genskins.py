@@ -779,3 +779,37 @@ body{background:#ede9fe;background-image:linear-gradient(180deg,#fed7aa,#ede9fe 
 .qbox.ask{border:3px solid #3b1d8a;border-radius:18px;font-size:clamp(18px,min(5.5cqw,4dvh),33px);box-shadow:0 5px 0 #5b3fb0}
 .res-title{text-shadow:0 4px 0 #3b1d8a}
 """)
+
+# 가을 운동회 (정답 과녁 슛): 청백 + 홍 + 노랑 깃발
+skin('sportsday','Black Han Sans','Gowun Dodum','family=Black+Han+Sans&family=Gowun+Dodum',dict(
+ page='#e8f6ff',ink='#1c2b4d',sub='#55658a',line='#1c2b4d',bw='3px',card='#ffffff',cardInk='#1c2b4d',hl='#e53935',stage='#cfeaff',
+ shCard='0 6px 0 #1c2b4d',shBtn='0 4px 0 #1c2b4d',shDown='0 1px 0 #1c2b4d',shGo='0 7px 0 #8e1d1a',rad='16px',rads='12px',
+ tagBg='#f2a900',tagInk='#1c2b4d',chipBg='#f2f9ff',chipLine='#1c2b4d',sub2='#55658a',acc='#1e66d0',accLine='#1c2b4d',go='#e53935',hud='#1c2b4d',
+ prog='linear-gradient(90deg,#f2a900,#e53935)',qbg='rgba(255,255,255,.97)',qink='#1c2b4d',veil='rgba(28,43,77,.65)',track='#cfeaff',title='#fff',title1='#fde047',title2='#fff',noR='8px',scR='10px'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#e8f6ff;background-image:repeating-linear-gradient(90deg,rgba(229,57,53,.08) 0 28px,rgba(30,102,208,.08) 28px 56px)}
+.sign h1{text-shadow:0 4px 0 #1c2b4d,0 8px 14px rgba(0,20,60,.35);letter-spacing:.02em}
+.sign .sub{border:3px solid #1c2b4d;background:#fde047;color:#1c2b4d;box-shadow:0 4px 0 #1c2b4d}
+.booth{background:#8fd3ff}
+.chip{border-radius:12px}.chip.sel{box-shadow:0 5px 0 #1c2b4d}
+.fire,.wz-next{border-radius:12px;font-size:30px}
+.qbox.ask{border:3px solid #1c2b4d;border-radius:14px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:0 5px 0 #1c2b4d}
+.res-title{text-shadow:0 4px 0 #1c2b4d}
+""")
+
+# 친구 톡방: 말랑한 보라 + 민트 메신저
+skin('chatroom','Sunflower','Gowun Dodum','family=Sunflower:wght@300;500;700&family=Gowun+Dodum',dict(
+ page='#ede9fe',ink='#2d1b69',sub='#6d5cae',line='#6d28d9',bw='3px',card='#ffffff',cardInk='#2d1b69',hl='#7c3aed',stage='#ddd6fe',
+ shCard='0 6px 0 #c4b5fd',shBtn='0 4px 0 #c4b5fd',shDown='0 1px 0 #c4b5fd',shGo='0 7px 0 #4c1d95',rad='22px',rads='16px',
+ tagBg='#10b981',tagInk='#fff',chipBg='#f6f3ff',chipLine='#c4b5fd',sub2='#6d5cae',acc='#7c3aed',accLine='#4c1d95',go='#7c3aed',hud='#4c1d95',
+ prog='linear-gradient(90deg,#34d399,#7c3aed)',qbg='rgba(255,255,255,.97)',qink='#2d1b69',veil='rgba(76,29,149,.62)',track='#ddd6fe',title='#fff',title1='#d1fae5',title2='#fff',noR='50%'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:#ede9fe;background-image:radial-gradient(circle at 20% 15%,rgba(52,211,153,.25),transparent 30%),radial-gradient(circle,rgba(124,58,237,.1) 2px,transparent 3px);background-size:auto,32px 32px}
+.sign h1{text-shadow:0 4px 0 #4c1d95,0 8px 16px rgba(60,20,140,.3);letter-spacing:.02em}
+.sign .sub{border:0;background:#d1fae5;color:#064e3b;box-shadow:0 4px 0 #34d399}
+.booth{background:#c4b5fd}
+.chip{border-radius:18px}.chip.sel{box-shadow:0 5px 0 #4c1d95}
+.fire,.wz-next{border-radius:999px;font-size:30px}
+.qbox.ask{border:3px solid #7c3aed;border-radius:20px;font-size:clamp(17px,min(5.2cqw,3.8dvh),30px);box-shadow:0 5px 0 #c4b5fd}
+.res-title{text-shadow:0 4px 0 #4c1d95}
+""")
