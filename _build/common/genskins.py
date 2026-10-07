@@ -1009,3 +1009,19 @@ body{background:#17382c;background-image:radial-gradient(ellipse at 30% 20%,rgba
 .qbox.ask{border:3px solid #8b5a2b;border-radius:10px;font-size:clamp(20px,min(5.8cqw,4.2dvh),34px);box-shadow:0 4px 0 #0b2118}
 .res-title{text-shadow:0 3px 0 #0b2118}
 """)
+
+# 칙칙폭폭 꼬리 기차: 나무 장난감 기차놀이판
+skin('toytrack','Kirang Haerang','Gowun Dodum','family=Kirang+Haerang&family=Gowun+Dodum',dict(
+ page='#fff0d4',ink='#5a3a1a',sub='#8b6a3d',line='#5a3a1a',bw='3px',card='#fffaf0',cardInk='#5a3a1a',hl='#e5383b',stage='#f2d9a6',
+ shCard='0 6px 0 #a47a3d',shBtn='0 4px 0 #a47a3d',shDown='0 1px 0 #a47a3d',shGo='0 7px 0 #1864ab',rad='24px',rads='16px',
+ tagBg='#1c7ed6',tagInk='#fff',chipBg='#fff6e0',chipLine='#a47a3d',sub2='#8b6a3d',acc='#37b24d',accInk='#fff',accLine='#1f7a31',accSub='#e6ffe9',go='#e5383b',goInk='#fff',hud='#7a4f22',
+ prog='linear-gradient(90deg,#fcc419,#37b24d)',qbg='#fffaf0',qink='#5a3a1a',veil='rgba(90,58,26,.62)',track='#f2d9a6',title='#fff',title1='#ffe9bf',title2='#fff',noR='50%',dInk='#5a3a1a'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#e9c58b;background-image:repeating-linear-gradient(90deg,rgba(120,80,30,.1) 0 4px,transparent 4px 60px),repeating-linear-gradient(0deg,rgba(120,80,30,.1) 0 4px,transparent 4px 60px)}
+.sign h1{text-shadow:0 4px 0 #7a4f22,0 8px 0 rgba(90,58,26,.25);-webkit-text-stroke:2px #7a4f22}
+.sign .sub{border:3px solid #7a4f22;background:#fcc419;color:#5a3a1a;box-shadow:0 4px 0 #7a4f22}
+.chip{border-radius:20px}.chip.sel{box-shadow:0 5px 0 #1f7a31}
+.fire,.wz-next{border-radius:999px;font-size:36px}
+.qbox.ask{border:3px solid #7a4f22;border-radius:20px;font-size:clamp(19px,min(5.6cqw,4.1dvh),32px);box-shadow:0 5px 0 #a47a3d}
+.res-title{text-shadow:0 4px 0 #7a4f22}
+""")
