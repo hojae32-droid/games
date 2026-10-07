@@ -1255,3 +1255,12 @@ mk('casefile','IBM Plex Sans KR','family=IBM+Plex+Sans+KR:wght@400;500;700&famil
 .fire,.wz-next{border-radius:6px;font-size:28px;font-weight:700}
 .qbox.ask{border:3px solid #1f2a37;border-radius:4px;box-shadow:0 5px 0 #1f2a37;background:#fbf6e6;font-weight:700}
 """,rad='6px',veil='rgba(31,42,55,.7)',bw='3px',goInk='#1f2a37',tagInk='#1f2a37',tag='#eab308',sans='IBM Plex Sans KR')
+
+mk('studio','Do Hyeon','family=Do+Hyeon&family=Gowun+Dodum','#10243f','#e8f1ff','#173560','#f59e0b','#38bdf8','#ef4444','#08142a','#08142a',
+ extra="""body{background:#10243f;background-image:radial-gradient(ellipse at 50% -10%,rgba(56,189,248,.35),transparent 60%),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 6px)}
+.sign h1{color:#fff;text-shadow:0 0 18px #38bdf8,0 4px 0 #08142a}
+.sign .sub{border:3px solid #ef4444;background:#08142a;color:#fecaca;box-shadow:0 0 12px rgba(239,68,68,.6);border-radius:4px}
+.chip{border-radius:8px;border-color:#38bdf8}.chip.sel{box-shadow:0 0 16px #38bdf8}
+.fire,.wz-next{border-radius:10px;font-size:30px}
+.qbox.ask{border:3px solid #38bdf8;border-radius:8px;background:#173560;color:#e8f1ff;box-shadow:0 0 14px rgba(56,189,248,.5)}
+""",rad='12px',veil='rgba(8,20,42,.76)',sub='#bfdbfe',bw='3px',chip='#24508f',chipLine='#38bdf8',tag='#f59e0b',tagInk='#08142a',dInk='#08142a',accInk='#08142a',goInk='#fff')
