@@ -1237,3 +1237,12 @@ mk('auction','Stylish','family=Stylish&family=Gowun+Batang','#4a0d1a','#fff1c9',
 .fire,.wz-next{border-radius:6px;font-size:30px}
 .qbox.ask{border:3px solid #facc15;border-radius:4px;background:#2a060e;color:#ffe9a8;box-shadow:0 0 14px rgba(250,204,21,.45)}
 """,rad='8px',veil='rgba(31,4,10,.76)',sub='#ffe9a8',bw='3px',chip='#7a1a30',chipLine='#facc15',tag='#facc15',tagInk='#2a060e',dInk='#2a060e',accInk='#fff',goInk='#2a060e')
+
+mk('neonblock','Orbit','family=Orbit&family=Gowun+Dodum','#14123a','#e0e7ff','#221f5c','#22d3ee','#818cf8','#f97316','#0b0a26','#0b0a26',
+ extra="""body{background:#14123a;background-image:linear-gradient(rgba(129,140,248,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(129,140,248,.14) 1px,transparent 1px),radial-gradient(ellipse at 50% 120%,rgba(34,211,238,.25),transparent 55%);background-size:44px 44px,44px 44px,auto}
+.sign h1{color:#c7f9ff;text-shadow:0 0 18px #22d3ee,0 4px 0 #0b0a26}
+.sign .sub{border:2px solid #22d3ee;background:#0b0a26;color:#c7f9ff;box-shadow:0 0 12px rgba(34,211,238,.6);border-radius:4px}
+.chip{border-radius:6px;border-color:#818cf8}.chip.sel{box-shadow:0 0 16px #22d3ee}
+.fire,.wz-next{border-radius:8px;font-size:28px}
+.qbox.ask{border:2px solid #22d3ee;border-radius:6px;background:#0b0a26;color:#e0e7ff;box-shadow:0 0 14px rgba(34,211,238,.5)}
+""",rad='10px',veil='rgba(11,10,38,.78)',sub='#c7d2fe',bw='2px',chip='#2f2b7a',chipLine='#818cf8',tag='#22d3ee',tagInk='#0b0a26',dInk='#0b0a26',accInk='#0b0a26',goInk='#0b0a26')
