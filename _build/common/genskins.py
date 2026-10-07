@@ -1327,3 +1327,12 @@ mk('curator','Diphylleia','family=Diphylleia&family=Gowun+Batang','#1f1b24','#f7
 .fire,.wz-next{border-radius:4px;font-size:30px}
 .qbox.ask{border:2px solid #f5c04a;border-radius:3px;background:#120f16;color:#f7efe0;box-shadow:0 0 14px rgba(245,192,74,.4)}
 """,rad='6px',veil='rgba(12,10,16,.78)',sub='#e8d6aa',bw='2px',chip='#3b3342',chipLine='#b8860b',tag='#f5c04a',tagInk='#120f16',dInk='#120f16',accInk='#120f16',goInk='#120f16')
+
+mk('sketchbook','Gamja Flower','family=Gamja+Flower&family=Gowun+Dodum','#fbf7e8','#3a3226','#fffef7','#e11d48','#0d9488','#e11d48','#4a4034','#6b5d4a',
+ extra="""body{background:#fbf7e8;background-image:repeating-linear-gradient(0deg,transparent 0 31px,rgba(13,148,136,.22) 31px 33px),linear-gradient(90deg,transparent 70px,rgba(225,29,72,.28) 70px 72px,transparent 72px)}
+.sign h1{text-shadow:0 3px 0 #4a4034;-webkit-text-stroke:1.5px #4a4034;transform:rotate(-1.5deg)}
+.sign .sub{border:2px dashed #4a4034;background:#fffef7;color:#3a3226;box-shadow:2px 3px 0 #6b5d4a;border-radius:6px;transform:rotate(1deg)}
+.chip{border-radius:10px;border-style:dashed}.chip.sel{box-shadow:0 4px 0 #0f766e}
+.fire,.wz-next{border-radius:10px;font-size:34px;transform:rotate(-.6deg)}
+.qbox.ask{border:2px dashed #4a4034;border-radius:10px;box-shadow:3px 4px 0 #6b5d4a;background:#fffef7}
+""",rad='10px',veil='rgba(74,64,52,.62)',bw='2px')
