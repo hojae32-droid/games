@@ -1282,3 +1282,12 @@ mk('matrix','Nanum Gothic Coding','family=Nanum+Gothic+Coding:wght@400;700&famil
 .fire,.wz-next{border-radius:4px;font-size:28px;font-weight:700}
 .qbox.ask{border:2px solid #22ff88;border-radius:3px;background:#0b2a1c;color:#b6ffd3;box-shadow:0 0 14px rgba(34,255,136,.5);font-weight:700}
 """,rad='6px',veil='rgba(2,16,8,.8)',sub='#7be8ad',bw='2px',chip='#0f3d29',chipLine='#14b86a',tag='#22ff88',tagInk='#021008',dInk='#021008',accInk='#021008',goInk='#021008')
+
+mk('landdeed','Gowun Batang','family=Gowun+Batang:wght@400;700&family=Gowun+Dodum','#e8efd0','#2c3b17','#fdfbec','#ca8a04','#15803d','#ca8a04','#365314','#3f6212',
+ extra="""body{background:#dfe8c3;background-image:linear-gradient(rgba(63,98,18,.12) 2px,transparent 2px),linear-gradient(90deg,rgba(63,98,18,.12) 2px,transparent 2px);background-size:56px 56px;background-position:-2px -2px}
+.sign h1{text-shadow:0 3px 0 #365314;-webkit-text-stroke:1px #365314;font-weight:700;letter-spacing:.02em}
+.sign .sub{border:3px solid #365314;background:#fdfbec;color:#365314;box-shadow:0 4px 0 #3f6212;border-radius:3px;font-weight:700}
+.chip{border-radius:5px}.chip.sel{box-shadow:0 5px 0 #713f12}
+.fire,.wz-next{border-radius:6px;font-size:30px;font-weight:700}
+.qbox.ask{border:3px solid #365314;border-radius:4px;box-shadow:0 5px 0 #3f6212;background:#fdfbec;font-weight:700}
+""",rad='8px',veil='rgba(54,83,20,.66)',bw='3px',sans='Gowun Batang')
