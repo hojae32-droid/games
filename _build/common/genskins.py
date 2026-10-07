@@ -1345,3 +1345,37 @@ mk('railgallery','Stylish','family=Stylish&family=Gowun+Dodum','#e7edf3','#1f2d3
 .fire,.wz-next{border-radius:6px;font-size:30px}
 .qbox.ask{border:3px solid #1a365d;border-radius:6px;box-shadow:0 5px 0 #2c5282;background:#fbfdff}
 """,rad='8px',veil='rgba(26,54,93,.62)',bw='3px')
+
+mk('pitch','Black Han Sans','family=Black+Han+Sans&family=Gowun+Dodum','#2e7d32','#ffffff','#f7fff0','#ffd600','#1b5e20','#ffd600','#0f3d14','#0b2e10',
+ extra="""body{background:repeating-linear-gradient(90deg,#2f8a36 0 70px,#2a7d31 70px 140px)}
+.sign h1{text-shadow:0 4px 0 #0b2e10;-webkit-text-stroke:2px #0b2e10;letter-spacing:.02em}
+.sign .sub{border:3px solid #fff;background:#1b5e20;color:#fff;box-shadow:0 4px 0 #0b2e10;border-radius:6px}
+.chip{border-radius:8px}.fire,.wz-next{border-radius:8px;font-size:34px;color:#0b2e10}
+.qbox.ask{border:3px solid #fff;border-radius:8px;box-shadow:0 5px 0 #0b2e10;background:#1b5e20;color:#fff}
+""",rad='10px',veil='rgba(5,40,10,.7)',goInk='#0b2e10',cardInk='#12361a',qbg='#1b5e20',qink='#ffffff')
+
+mk('signal','Yeon Sung','family=Yeon+Sung&family=Gowun+Dodum','#1b1f2a','#f4f6fb','#262c3a','#ff4d4d','#3ddc84','#3ddc84','#0d1017','#0a0d13',
+ extra="""body{background:radial-gradient(circle at 50% 0,#2b3350 0,#14171f 70%)}
+.sign h1{text-shadow:0 0 18px rgba(61,220,132,.7);-webkit-text-stroke:0}
+.sign .sub{border:3px solid #3ddc84;background:#14171f;color:#c7f7da;box-shadow:0 0 14px rgba(61,220,132,.4);border-radius:999px}
+.chip{border-radius:16px}.chip.sel{box-shadow:0 0 14px rgba(61,220,132,.55)}
+.fire,.wz-next{border-radius:999px;font-size:34px;color:#06240f}
+.qbox.ask{border:3px solid #ffd54a;border-radius:16px;box-shadow:0 0 14px rgba(255,213,74,.35);background:#14171f;color:#ffe9a3}
+""",rad='18px',veil='rgba(5,8,14,.75)',goInk='#06240f',cardInk='#f4f6fb',qbg='#14171f',qink='#ffe9a3',accInk='#06240f')
+
+mk('whistle','Sunflower','family=Sunflower:wght@700&family=Gowun+Dodum','#f2f2f2','#111111','#ffffff','#e11d1d','#111111','#e11d1d','#111111','#000000',
+ extra="""body{background:repeating-linear-gradient(90deg,#ffffff 0 56px,#e9e9e9 56px 112px)}
+.sign h1{text-shadow:0 4px 0 #e11d1d;-webkit-text-stroke:2px #111}
+.sign .sub{border:3px solid #111;background:#ffd400;color:#111;box-shadow:0 4px 0 #111;border-radius:4px}
+.chip{border-radius:6px;border-width:3px}.chip.sel{box-shadow:0 4px 0 #e11d1d}
+.fire,.wz-next{border-radius:6px;font-size:34px}
+.qbox.ask{border:3px solid #111;border-radius:6px;box-shadow:0 5px 0 #111;background:#ffd400;color:#111}
+""",rad='6px',veil='rgba(0,0,0,.7)',goInk='#fff',cardInk='#111',qbg='#ffd400',qink='#111',accInk='#fff',bw='3px')
+
+mk('hivis','Single Day','family=Single+Day&family=Gowun+Dodum','#ffe14d','#2b2b2b','#fffbe0','#ff6a00','#2b2b2b','#ff6a00','#2b2b2b','#1a1a1a',
+ extra="""body{background:#ffe14d;background-image:repeating-linear-gradient(-45deg,#2b2b2b 0 22px,transparent 22px 44px);background-size:100% 26px;background-repeat:no-repeat}
+.sign h1{text-shadow:0 4px 0 #2b2b2b;-webkit-text-stroke:2px #2b2b2b}
+.sign .sub{border:3px solid #2b2b2b;background:#fff;color:#2b2b2b;box-shadow:0 4px 0 #1a1a1a;border-radius:14px}
+.chip{border-radius:16px}.fire,.wz-next{border-radius:16px;font-size:36px}
+.qbox.ask{border:3px solid #2b2b2b;border-radius:14px;box-shadow:0 5px 0 #1a1a1a;background:#fff}
+""",rad='16px',veil='rgba(40,30,0,.65)',goInk='#fff',accInk='#fff')
