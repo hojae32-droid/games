@@ -1065,3 +1065,11 @@ mk('skybird','Gamja Flower','family=Gamja+Flower&family=Gowun+Dodum','#d7efff','
 .chip{border-radius:22px}.fire,.wz-next{border-radius:999px;font-size:36px}
 .qbox.ask{border:3px solid #2a6fb0;border-radius:22px;box-shadow:0 5px 0 #2a6fb0;font-size:clamp(20px,min(6cqw,4.4dvh),34px)}
 """,rad='24px',veil='rgba(20,60,110,.6)')
+
+mk('bricks','Black Han Sans','family=Black+Han+Sans&family=Gowun+Dodum','#fff2b8','#1b2a49','#ffffff','#e63946','#1d6fd1','#e63946','#1b2a49','#1b2a49',
+ extra="""body{background:#ffe27a;background-image:radial-gradient(circle,#ffd23f 5px,transparent 6px);background-size:34px 34px}
+.sign h1{text-shadow:0 5px 0 #1b2a49;-webkit-text-stroke:2px #1b2a49;font-size:1.15em}
+.sign .sub{border:3px solid #1b2a49;background:#e63946;color:#fff;box-shadow:0 4px 0 #1b2a49;border-radius:6px}
+.chip{border-radius:10px}.fire,.wz-next{border-radius:12px;font-size:32px}
+.qbox.ask{border:4px solid #1b2a49;border-radius:10px;box-shadow:0 5px 0 #1b2a49;background:#fff}
+""",rad='12px',veil='rgba(27,42,73,.62)',bw='4px')
