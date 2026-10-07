@@ -880,3 +880,35 @@ body{background:#050b1f;background-image:radial-gradient(circle at 20% 15%,rgba(
 .qbox.ask{border:2px solid #c89b3c;border-radius:12px;font-size:clamp(17px,min(5cqw,3.7dvh),29px);box-shadow:0 4px 0 #6b4e16}
 .res-title{text-shadow:0 3px 0 #6b4e16}
 """)
+
+# 한밤의 박물관: 짙은 자주 + 금테 액자
+skin('gallery','Jeju Myeongjo','Gowun Batang','family=Jeju+Myeongjo&family=Gowun+Batang',dict(
+ page='#1a0a14',ink='#fbe9c0',sub='#d8b4a0',line='#d4a537',bw='2px',card='#2b1020',cardInk='#fbe9c0',hl='#f6c453',stage='#240d1a',
+ shCard='0 5px 0 #6b1d2e',shBtn='0 4px 0 #6b1d2e',shDown='0 1px 0 #6b1d2e',shGo='0 6px 0 #7a1328',rad='6px',rads='4px',
+ tagBg='#9b1c31',tagInk='#fff4d6',chipBg='#3a1628',chipLine='#7a3a50',sub2='#d8b4a0',acc='#9b1c31',accInk='#fff4d6',accLine='#f6c453',accSub='#ffe3b0',go='#d4a537',goInk='#2b1020',hud='#12060d',
+ prog='linear-gradient(90deg,#9b1c31,#f6c453)',qbg='rgba(34,12,26,.96)',qink='#fbe9c0',veil='rgba(18,6,13,.72)',track='#4a2236',title='#f6c453',title1='#d8b4a0',title2='#fff4d6',noR='4px',dInk='#2b1020'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
+body{background:#1a0a14;background-image:radial-gradient(ellipse at 50% -10%,rgba(246,196,83,.22),transparent 55%),repeating-linear-gradient(90deg,rgba(255,255,255,.015) 0 2px,transparent 2px 46px)}
+.sign h1{text-shadow:0 3px 0 #6b1d2e,0 10px 24px rgba(246,196,83,.3);letter-spacing:.04em}
+.sign .sub{border:1px solid #d4a537;background:#2b1020;color:#f6c453;box-shadow:0 3px 0 #6b1d2e;border-radius:2px}
+.chip{border-radius:4px;border-style:double;border-width:4px}.chip.sel{box-shadow:0 4px 0 #6b1d2e}
+.fire,.wz-next{border-radius:4px;font-size:29px;letter-spacing:.05em}
+.qbox.ask{border:3px double #d4a537;border-radius:4px;font-size:clamp(17px,min(5cqw,3.7dvh),29px);box-shadow:0 4px 0 #6b1d2e}
+.res-title{text-shadow:0 3px 0 #6b1d2e}
+""")
+
+# 세계 여행 여권: 공항 출국장 전광판
+skin('airport','Nanum Gothic Coding','Gowun Dodum','family=Nanum+Gothic+Coding:wght@400;700&family=Gowun+Dodum',dict(
+ page='#0b1d33',ink='#fff7d6',sub='#9fc4e8',line='#ffd23f',bw='2px',card='#12294a',cardInk='#fff7d6',hl='#ffd23f',stage='#0f2542',
+ shCard='0 5px 0 #06101f',shBtn='0 4px 0 #06101f',shDown='0 1px 0 #06101f',shGo='0 6px 0 #a67c00',rad='10px',rads='6px',
+ tagBg='#ffd23f',tagInk='#0b1d33',chipBg='#173559',chipLine='#34608f',sub2='#9fc4e8',acc='#ffd23f',accInk='#0b1d33',accLine='#fff3a8',accSub='#3b3000',go='#ffd23f',goInk='#0b1d33',hud='#061426',
+ prog='linear-gradient(90deg,#38bdf8,#ffd23f)',qbg='#0a1628',qink='#ffd23f',veil='rgba(4,12,24,.72)',track='#1d3a60',title='#ffd23f',title1='#9fc4e8',title2='#fff',noR='6px',dInk='#0b1d33'),
+ """h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:700}
+body{background:#0b1d33;background-image:linear-gradient(180deg,#0b1d33,#143a63);}
+.sign h1{text-shadow:0 3px 0 #06101f;letter-spacing:.02em}
+.sign .sub{border:0;background:#ffd23f;color:#0b1d33;box-shadow:0 3px 0 #a67c00;border-radius:6px}
+.chip{border-radius:8px}.chip.sel{box-shadow:0 4px 0 #a67c00}
+.fire,.wz-next{border-radius:8px;font-size:28px}
+.qbox.ask{background:#0a1628;color:#ffd23f;border:2px solid #34608f;border-radius:8px;font-size:clamp(17px,min(5cqw,3.7dvh),29px);box-shadow:0 4px 0 #06101f;letter-spacing:.01em}
+.res-title{text-shadow:0 3px 0 #06101f}
+""")
