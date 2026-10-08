@@ -6,11 +6,11 @@
 <title>전광판</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Bungee&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;overflow:hidden}
-body{font-family:'Do Hyeon','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#fff;background:#05070D;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+body{font-family:'Black Han Sans','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#fff;background:#05070D;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 button,input{font-family:inherit;color:inherit}
 button{cursor:pointer}
 button:focus-visible{outline:3px solid #60A5FA;outline-offset:2px}
@@ -62,27 +62,35 @@ dialog{border:0;border-radius:16px;padding:18px;font-family:inherit}
 dialog input{font-size:22px;width:4em;text-align:center;border-radius:8px;border:2px solid #ccc;padding:4px}
 dialog button{border:0;border-radius:10px;padding:8px 14px;font-size:18px;margin:4px;background:#E5E7EB;color:#111}
 dialog .pre{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
-/* ── 새 디자인: 체육관 낮 전광판 (크림 + 나무 + 검정 시계판) ── */
-body{background:#f4ead2;background-image:repeating-linear-gradient(90deg,rgba(120,80,30,.07) 0 3px,transparent 3px 46px);color:#3b2a14}
-.bar h1{color:#7a3e0c}
-.bar span{color:#7a5a30!important}
-.tb{background:#e5d3a8;color:#3b2a14;border-radius:8px;border-bottom:3px solid #b99a5c}
-.tb.on{background:#d9480f;color:#fff;border-bottom-color:#8f2f06}
-.clockbox{background:#161616;border:6px solid #8a5a2b;border-radius:16px;box-shadow:0 6px 0 #5e3b17,inset 0 0 20px #000}
-.clock{font-family:'Bungee',Orbitron,monospace;font-weight:400;color:#ffb703;text-shadow:0 0 14px rgba(255,183,3,.55)}
-.clock.low{color:#ff5d5d}
-.period{color:#cdd6e0}.period b{font-family:'Bungee',Orbitron,monospace;font-weight:400;color:#7ee081}
-.cbtn{background:#2ec4b6;color:#073b36;border-radius:8px}.cbtn.pause{background:#ffb703;color:#3a2300}
-.mini button{background:rgba(255,255,255,.16);color:#fff}
-.ccol label{color:#cdd6e0!important}
-.team{background:#fffaf0;border:5px solid var(--c);border-radius:14px;box-shadow:0 7px 0 color-mix(in srgb,var(--c) 55%,#3b2a14)}
-.tname{color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.25);border-radius:0}
-.score{font-family:'Bungee',Orbitron,sans-serif;font-weight:400;color:var(--c);text-shadow:0 5px 0 rgba(0,0,0,.12)}
-.btns button{background:#efe2bf;color:#3b2a14;border-bottom:3px solid #c9b07a}
-.btns button.plus{background:var(--c);color:#fff;border-bottom:3px solid rgba(0,0,0,.3)}
-.foot{color:#8a6c3f}
-.maker{color:rgba(60,40,20,.5)}
-.end{background:rgba(244,234,210,.92)}.end div{color:#d9480f}.end small{color:#3b2a14}
+/* ── 새 디자인: 축구 중계 화면 (잔디 + 스코어 바 + 기울어진 패널) ── */
+body{background:repeating-linear-gradient(90deg,#1f7a38 0 90px,#1a6e32 90px 180px);color:#fff}
+.bar h1{color:#fff;text-shadow:0 3px 0 #0b3a1a;letter-spacing:.04em}
+.bar span{color:#d6f5dd!important}
+.tb{background:rgba(0,0,0,.35);color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:6px}
+.tb.on{background:#ffd60a;color:#102a43;border-color:#ffd60a}
+.clockbox{background:linear-gradient(90deg,#0b1d3a,#12335f 50%,#0b1d3a);border:0;border-radius:6px;border-bottom:6px solid #ffd60a;box-shadow:0 8px 0 rgba(0,0,0,.3)}
+.clock{font-family:'Black Han Sans','Orbitron',monospace;font-weight:400;color:#fff;text-shadow:0 0 0 #0000;letter-spacing:.06em}
+.clock.low{color:#ff5d5d;text-shadow:0 0 18px rgba(255,93,93,.7)}
+.period{color:#ffd60a}.period b{font-family:'Black Han Sans',monospace;font-weight:400;color:#fff}
+.cbtn{background:#ffd60a;color:#102a43;border-radius:6px}.cbtn.pause{background:#fff;color:#102a43}
+.mini button{background:rgba(255,255,255,.15);color:#fff;border-radius:6px}
+.ccol label{color:#cfe!important}
+.team{background:#fff;border:0;border-radius:8px;border-top:14px solid var(--c);box-shadow:0 10px 0 rgba(0,0,0,.3);color:#102a43;transform:skewX(-3deg)}
+.team>*{transform:skewX(3deg)}
+.tname{background:#102a43;color:#fff;border-radius:0}
+.score{font-family:'Black Han Sans','Orbitron',sans-serif;font-weight:400;color:#102a43;text-shadow:none;position:relative}
+.btns button{background:#e8eef5;color:#102a43;border-bottom:4px solid #b9c6d6;border-radius:6px}
+.btns button.plus{background:var(--c);color:#fff;border-bottom:4px solid rgba(0,0,0,.3)}
+.lead::after{content:'📣'}
+.foot{color:#d6f5dd}
+.maker{color:rgba(255,255,255,.7)}
+.end{background:rgba(11,29,58,.9)}.end div{color:#ffd60a}
+.pop{position:fixed;pointer-events:none;z-index:40;font-family:'Black Han Sans',sans-serif;font-size:clamp(40px,9vh,110px);color:#ffd60a;text-shadow:0 4px 0 #0b1d3a,0 0 18px rgba(255,214,10,.7);animation:popup 1.1s ease-out forwards}
+@keyframes popup{0%{transform:translateY(0) scale(.5);opacity:0}15%{transform:translateY(-10px) scale(1.3);opacity:1}100%{transform:translateY(-110px) scale(1);opacity:0}}
+.goal{position:fixed;left:0;right:0;top:36%;text-align:center;z-index:45;pointer-events:none;font-family:'Black Han Sans',sans-serif;font-size:clamp(60px,18vh,200px);color:#fff;text-shadow:0 6px 0 #e63946,0 0 30px rgba(255,255,255,.6);animation:goal 1.2s ease-out forwards}
+@keyframes goal{0%{transform:scale(.3) rotate(-6deg);opacity:0}20%{transform:scale(1.15) rotate(2deg);opacity:1}80%{opacity:1}100%{transform:scale(1);opacity:0}}
+.streak{position:absolute;left:10px;top:4vh;background:#e63946;color:#fff;border-radius:999px;padding:2px 12px;font-size:clamp(14px,2.6vh,24px);z-index:3;animation:popup2 .6s ease}
+@keyframes popup2{from{transform:scale(.3)}}
 
 </style>
 </head>
@@ -157,6 +165,30 @@ $('fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():do
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const k='qwer'.indexOf(e.key.toLowerCase());if(k>=0&&k<N){add(k,1);}else if(e.code==='Space'){e.preventDefault();toggle();}});
 render();drawClock();requestAnimationFrame(tick);
 })();
+</script>
+<script>
+let __ac;function beep(f,d,t='sine',v=.05){try{__ac=__ac||new(window.AudioContext||window.webkitAudioContext)();const o=__ac.createOscillator(),g=__ac.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,__ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,__ac.currentTime+d);o.connect(g);g.connect(__ac.destination);o.start();o.stop(__ac.currentTime+d);}catch(e){}}
+function fanfare(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>beep(f,.16),i*100));}
+function confetti(n=140,ox=.5,oy=.6){const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const g=c.getContext('2d');const ps=Array.from({length:n},()=>({x:c.width*ox,y:c.height*oy,vx:(Math.random()-.5)*16,vy:-Math.random()*17-4,c:`hsl(${Math.random()*360},90%,60%)`,r:Math.random()*6+3,a:Math.random()*6}));let t=0;(function f(){t++;g.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.vy+=.4;p.x+=p.vx;p.y+=p.vy;p.a+=.2;g.fillStyle=p.c;g.save();g.translate(p.x,p.y);g.rotate(p.a);g.fillRect(-p.r,-p.r/2,p.r*2,p.r);g.restore();});if(t<120)requestAnimationFrame(f);else c.remove();})();}
+
+(function(){
+const $=id=>document.getElementById(id);
+let prev=null,lastTeam=-1,run=0;
+function cheer(n){const o=[523,659,784,988,1175];beep(o[Math.min(4,n)],.14,'triangle',.08);setTimeout(()=>beep(o[Math.min(4,n)]*1.5,.16,'triangle',.07),110);}
+function scan(){const els=[...document.querySelectorAll('#teams .score')];const cur=els.map(e=>+e.textContent||0);
+  if(prev&&prev.length===cur.length){cur.forEach((v,i)=>{const d=v-prev[i];if(d>0){const r=els[i].getBoundingClientRect();const p=document.createElement('div');p.className='pop';p.textContent='+'+d;p.style.left=(r.left+r.width/2-40)+'px';p.style.top=(r.top+r.height*.3)+'px';document.body.appendChild(p);setTimeout(()=>p.remove(),1150);cheer(d);
+      if(d>=2){const g=document.createElement('div');g.className='goal';g.textContent=d>=3?'GOAL! ⚽':'NICE!';document.body.appendChild(g);setTimeout(()=>g.remove(),1250);confetti(70,(r.left+r.width/2)/innerWidth,(r.top+r.height/2)/innerHeight);}
+      run=(lastTeam===i)?run+1:1;lastTeam=i;
+      if(run>=3){const t=els[i].closest('.team');if(t&&!t.querySelector('.streak')){t.insertAdjacentHTML('beforeend','<div class="streak">🔥 '+run+'연속 득점!</div>');setTimeout(()=>{const s=t.querySelector('.streak');s&&s.remove();},2500);}beep(1320,.1,'square',.05);}
+    }});}
+  prev=cur;}
+new MutationObserver(()=>scan()).observe($('teams'),{childList:true,subtree:true,characterData:true});
+$('reset').addEventListener('click',()=>{lastTeam=-1;run=0;setTimeout(()=>{prev=null;scan();},50);});
+document.querySelectorAll('[data-n]').forEach(b=>b.addEventListener('click',()=>{prev=null;setTimeout(scan,50);}));
+scan();
+new MutationObserver(()=>{if($('end').classList.contains('on')){fanfare();confetti(200,.5,.5);}}).observe($('end'),{attributes:true,attributeFilter:['class']});
+})();
+
 </script>
 </body>
 </html>
