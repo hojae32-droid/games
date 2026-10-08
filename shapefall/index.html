@@ -1421,7 +1421,7 @@ const QZ={
     verdict(p,i,timeout){const st=p.state,q=st.q;if(!q||st.lock)return;st.lock=true;st.pick=i;const ok=!timeout&&this.isOk(q,i,p);st.res=ok?'ok':'bad';st.rT=0;st.mood=ok?'happy':'oops';st.mT=1.6;
       const frac=st.qmax>0?Math.max(0,st.qt/st.qmax):.5;const pts=ok?(this.ptsOf?this.ptsOf(p,q,frac):Math.round((o.pts0||60)+(o.pts1==null?60:o.pts1)*frac)):undefined;
       if(ok)st.okN=(st.okN||0)+1;
-      p.hit(ok,{pts,x:p.W/2,y:(p.top||0)+p.u*3,tip:ok?(this.goodTip?this.goodTip(q):undefined):(timeout?'시간이 다 됐어요! ':'')+(this.tipOf?this.tipOf(q):q.reveal),review:q.review,tipMs:ok?1000:3200,pen:o.pen});
+      p.hit(ok,{pts,x:p.W/2,y:(p.top||0)+p.u*3,tip:ok?(this.goodTip?this.goodTip(q):undefined):(timeout?'시간이 다 됐어요! ':'')+(this.tipOf?this.tipOf(q):q.reveal),review:q.review,tipMs:ok?1000:3200,pen:o.pen,shake:o.noShake?false:undefined});
       if(this.onVerdict)this.onVerdict(p,q,ok,i,timeout);
       {const ms=ok?o.okMs:o.badMs;const dl=typeof ms==='function'?ms.call(this,p,q):(ms||(ok?1300:2700));setTimeout(()=>{if(p.active)this.newQ(p);},dl);}},
     update(p,dt){const st=p.state;st.T+=dt;if(st.mT>0){st.mT-=dt;if(st.mT<=0)st.mood='neutral';}if(st.res)st.rT+=dt;if(st.press){st.press.t-=dt;if(st.press.t<=0)st.press=null;}
@@ -1514,7 +1514,7 @@ const GAME={
   botAct(p){const st=p.state,q=st.q;if(!q||st.lock||st.done)return null;const G=this.geo(p);const rc=p.cv.getBoundingClientRect();st.cells=q.T.map(c=>c.slice());st.pcol=q.x0;const b=G.list.find(b=>b.id==='drop');return{k:'click',x:rc.left+b.x+b.w/2,y:rc.top+b.y+b.h/2};},
   draw(p,g){const st=p.state,G=this.geo(p),W=G.W,H=G.H,u=G.u,q=st.q,t=st.T,cs=G.cs;if(!q)return;
     K.vgrad(g,0,0,W,H,['#14123a','#221f5c']);g.strokeStyle='rgba(129,140,248,.12)';g.lineWidth=1;for(let x=0;x<W;x+=u*1.2){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke();}
-    const sx=(st.bump>0?Math.sin(st.bump*60)*3:0);g.save();g.translate(sx,0);K.card(g,G.bx-u*.15,G.by-u*.15,cs*COLS+u*.3,cs*ROWS+u*.3,u*.2,'#0b0a26',{stroke:CY,lw:Math.max(3,u*.08),blur:u*.4,dy:0,sc:'rgba(34,211,238,.5)'});
+    g.save();K.card(g,G.bx-u*.15,G.by-u*.15,cs*COLS+u*.3,cs*ROWS+u*.3,u*.2,'#0b0a26',{stroke:st.bump>0?'#f87171':CY,lw:Math.max(3,u*.08),blur:u*.4,dy:0,sc:st.bump>0?'rgba(248,113,113,.6)':'rgba(34,211,238,.5)'});
     for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){const x=G.bx+c*cs,y=G.by+r*cs;g.strokeStyle='rgba(129,140,248,.2)';g.lineWidth=1;g.strokeRect(x,y,cs,cs);const v=st.grid[r][c];if(v){const clearing=st.lock&&st.okFlag&&r>=ROWS-q.h;const a=clearing?Math.abs(Math.sin(st.rT*10)):1;g.globalAlpha=clamp(a*(clearing?1-Math.max(0,st.rT-.5):1),0,1);g.fillStyle=v===5?'#64748b':COL[p.i%4];K.rr(g,x+2,y+2,cs-4,cs-4,cs*.14);g.fill();g.fillStyle='rgba(255,255,255,.22)';K.rr(g,x+2,y+2,cs-4,cs*.3,cs*.12);g.fill();g.globalAlpha=1;}}
     if(!st.done&&!st.lock||st.done&&!st.okFlag&&false){st.cells.forEach(([r,c])=>{const rr=st.pr+r,cc=st.pcol+c;if(rr<0)return;const x=G.bx+cc*cs,y=G.by+rr*cs;g.fillStyle=COL[p.i%4];K.rr(g,x+2,y+2,cs-4,cs-4,cs*.14);g.fill();g.fillStyle='rgba(255,255,255,.3)';K.rr(g,x+2,y+2,cs-4,cs*.3,cs*.12);g.fill();});
       /* 떨어질 자리 미리 보기: 모양은 알려 주지 않고 세로 가이드만 */
@@ -1528,7 +1528,7 @@ const GAME={
     if(st.lock)K.txt(g,st.okFlag?'줄이 펑! 🎉':'앗, 안 맞아요 — 점선이 정답 자리예요',G.land?G.panel.x+G.panel.w/2:W/2,G.land?G.panel.y+G.panel.h*.8:G.by+cs*ROWS*.5,{size:u*.7,color:st.okFlag?'#bef264':'#fde047',stroke:INK,lw:u*.16,maxW:G.land?G.panel.w:W*.9});
   },
 };
-QZ.mix(GAME,{say:false,pts0:55,pts1:50,okMs:1500,badMs:3200});
+QZ.mix(GAME,{say:false,pts0:55,pts1:50,okMs:1500,badMs:3200,noShake:true});
 Engine.boot(GAME);
 
 

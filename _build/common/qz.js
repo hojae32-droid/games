@@ -9,7 +9,7 @@ const QZ={
     verdict(p,i,timeout){const st=p.state,q=st.q;if(!q||st.lock)return;st.lock=true;st.pick=i;const ok=!timeout&&this.isOk(q,i,p);st.res=ok?'ok':'bad';st.rT=0;st.mood=ok?'happy':'oops';st.mT=1.6;
       const frac=st.qmax>0?Math.max(0,st.qt/st.qmax):.5;const pts=ok?(this.ptsOf?this.ptsOf(p,q,frac):Math.round((o.pts0||60)+(o.pts1==null?60:o.pts1)*frac)):undefined;
       if(ok)st.okN=(st.okN||0)+1;
-      p.hit(ok,{pts,x:p.W/2,y:(p.top||0)+p.u*3,tip:ok?(this.goodTip?this.goodTip(q):undefined):(timeout?'시간이 다 됐어요! ':'')+(this.tipOf?this.tipOf(q):q.reveal),review:q.review,tipMs:ok?1000:3200,pen:o.pen});
+      p.hit(ok,{pts,x:p.W/2,y:(p.top||0)+p.u*3,tip:ok?(this.goodTip?this.goodTip(q):undefined):(timeout?'시간이 다 됐어요! ':'')+(this.tipOf?this.tipOf(q):q.reveal),review:q.review,tipMs:ok?1000:3200,pen:o.pen,shake:o.noShake?false:undefined});
       if(this.onVerdict)this.onVerdict(p,q,ok,i,timeout);
       {const ms=ok?o.okMs:o.badMs;const dl=typeof ms==='function'?ms.call(this,p,q):(ms||(ok?1300:2700));setTimeout(()=>{if(p.active)this.newQ(p);},dl);}},
     update(p,dt){const st=p.state;st.T+=dt;if(st.mT>0){st.mT-=dt;if(st.mT<=0)st.mood='neutral';}if(st.res)st.rT+=dt;if(st.press){st.press.t-=dt;if(st.press.t<=0)st.press=null;}
