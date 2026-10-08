@@ -6,12 +6,12 @@
 <title>팀 나누기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#0F172A;--bg:#0B1324;--card:#FFFFFF}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%}
-body{font-family:'Gamja Flower','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#fff;background:radial-gradient(ellipse at 50% -20%,#1E3A8A 0,#0B1324 60%);min-height:100vh;-webkit-tap-highlight-color:transparent}
+body{font-family:'Gasoek One','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#fff;background:radial-gradient(ellipse at 50% -20%,#1E3A8A 0,#0B1324 60%);min-height:100vh;-webkit-tap-highlight-color:transparent}
 button,input,textarea{font-family:inherit}
 button{cursor:pointer;color:inherit}
 button:focus-visible{outline:3px solid #60A5FA;outline-offset:2px}
@@ -52,25 +52,29 @@ textarea{width:100%;min-height:86px;border-radius:12px;border:2px solid rgba(255
 .toast{position:fixed;left:50%;top:16px;transform:translateX(-50%);background:#fff;color:#0F172A;border-radius:999px;padding:8px 18px;opacity:0;transition:.25s;z-index:9}
 .toast.on{opacity:1}
 .empty{grid-column:1/-1;text-align:center;color:#93A4C3;padding:30px;font-size:20px}
-/* ── 새 디자인: 하늘색 공책 + 포스트잇 팀 보드 ── */
-:root{--ink:#27406b}
-body{background:#cfe8ff;background-image:linear-gradient(rgba(60,110,190,.12) 2px,transparent 2px),linear-gradient(90deg,rgba(60,110,190,.12) 2px,transparent 2px);background-size:34px 34px;color:#27406b}
-header h1 em{color:#e8590c}
-.tb{background:#fff;color:#27406b;border:2px solid #27406b;border-radius:999px;box-shadow:0 3px 0 #27406b}
-.tb.big{background:#ff922b;color:#fff;box-shadow:0 4px 0 #b25a0a;border-color:#27406b}
-.panel{background:#fff;border:3px solid #27406b;border-radius:20px;box-shadow:0 6px 0 #27406b}
-.panel h3{color:#1c5fd4}
-.seg button{border:2px solid #27406b;color:#27406b;background:#fff}
-.seg button.on{background:#ffd43b;border-color:#27406b;color:#27406b}
-.num,textarea{background:#f2f8ff;color:#27406b;border:2px solid #27406b}
-.hint,.empty{color:#5a76a3}
-.absent button{background:#eef5ff;border:2px solid #9bb6dc;color:#27406b}
-.absent button.off{background:#ffc9c9;border-color:#e03131;color:#a61e1e}
-.team{border:3px solid #27406b;border-radius:6px 6px 18px 18px;box-shadow:0 6px 0 #27406b;position:relative}
-.team::before{content:'';position:absolute;left:50%;top:-9px;width:46px;height:16px;margin-left:-23px;background:rgba(255,255,255,.7);border:2px solid #27406b;border-radius:3px;transform:rotate(-3deg)}
-.m{border:2px solid #27406b;box-shadow:0 3px 0 #27406b}
-.shuffle{background:rgba(207,232,255,.92)}
-.maker{color:rgba(39,64,107,.65)}
+/* ── 새 디자인: 극장 무대 (붉은 커튼 + 스포트라이트 + 금색) ── */
+:root{--ink:#3a0d14}
+body{background:#2b0a12;background-image:radial-gradient(ellipse at 50% -10%,rgba(255,240,180,.35),transparent 55%),repeating-linear-gradient(90deg,#7a1020 0 46px,#6a0c1a 46px 92px);background-attachment:fixed;color:#fff4d6}
+.wrap{padding-top:18px}
+header h1{color:#ffe28a;text-shadow:0 3px 0 #5a0c18,0 0 22px rgba(255,226,138,.55);letter-spacing:.04em}
+header h1 em{color:#fff}
+.tb{background:#3a0d14;color:#ffe28a;border:3px solid #ffe28a;border-radius:10px;box-shadow:0 4px 0 #1b0508}
+.tb.big{background:linear-gradient(#ffe28a,#f5b942);color:#3a0d14;box-shadow:0 5px 0 #a8741a;border-color:#fff4d6}
+.panel{background:rgba(26,4,10,.82);border:3px solid #ffe28a;border-radius:14px;box-shadow:0 0 0 4px #7a1020,0 10px 30px rgba(0,0,0,.5)}
+.panel h3{color:#ffe28a}
+.seg button{background:transparent;color:#fff4d6;border:2px solid #ffe28a;border-radius:8px}.seg button.on{background:#ffe28a;color:#3a0d14}
+.num,textarea{background:rgba(0,0,0,.45);color:#fff;border:2px solid #ffe28a}
+.hint,.empty{color:#e9b9a8}
+.absent button{background:rgba(255,255,255,.08);border:2px solid rgba(255,226,138,.5);color:#fff4d6}.absent button.off{background:#7f1d1d;border-color:#fca5a5;color:#fecaca}
+.team{border:4px solid #ffe28a;border-radius:14px;box-shadow:0 0 0 3px #3a0d14,0 8px 0 3px #1b0508;color:#3a0d14}
+.team h2{border-bottom:3px dashed rgba(58,13,20,.4);padding-bottom:4px}
+.team h2 small{background:#3a0d14;color:#ffe28a}
+.m{border:2px solid #3a0d14;box-shadow:0 3px 0 rgba(58,13,20,.5);color:#3a0d14}
+.shuffle{background:rgba(26,4,10,.9);color:#ffe28a;flex-direction:column;gap:10px}
+.shuffle span{font-size:clamp(40px,10vw,120px)}
+.toast{background:#ffe28a;color:#3a0d14}
+.maker{color:rgba(255,244,214,.7)}
+.shuffle.on{display:flex;align-items:center;justify-content:center}
 
 </style>
 </head>
@@ -137,6 +141,25 @@ $('copy').onclick=()=>{if(!last){toast('먼저 팀을 나눠요');return;}const 
 $('hideSet').onclick=()=>{const s=$('settings');const h=s.style.display==='none';s.style.display=h?'':'none';$('hideSet').textContent=h?'⚙️ 설정 숨기기':'⚙️ 설정 보이기';};
 $('fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}catch(e){}};
 })();
+</script>
+<script>
+let __ac;function beep(f,d,t='sine',v=.05){try{__ac=__ac||new(window.AudioContext||window.webkitAudioContext)();const o=__ac.createOscillator(),g=__ac.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,__ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,__ac.currentTime+d);o.connect(g);g.connect(__ac.destination);o.start();o.stop(__ac.currentTime+d);}catch(e){}}
+function fanfare(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>beep(f,.16),i*100));}
+function confetti(n=140,ox=.5,oy=.6){const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const g=c.getContext('2d');const ps=Array.from({length:n},()=>({x:c.width*ox,y:c.height*oy,vx:(Math.random()-.5)*16,vy:-Math.random()*17-4,c:`hsl(${Math.random()*360},90%,60%)`,r:Math.random()*6+3,a:Math.random()*6}));let t=0;(function f(){t++;g.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.vy+=.4;p.x+=p.vx;p.y+=p.vy;p.a+=.2;g.fillStyle=p.c;g.save();g.translate(p.x,p.y);g.rotate(p.a);g.fillRect(-p.r,-p.r/2,p.r*2,p.r);g.restore();});if(t<120)requestAnimationFrame(f);else c.remove();})();}
+
+(function(){
+const $=id=>document.getElementById(id);
+const ANI=[['🦁','사자'],['🐯','호랑이'],['🐼','판다'],['🦊','여우'],['🐬','돌고래'],['🦅','독수리'],['🐲','용'],['🦄','유니콘'],['🐙','문어'],['🐧','펭귄'],['🦈','상어'],['🐺','늑대'],['🦖','공룡'],['🚀','로켓'],['⚡','번개'],['🔥','불꽃']];
+/* 슬롯머신 연출 */
+let iv=null;const sh=$('shuffle');
+const label=document.createElement('div');label.id='shLabel';label.style.cssText='font-size:clamp(20px,4vw,40px);color:#fff4d6;min-height:1.3em';sh.appendChild(label);
+function names(){const src=document.querySelector('#src .on');if(src&&src.dataset.v==='names')return $('names').value.split(/[\n,]+/).map(s=>s.trim()).filter(Boolean);const n=+$('count').value||24;return Array.from({length:n},(_,i)=>(i+1)+'번');}
+new MutationObserver(()=>{if(sh.classList.contains('on')){const ns=names();const sp=sh.querySelector('span');clearInterval(iv);let k=0;iv=setInterval(()=>{k++;label.textContent=ns[Math.floor(Math.random()*ns.length)]||'';sp.textContent=['🎰','🎲','🎯','🎁'][k%4];beep(400+(k%6)*120,.04,'square',.025);},70);}else{clearInterval(iv);label.textContent='';}}).observe(sh,{attributes:true,attributeFilter:['class']});
+/* 팀 이름을 동물 마스코트로 + 완성 폭죽 */
+let busy=false;
+new MutationObserver(()=>{if(busy)return;const hs=[...document.querySelectorAll('#teams .team h2')];if(!hs.length||hs[0].dataset.fun)return;busy=true;const a=ANI.slice().sort(()=>Math.random()-.5);hs.forEach((h,i)=>{const small=h.querySelector('small');const txt=h.firstChild;if(txt&&txt.nodeType===3){const nm=document.querySelector('#bib .on');const two=nm&&nm.dataset.v==='two';if(!two)txt.textContent=a[i%a.length][0]+' '+a[i%a.length][1]+'팀 ';}h.dataset.fun=1;});busy=false;fanfare();confetti(110,.5,.45);}).observe($('teams'),{childList:true});
+})();
+
 </script>
 </body>
 </html>
