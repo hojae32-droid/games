@@ -6,11 +6,11 @@
 <title>서킷 타이머</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gugi&family=Russo+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;overflow:hidden}
-body{font-family:'Gugi','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#fff;background:#0B1020;-webkit-tap-highlight-color:transparent}
+body{font-family:'Do Hyeon','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#fff;background:#0B1020;-webkit-tap-highlight-color:transparent}
 button,input,select{font-family:inherit}
 button{cursor:pointer;color:inherit}
 button:focus-visible{outline:3px solid #60A5FA;outline-offset:2px}
@@ -58,34 +58,48 @@ button:focus-visible{outline:3px solid #60A5FA;outline-offset:2px}
 .done{position:absolute;inset:0;display:none;place-items:center;background:rgba(11,16,32,.85);font-size:clamp(40px,9vh,100px);color:#FDE047;text-align:center}
 .done.on{display:grid}
 .maker{position:fixed;right:10px;bottom:4px;font-size:12px;color:rgba(255,255,255,.4)}
-/* ── 새 디자인: 네오브루탈 부트캠프 (라임 + 검정 굵은 테두리) ── */
-body{background:#d9f542;color:#111}
-.side{background:#fff;border-right:5px solid #111;color:#111}
-@media (max-width:820px),(max-aspect-ratio:4/5){.side{border-top:5px solid #111!important}}
-.side h1 em{color:#ff3d81}
-.side h3{color:#444}
-.seg button{border:3px solid #111;color:#111;background:#fff;box-shadow:0 3px 0 #111}
-.seg button.on{background:#ff3d81;border-color:#111;color:#fff}
-.st{background:#f1f5c4;border:3px solid #111;border-radius:10px}
-.st b{color:#111}.st input{color:#111}
-.add{border:3px dashed #111;color:#111}
-.nums label{background:#f1f5c4;border:3px solid #111;color:#111;border-radius:10px}
-.nums input{color:#111}
-.total{color:#333}
-.main{background:#d9f542!important}
-.round{color:#111}
-.phase{color:#fff;border:4px solid #111;box-shadow:0 4px 0 #111}
-.tb{background:#fff;color:#111;border:3px solid #111;box-shadow:0 3px 0 #111;border-radius:10px}
-.ring .bg{stroke:rgba(0,0,0,.14)}
-.ring .fg{stroke:#111}
-.sec{font-family:'Russo One',Orbitron,monospace;font-weight:400;color:#111;text-shadow:4px 4px 0 var(--pc,#ff3d81)}
-.ex{color:#111}
-.next{color:#222}.next b{color:#d6246c}
-.big{background:#111;color:#d9f542;box-shadow:0 5px 0 #555;border-radius:12px}
-.big.pause{background:#ff3d81;color:#fff;box-shadow:0 5px 0 #8f1e47}
-.big.ghost{background:#fff;color:#111;border:3px solid #111;box-shadow:0 4px 0 #111}
-.done{background:rgba(217,245,66,.94);color:#111}.done span{color:#111!important}
-.maker{color:rgba(0,0,0,.55)}
+/* ── 새 디자인: 레트로 아케이드 (보라 밤하늘 + 네온 + 도트 테두리 + 스캔라인) ── */
+body{background:#150c2e;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 2px,transparent 2px 4px);color:#fff}
+.side{background:#1d1042;border-right:4px solid #ff3df2;box-shadow:4px 0 0 #00e5ff;color:#fff}
+@media (max-width:820px),(max-aspect-ratio:4/5){.side{border-top:4px solid #ff3df2!important;border-right:0;box-shadow:0 -4px 0 #00e5ff}}
+.side h1 em{color:#ffe600;text-shadow:3px 3px 0 #ff3df2}
+.side h3{color:#00e5ff;letter-spacing:.08em}
+.seg button{border:3px solid #00e5ff;color:#00e5ff;background:#150c2e;border-radius:0;box-shadow:3px 3px 0 #00e5ff55}
+.seg button.on{background:#ff3df2;border-color:#ff3df2;color:#fff;box-shadow:3px 3px 0 #ffe600}
+.st{background:#150c2e;border:3px solid #7c3aed;border-radius:0}
+.st b{color:#ffe600}.st input{color:#fff}
+.add{border:3px dashed #00e5ff;color:#00e5ff;border-radius:0}
+.nums label{background:#150c2e;border:3px solid #7c3aed;color:#c4b5fd;border-radius:0}.nums input{color:#ffe600}
+.total{color:#c4b5fd}
+.main{background:radial-gradient(circle at 50% 45%,var(--glow,#312e81) 0,#150c2e 70%)!important}
+.phase{border-radius:0;border:4px solid #fff;box-shadow:5px 5px 0 #000;color:#fff!important;font-size:clamp(20px,3.6vh,36px);letter-spacing:.1em}
+.round{color:#c4b5fd}
+.tb{background:#150c2e;color:#00e5ff;border:3px solid #00e5ff;border-radius:0;box-shadow:3px 3px 0 #00e5ff55}
+.ring .bg{stroke:rgba(255,255,255,.12)}
+.ring .fg{stroke:var(--pc,#ff3df2);stroke-linecap:butt;filter:drop-shadow(0 0 6px var(--pc,#ff3df2))}
+.sec{font-family:'Russo One','Do Hyeon',monospace;color:#fff;text-shadow:0 0 18px var(--pc,#ff3df2),4px 4px 0 var(--pc,#ff3df2)}
+.sec.pulse{animation:pl2 .5s ease}
+@keyframes pl2{0%{transform:scale(1.7);color:#ffe600}100%{transform:scale(1)}}
+.ex{color:#fff}.next{color:#c4b5fd}.next b{color:#ffe600}
+.big{background:#00e5ff;color:#150c2e;border-radius:0;box-shadow:5px 5px 0 #0891b2;border:3px solid #fff}
+.big.pause{background:#ffe600;box-shadow:5px 5px 0 #ca8a04}
+.big.ghost{background:#150c2e;color:#fff;border:3px solid #7c3aed;box-shadow:4px 4px 0 #7c3aed}
+.done{background:rgba(21,12,46,.92);color:#ffe600}
+.maker{color:rgba(255,255,255,.55)}
+#stampBar{flex:1;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:center;font-size:clamp(14px,2.4vh,24px);min-height:1.4em}
+#stampBar b{color:#ffe600;margin-right:6px;font-weight:400;letter-spacing:.06em}
+#stampBar span{filter:drop-shadow(0 0 4px #ffe600)}
+#xpBox{position:absolute;right:14px;top:56px;background:#150c2e;border:3px solid #ffe600;color:#ffe600;padding:4px 10px;font-size:clamp(13px,2.2vh,20px);box-shadow:4px 4px 0 #ff3df2}
+
+#stampBar .cnt{display:none;color:#ffe600}
+.ctrl{gap:8px}.big{padding:12px 16px;min-width:0}
+@media (max-width:820px),(max-aspect-ratio:4/5){
+ #stampBar .stars{display:none}#stampBar .cnt{display:inline}
+ #xpBox{display:none}
+ .phase{font-size:clamp(16px,3vh,24px)!important}
+ .big{padding:10px 8px;font-size:clamp(16px,2.6vh,22px);flex:1;white-space:nowrap}
+ .ctrl{width:100%}
+}
 
 </style>
 </head>
@@ -166,6 +180,30 @@ $('fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():do
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.code==='Space'){e.preventDefault();toggle();}});
 ui();requestAnimationFrame(tick);
 })();
+</script>
+<script>
+let __ac;function beep(f,d,t='sine',v=.05){try{__ac=__ac||new(window.AudioContext||window.webkitAudioContext)();const o=__ac.createOscillator(),g=__ac.createGain();o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,__ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,__ac.currentTime+d);o.connect(g);g.connect(__ac.destination);o.start();o.stop(__ac.currentTime+d);}catch(e){}}
+function fanfare(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>beep(f,.16),i*100));}
+function confetti(n=140,ox=.5,oy=.6){const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const g=c.getContext('2d');const ps=Array.from({length:n},()=>({x:c.width*ox,y:c.height*oy,vx:(Math.random()-.5)*16,vy:-Math.random()*17-4,c:`hsl(${Math.random()*360},90%,60%)`,r:Math.random()*6+3,a:Math.random()*6}));let t=0;(function f(){t++;g.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.vy+=.4;p.x+=p.vx;p.y+=p.vy;p.a+=.2;g.fillStyle=p.c;g.save();g.translate(p.x,p.y);g.rotate(p.a);g.fillRect(-p.r,-p.r/2,p.r*2,p.r);g.restore();});if(t<120)requestAnimationFrame(f);else c.remove();})();}
+
+(function(){
+const $=id=>document.getElementById(id);
+const main=$('main');main.style.position='relative';
+const bar=document.createElement('div');bar.id='stampBar';const topb=main.querySelector('.top');topb.insertBefore(bar,topb.querySelector('.sp'));
+const xp=document.createElement('div');xp.id='xpBox';xp.textContent='⭐ 0 XP';main.appendChild(xp);
+let stamps=0,xpv=0,lastPhase='',total=0,skipped=false;
+function totalWork(){return Math.max(1,$('list').querySelectorAll('.st').length*(+$('sets').value||1));}
+function paint(){const t=totalWork();bar.innerHTML='<b>STAMP</b><span class="stars">'+Array.from({length:Math.min(t,40)},(_,i)=>(i<stamps?'⭐':'☆')).join('')+'</span><span class="cnt">⭐ '+stamps+'/'+t+' · '+xpv+'XP</span>';xp.textContent='⭐ '+xpv+' XP';}
+function reset(){stamps=0;xpv=0;lastPhase='';paint();}
+['stop','go'].forEach(id=>{$(id).addEventListener('click',()=>{if(id==='stop')reset();});});
+['work','rest','sets'].forEach(id=>$(id).addEventListener('input',paint));$('add').addEventListener('click',()=>setTimeout(paint,50));$('list').addEventListener('click',()=>setTimeout(paint,50));
+new MutationObserver(()=>{const p=$('phase').textContent;if(lastPhase==='운동!'&&(p==='쉬기'||p==='운동!')&&$('go').classList.contains('pause')&&!skipped){stamps=Math.min(stamps+1,totalWork());xpv+=10;paint();beep(1568,.1,'square',.06);setTimeout(()=>beep(2093,.12,'square',.06),90);}lastPhase=p;skipped=false;}).observe($('phase'),{childList:true,characterData:true,subtree:true});
+/* 마지막 단계 끝 (done 켜짐) → 폭죽 */
+new MutationObserver(()=>{if($('done').classList.contains('on')){if(lastPhase==='운동!'){stamps=totalWork();xpv+=10;paint();}fanfare();confetti(200,.5,.5);const d=$('done').firstElementChild;if(d&&!d.dataset.x){d.dataset.x=1;d.insertAdjacentHTML('beforeend','<br><span style="font-size:.4em;color:#00e5ff">⭐ 스탬프 '+stamps+'개 · '+xpv+' XP 획득!</span>');}}else{const d=$('done').firstElementChild;if(d)delete d.dataset.x;}}).observe($('done'),{attributes:true,attributeFilter:['class']});
+$('prev').addEventListener('click',()=>skipped=true);$('skip').addEventListener('click',()=>skipped=true);
+paint();
+})();
+
 </script>
 </body>
 </html>
