@@ -3,7 +3,7 @@
 const TAU=Math.PI*2;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const INK='#3b2a14';
-const N={comma:n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,','),gcd:(a,b)=>b?N.gcd(b,a%b):Math.abs(a),lcm:(a,b)=>a/N.gcd(a,b)*b,divs:n=>{const o=[];for(let k=1;k<=n;k++)if(n%k===0)o.push(k);return o;}};
+const N={comma:n=>String(n),gcd:(a,b)=>b?N.gcd(b,a%b):Math.abs(a),lcm:(a,b)=>a/N.gcd(a,b)*b,divs:n=>{const o=[];for(let k=1;k<=n;k++)if(n%k===0)o.push(k);return o;}};
 function F(a,b,c){if(c==null)return `<span class="fr"><span class="fs"><i>${a}</i><i>${b}</i></span></span>`;return `<span class="fr">${a}<span class="fs"><i>${b}</i><i>${c}</i></span></span>`;}
 const LOGO='<svg class="logo" viewBox="0 0 48 48"><ellipse cx="24" cy="30" rx="15" ry="13" fill="#8b5a3c" stroke="#3b2a14" stroke-width="3"/><circle cx="18" cy="26" r="2.4" fill="#fff"/><circle cx="30" cy="26" r="2.4" fill="#fff"/><path d="M21 31h6l-3 4z" fill="#f9a8d4" stroke="#3b2a14" stroke-width="1.5"/><path d="M33 6l9 9-6 6-9-9z" fill="#f59e0b" stroke="#3b2a14" stroke-width="2.5"/><path d="M30 14L14 30" stroke="#a16207" stroke-width="4" stroke-linecap="round"/></svg>';
 const COLS=[['#8b5a3c','#d9b48f'],['#6b7280','#d1d5db'],['#a16207','#fde68a'],['#7c4a2d','#e8c4a0']];

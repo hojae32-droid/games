@@ -616,6 +616,15 @@ body.G-full.L-wcenter .wz,body.G-full.L-wfloat .wz{padding:clamp(8px,1.5dvh,16px
   body.G-full .dice{height:34px}
 }
 
+body.lv-many .chips.lv,body.G-full.lv-many .chips.lv{grid-template-columns:1fr 1fr 1fr;gap:5px}
+body.lv-many .chips.lv .chip{min-height:30px;padding:3px 5px;gap:3px;font-size:clamp(11.5px,1.9dvh,14px);line-height:1.15}
+body.lv-many .chips.lv .chip small{display:none}
+body.lv-many .grade-group .gl{margin-bottom:4px;font-size:12px}
+body.lv-many .grade-group{margin-bottom:4px}
+@media (max-height:640px){body.lv-many .chips.lv .chip{min-height:26px;padding:2px 4px;font-size:11.5px}body.lv-many .grade-group .gl{font-size:11px;margin-bottom:2px}body.lv-many .grade-group{margin-bottom:2px}body.lv-many .chips.lv{gap:3px}}
+
+#play.practice .phead .sc,#play.practice .phead .tm,#play.practice .streak,#play.practice .prog{display:none!important}
+
 body{background:#0f2a2e;background-image:radial-gradient(circle at 15% 20%,rgba(217,70,239,.16),transparent 40%),radial-gradient(circle at 85% 80%,rgba(94,234,212,.14),transparent 40%)}
 .sign h1{text-shadow:0 0 22px rgba(94,234,212,.6);letter-spacing:.03em}
 .sign .sub{border:1px solid rgba(94,234,212,.7);background:rgba(94,234,212,.12);color:#99f6e4;box-shadow:none}
@@ -697,7 +706,7 @@ const ADJ=['날쌘','용감한','반짝이는','씩씩한','슬기로운','튼�
 const NOUN=['수달','펭귄','다람쥐','고래','부엉이','치타','판다','거북이','여우','돌고래','햄스터','코알라','기린','오리','사자','토끼','고슴도치','너구리','미어캣','알파카'];
 function randNick(used){for(let k=0;k<50;k++){const n=ADJ[Math.floor(Math.random()*ADJ.length)]+' '+NOUN[Math.floor(Math.random()*NOUN.length)];if(!used.includes(n))return n;}return '친구'+Math.floor(Math.random()*100);}
 
-const N={comma:n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',')};
+const N={comma:n=>String(n)};
 function hasB(w){w=String(w).replace(/<[^>]+>/g,'').trim().replace(/\s*\([^)]*\)$/,'');const c=w[w.length-1];if(!c)return false;if(/[0-9]/.test(c))return '013678'.includes(c);if(/[a-zA-Z]/.test(c))return false;
   const k=c.charCodeAt(0)-0xAC00;if(k<0||k>11171)return false;return k%28!==0;}
 function J(w,t){const b=hasB(w);const m={'은':['은','는'],'이':['이','가'],'을':['을','를'],'과':['과','와'],'아':['아','야'],'으로':['으로','로']}[t];
@@ -841,9 +850,10 @@ const Engine={
     const st1=h('div','wz-step');W.appendChild(st1);
     const s1=sec('level',G.levelTitle||'무엇을 할까요?',st1);
     const groups={};G.levels.forEach(l=>{(groups[l.g]=groups[l.g]||[]).push(l);});
+    if(G.levels.length>8)document.body.classList.add('lv-many');
     const allChipBoxes=[];const many=Object.keys(groups).length>1;
     Object.entries(groups).forEach(([g,ls])=>{const gg=h('div','grade-group');if(many)gg.appendChild(h('div','gl',g));s1.appendChild(gg);
-      const box=chips(gg,ls.map(l=>({label:l.t,small:l.d,v:l.id,ic:l.ic})),v=>{allChipBoxes.forEach(b=>b!==box&&b.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel')));cfg.level=v;lit('level',1);},'lv');
+      const box=chips(gg,ls.map(l=>({label:l.t,small:l.d,v:l.id,ic:l.ic})),v=>{allChipBoxes.forEach(b=>b!==box&&b.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel')));cfg.level=v;lit('level',1);if(typeof refresh==='function')refresh();},'lv');
       allChipBoxes.push(box);});
     /* 단계 2: 방법 */
     const st2=h('div','wz-step');W.appendChild(st2);
@@ -879,7 +889,7 @@ const Engine={
       if(keys.includes('level')&&!cfg.level&&!guest)miss.push('level');
       if(keys.includes('mode')&&!cfg.mode)miss.push('mode');
       if(keys.includes('n')&&cfg.mode==='board'&&!cfg.n)miss.push('n');
-      if(keys.includes('dur')&&!cfg.dur&&!guest)miss.push('dur');
+      if(keys.includes('dur')&&!cfg.dur&&!guest&&!(G.untimed&&cfg.level&&G.untimed(cfg.level)))miss.push('dur');
       if(keys.includes('nick')&&cfg.mode&&(cfg.nicks.some(x=>!x)||(cfg.mode==='device'&&Net.need(cfg).length)))miss.push('nick');
       return miss;};
     const flag=miss=>{Object.values(secs).forEach(s=>s.classList.remove('need'));miss.forEach(k=>{const s=secs[k];void s.offsetWidth;s.classList.add('need');});if(miss.length)Snd.bad();};
@@ -894,7 +904,7 @@ const Engine={
     const refresh=()=>{
       s3.style.display=cfg.mode==='board'?'':'none';
       roomWrap.style.display=cfg.mode==='device'?'':'none';
-      const guest=Net.isGuestSetup(cfg);s1.style.display=guest?'none':'';s4.style.display=guest?'none':'';if(s6)s6.style.display=guest?'none':'';
+      const guest=Net.isGuestSetup(cfg);s1.style.display=guest?'none':'';s4.style.display=(guest||(G.untimed&&cfg.level&&G.untimed(cfg.level)))?'none':'';if(s6)s6.style.display=guest?'none':'';
       const n=cfg.mode==='board'?(cfg.n||0):(cfg.mode?(Net.isWatchSetup(cfg)?0:1):0);
       while(cfg.nicks.length<n)cfg.nicks.push('');cfg.nicks.length=n;
       nickBox.innerHTML=n?'':(cfg.mode?(cfg.mode==='board'?'<div class="hint">'+X.pickN+'</div>':'<div class="hint">진행만 하면 닉네임이 필요 없어요.</div>'):'<div class="hint">'+X.pickWho+'</div>');
@@ -921,11 +931,12 @@ const Engine={
     const G=this.G,cfg=this.cfg;
     const n=cfg.mode==='board'?cfg.n:1;
     const seed=cfg.mode==='device'&&Net.on?Net.seed:Math.floor(Math.random()*1e9);
-    this.level=G.levels.find(l=>l.id===cfg.level);this.dur=cfg.dur||60;
+    this.level=G.levels.find(l=>l.id===cfg.level);this.practice=!!(G.practice&&G.practice(cfg.level));this.untimed=this.practice||!!(G.untimed&&G.untimed(cfg.level));this.dur=this.untimed?3600:(cfg.dur||60);
     this.stopAll();this.over=false;
     const P=$('#play');P.innerHTML='';P.classList.toggle('solo',n===1);
     const bar=h('div','pbar',`<div class="clock"><i class="ring"></i><b>${this.clockText(this.dur)}</b></div><div class="ptitle"><span class="pe">${G.emoji}</span><span class="pt"><b>${G.title}</b><small>${this.level.g} · ${this.level.t}</small></span></div>`);
-    this.clockEl=bar.querySelector('.clock');
+    this.clockEl=bar.querySelector('.clock');if(this.untimed){this.clockEl.querySelector('b').textContent=this.practice?'✏️':'♪';this.clockEl.style.setProperty('--f',1);}
+    P.classList.toggle('practice',this.practice);
     const snd=h('button','icon-btn ico',Snd.on?ICO.on:ICO.off);snd.title='소리 켜기/끄기';snd.onclick=()=>{Snd.on=!Snd.on;lsSet('sound',Snd.on);snd.innerHTML=Snd.on?ICO.on:ICO.off;};
     const fs=h('button','icon-btn ico',ICO.fs);fs.title='전체 화면';fs.onclick=toggleFS;
     const quit=h('button','icon-btn quit','그만하기');quit.onclick=()=>{if(Net.on){if(confirm(Net.role==='host'?'방을 닫고 게임을 그만할까요?':'방에서 나갈까요?')){this.stopAll();Net.leave();this.show('setup');}return;}if(confirm('게임을 그만할까요?')){this.stopAll();this.show('setup');}};
@@ -1014,8 +1025,8 @@ const Engine={
       if(FULL)this.zone(p);
       if(!p.inited){p.inited=true;}
       if(p.active){p.t+=rdt;const left=p.dur-p.t;const s=Math.ceil(left);
-        if(p===this.players[0]&&this.clockEl){this.clockEl.style.setProperty('--f',Math.max(0,left/p.dur).toFixed(4));}
-        if(s!==p._ls){p._ls=s;if(p===this.players[0]&&this.clockEl){this.clockEl.querySelector('b').textContent=this.clockText(left);this.clockEl.classList.toggle('hurry',s<=10);if(s<=5&&s>0)Snd.tone(660,.06,'sine',.04);}}
+        if(!this.untimed&&p===this.players[0]&&this.clockEl){this.clockEl.style.setProperty('--f',Math.max(0,left/p.dur).toFixed(4));}
+        if(s!==p._ls&&!this.untimed){p._ls=s;if(p===this.players[0]&&this.clockEl){this.clockEl.querySelector('b').textContent=this.clockText(left);this.clockEl.classList.toggle('hurry',s<=10);if(s<=5&&s>0)Snd.tone(660,.06,'sine',.04);}}
         p.prog.firstChild.style.width=Math.min(100,p.t/p.dur*100)+'%';
         if(left<=0){this.finish(p);}
         else if(G.update)G.update(p,dt);}
@@ -1035,6 +1046,7 @@ const Engine={
   /* 점수: ok면 +pts(기본 100, 3연속부터 +20), 틀리면 −(기본 30) · review는 '다시 보기'에 들어가요 */
   hit(p,ok,o={}){
     if(!p.active)return 0;let pts;
+    if(this.practice){if(ok){p.correct++;Snd.ok();}else{p.wrongN++;Snd.bad();if(o.review&&!p.wrong.includes(o.review)&&p.wrong.length<40)p.wrong.push(o.review);}if(o.tip)p.tip(o.tip,ok?'good':'bad',o.tipMs||(ok?1800:3200));return 0;}
     if(ok){p.streak++;p.best=Math.max(p.best,p.streak);p.correct++;pts=o.pts!=null?o.pts:100;if(p.streak>=3&&pts>0)pts+=20;Snd.ok();}
     else{p.streak=0;p.wrongN++;pts=-(o.pen!=null?o.pen:30);Snd.bad();if(o.shake!==false)p.shake();
       if(o.review&&!p.wrong.includes(o.review)&&p.wrong.length<40)p.wrong.push(o.review);}
@@ -1382,6 +1394,8 @@ window.Net=Net;
 <script>
 /* 퀴즈형 게임 공통 부품: 글자 맞춤·보기 카드·격자 배치 */
 const QK={
+  /* 소리 내어 읽어 주기 (소리를 껐거나 기기가 지원하지 않으면 조용히 넘어가요) */
+  say(text,rate){try{if(!window.speechSynthesis||(window.Snd&&!Snd.on))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(text).replace(/<[^>]+>/g,''));u.lang='ko-KR';u.rate=rate||.8;u.pitch=1.15;speechSynthesis.speak(u);}catch(e){}},
   /* 반복 없이 n개 뽑기 (한 바퀴 다 돌 때까지 같은 문제가 나오지 않아요) */
   take(p,arr,key,n){const out=[];for(let t=0;out.length<n&&t<60;t++){const x=p.deck(arr,key);if(!out.includes(x))out.push(x);}return out;},
   /* 글자를 상자에 맞춰 줄바꿈/축소. 반환 {lines,fs} */
@@ -1408,20 +1422,39 @@ const INK='#08181a';
 const strip=s=>String(s).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const LOGO='<svg class="logo" viewBox="0 0 48 48"><path d="M18 5h12M20 5v14L8 40a3 3 0 0 0 3 4h26a3 3 0 0 0 3-4L28 19V5" fill="#99f6e4" stroke="#08181a" stroke-width="3.5" stroke-linejoin="round"/><path d="M13 32h22l5 8a3 3 0 0 1-3 4H11a3 3 0 0 1-3-4z" fill="#d946ef"/><circle cx="21" cy="26" r="2.5" fill="#fff"/><circle cx="28" cy="22" r="2" fill="#fff"/></svg>';
 // [낱말, 참고]
-const GO=[['하늘'],['바다'],['사랑'],['마음'],['나무'],['꽃'],['아버지'],['어머니'],['손'],['바람'],['별'],['노을'],['무지개'],['이야기'],['놀이'],['잔치'],['나라'],['사람'],['길'],['모래'],['구름'],['얼굴'],['눈물'],['아침'],['햇살'],['가을'],['오솔길'],['이웃']];
-const HAN=[['학교','學校'],['공부','工夫'],['친구','親舊'],['가족','家族'],['시간','時間'],['운동','運動'],['음악','音樂'],['도서관','圖書館'],['교실','敎室'],['책상','冊床'],['연필','鉛筆'],['국어','國語'],['수학','數學'],['자연','自然'],['세계','世界'],['생일','生日'],['우산','雨傘'],['의자','椅子'],['약속','約束'],['행복','幸福'],['평화','平和'],['산','山'],['강','江'],['동물','動物'],['식물','植物']];
-const FOR=[['컴퓨터'],['버스'],['피아노'],['텔레비전'],['바나나'],['피자'],['라디오'],['아이스크림'],['카메라'],['햄버거'],['택시'],['초콜릿'],['케이크'],['로봇'],['볼펜'],['샌드위치'],['인터넷'],['스케치북'],['슬리퍼'],['커튼'],['엘리베이터'],['토마토']];
+const GO=[['하늘'],['바다'],['사랑'],['마음'],['나무'],['꽃'],['아버지'],['어머니'],['손'],['바람'],['별'],['노을'],['무지개'],['이야기'],['놀이'],['잔치'],['나라'],['사람'],['길'],['모래'],['구름'],['얼굴'],['눈물'],['아침'],['햇살'],['가을'],['오솔길'],['이웃'],
+  ['봄'],['여름'],['겨울'],['저녁'],['냇물'],['이슬'],['노래'],['그림'],['동무'],['누나'],['언니'],['할머니'],['할아버지'],['머리'],['새'],['개구리'],['열매'],['씨앗'],['달'],['땅'],['집'],['밥'],['옷'],['꿈'],['웃음'],['강아지'],['병아리'],['다람쥐'],['소나무']];
+const HAN=[['학교','學校'],['공부','工夫'],['친구','親舊'],['가족','家族'],['시간','時間'],['운동','運動'],['음악','音樂'],['도서관','圖書館'],['교실','敎室'],['책상','冊床'],['연필','鉛筆'],['국어','國語'],['수학','數學'],['자연','自然'],['세계','世界'],['생일','生日'],['우산','雨傘'],['의자','椅子'],['약속','約束'],['행복','幸福'],['평화','平和'],['산','山'],['강','江'],['동물','動物'],['식물','植物'],
+  ['과학','科學'],['사회','社會'],['체육','體育'],['미술','美術'],['학생','學生'],['교사','敎師'],['부모','父母'],['형제','兄弟'],['자동차','自動車'],['기차','汽車'],['비행기','飛行機'],['지구','地球'],['태양','太陽'],['공원','公園'],['병원','病院'],['시장','市場'],['우유','牛乳'],['안경','眼鏡'],['계절','季節'],['일기','日記'],['숙제','宿題'],['방학','放學'],['교과서','敎科書'],['선물','膳物'],['건강','健康'],['희망','希望'],['용기','勇氣'],['노력','努力'],['역사','歷史'],['시계','時計'],['창문','窓門'],['운동장','運動場']];
+const FOR=[['컴퓨터'],['버스'],['피아노'],['텔레비전'],['바나나'],['피자'],['라디오'],['아이스크림'],['카메라'],['햄버거'],['택시'],['초콜릿'],['케이크'],['로봇'],['볼펜'],['샌드위치'],['인터넷'],['스케치북'],['슬리퍼'],['커튼'],['엘리베이터'],['토마토'],
+  ['바이올린'],['테니스'],['볼링'],['스키'],['주스'],['오렌지'],['레몬'],['멜론'],['파인애플'],['소시지'],['치즈'],['버터'],['스파게티'],['쿠키'],['젤리'],['도넛'],['노트'],['크레용'],['마스크'],['컵'],['소파'],['텐트'],['호텔'],['아파트'],['트럭'],['헬리콥터'],['퍼즐'],['리본'],['스웨터'],['티셔츠'],['넥타이'],['코트'],['샌들']];
 // [앞 낱말, 정답, 오답, 오답]  (오답은 앞 낱말과 합쳐도 낱말이 되지 않도록)
 const COMP=[['손','수건','구두','피자'],['밤','나무','연필','버스'],['눈','사람','책상','우유'],['책','가방','사탕','하늘'],['돌','다리','우유','사탕'],['물','고기','연필','구두'],
-  ['봄','비','책상','구두'],['꽃','밭','우유','가위'],['고무','신','하늘','연필'],['비','옷','사탕','책상'],['김','밥','구두','연필'],
+  ['봄','비','책상','구두'],['꽃','밭','우유','라디오'],['고무','신','하늘','연필'],['비','옷','사탕','책상'],['김','밥','구두','연필'],
   ['앞','치마','사탕','라디오'],['산','길','우유','피아노'],['들','꽃','공책','시계'],['고추','잠자리','책상','버스'],['밤','하늘','연필','구두'],['나비','넥타이','사탕','공책'],
-  ['종이','배','시계','우유'],['장미','꽃','버스','시계'],['콩','나물','구두','연필'],['눈','썰매','라디오','공책']];
+  ['종이','배','시계','우유'],['장미','꽃','버스','시계'],['콩','나물','구두','연필'],['눈','썰매','라디오','공책'],
+  ['꽃','잎','버스','우유'],['불','고기','공책','피아노'],['아침','밥','구두','라디오'],['손','목','버스','사탕'],['발','자국','우유','피아노'],
+  ['물','방울','책상','라디오'],['감','나무','연필','버스'],['꿀','벌','구두','시계'],['강','물','연필','구두'],['논','밭','우유','라디오'],['별','빛','구두','공책'],['달','빛','연필','책상'],
+  ['팥','죽','공책','피아노'],['보리','밥','시계','구두'],['길','가','우유','피아노'],['신','발','연필','라디오'],
+  ['돼지','고기','연필','라디오'],['머리','띠','버스','피아노'],['모래','밭','라디오','구두'],['솜','사탕','피아노','버스'],['땅','콩','책상','라디오'],
+  ['밀','가루','버스','구두'],['쌀','밥','연필','시계'],['장난','감','우유','버스'],['잠','옷','피아노','공책']];
 // [어근, 붙는 말, 뜻, 오답, 오답, (빈), 'pre'|'suf']
 const DER=[['사과','풋','덜 익은 사과','맨','헛','','pre'],['발','맨','아무것도 신지 않은 발','풋','덧','','pre'],['기침','헛','일부러 하는 기침','맨','풋','','pre'],
   ['밤','햇','그해에 새로 난 밤','맨','헛','','pre'],['신','덧','신 위에 겹쳐 신는 신','맨','풋','','pre'],['손','맨','아무것도 들지 않은 손','풋','햇','','pre'],
   ['나무','꾼','나무를 하는 사람','질','개','','suf'],['낚시','꾼','낚시를 즐겨 하는 사람','개','보','','suf'],['겁','쟁이','겁이 많은 사람','질','개','','suf'],['욕심','쟁이','욕심이 많은 사람','질','개','','suf'],
   ['가위','질','가위로 자르는 일','꾼','쟁이','','suf'],['부채','질','부채를 부치는 일','꾼','개','','suf'],['지우','개','글씨를 지우는 물건','꾼','질','','suf'],['덮','개','무엇을 덮는 물건','꾼','쟁이','','suf'],
-  ['울','보','잘 우는 사람','개','질','','suf'],['잠','꾸러기','잠이 많은 사람','질','개','','suf'],['장난','꾸러기','장난이 심한 아이','질','개','','suf'],['멋','쟁이','멋을 잘 부리는 사람','질','개','','suf']];
+  ['울','보','잘 우는 사람','개','질','','suf'],['잠','꾸러기','잠이 많은 사람','질','개','','suf'],['장난','꾸러기','장난이 심한 아이','보','개','','suf'],['멋','쟁이','멋을 잘 부리는 사람','질','개','','suf'],
+  ['고추','풋','덜 익은 고추','맨','덧','','pre'],['콩','풋','덜 익은 콩','맨','헛','','pre'],['과일','풋','덜 익은 과일','맨','덧','','pre'],
+  ['밥','맨','반찬 없이 먹는 밥','풋','헛','','pre'],['땅','맨','아무것도 깔지 않은 땅','풋','햇','','pre'],['주먹','맨','아무것도 가지지 않은 주먹','풋','햇','','pre'],
+  ['걸음','헛','아무 보람 없이 걸은 걸음','풋','햇','','pre'],['수고','헛','아무 보람 없이 애쓴 수고','풋','덧','','pre'],['소문','헛','근거 없이 떠도는 소문','맨','풋','','pre'],['웃음','헛','마음에 없이 웃는 웃음','풋','햇','','pre'],
+  ['감자','햇','그해에 새로 난 감자','맨','덧','','pre'],['과일','햇','그해에 새로 난 과일','맨','헛','','pre'],['옷','덧','옷 위에 겹쳐 입는 옷','풋','햇','','pre'],['칠','덧','칠한 위에 겹쳐 하는 칠','맨','햇','','pre'],
+  ['고기','날','익히지 않은 고기','덧','햇','','pre'],['달걀','날','익히지 않은 달걀','맨','헛','','pre'],['말','군','하지 않아도 될 쓸데없는 말','풋','햇','','pre'],['아들','맏','첫째 아들','풋','헛','','pre'],
+  ['사냥','꾼','사냥을 하는 사람','보','꾸러기','','suf'],['농사','꾼','농사를 짓는 사람','보','꾸러기','','suf'],['장사','꾼','장사를 하는 사람','보','꾸러기','','suf'],['구경','꾼','구경을 하는 사람','보','꾸러기','','suf'],
+  ['심술','쟁이','심술이 많은 사람','질','개','','suf'],['고집','쟁이','고집이 센 사람','질','개','','suf'],['거짓말','쟁이','거짓말을 잘하는 사람','개','보','','suf'],['수다','쟁이','말수가 많은 사람','개','보','','suf'],
+  ['칼','질','칼로 자르거나 써는 일','꾼','보','','suf'],['걸레','질','걸레로 닦는 일','꾼','보','','suf'],['베','개','잘 때 머리에 베는 물건','꾼','질','','suf'],
+  ['먹','보','음식을 많이 먹는 사람','꾼','질','','suf'],['꾀','보','꾀가 많은 사람','질','개','','suf'],['털','보','털이 많은 사람','꾼','질','','suf'],['말썽','꾸러기','말썽을 자주 부리는 아이','질','개','','suf'],
+  ['달리','기','달리는 일','개','보','','suf'],['웃','음','웃는 일','개','보','','suf'],['믿','음','믿는 마음','개','보','','suf'],
+  ['높','이','높은 정도','개','보','','suf'],['길','이','긴 정도','개','보','','suf'],['넓','이','넓은 정도','개','보','','suf'],['크','기','큰 정도','개','보','','suf']];
 const KIND={g:{t:'고유어',s:'본디부터 쓰던 우리말',c:'#4ade80'},h:{t:'한자어',s:'한자로 된 말',c:'#fb923c'},f:{t:'외래어',s:'다른 나라에서 들어와 우리말처럼 쓰는 말',c:'#60a5fa'}};
 function owl(g,x,y,s,mood,t){g.save();g.translate(x,y+Math.sin(t*3)*s*.015);g.lineJoin='round';g.lineWidth=Math.max(2,s*.05);g.strokeStyle=INK;K.shadow(g,0,s*.58,s*.45,s*.08,.3);
   g.fillStyle='#fff';g.beginPath();g.moveTo(-s*.4,s*.55);g.quadraticCurveTo(-s*.42,s*.1,0,s*.08);g.quadraticCurveTo(s*.42,s*.1,s*.4,s*.55);g.closePath();g.fill();g.stroke();

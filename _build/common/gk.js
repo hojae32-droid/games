@@ -4,7 +4,7 @@ function gkHero(fn){return function(cv){const g=cv.getContext('2d');let raf=0,W0
   const size=()=>{const r=cv.getBoundingClientRect();const d=Math.min(2,window.devicePixelRatio||1);const w=Math.max(10,r.width),h=Math.max(10,r.height);if(w===W0&&h===H0&&d===dpr)return;W0=w;H0=h;dpr=d;cv.width=Math.round(W0*dpr);cv.height=Math.round(H0*dpr);};
   const frame=now=>{if(!run)return;raf=requestAnimationFrame(frame);const dt=Math.max(0,Math.min(.05,(now-last)/1000||0));last=now;T+=dt;size();g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W0,H0);fn(g,W0,H0,T,Math.min(W0,H0)/6);};
   return{start(){if(run)return;run=true;last=performance.now();raf=requestAnimationFrame(frame);},stop(){run=false;cancelAnimationFrame(raf);}};};}
-const gkComma=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+const gkComma=n=>String(n);
 /* 보기 영역 위에서 누른 칸 찾기 */
 function gkHit(list,x,y){for(let i=0;i<list.length;i++){const r=list[i];if(x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h)return i;}return -1;}
 /* 아래쪽 보기 카드 자리 + 위쪽 그림 영역 */

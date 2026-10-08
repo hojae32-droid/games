@@ -616,6 +616,15 @@ body.G-full.L-wcenter .wz,body.G-full.L-wfloat .wz{padding:clamp(8px,1.5dvh,16px
   body.G-full .dice{height:34px}
 }
 
+body.lv-many .chips.lv,body.G-full.lv-many .chips.lv{grid-template-columns:1fr 1fr 1fr;gap:5px}
+body.lv-many .chips.lv .chip{min-height:30px;padding:3px 5px;gap:3px;font-size:clamp(11.5px,1.9dvh,14px);line-height:1.15}
+body.lv-many .chips.lv .chip small{display:none}
+body.lv-many .grade-group .gl{margin-bottom:4px;font-size:12px}
+body.lv-many .grade-group{margin-bottom:4px}
+@media (max-height:640px){body.lv-many .chips.lv .chip{min-height:26px;padding:2px 4px;font-size:11.5px}body.lv-many .grade-group .gl{font-size:11px;margin-bottom:2px}body.lv-many .grade-group{margin-bottom:2px}body.lv-many .chips.lv{gap:3px}}
+
+#play.practice .phead .sc,#play.practice .phead .tm,#play.practice .streak,#play.practice .prog{display:none!important}
+
 h1,h2,h3,.big,.jua,.clock b,.phead .sc,.qbox.ask,.toolbtn,.fire,.res-title,.pcard .pts,.howcard .t,.howcard .num,.res-btns button,.wz-next,.stn-h h2,.res-tab{font-weight:400}
 body{background:#eef2ff;background-image:repeating-linear-gradient(0deg,transparent 0 19px,rgba(15,31,92,.07) 19px 20px)}
 .sign h1{text-shadow:3px 3px 0 #0f1f5c;letter-spacing:.01em}
@@ -696,7 +705,7 @@ const ADJ=['날쌘','용감한','반짝이는','씩씩한','슬기로운','튼�
 const NOUN=['수달','펭귄','다람쥐','고래','부엉이','치타','판다','거북이','여우','돌고래','햄스터','코알라','기린','오리','사자','토끼','고슴도치','너구리','미어캣','알파카'];
 function randNick(used){for(let k=0;k<50;k++){const n=ADJ[Math.floor(Math.random()*ADJ.length)]+' '+NOUN[Math.floor(Math.random()*NOUN.length)];if(!used.includes(n))return n;}return '친구'+Math.floor(Math.random()*100);}
 
-const N={comma:n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',')};
+const N={comma:n=>String(n)};
 function hasB(w){w=String(w).replace(/<[^>]+>/g,'').trim().replace(/\s*\([^)]*\)$/,'');const c=w[w.length-1];if(!c)return false;if(/[0-9]/.test(c))return '013678'.includes(c);if(/[a-zA-Z]/.test(c))return false;
   const k=c.charCodeAt(0)-0xAC00;if(k<0||k>11171)return false;return k%28!==0;}
 function J(w,t){const b=hasB(w);const m={'은':['은','는'],'이':['이','가'],'을':['을','를'],'과':['과','와'],'아':['아','야'],'으로':['으로','로']}[t];
@@ -840,9 +849,10 @@ const Engine={
     const st1=h('div','wz-step');W.appendChild(st1);
     const s1=sec('level',G.levelTitle||'무엇을 할까요?',st1);
     const groups={};G.levels.forEach(l=>{(groups[l.g]=groups[l.g]||[]).push(l);});
+    if(G.levels.length>8)document.body.classList.add('lv-many');
     const allChipBoxes=[];const many=Object.keys(groups).length>1;
     Object.entries(groups).forEach(([g,ls])=>{const gg=h('div','grade-group');if(many)gg.appendChild(h('div','gl',g));s1.appendChild(gg);
-      const box=chips(gg,ls.map(l=>({label:l.t,small:l.d,v:l.id,ic:l.ic})),v=>{allChipBoxes.forEach(b=>b!==box&&b.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel')));cfg.level=v;lit('level',1);},'lv');
+      const box=chips(gg,ls.map(l=>({label:l.t,small:l.d,v:l.id,ic:l.ic})),v=>{allChipBoxes.forEach(b=>b!==box&&b.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel')));cfg.level=v;lit('level',1);if(typeof refresh==='function')refresh();},'lv');
       allChipBoxes.push(box);});
     /* 단계 2: 방법 */
     const st2=h('div','wz-step');W.appendChild(st2);
@@ -878,7 +888,7 @@ const Engine={
       if(keys.includes('level')&&!cfg.level&&!guest)miss.push('level');
       if(keys.includes('mode')&&!cfg.mode)miss.push('mode');
       if(keys.includes('n')&&cfg.mode==='board'&&!cfg.n)miss.push('n');
-      if(keys.includes('dur')&&!cfg.dur&&!guest)miss.push('dur');
+      if(keys.includes('dur')&&!cfg.dur&&!guest&&!(G.untimed&&cfg.level&&G.untimed(cfg.level)))miss.push('dur');
       if(keys.includes('nick')&&cfg.mode&&(cfg.nicks.some(x=>!x)||(cfg.mode==='device'&&Net.need(cfg).length)))miss.push('nick');
       return miss;};
     const flag=miss=>{Object.values(secs).forEach(s=>s.classList.remove('need'));miss.forEach(k=>{const s=secs[k];void s.offsetWidth;s.classList.add('need');});if(miss.length)Snd.bad();};
@@ -893,7 +903,7 @@ const Engine={
     const refresh=()=>{
       s3.style.display=cfg.mode==='board'?'':'none';
       roomWrap.style.display=cfg.mode==='device'?'':'none';
-      const guest=Net.isGuestSetup(cfg);s1.style.display=guest?'none':'';s4.style.display=guest?'none':'';if(s6)s6.style.display=guest?'none':'';
+      const guest=Net.isGuestSetup(cfg);s1.style.display=guest?'none':'';s4.style.display=(guest||(G.untimed&&cfg.level&&G.untimed(cfg.level)))?'none':'';if(s6)s6.style.display=guest?'none':'';
       const n=cfg.mode==='board'?(cfg.n||0):(cfg.mode?(Net.isWatchSetup(cfg)?0:1):0);
       while(cfg.nicks.length<n)cfg.nicks.push('');cfg.nicks.length=n;
       nickBox.innerHTML=n?'':(cfg.mode?(cfg.mode==='board'?'<div class="hint">'+X.pickN+'</div>':'<div class="hint">진행만 하면 닉네임이 필요 없어요.</div>'):'<div class="hint">'+X.pickWho+'</div>');
@@ -920,11 +930,12 @@ const Engine={
     const G=this.G,cfg=this.cfg;
     const n=cfg.mode==='board'?cfg.n:1;
     const seed=cfg.mode==='device'&&Net.on?Net.seed:Math.floor(Math.random()*1e9);
-    this.level=G.levels.find(l=>l.id===cfg.level);this.dur=cfg.dur||60;
+    this.level=G.levels.find(l=>l.id===cfg.level);this.practice=!!(G.practice&&G.practice(cfg.level));this.untimed=this.practice||!!(G.untimed&&G.untimed(cfg.level));this.dur=this.untimed?3600:(cfg.dur||60);
     this.stopAll();this.over=false;
     const P=$('#play');P.innerHTML='';P.classList.toggle('solo',n===1);
     const bar=h('div','pbar',`<div class="clock"><i class="ring"></i><b>${this.clockText(this.dur)}</b></div><div class="ptitle"><span class="pe">${G.emoji}</span><span class="pt"><b>${G.title}</b><small>${this.level.g} · ${this.level.t}</small></span></div>`);
-    this.clockEl=bar.querySelector('.clock');
+    this.clockEl=bar.querySelector('.clock');if(this.untimed){this.clockEl.querySelector('b').textContent=this.practice?'✏️':'♪';this.clockEl.style.setProperty('--f',1);}
+    P.classList.toggle('practice',this.practice);
     const snd=h('button','icon-btn ico',Snd.on?ICO.on:ICO.off);snd.title='소리 켜기/끄기';snd.onclick=()=>{Snd.on=!Snd.on;lsSet('sound',Snd.on);snd.innerHTML=Snd.on?ICO.on:ICO.off;};
     const fs=h('button','icon-btn ico',ICO.fs);fs.title='전체 화면';fs.onclick=toggleFS;
     const quit=h('button','icon-btn quit','그만하기');quit.onclick=()=>{if(Net.on){if(confirm(Net.role==='host'?'방을 닫고 게임을 그만할까요?':'방에서 나갈까요?')){this.stopAll();Net.leave();this.show('setup');}return;}if(confirm('게임을 그만할까요?')){this.stopAll();this.show('setup');}};
@@ -1013,8 +1024,8 @@ const Engine={
       if(FULL)this.zone(p);
       if(!p.inited){p.inited=true;}
       if(p.active){p.t+=rdt;const left=p.dur-p.t;const s=Math.ceil(left);
-        if(p===this.players[0]&&this.clockEl){this.clockEl.style.setProperty('--f',Math.max(0,left/p.dur).toFixed(4));}
-        if(s!==p._ls){p._ls=s;if(p===this.players[0]&&this.clockEl){this.clockEl.querySelector('b').textContent=this.clockText(left);this.clockEl.classList.toggle('hurry',s<=10);if(s<=5&&s>0)Snd.tone(660,.06,'sine',.04);}}
+        if(!this.untimed&&p===this.players[0]&&this.clockEl){this.clockEl.style.setProperty('--f',Math.max(0,left/p.dur).toFixed(4));}
+        if(s!==p._ls&&!this.untimed){p._ls=s;if(p===this.players[0]&&this.clockEl){this.clockEl.querySelector('b').textContent=this.clockText(left);this.clockEl.classList.toggle('hurry',s<=10);if(s<=5&&s>0)Snd.tone(660,.06,'sine',.04);}}
         p.prog.firstChild.style.width=Math.min(100,p.t/p.dur*100)+'%';
         if(left<=0){this.finish(p);}
         else if(G.update)G.update(p,dt);}
@@ -1034,6 +1045,7 @@ const Engine={
   /* 점수: ok면 +pts(기본 100, 3연속부터 +20), 틀리면 −(기본 30) · review는 '다시 보기'에 들어가요 */
   hit(p,ok,o={}){
     if(!p.active)return 0;let pts;
+    if(this.practice){if(ok){p.correct++;Snd.ok();}else{p.wrongN++;Snd.bad();if(o.review&&!p.wrong.includes(o.review)&&p.wrong.length<40)p.wrong.push(o.review);}if(o.tip)p.tip(o.tip,ok?'good':'bad',o.tipMs||(ok?1800:3200));return 0;}
     if(ok){p.streak++;p.best=Math.max(p.best,p.streak);p.correct++;pts=o.pts!=null?o.pts:100;if(p.streak>=3&&pts>0)pts+=20;Snd.ok();}
     else{p.streak=0;p.wrongN++;pts=-(o.pen!=null?o.pen:30);Snd.bad();if(o.shake!==false)p.shake();
       if(o.review&&!p.wrong.includes(o.review)&&p.wrong.length<40)p.wrong.push(o.review);}
@@ -1381,6 +1393,8 @@ window.Net=Net;
 <script>
 /* 퀴즈형 게임 공통 부품: 글자 맞춤·보기 카드·격자 배치 */
 const QK={
+  /* 소리 내어 읽어 주기 (소리를 껐거나 기기가 지원하지 않으면 조용히 넘어가요) */
+  say(text,rate){try{if(!window.speechSynthesis||(window.Snd&&!Snd.on))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(text).replace(/<[^>]+>/g,''));u.lang='ko-KR';u.rate=rate||.8;u.pitch=1.15;speechSynthesis.speak(u);}catch(e){}},
   /* 반복 없이 n개 뽑기 (한 바퀴 다 돌 때까지 같은 문제가 나오지 않아요) */
   take(p,arr,key,n){const out=[];for(let t=0;out.length<n&&t<60;t++){const x=p.deck(arr,key);if(!out.includes(x))out.push(x);}return out;},
   /* 글자를 상자에 맞춰 줄바꿈/축소. 반환 {lines,fs} */
@@ -1408,10 +1422,22 @@ const strip=s=>String(s).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const LOGO='<svg class="logo" viewBox="0 0 48 48"><rect x="5" y="8" width="38" height="32" rx="2" fill="#fffffa" stroke="#0f1f5c" stroke-width="3"/><rect x="9" y="12" width="30" height="8" fill="#dc2626"/><path d="M9 25h14M9 30h14M9 35h14" stroke="#0f1f5c" stroke-width="2.5"/><rect x="27" y="25" width="12" height="11" fill="#1e3a8a"/></svg>';
 const FACT=['우리나라의 수도는 서울이다.','물은 100도에서 끓는다.','세종대왕은 훈민정음을 만들었다.','1년은 열두 달이다.','고래는 새끼를 낳아 젖을 먹인다.','지구는 태양 둘레를 돈다.',
   '우리 학교 운동장에는 축구 골대가 두 개 있다.','한글날은 10월 9일이다.','개미는 다리가 여섯 개이다.','바닷물은 짠맛이 난다.','하계 올림픽은 4년마다 열린다.','고구마는 땅속에서 자란다.',
-  '어제 우리 반 학생 25명이 현장 체험 학습을 갔다.','이 책은 모두 120쪽이다.','오늘 아침 기온은 영하 3도였다.','이순신 장군은 거북선을 이끌고 싸웠다.','달은 스스로 빛을 내지 못한다.','개구리는 올챙이에서 자란다.'];
+  '어제 우리 반 학생 25명이 현장 체험 학습을 갔다.','이 책은 모두 120쪽이다.','오늘 아침 기온은 영하 3도였다.','이순신 장군은 거북선을 이끌고 싸웠다.','달은 스스로 빛을 내지 못한다.','개구리는 올챙이에서 자란다.',
+  '일주일은 7일이다.','거미는 다리가 여덟 개이다.','물은 0도에서 언다.','해는 동쪽에서 떠서 서쪽으로 진다.','우리나라의 국기는 태극기이다.','하루는 24시간이다.',
+'나비는 애벌레와 번데기를 거쳐 어른벌레가 된다.','펭귄은 날지 못하는 새이다.','광복절은 8월 15일이다.','어린이날은 5월 5일이다.','삼일절은 3월 1일이다.','박쥐는 새끼를 낳는 동물이다.',
+'식물은 햇빛을 받아 양분을 만든다.','우리 반 교실은 3층에 있다.','어제 우리 학교에서 소방 대피 훈련을 했다.','이 연필의 길이는 15센티미터이다.','지난주 토요일에 비가 내렸다.','우리 동네 도서관은 월요일에 쉰다.',
+'1미터는 100센티미터이다.','소는 풀을 먹는다.','닭은 알을 낳는다.','한라산은 제주도에 있다.','물고기는 아가미로 숨을 쉰다.','오늘 점심 급식에 미역국이 나왔다.',
+'자석은 철로 된 물건을 끌어당긴다.','심장은 온몸으로 피를 보낸다.','이 수족관에는 금붕어가 다섯 마리 있다.','달은 지구 둘레를 돈다.','올해 우리 학교 운동회는 5월에 열렸다.','봄에는 개나리와 진달래가 핀다.',
+'우리 반 학급 문고에는 책이 80권 있다.','얼음은 물에 뜬다.','서울과 부산 사이에는 고속 열차가 다닌다.'];
 const OPIN=['여름보다 겨울이 더 좋다.','이 영화는 정말 재미있다.','수학이 가장 어려운 과목이다.','우리 학교 급식이 세상에서 제일 맛있다.','강아지가 고양이보다 더 귀엽다.','이 노래는 누구나 좋아할 것이다.',
   '교실에서는 휴대 전화를 꺼 두어야 한다고 생각한다.','빨간색이 가장 예쁜 색이다.','책을 읽는 것이 게임보다 더 즐겁다.','이 그림은 정말 아름답다.','모든 학생이 수영을 배워야 한다.','방학이 지금보다 더 길어야 한다.',
-  '우리 동네 공원이 가장 멋진 곳이다.','떡볶이는 최고의 간식이다.','운동회는 일 년 중 가장 신나는 날이다.','이번 학급 회의 결정은 정말 훌륭했다.'];
+  '우리 동네 공원이 가장 멋진 곳이다.','떡볶이는 최고의 간식이다.','운동회는 일 년 중 가장 신나는 날이다.','이번 학급 회의 결정은 정말 훌륭했다.',
+  '봄이 일 년 중 가장 아름다운 계절이다.','체육 시간이 가장 신난다.','우리 반 친구들은 모두 착한 것 같다.','피자보다 김밥이 더 맛있다.','이 동화책은 결말이 아쉽다.','숙제는 없어지는 것이 좋다.',
+'학교에 텃밭을 만들어야 한다.','주말에는 집에서 쉬는 것이 제일 좋다.','파란색 운동화가 더 멋있다.','내일은 분명히 재미있는 일이 생길 것이다.','이번 경기에서는 우리 반이 이길 것이다.','고양이는 세상에서 가장 사랑스러운 동물이다.',
+'아침 운동은 누구에게나 꼭 필요하다고 생각한다.','만화책도 훌륭한 책이라고 생각한다.','수영장보다 바다가 훨씬 즐겁다.','놀이공원은 어린이에게 최고의 장소이다.','우리 동네 빵집의 빵이 가장 맛있다.','겨울 방학에는 스키를 배우는 것이 좋다.',
+'모든 교실에 화분을 두어야 한다.','이 노래 가사는 정말 감동적이다.','짝꿍의 글씨가 우리 반에서 제일 예쁘다.','눈 오는 날이 비 오는 날보다 훨씬 좋다.','미술 시간이 더 길었으면 좋겠다.','친구에게 편지를 쓰는 것은 멋진 일이다.',
+'학교 앞 문구점의 물건은 너무 비싸다.','운동장에 놀이 기구가 더 있어야 한다.','이번 가족 여행이 지금까지의 여행 중 가장 즐거웠다.','과학은 세상에서 가장 흥미로운 과목이다.','공룡 이야기는 언제 들어도 재미있다.','이 공원의 벚꽃이 우리 동네에서 가장 아름답다.',
+'토요일에도 학교 도서관이 문을 열어야 한다.','앞으로는 더 많은 사람이 자전거를 타고 다닐 것이다.','김치찌개는 비 오는 날에 먹어야 제맛이다.','점심시간이 지금보다 더 길어야 한다.'];
 // [제목, 문장들, 중심 문장 번호]
 const PARA=[['재활용',['우리 생활에서 재활용은 꼭 필요합니다.','플라스틱병을 모으면 옷을 만들 수 있습니다.','종이를 모으면 새 종이를 만들 수 있습니다.','캔을 모으면 다시 캔을 만들 수 있습니다.'],0],
   ['꿀벌',['꿀벌은 꽃가루를 옮겨 열매를 맺게 합니다.','꿀벌은 맛있는 꿀을 만들어 줍니다.','또 꿀벌은 밀랍을 만들어 초를 만들 수 있게 해 줍니다.','이처럼 꿀벌은 사람에게 여러 가지 도움을 줍니다.'],3],
@@ -1423,12 +1449,45 @@ const PARA=[['재활용',['우리 생활에서 재활용은 꼭 필요합니다.
   ['도서관 예절',['도서관에서는 지켜야 할 예절이 있습니다.','큰 소리로 떠들지 않습니다.','책을 깨끗하게 봅니다.','읽은 책은 제자리에 꽂아 둡니다.'],0],
   ['김치',['김치는 우리나라의 대표 음식입니다.','배추김치, 깍두기, 총각김치 등 종류가 아주 많습니다.','김치에는 몸에 좋은 유산균이 들어 있습니다.','요즘은 다른 나라 사람들도 김치를 즐겨 먹습니다.'],0],
   ['나무가 하는 일',['나무는 맑은 공기를 만들어 줍니다.','나무는 뜨거운 햇볕을 가려 그늘을 만들어 줍니다.','나무는 뿌리로 흙을 붙잡아 산사태를 막아 줍니다.','이처럼 나무는 우리에게 고마운 일을 많이 합니다.'],3],
-  ['안전한 등굣길',['안전하게 학교에 오려면 몇 가지를 지켜야 합니다.','횡단보도에서는 초록 불일 때 건넙니다.','길을 건널 때는 좌우를 잘 살핍니다.','휴대 전화를 보며 걷지 않습니다.'],0]];
-// [원인, 결과]
-const CAUSE=[['밤늦게까지 게임을 했다.','아침에 늦잠을 잤다.'],['비가 많이 내렸다.','강물이 불어났다.','rain'],['이를 잘 닦지 않았다.','충치가 생겼다.'],['화분에 물을 주지 않았다.','꽃이 시들었다.','dry'],
-  ['날마다 줄넘기를 연습했다.','줄넘기 대회에서 상을 받았다.'],['얼음을 햇볕에 두었다.','얼음이 녹아 물이 되었다.'],['아침밥을 굶었다.','수업 시간에 배가 고팠다.'],['우산을 가져가지 않았다.','비에 옷이 다 젖었다.','rain'],
-  ['친구에게 먼저 사과했다.','친구와 다시 사이가 좋아졌다.'],['겨울에 얇은 옷을 입고 나갔다.','감기에 걸렸다.'],['쓰레기를 강에 함부로 버렸다.','물고기들이 살기 어려워졌다.'],['열심히 저금을 했다.','갖고 싶던 책을 샀다.'],
-  ['길이 꽁꽁 얼었다.','사람들이 미끄러져 넘어졌다.'],['가뭄이 오래 계속되었다.','논밭이 갈라지고 농작물이 말랐다.','dry']];
+  ['안전한 등굣길',['안전하게 학교에 오려면 몇 가지를 지켜야 합니다.','횡단보도에서는 초록 불일 때 건넙니다.','길을 건널 때는 좌우를 잘 살핍니다.','휴대 전화를 보며 걷지 않습니다.'],0],
+  ['손 씻기의 좋은 점',['손을 깨끗이 씻으면 좋은 점이 많습니다.','손에 묻은 세균을 없앨 수 있습니다.','감기 같은 병을 예방할 수 있습니다.','음식을 더 깨끗하게 먹을 수 있습니다.'],0],
+  ['곤충의 몸',['곤충의 몸은 머리, 가슴, 배 세 부분으로 나뉩니다.','다리는 여섯 개입니다.','대부분 머리에 더듬이가 한 쌍 있습니다.','이처럼 곤충의 몸에는 공통된 특징이 있습니다.'],3],
+  ['우리 고장의 시장',['시장에는 여러 가지 가게가 있습니다.','채소 가게에서는 싱싱한 채소를 팝니다.','생선 가게에서는 여러 가지 생선을 팝니다.','떡집에서는 맛있는 떡을 팝니다.'],0],
+  ['설날',['설날 아침에는 떡국을 먹습니다.','어른들께 세배를 드립니다.','윷놀이나 연날리기 같은 민속놀이를 합니다.','설날에는 이렇게 여러 가지 일을 하며 새해를 맞이합니다.'],3],
+  ['자전거 안전',['자전거를 탈 때에는 안전 수칙을 지켜야 합니다.','머리를 보호하는 안전모를 씁니다.','사람이 많은 곳에서는 내려서 끌고 갑니다.','밤에는 불빛이 나는 장치를 켭니다.'],0],
+  ['식물이 자라는 데 필요한 것',['식물이 잘 자라려면 여러 가지가 필요합니다.','식물은 햇빛을 받아 양분을 만듭니다.','뿌리로 물을 빨아들입니다.','알맞은 온도가 되어야 싹이 틉니다.'],0],
+  ['친구와 사이좋게 지내기',['친구의 말을 끝까지 잘 들어 줍니다.','고마운 일이 있으면 고맙다고 말합니다.','잘못했을 때는 먼저 사과합니다.','이렇게 하면 친구와 사이좋게 지낼 수 있습니다.'],3],
+  ['물의 쓰임',['물은 우리 생활에 여러 가지로 쓰입니다.','우리는 물을 마시고 음식을 만듭니다.','물로 몸을 씻고 빨래를 합니다.','농사를 지을 때도 물이 필요합니다.'],0],
+  ['우리 몸의 감각',['눈으로 사물의 모양과 색깔을 봅니다.','귀로 여러 가지 소리를 듣습니다.','코로 냄새를 맡고 혀로 맛을 봅니다.','이처럼 우리는 여러 감각 기관으로 주변을 느낍니다.'],3],
+  ['교실 청소',['우리 반은 역할을 나누어 교실을 청소합니다.','몇몇은 빗자루로 바닥을 씁니다.','몇몇은 걸레로 책상을 닦습니다.','나머지는 쓰레기통을 비우고 분리배출을 합니다.'],0],
+  ['전통 놀이',['우리나라에는 여러 가지 전통 놀이가 있습니다.','제기차기는 제기를 발로 차올리는 놀이입니다.','윷놀이는 윷을 던져 말을 움직이는 놀이입니다.','팽이치기는 팽이를 쳐서 돌리는 놀이입니다.'],0],
+  ['고마운 소방관',['소방관은 불이 난 곳에 가서 불을 끕니다.','위험한 곳에 갇힌 사람을 구해 줍니다.','다친 사람을 병원으로 옮기기도 합니다.','이처럼 소방관은 우리의 안전을 지켜 줍니다.'],3],
+  ['바다가 주는 선물',['바다는 우리에게 많은 것을 줍니다.','바다에서 물고기와 조개를 얻습니다.','바닷물로 소금을 만듭니다.','여름에는 바다에서 물놀이를 즐깁니다.'],0],
+  ['건강한 식습관',['아침밥을 꼭 챙겨 먹습니다.','채소와 과일을 골고루 먹습니다.','단 음식과 기름진 음식은 적게 먹습니다.','이렇게 하면 건강한 식습관을 기를 수 있습니다.'],3],
+  ['개미의 생활',['개미는 무리를 지어 함께 생활합니다.','여왕개미는 알을 낳습니다.','일개미는 먹이를 모으고 집을 짓습니다.','애벌레를 돌보는 일도 일개미가 맡습니다.'],0],
+  ['여러 가지 탈것',['우리 주변에는 여러 가지 탈것이 있습니다.','땅에서는 자동차와 기차가 다닙니다.','바다에서는 배가 사람과 물건을 실어 나릅니다.','하늘에서는 비행기가 먼 곳까지 날아갑니다.'],0],
+  ['책 읽기의 좋은 점',['책을 읽으면 새로운 지식을 얻을 수 있습니다.','모르는 낱말을 많이 알게 됩니다.','이야기 속 인물의 마음을 이해하게 됩니다.','이처럼 책 읽기에는 좋은 점이 많습니다.'],3],
+  ['에너지 절약',['집에서도 에너지를 아낄 수 있는 방법이 많습니다.','쓰지 않는 전등은 끕니다.','쓰지 않는 전기 제품의 플러그를 뽑습니다.','냉장고 문을 오래 열어 두지 않습니다.'],0],
+  ['계절과 옷차림',['여름에는 얇고 시원한 옷을 입습니다.','겨울에는 두꺼운 외투와 장갑을 챙깁니다.','봄과 가을에는 얇은 겉옷을 걸칩니다.','이처럼 사람들은 계절에 따라 옷차림을 바꿉니다.'],3],
+  ['동물이 움직이는 방법',['동물은 저마다 다른 방법으로 움직입니다.','새는 날개로 하늘을 납니다.','물고기는 지느러미로 물속을 헤엄칩니다.','뱀은 몸을 구부렸다 폈다 하며 기어갑니다.'],0],
+  ['공공장소 예절',['버스 안에서는 큰 소리로 떠들지 않습니다.','공원에서는 쓰레기를 쓰레기통에 버립니다.','엘리베이터에서는 내리는 사람이 먼저 내린 뒤에 탑니다.','이처럼 공공장소에서는 다른 사람을 배려해야 합니다.'],3]];
+// [원인, 결과, 묶음(같은 묶음끼리는 한 문제에 함께 나오지 않음)]
+const CAUSE=[['밤늦게까지 게임을 했다.','아침에 늦잠을 잤다.','sleep'],['비가 많이 내렸다.','강물이 불어났다.','rain'],['이를 잘 닦지 않았다.','충치가 생겼다.','health'],['화분에 물을 주지 않았다.','꽃이 시들었다.','dry'],
+  ['날마다 줄넘기를 연습했다.','줄넘기 대회에서 상을 받았다.','health'],['얼음을 햇볕에 두었다.','얼음이 녹아 물이 되었다.','heat'],['아침밥을 굶었다.','수업 시간에 배가 고팠다.','health'],['우산을 가져가지 않았다.','비에 옷이 다 젖었다.','rain'],
+  ['친구에게 먼저 사과했다.','친구와 다시 사이가 좋아졌다.','friend'],['겨울에 얇은 옷을 입고 나갔다.','감기에 걸렸다.','health'],['쓰레기를 강에 함부로 버렸다.','물고기들이 살기 어려워졌다.','env'],['열심히 저금을 했다.','갖고 싶던 책을 샀다.'],
+  ['길이 꽁꽁 얼었다.','사람들이 미끄러져 넘어졌다.','slip'],['가뭄이 오래 계속되었다.','논밭이 갈라지고 농작물이 말랐다.','dry'],
+  ['책상 위에 장난감을 어질러 놓았다.','필요한 연필을 찾지 못했다.','sleep'],['방에 아무도 없는데 전등을 켜 두었다.','전기가 낭비되었다.','light'],['바람이 세게 불었다.','널어 둔 빨래가 바닥에 떨어졌다.','wind'],
+  ['날마다 책을 읽었다.','아는 낱말이 많아졌다.','study'],['피아노 연습을 꾸준히 했다.','어려운 곡을 칠 수 있게 되었다.','study'],['휴대 전화를 보며 길을 걸었다.','자전거와 부딪칠 뻔했다.','slip'],
+  ['주전자에 물을 넣고 끓였다.','주전자에서 하얀 김이 났다.','heat'],['냉동실에 물을 넣어 두었다.','물이 꽁꽁 얼었다.','heat'],['씨앗을 심고 날마다 물을 주었다.','싹이 돋아났다.','rain'],
+  ['햇빛이 들지 않는 곳에 화분을 두었다.','식물이 잘 자라지 못했다.','dry'],['밤에 일찍 잠자리에 들었다.','아침에 상쾌하게 일어났다.','sleep'],['늦게 일어나서 서둘러 집을 나섰다.','준비물을 집에 두고 왔다.','sleep'],
+  ['길을 걷다가 돌부리에 걸렸다.','넘어져서 무릎이 까졌다.','slip'],['교실 창문을 열어 두었다.','시원한 바람이 들어왔다.','wind'],['고양이가 식탁 위의 컵을 건드렸다.','컵이 바닥에 떨어져 깨졌다.','break'],
+  ['모둠 친구들이 힘을 합쳤다.','멋진 작품을 완성했다.','friend'],['친구의 생일을 축하해 주었다.','친구가 무척 기뻐했다.','friend'],['약속 시간에 늦었다.','친구가 오래 기다렸다.','friend'],
+  ['날마다 꾸준히 운동을 했다.','몸이 튼튼해졌다.','health'],['물을 충분히 마시지 않았다.','목이 많이 말랐다.','health'],['도로에 자동차가 많아졌다.','공기가 나빠졌다.','env'],
+  ['사람들이 숲의 나무를 많이 베었다.','숲에 사는 동물들이 살 곳을 잃었다.','env'],['분리배출을 잘했다.','다시 쓸 수 있는 자원이 많아졌다.','env'],['꽃이 활짝 피었다.','벌과 나비가 많이 날아왔다.','rain'],
+  ['해가 지고 어두워졌다.','가로등이 켜졌다.','light'],['숙제를 미리 끝냈다.','저녁에 마음 편히 놀 수 있었다.','study'],['수업 시간에 선생님 말씀을 잘 들었다.','시험 문제를 쉽게 풀었다.','study'],
+  ['풍선에 바람을 너무 많이 넣었다.','풍선이 펑 터졌다.','break'],['자석을 클립 가까이 가져갔다.','클립이 자석에 달라붙었다.'],['계단에서 장난을 쳤다.','발을 헛디뎌 넘어질 뻔했다.','slip'],
+  ['우유를 냉장고에 넣지 않고 오래 두었다.','우유가 상했다.','heat'],['비가 그치고 해가 났다.','하늘에 무지개가 떴다.','rain'],['자전거를 탈 때 안전모를 썼다.','넘어졌지만 머리를 다치지 않았다.','slip'],
+  ['도서관에서 큰 소리로 떠들었다.','다른 사람들이 책을 읽기 어려웠다.']];
 function reporter(g,x,y,s,mood,t){g.save();g.translate(x,y+Math.sin(t*3)*s*.015);g.lineJoin='round';g.lineWidth=Math.max(2,s*.05);g.strokeStyle=INK;K.shadow(g,0,s*.55,s*.45,s*.08,.25);
   g.fillStyle='#1e3a8a';g.beginPath();g.moveTo(-s*.4,s*.55);g.quadraticCurveTo(-s*.4,s*.14,0,s*.12);g.quadraticCurveTo(s*.4,s*.14,s*.4,s*.55);g.closePath();g.fill();g.stroke();
   g.fillStyle='#f5cfa8';g.beginPath();g.arc(0,-s*.12,s*.36,0,TAU);g.fill();g.stroke();
@@ -1523,7 +1582,7 @@ const GAME={
       st.links.forEach((l,i)=>{const a=C.L[q.L.indexOf(l[0])],b=C.R[q.Rr.indexOf(l[1])];g.strokeStyle=COL[i];g.lineWidth=Math.max(4,u*.12);g.lineCap='round';g.beginPath();g.moveTo(a.x+a.w,a.y+a.h/2);g.bezierCurveTo(a.x+a.w+u*.8,a.y+a.h/2,b.x-u*.8,b.y+b.h/2,b.x,b.y+b.h/2);g.stroke();
         if(st.rev){const ok=l[0]===l[1];K.emo(g,ok?'✅':'❌',(a.x+a.w+b.x)/2,(a.y+b.y+a.h/2+b.h/2)/2,u*.7);}});}
     reporter(g,u*.9,H-u*.9,Math.min(u*1.3,H*.1),st.mood,t);
-    K.card(g,W-u*4.0,H-u*1.1,u*3.7,u*.85,u*.15,'rgba(255,255,250,.95)',{stroke:INK,lw:2,blur:u*.15,dy:u*.05});K.txt(g,`🗞️ ${Math.round(st.shown).toLocaleString()}부`,W-u*2.15,H-u*.67,{size:u*.5,color:INK,maxW:u*3.4});},
+    K.card(g,W-u*4.0,H-u*1.1,u*3.7,u*.85,u*.15,'rgba(255,255,250,.95)',{stroke:INK,lw:2,blur:u*.15,dy:u*.05});K.txt(g,`🗞️ ${Math.round(st.shown)}부`,W-u*2.15,H-u*.67,{size:u*.5,color:INK,maxW:u*3.4});},
 };
 function u0(p){return p.u;}
 

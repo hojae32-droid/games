@@ -623,6 +623,8 @@ body.lv-many .grade-group .gl{margin-bottom:4px;font-size:12px}
 body.lv-many .grade-group{margin-bottom:4px}
 @media (max-height:640px){body.lv-many .chips.lv .chip{min-height:26px;padding:2px 4px;font-size:11.5px}body.lv-many .grade-group .gl{font-size:11px;margin-bottom:2px}body.lv-many .grade-group{margin-bottom:2px}body.lv-many .chips.lv{gap:3px}}
 
+#play.practice .phead .sc,#play.practice .phead .tm,#play.practice .streak,#play.practice .prog{display:none!important}
+
 body{background:#f1d3a1;background-image:repeating-linear-gradient(90deg,rgba(150,90,30,.16) 0 2px,transparent 2px 70px),radial-gradient(circle at 50% 120%,rgba(234,88,12,.25),transparent 55%)}
 .sign h1{text-shadow:0 4px 0 #1c2a5e;-webkit-text-stroke:1.5px #1c2a5e}
 .sign .sub{border:3px solid #1c2a5e;background:#fff8ec;color:#1c2a5e;box-shadow:0 4px 0 #1c2a5e;border-radius:6px}
@@ -700,7 +702,7 @@ const ADJ=['날쌘','용감한','반짝이는','씩씩한','슬기로운','튼�
 const NOUN=['수달','펭귄','다람쥐','고래','부엉이','치타','판다','거북이','여우','돌고래','햄스터','코알라','기린','오리','사자','토끼','고슴도치','너구리','미어캣','알파카'];
 function randNick(used){for(let k=0;k<50;k++){const n=ADJ[Math.floor(Math.random()*ADJ.length)]+' '+NOUN[Math.floor(Math.random()*NOUN.length)];if(!used.includes(n))return n;}return '친구'+Math.floor(Math.random()*100);}
 
-const N={comma:n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',')};
+const N={comma:n=>String(n)};
 function hasB(w){w=String(w).replace(/<[^>]+>/g,'').trim().replace(/\s*\([^)]*\)$/,'');const c=w[w.length-1];if(!c)return false;if(/[0-9]/.test(c))return '013678'.includes(c);if(/[a-zA-Z]/.test(c))return false;
   const k=c.charCodeAt(0)-0xAC00;if(k<0||k>11171)return false;return k%28!==0;}
 function J(w,t){const b=hasB(w);const m={'은':['은','는'],'이':['이','가'],'을':['을','를'],'과':['과','와'],'아':['아','야'],'으로':['으로','로']}[t];
@@ -925,11 +927,12 @@ const Engine={
     const G=this.G,cfg=this.cfg;
     const n=cfg.mode==='board'?cfg.n:1;
     const seed=cfg.mode==='device'&&Net.on?Net.seed:Math.floor(Math.random()*1e9);
-    this.level=G.levels.find(l=>l.id===cfg.level);this.untimed=!!(G.untimed&&G.untimed(cfg.level));this.dur=this.untimed?3600:(cfg.dur||60);
+    this.level=G.levels.find(l=>l.id===cfg.level);this.practice=!!(G.practice&&G.practice(cfg.level));this.untimed=this.practice||!!(G.untimed&&G.untimed(cfg.level));this.dur=this.untimed?3600:(cfg.dur||60);
     this.stopAll();this.over=false;
     const P=$('#play');P.innerHTML='';P.classList.toggle('solo',n===1);
     const bar=h('div','pbar',`<div class="clock"><i class="ring"></i><b>${this.clockText(this.dur)}</b></div><div class="ptitle"><span class="pe">${G.emoji}</span><span class="pt"><b>${G.title}</b><small>${this.level.g} · ${this.level.t}</small></span></div>`);
-    this.clockEl=bar.querySelector('.clock');if(this.untimed){this.clockEl.querySelector('b').textContent='♪';this.clockEl.style.setProperty('--f',1);}
+    this.clockEl=bar.querySelector('.clock');if(this.untimed){this.clockEl.querySelector('b').textContent=this.practice?'✏️':'♪';this.clockEl.style.setProperty('--f',1);}
+    P.classList.toggle('practice',this.practice);
     const snd=h('button','icon-btn ico',Snd.on?ICO.on:ICO.off);snd.title='소리 켜기/끄기';snd.onclick=()=>{Snd.on=!Snd.on;lsSet('sound',Snd.on);snd.innerHTML=Snd.on?ICO.on:ICO.off;};
     const fs=h('button','icon-btn ico',ICO.fs);fs.title='전체 화면';fs.onclick=toggleFS;
     const quit=h('button','icon-btn quit','그만하기');quit.onclick=()=>{if(Net.on){if(confirm(Net.role==='host'?'방을 닫고 게임을 그만할까요?':'방에서 나갈까요?')){this.stopAll();Net.leave();this.show('setup');}return;}if(confirm('게임을 그만할까요?')){this.stopAll();this.show('setup');}};
@@ -1039,6 +1042,7 @@ const Engine={
   /* 점수: ok면 +pts(기본 100, 3연속부터 +20), 틀리면 −(기본 30) · review는 '다시 보기'에 들어가요 */
   hit(p,ok,o={}){
     if(!p.active)return 0;let pts;
+    if(this.practice){if(ok){p.correct++;Snd.ok();}else{p.wrongN++;Snd.bad();if(o.review&&!p.wrong.includes(o.review)&&p.wrong.length<40)p.wrong.push(o.review);}if(o.tip)p.tip(o.tip,ok?'good':'bad',o.tipMs||(ok?1800:3200));return 0;}
     if(ok){p.streak++;p.best=Math.max(p.best,p.streak);p.correct++;pts=o.pts!=null?o.pts:100;if(p.streak>=3&&pts>0)pts+=20;Snd.ok();}
     else{p.streak=0;p.wrongN++;pts=-(o.pen!=null?o.pen:30);Snd.bad();if(o.shake!==false)p.shake();
       if(o.review&&!p.wrong.includes(o.review)&&p.wrong.length<40)p.wrong.push(o.review);}
@@ -1419,7 +1423,7 @@ const QZ={
       if(ok)st.okN=(st.okN||0)+1;
       p.hit(ok,{pts,x:p.W/2,y:(p.top||0)+p.u*3,tip:ok?(this.goodTip?this.goodTip(q):undefined):(timeout?'시간이 다 됐어요! ':'')+(this.tipOf?this.tipOf(q):q.reveal),review:q.review,tipMs:ok?1000:3200,pen:o.pen});
       if(this.onVerdict)this.onVerdict(p,q,ok,i,timeout);
-      setTimeout(()=>{if(p.active)this.newQ(p);},ok?(o.okMs||1300):(o.badMs||2700));},
+      {const ms=ok?o.okMs:o.badMs;const dl=typeof ms==='function'?ms.call(this,p,q):(ms||(ok?1300:2700));setTimeout(()=>{if(p.active)this.newQ(p);},dl);}},
     update(p,dt){const st=p.state;st.T+=dt;if(st.mT>0){st.mT-=dt;if(st.mT<=0)st.mood='neutral';}if(st.res)st.rT+=dt;if(st.press){st.press.t-=dt;if(st.press.t<=0)st.press=null;}
       if(this.upd)this.upd(p,dt);
       if(st.q&&!st.lock&&st.qmax>0&&!(this.hold&&this.hold(p))){st.qt-=dt;if(st.qt<=0)this.verdict(p,-1,true);}},
@@ -1434,9 +1438,14 @@ function gkHero(fn){return function(cv){const g=cv.getContext('2d');let raf=0,W0
   const size=()=>{const r=cv.getBoundingClientRect();const d=Math.min(2,window.devicePixelRatio||1);const w=Math.max(10,r.width),h=Math.max(10,r.height);if(w===W0&&h===H0&&d===dpr)return;W0=w;H0=h;dpr=d;cv.width=Math.round(W0*dpr);cv.height=Math.round(H0*dpr);};
   const frame=now=>{if(!run)return;raf=requestAnimationFrame(frame);const dt=Math.max(0,Math.min(.05,(now-last)/1000||0));last=now;T+=dt;size();g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W0,H0);fn(g,W0,H0,T,Math.min(W0,H0)/6);};
   return{start(){if(run)return;run=true;last=performance.now();raf=requestAnimationFrame(frame);},stop(){run=false;cancelAnimationFrame(raf);}};};}
-const gkComma=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+const gkComma=n=>String(n);
 /* 보기 영역 위에서 누른 칸 찾기 */
 function gkHit(list,x,y){for(let i=0;i<list.length;i++){const r=list[i];if(x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h)return i;}return -1;}
+/* 아래쪽 보기 카드 자리 + 위쪽 그림 영역 */
+function gkGeo(p,n,cols,rowH){const W=p.W,H=p.H,u=p.u,top=(p.top||0)+u*.2;const rows=Math.ceil(n/cols);const oh=Math.min(H*(rows>1?.3:.2),rows*u*(rowH||2.3)+(rows-1)*u*.2);const pad=u*.35;const oy=H-pad-oh;
+  return{W,H,u,top,pad,oy,oh,list:QK.grid(W,oy,oy+oh,n,cols,pad,u*.25),bx:pad,by:top+u*.2,bw:W-pad*2,bh:oy-top-u*.5};}
+/* 정답 + 그럴듯한 오답 2개 (값 기준) */
+function gkOpts3(R,ans,cands,fmt){const u=[];cands.forEach(c=>{if(c!==ans&&!u.includes(c))u.push(c);});const o=[ans,...R.shuffle(u).slice(0,2)];let k=1;while(o.length<3){o.push(ans+k*9);k++;}const sh=R.shuffle(o);return{vals:sh,labels:sh.map(fmt||String),okIdx:sh.indexOf(ans)};}
 
 /* 5학년 2학기 수학 · 수의 범위와 어림하기 — 반올림 농구
    디자인: 관중이 환호하는 실내 농구장. 공에 적힌 수를 올림·버림·반올림하거나 범위(이상·이하·초과·미만)를 판단해서 알맞은 골대로 슛! */

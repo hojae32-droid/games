@@ -125,7 +125,7 @@ const GAME={
         K.txt(g,op.t,r.x+r.w/2,r.y+r.h/2,{size:Math.min(u*.8,r.h*.5),color:INK,maxW:r.w-u*.6});if(st.lock&&(op.ok||st.pick===i))K.emo(g,op.ok?'✅':'❌',r.x+r.w-u*.4,r.y+u*.4,u*.5);g.restore();});}
     /* 편집장 + 판매 부수 */
     cat(g,u*.9,G.by+G.botH*.5,u*1.05,st.mood,t);
-    const mx=W-u*3.6;magazine(g,mx,G.by+G.botH*.5,u*.8,'#e11d48');K.txt(g,`판매 ${Math.round(st.shown).toLocaleString()}부`,mx+u*2.1,G.by+G.botH*.5,{size:u*.5,color:INK,maxW:u*3.2});
+    const mx=W-u*3.6;magazine(g,mx,G.by+G.botH*.5,u*.8,'#e11d48');K.txt(g,`판매 ${Math.round(st.shown)}부`,mx+u*2.1,G.by+G.botH*.5,{size:u*.5,color:INK,maxW:u*3.2});
     if(st.pow>0)burst(g,W/2,G.Z0+G.availH*.4,u*(st.pow>1.1?2.2-(st.pow-1.1)*2:2.2),st.mood==='happy'?'#e11d48':'#6b7280',st.powTxt,t,-.12);},
 };
 

@@ -701,7 +701,7 @@ const ADJ=['날쌘','용감한','반짝이는','씩씩한','슬기로운','튼�
 const NOUN=['수달','펭귄','다람쥐','고래','부엉이','치타','판다','거북이','여우','돌고래','햄스터','코알라','기린','오리','사자','토끼','고슴도치','너구리','미어캣','알파카'];
 function randNick(used){for(let k=0;k<50;k++){const n=ADJ[Math.floor(Math.random()*ADJ.length)]+' '+NOUN[Math.floor(Math.random()*NOUN.length)];if(!used.includes(n))return n;}return '친구'+Math.floor(Math.random()*100);}
 
-const N={comma:n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',')};
+const N={comma:n=>String(n)};
 function hasB(w){w=String(w).replace(/<[^>]+>/g,'').trim().replace(/\s*\([^)]*\)$/,'');const c=w[w.length-1];if(!c)return false;if(/[0-9]/.test(c))return '013678'.includes(c);if(/[a-zA-Z]/.test(c))return false;
   const k=c.charCodeAt(0)-0xAC00;if(k<0||k>11171)return false;return k%28!==0;}
 function J(w,t){const b=hasB(w);const m={'은':['은','는'],'이':['이','가'],'을':['을','를'],'과':['과','와'],'아':['아','야'],'으로':['으로','로']}[t];
@@ -1437,7 +1437,7 @@ function gkHero(fn){return function(cv){const g=cv.getContext('2d');let raf=0,W0
   const size=()=>{const r=cv.getBoundingClientRect();const d=Math.min(2,window.devicePixelRatio||1);const w=Math.max(10,r.width),h=Math.max(10,r.height);if(w===W0&&h===H0&&d===dpr)return;W0=w;H0=h;dpr=d;cv.width=Math.round(W0*dpr);cv.height=Math.round(H0*dpr);};
   const frame=now=>{if(!run)return;raf=requestAnimationFrame(frame);const dt=Math.max(0,Math.min(.05,(now-last)/1000||0));last=now;T+=dt;size();g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W0,H0);fn(g,W0,H0,T,Math.min(W0,H0)/6);};
   return{start(){if(run)return;run=true;last=performance.now();raf=requestAnimationFrame(frame);},stop(){run=false;cancelAnimationFrame(raf);}};};}
-const gkComma=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+const gkComma=n=>String(n);
 /* 보기 영역 위에서 누른 칸 찾기 */
 function gkHit(list,x,y){for(let i=0;i<list.length;i++){const r=list[i];if(x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h)return i;}return -1;}
 /* 아래쪽 보기 카드 자리 + 위쪽 그림 영역 */

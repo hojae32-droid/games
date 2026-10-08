@@ -6,7 +6,7 @@ const INK='#6b1245',PINK='#be185d',TEAL='#0d9488';
 const LOGO=gkLogo('#fce7f3','#9d174d','🎁');
 const strip=s=>String(s).replace(/<[^>]+>/g,'');
 const fx=x=>String(+x.toFixed(4));
-const comma=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+const comma=n=>String(n);
 const LV={
   a:{g:'6학년 1학기',t:'겉넓이 (포장지)',d:'세 면의 합 × 2 · 정육면체 한 면 × 6'},
   b:{g:'6학년 1학기',t:'부피 (사탕 채우기)',d:'한 층의 개수 × 층 수'},
