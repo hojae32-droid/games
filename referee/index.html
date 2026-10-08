@@ -8,98 +8,98 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>휘슬 심판 | 비춤이샘 수업용 게임</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@700&family=Gowun+Dodum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Gowun+Dodum&display=swap');
 @font-face{font-family:'DH-fb';src:local('Noto Sans CJK KR Black'),local('Noto Sans KR Black'),local('Malgun Gothic Bold'),local('AppleSDGothicNeo-Heavy');}
 :root{
- --disp:'Sunflower','DH-fb','Noto Sans CJK KR','Malgun Gothic',sans-serif; --sans:'Gowun Dodum','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
- --page:#f2f2f2;
- --ink:#111111;
- --sub:#111111;
+ --disp:'Dongle','DH-fb','Noto Sans CJK KR','Malgun Gothic',sans-serif; --sans:'Gowun Dodum','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+ --page:#0b1d3a;
+ --ink:#ffffff;
+ --sub:#ffffff;
  --focus:#ffb703;
  --bw:3px;
- --line:#000000;
- --rad:6px;
+ --line:#040b1a;
+ --rad:16px;
  --rad-s:12px;
- --card:#ffffff;
- --card-ink:#111;
- --hl:#e11d1d;
- --sh-card:0 6px 0 #000000;
- --sh-btn:0 4px 0 #000000;
- --sh-btn-down:0 1px 0 #000000;
- --sh-go:0 7px 0 #000000;
- --btn-bg:#ffffff;
- --btn-ink:#111;
- --stage:#ffffff;
- --tag-bg:#111111;
+ --card:#14305c;
+ --card-ink:#fff;
+ --hl:#ffd84d;
+ --sh-card:0 6px 0 #040b1a;
+ --sh-btn:0 4px 0 #040b1a;
+ --sh-btn-down:0 1px 0 #040b1a;
+ --sh-go:0 7px 0 #040b1a;
+ --btn-bg:#14305c;
+ --btn-ink:#fff;
+ --stage:#14305c;
+ --tag-bg:#e11d48;
  --tag-ink:#fff;
  --title:#fff;
  --title1:#fff;
  --title2:#fff;
  --lamp-r:50%;
- --lamp-bg:#ffffff;
- --lamp-ink:#111;
+ --lamp-bg:#14305c;
+ --lamp-ink:#fff;
  --lamp-on:#2fbf71;
  --bad:#e5383b;
- --chip-bg:#ffffff;
- --chip-ink:#111;
- --chip-line:#000000;
- --chip-sub:#111111;
- --sel-bg:#111111;
+ --chip-bg:#14305c;
+ --chip-ink:#fff;
+ --chip-line:#040b1a;
+ --chip-sub:#ffffff;
+ --sel-bg:#e11d48;
  --sel-ink:#fff;
- --sel-line:#000000;
+ --sel-line:#040b1a;
  --sel-sub:#fff;
  --input-bg:#fff;
- --input-ink:#111;
+ --input-ink:#fff;
  --input-ph:#9aa;
- --go-bg:#e11d1d;
- --go-ink:#fff;
- --bar-bg:#111111;
+ --go-bg:#ffd84d;
+ --go-ink:#07132a;
+ --bar-bg:#07132a;
  --bar-ink:#fff;
  --bar-sub:#ddd;
  --clock-bg:#fff;
- --clock-ring:#111111;
+ --clock-ring:#e11d48;
  --clock-track:rgba(0,0,0,.15);
- --clock-ink:#111;
- --arena:#111111;
+ --clock-ink:#fff;
+ --arena:#07132a;
  --gap:3px;
  --phead-ink:#fff;
  --no-r:50%;
  --sc-bg:#fff;
- --sc-ink:#111;
- --sc-sub:#111111;
+ --sc-ink:#fff;
+ --sc-sub:#ffffff;
  --sc-r:999px;
  --prog-bg:rgba(255,255,255,.25);
- --prog-fill:linear-gradient(90deg,#e11d1d,#111111);
- --q-bg:#ffd400;
- --q-ink:#111;
- --q-hl:#e11d1d;
- --q-sub:#111111;
+ --prog-fill:linear-gradient(90deg,#ffd84d,#e11d48);
+ --q-bg:#07132a;
+ --q-ink:#fff4c2;
+ --q-hl:#ffd84d;
+ --q-sub:#ffffff;
  --tip-bg:#fff;
- --tip-ink:#111;
- --tip-hl:#e11d1d;
+ --tip-ink:#fff;
+ --tip-hl:#ffd84d;
  --tip-bad:#ffe3e0;
  --tip-good:#dcf7ea;
- --streak-bg:#111111;
+ --streak-bg:#e11d48;
  --streak-ink:#fff;
- --tools-bg:#111111;
+ --tools-bg:#07132a;
  --tool-bg:#fff;
- --tool-ink:#111;
- --tool-line:#000000;
- --tool-sel:#111111;
+ --tool-ink:#fff;
+ --tool-line:#040b1a;
+ --tool-sel:#e11d48;
  --tool-sel-ink:#fff;
- --veil:rgba(0,0,0,.7);
- --num:#e11d1d;
- --done-bg:rgba(0,0,0,.93);
+ --veil:rgba(4,11,26,.8);
+ --num:#ffd84d;
+ --done-bg:rgba(4,11,26,.8);
  --done-ink:#fff;
- --done-hl:#111111;
- --res-title:#e11d1d;
+ --done-hl:#e11d48;
+ --res-title:#ffd84d;
  --pname-b:.9;
- --acc:#111111;
- --hud-bg:#111111;
- --wz-bg:#ffffff;
+ --acc:#e11d48;
+ --hud-bg:#07132a;
+ --wz-bg:#14305c;
  --tools-fade:linear-gradient(transparent,rgba(0,0,0,.45));
 }
-:root{--p1:#e11d1d;--p2:#2563eb;--p3:#16a34a;--p4:#f59e0b;}
+:root{--p1:#ffd84d;--p2:#f472b6;--p3:#34d399;--p4:#60a5fa;}
 /* ===== 공통 뼈대: 위치·크기·움직임만 담고, 색·테두리·그림자·글꼴은 변수로 받아요 ===== */
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%}
@@ -625,12 +625,13 @@ body.lv-many .grade-group{margin-bottom:4px}
 
 #play.practice .phead .sc,#play.practice .phead .tm,#play.practice .streak,#play.practice .prog{display:none!important}
 
-body{background:repeating-linear-gradient(90deg,#ffffff 0 56px,#e9e9e9 56px 112px)}
-.sign h1{text-shadow:0 4px 0 #e11d1d;-webkit-text-stroke:2px #111}
-.sign .sub{border:3px solid #111;background:#ffd400;color:#111;box-shadow:0 4px 0 #111;border-radius:4px}
-.chip{border-radius:6px;border-width:3px}.chip.sel{box-shadow:0 4px 0 #e11d1d}
-.fire,.wz-next{border-radius:6px;font-size:34px}
-.qbox.ask{border:3px solid #111;border-radius:6px;box-shadow:0 5px 0 #111;background:#ffd400;color:#111}
+body{background:radial-gradient(circle at 50% 0,#1e4a8f 0,#0b1d3a 65%)}
+.sign h1{text-shadow:0 0 18px rgba(255,216,77,.7);-webkit-text-stroke:0;font-size:1.25em}
+.sign .sub{border:3px solid #ffd84d;background:#07132a;color:#ffe9a3;box-shadow:0 0 14px rgba(255,216,77,.4);border-radius:14px}
+.chip{border-radius:14px}.chip.sel{box-shadow:0 0 14px rgba(255,216,77,.55)}
+.fire,.wz-next{border-radius:14px;font-size:40px;color:#07132a}
+.qbox.ask{border:3px solid #ffd84d;border-radius:14px;box-shadow:0 0 16px rgba(255,216,77,.35);background:#07132a;color:#fff4c2;font-size:1.15em}
+.clock,body.G-full .phead .sc{background:#07132a!important;color:#ffd84d!important;box-shadow:inset 0 0 0 2px #ffd84d}.clock b{color:#ffd84d!important}
 
 </style>
 </head>
@@ -649,7 +650,7 @@ const FULL=document.body.classList.contains('G-full');
 const $=(s,r=document)=>r.querySelector(s);
 const h=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;};
 const PCOL=['var(--p1)','var(--p2)','var(--p3)','var(--p4)'];
-const PHEX=["#e11d1d", "#2563eb", "#16a34a", "#f59e0b"];
+const PHEX=["#ffd84d", "#f472b6", "#34d399", "#60a5fa"];
 
 /* ---------- 난수 ---------- */
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
@@ -739,7 +740,7 @@ const K={
   mw(g,str,s){if(!PICT.test(str))return g.measureText(str).width;return splitEmo(str).reduce((a,x)=>a+(x.e?s*1.12:g.measureText(x.t).width),0);},
   mixed(g,str,x,y,s,align,stroke){const parts=splitEmo(str);const W=K.mw(g,str,s);let cx=align==='left'?x:align==='right'?x-W:x-W/2;const ta=g.textAlign;g.textAlign='left';
     for(const q of parts){if(q.e){const im=emoImg(q.e);const z=s*1.08;if(im)g.drawImage(im,cx+s*.02,y-z/2,z,z);cx+=s*1.12;}else{if(stroke)g.strokeText(q.t,cx,y);g.fillText(q.t,cx,y);cx+=g.measureText(q.t).width;}}g.textAlign=ta;},
-  font:(s,f)=>`700 ${Math.max(6,Math.round(s))}px ${f||"Sunflower"},"DH-fb","Noto Sans CJK KR",sans-serif`,
+  font:(s,f)=>`700 ${Math.max(6,Math.round(s))}px ${f||"Dongle"},"DH-fb","Noto Sans CJK KR",sans-serif`,
   txt(g,str,x,y,o={}){str=String(str);let s=o.size||20;g.save();g.font=K.font(s,o.font);
     if(o.maxW){const w=g.measureText(str).width;if(w>o.maxW){s=s*o.maxW/w;g.font=K.font(s,o.font);}}
     g.textAlign=o.align||'center';g.textBaseline=o.base||'middle';if(o.alpha!=null)g.globalAlpha*=o.alpha;
@@ -943,7 +944,7 @@ const Engine={
     if(FULL&&n===1)bar.insertBefore(this.players[0].head,bar.querySelector('.ptitle').nextSibling);
     this.show('play');if(this.lowFx)this.setLowFx();
     if(Net.on)Net.mountStrip(P);
-    try{await Promise.race([Promise.all([document.fonts.load('30px "Sunflower"'),document.fonts.load('30px "DH-fb"')]),new Promise(r=>setTimeout(r,1500))]);}catch(e){}
+    try{await Promise.race([Promise.all([document.fonts.load('30px "Dongle"'),document.fonts.load('30px "DH-fb"')]),new Promise(r=>setTimeout(r,1500))]);}catch(e){}
     this.players.forEach(p=>{this.fit(p);G.init&&G.init(p);});
     this.last=performance.now();cancelAnimationFrame(this.raf);this.raf=requestAnimationFrame(this.loop);
     // 준비: 놀이 방법 + 3·2·1
@@ -1160,7 +1161,7 @@ const css=`
 #netboard .nl-p .rk{width:56px;font-size:clamp(26px,3.4vw,42px)}
 #netboard .nl-p .pt{min-width:120px}
 `;
-const PHEX=["#e11d1d", "#2563eb", "#16a34a", "#f59e0b"];
+const PHEX=["#ffd84d", "#f472b6", "#34d399", "#60a5fa"];
 const MAX=4;
 const $=(s,r=document)=>r.querySelector(s);
 const h=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.innerHTML=x;return e;};
@@ -1448,11 +1449,11 @@ function gkGeo(p,n,cols,rowH){const W=p.W,H=p.H,u=p.u,top=(p.top||0)+u*.2;const 
 function gkOpts3(R,ans,cands,fmt){const u=[];cands.forEach(c=>{if(c!==ans&&!u.includes(c))u.push(c);});const o=[ans,...R.shuffle(u).slice(0,2)];let k=1;while(o.length<3){o.push(ans+k*9);k++;}const sh=R.shuffle(o);return{vals:sh,labels:sh.map(fmt||String),okIdx:sh.indexOf(ans)};}
 
 /* 3~6학년 체육 · 경기 규칙 — 휘슬 심판
-   디자인: 흑백 줄무늬 심판복과 TV 중계 화면. 경기 장면을 보고 내가 심판이라면 어떻게 판정할지 골라요. 휘슬을 불기 전에 잘 생각해요! */
+   디자인: 조명이 환한 밤 경기장과 관중석. 판정이 맞으면 관중이 환호하고, 환호 게이지가 가득 차면 골든 휘슬 타임(점수 2배)! 오심은 야유가 나와요. */
 const TAU=Math.PI*2;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const INK='#111',RED='#e11d1d',YEL='#ffd400';
-const LOGO=gkLogo('#ffffff','#111111','🧑‍⚖️');
+const INK='#07132a',RED='#ef4444',YEL='#ffd84d';
+const LOGO=gkLogo('#0b1d3a','#ffd84d','📣');
 const SPORT={net:['🏐','네트·피구형'],goal:['🏀','영역형'],field:['⚾','필드형']};
 const LV={
   net:{t:'피구 · 배구 · 배드민턴',d:'네트형·피하기 경기 규칙',g:'3~6학년'},
@@ -1495,45 +1496,54 @@ function hero(g,W,H,T,u){g.fillStyle='#fff';g.fillRect(0,0,W,H);for(let i=0;i<14
   const em=['🏐','⚽','⚾'][Math.floor(T*.6)%3];K.emo(g,em,W/2,H*.43,u*2.6+Math.sin(T*5)*u*.15);
   K.card(g,W*.3,H*.78,u*2.4,u*1.2,u*.2,YEL,{stroke:INK,lw:4,blur:0,dy:u*.05});K.card(g,W*.55,H*.78,u*2.4,u*1.2,u*.2,RED,{stroke:INK,lw:4,blur:0,dy:u*.05});K.emo(g,'📣',W/2,H*.9,u*1.2);}
 const GAME={
-  id:'referee',title:'휘슬 심판',title1:'흑백 줄무늬 심판복',title2:'휘슬 심판',emoji:LOGO,
+  id:'referee',title:'휘슬 심판',title1:'함성 가득한 밤 경기장',title2:'휘슬 심판',emoji:LOGO,
   subtitle:'3~6학년 체육 · 피구 · 배구 · 축구 · 농구 · 티볼 경기 규칙',
-  howto:'📣 TV 화면에 경기 장면이 나와요. 내가 심판이라면 어떻게 <b>판정</b>할까요? 세 가지 판정 중에 알맞은 것을 눌러요. 빠르고 정확하게 판정할수록 점수가 커요!',
+  howto:'📣 경기 장면이 전광판에 나와요. 내가 심판이라면 어떻게 <b>판정</b>할까요? 맞게 판정하면 관중이 환호하고 <b>환호 게이지</b>가 올라요. 가득 차면 <b>🏆 골든 휘슬</b> — 다음 3문제는 점수 2배! 오심은 야유가 나와요.',
   how:p=>LV[p.levelId].t+' — '+LV[p.levelId].d,
-  theme:{c1:RED,c2:YEL},hero:gkHero(hero),vignette:.02,durs:[120,180,300],levelTitle:'어떤 경기를 심판할까요?',
+  theme:{c1:'#1e4a8f',c2:YEL},hero:gkHero(hero),vignette:.02,durs:[120,180,300],levelTitle:'어떤 경기를 심판할까요?',
   txt:{who:'누가 심판일까요?',dur:'경기 시간',pace:'판정 시간',seat:'번 심판 ',go:'경기 시작!',s1:'1. 종목',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:v.g,t:v.t,d:v.d})),
   summary:`<ul><li><b>피구·배구·배드민턴</b>: 피구는 바닥에 한 번 튄 공은 아웃이 아니고, 배구는 한 팀이 세 번 안에 공을 넘겨야 하며 네트를 건드리면 반칙이에요.</li>
     <li><b>축구·농구·핸드볼</b>: 축구는 손으로 공을 다루면 안 되고, 농구는 공을 들고 걸으면 트래블링, 핸드볼은 세 걸음까지 걸을 수 있어요.</li>
     <li><b>티볼·발야구</b>: 뜬 공을 바로 잡으면 아웃, 주자는 베이스를 차례로 밟아야 하고 홈까지 들어오면 1점이에요.</li>
     <li>심판은 <b>공정하게, 규칙대로</b> 판정하고, 판정에 따르는 것도 스포츠맨십이에요.</li></ul>`,
-  geo(p){const W=p.W,H=p.H,u=p.u,top=(p.top||0)+u*.3,pad=u*.4;const land=W>=H*1.15;const gap=u*.3;
+  geo(p){const W=p.W,H=p.H,u=p.u,top=(p.top||0)+u*2.3,pad=u*.4;const land=W>=H*1.15;const gap=u*.3;
     if(land){const sw=W*.5-pad*1.5;const scr={x:pad,y:top,w:sw,h:H-top-pad};const ox=pad*2+sw;const n=3;const oh=(H-top-pad-gap*(n-1))/n;const opts=[0,1,2].map(i=>({x:ox,y:top+i*(oh+gap),w:W-ox-pad,h:oh}));return{W,H,u,top,pad,land,scr,opts};}
     const oh=Math.min(u*2.3,(H-top-pad)*.15);const oy=H-pad-oh*3-gap*2;const scr={x:pad,y:top,w:W-pad*2,h:oy-top-gap*1.5};const opts=[0,1,2].map(i=>({x:pad,y:oy+i*(oh+gap),w:W-pad*2,h:oh}));return{W,H,u,top,pad,land,scr,opts};},
-  init(p){const st=p.state;Object.assign(st,{T:0,q:null,n:0,okN:0,lock:false,res:null,pick:-1,mood:'neutral',mT:0,qt:0,qmax:0,rT:0,streak3:0});this.newQ(p);},
+  init(p){const st=p.state;Object.assign(st,{T:0,q:null,n:0,okN:0,lock:false,res:null,pick:-1,mood:'neutral',mT:0,qt:0,qmax:0,rT:0,streak3:0,meter:30,gold:0,crowd:0,boo:0,rank:0});this.newQ(p);},
   make(p,L){const R=p.R;const pool=L==='all'?Q:Q.filter(x=>x[0]===L);const it=p.deck(pool,'ref');const opts=R.shuffle([it[3],...it[4]]);
     const q={it,sp:it[0],pic:it[1],sit:it[2],ans:it[3],exp:it[5],labels:opts,okIdx:opts.indexOf(it[3])};
     q.text='📣 어떻게 판정할까요?';q.reveal='정답: '+q.ans+' — '+q.exp;q.review=q.sit+' → '+q.ans+' ('+q.exp+')';q.speak=q.sit;return q;},
   qtime(q){return 15;},level(p){this._p=p;return p.levelId;},
   askHtml(q){return q.text;},askSub(q){return SPORT[q.sp][0]+' '+SPORT[q.sp][1]+' 경기';},
   isOk(q,i){return i===q.okIdx;},tipOf(q){return q.reveal;},goodTip(q){return '정확한 판정! '+q.exp;},
-  ptsOf(p,q,frac){return Math.round(50+50*frac);},
+  ptsOf(p,q,frac){return Math.round((50+50*frac)*(p.state.gold>0?2:1));},
+  onVerdict(p,q,ok){const st=p.state;if(ok){st.meter=Math.min(100,st.meter+(st.gold>0?0:14));st.crowd=1;st.rank++;if(st.gold>0)st.gold--;if(st.meter>=100){st.gold=3;st.meter=40;p.tip('🏆 골든 휘슬 타임! 3문제 점수 2배','good',2000);}}else{st.meter=Math.max(0,st.meter-22);st.boo=1;if(st.gold>0)st.gold--;}},
+  upd(p,dt){const st=p.state;if(st.crowd>0)st.crowd=Math.max(0,st.crowd-dt*.7);if(st.boo>0)st.boo=Math.max(0,st.boo-dt*.7);},
   down(p,x,y){const st=p.state,q=st.q;if(!q||st.lock)return;const G=this.geo(p);const i=G.opts.findIndex(b=>K.inRect(x,y,b));if(i>=0)this.verdict(p,i,false);},
   botAct(p){const st=p.state,q=st.q;if(!q||st.lock)return null;const G=this.geo(p);const rc=p.cv.getBoundingClientRect();const b=G.opts[q.okIdx];return{k:'click',x:rc.left+b.x+b.w/2,y:rc.top+b.y+b.h/2};},
+  crowd(g,G,st){const u=G.u,W=G.W;const y0=(G.top-u*2.1),h=u*1.9;K.rr(g,G.pad,y0,W-G.pad*2,h,u*.3);g.fillStyle='#0a2147';g.fill();
+    g.save();K.rr(g,G.pad,y0,W-G.pad*2,h,u*.3);g.clip();const cols=['#ef4444','#3b82f6','#facc15','#22c55e','#f472b6','#fff'];const n=Math.floor((W-G.pad*2)/(u*.62));
+    for(let r=0;r<3;r++)for(let i=0;i<n;i++){const x=G.pad+u*.35+i*u*.62+(r%2)*u*.3;const jump=Math.abs(Math.sin(st.T*6+i*1.7+r))*u*(.05+st.crowd*.42)*(st.boo>0?-.2:1);const y=y0+h*.3+r*u*.5-jump;
+      g.fillStyle=cols[(i*7+r*3)%cols.length];g.beginPath();g.arc(x,y,u*.17,0,Math.PI*2);g.fill();g.fillStyle='#16294d';g.fillRect(x-u*.15,y+u*.16,u*.3,u*.22);
+      if(st.crowd>.3&&(i+r)%4===0){g.strokeStyle=cols[(i*7+r*3)%cols.length];g.lineWidth=2;g.beginPath();g.moveTo(x+u*.15,y);g.lineTo(x+u*.3,y-u*.4-jump);g.stroke();}}
+    g.restore();
+    const mw=Math.min(u*7,(W-G.pad*2)*.4),mx=W-G.pad-mw-u*.3,my=y0+h-u*.5;K.rr(g,mx,my,mw,u*.28,u*.14);g.fillStyle='rgba(255,255,255,.2)';g.fill();K.rr(g,mx,my,Math.max(u*.28,mw*st.meter/100),u*.28,u*.14);g.fillStyle=st.gold>0?'#ffd84d':'#34d399';g.fill();
+    K.rr(g,mx-u*.2,y0+h-u*1.2,mw+u*.4,u*1.1,u*.2);g.fillStyle='rgba(5,11,24,.82)';g.fill();K.txt(g,st.gold>0?'🏆 골든 휘슬 ×2 ('+st.gold+')':'📣 환호 '+Math.round(st.meter)+'%',mx+mw/2,y0+h-u*.9,{size:u*.42,color:st.gold>0?YEL:'#fff',stroke:'#07132a',lw:u*.1,maxW:mw});
+    K.rr(g,G.pad+u*.2,y0+h-u*.95,u*4.4,u*.8,u*.2);g.fillStyle='rgba(5,11,24,.82)';g.fill();const rk=['견습 심판','선심','부심','주심','국제 심판','월드컵 심판'][Math.min(5,Math.floor(st.rank/4))];K.txt(g,'🎽 '+rk,G.pad+u*.4,y0+h-u*.5,{size:u*.42,color:'#fff',stroke:'#07132a',lw:u*.1,align:'left',maxW:u*5});},
   draw(p,g){const st=p.state,G=this.geo(p),W=G.W,H=G.H,u=G.u,q=st.q;if(!q)return;
-    g.fillStyle='#fff';g.fillRect(0,0,W,H);for(let i=0;i<Math.ceil(W/(u*2.4))+1;i++){g.fillStyle=i%2?'#111':'#ededed';g.fillRect(i*u*2.4,0,u*2.4,H);}
-    /* TV 화면 */
-    const S=G.scr;K.card(g,S.x,S.y,S.w,S.h,u*.4,'#0b0b0b',{stroke:'#fff',lw:Math.max(4,u*.12),blur:u*.4,dy:u*.12});
-    g.fillStyle=RED;g.beginPath();g.arc(S.x+u*.7,S.y+u*.6,u*.18,0,TAU);g.fill();K.txt(g,'LIVE · '+SPORT[q.sp][1]+' 경기',S.x+u*1.0,S.y+u*.6,{size:u*.4,color:'#fff',align:'left',maxW:S.w-u*1.5});
+    K.vgrad(g,0,0,W,H,['#06122a','#0f2c5c']);[.15,.5,.85].forEach(x=>{K.glow(g,W*x,0,u*6,'#fff6c9',.35);});
+    this.crowd(g,G,st);
+    const S=G.scr;K.card(g,S.x,S.y,S.w,S.h,u*.4,'#050b18',{stroke:st.gold>0?YEL:'#7aa7ff',lw:Math.max(4,u*.12),blur:u*.5,dy:u*.08,sc:st.gold>0?'rgba(255,216,77,.6)':'rgba(122,167,255,.5)'});
+    g.fillStyle=RED;g.beginPath();g.arc(S.x+u*.7,S.y+u*.6,u*.18,0,Math.PI*2);g.fill();K.txt(g,'VAR · '+SPORT[q.sp][1]+' 경기',S.x+u*1.0,S.y+u*.6,{size:u*.42,color:'#ffe9a3',align:'left',maxW:S.w-u*1.5});
     const picH=Math.min(S.h*.4,S.w*.42);K.txt(g,q.pic,S.x+S.w/2,S.y+u*.7+picH*.5+u*.4,{size:picH*.7,maxW:S.w*.9});
     const fs=Math.min(u*.72,Math.max(u*.5,S.w/20));g.font=K.font(fs);const lines=wrap(g,q.sit,S.w-u*.9);const lh=fs*1.3;const ty=S.y+u*.7+picH+u*1.4;
     g.fillStyle='#fff';g.textAlign='center';g.textBaseline='middle';lines.forEach((l,i)=>g.fillText(l,S.x+S.w/2,ty+i*lh));
     if(st.lock){const by=Math.min(S.y+S.h-u*1.2,ty+lines.length*lh+u*.3);const fs2=Math.min(u*.55,S.w/24);g.font=K.font(fs2);const ex=wrap(g,(st.res==='ok'?'✅ ':'❌ ')+q.exp,S.w-u*.9);g.fillStyle=st.res==='ok'?'#8affb0':'#ffb3b3';ex.slice(0,3).forEach((l,i)=>g.fillText(l,S.x+S.w/2,Math.min(by+i*fs2*1.25,S.y+S.h-u*.5)));}
-    /* 시간 막대 */
     if(!st.lock&&st.qmax>0)QZ.bar(g,S.x+u*.5,S.y+S.h-u*.45,S.w-u*1,Math.max(6,u*.18),st.qt/st.qmax,{good:YEL});
-    /* 판정 버튼 */
-    G.opts.forEach((b,i)=>{const done=st.lock;const isAns=i===q.okIdx,picked=st.pick===i;let bg='#fff',bd=INK,ink=INK;if(done){if(isAns){bg='#22c55e';ink='#052e16';}else if(picked){bg='#ef4444';ink='#fff';}else{bg='#e5e5e5';ink='#777';}}
-      K.rr(g,b.x,b.y+u*.06,b.w,b.h,u*.25);g.fillStyle=INK;g.fill();K.rr(g,b.x,b.y,b.w,b.h,u*.25);g.fillStyle=bg;g.fill();g.lineWidth=3;g.strokeStyle=bd;g.stroke();
-      K.txt(g,'📣',b.x+u*.7,b.y+b.h/2,{size:Math.min(b.h*.45,u*.9)});
+    G.opts.forEach((b,i)=>{const done=st.lock;const isAns=i===q.okIdx,picked=st.pick===i;let bg='#14305c',bd='#7aa7ff',ink='#fff';if(done){if(isAns){bg='#22c55e';ink='#052e16';bd='#bbf7d0';}else if(picked){bg='#ef4444';ink='#fff';bd='#fecaca';}else{bg='#0b1d3a';ink='#6b7fa8';bd='#27406b';}}
+      K.rr(g,b.x,b.y+u*.06,b.w,b.h,u*.25);g.fillStyle='#02060f';g.fill();K.rr(g,b.x,b.y,b.w,b.h,u*.25);g.fillStyle=bg;g.fill();g.lineWidth=3;g.strokeStyle=bd;g.stroke();
+      K.txt(g,['①','②','③'][i],b.x+u*.7,b.y+b.h/2,{size:Math.min(b.h*.5,u*1.0),color:YEL});
       const lfs=Math.min(b.h*.34,u*.8);g.font=K.font(lfs);const ll=wrap(g,q.labels[i],b.w-u*1.8);const l2=ll.length>1?lfs*1.15:0;g.fillStyle=ink;g.textAlign='left';g.textBaseline='middle';ll.slice(0,2).forEach((l,k)=>g.fillText(l,b.x+u*1.35,b.y+b.h/2+(k-(ll.slice(0,2).length-1)/2)*l2));});
   },
 };
