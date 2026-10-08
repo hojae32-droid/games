@@ -1466,3 +1466,11 @@ mk('darkroom','Black And White Picture','family=Black+And+White+Picture&family=G
 .qbox.ask{border:3px solid #f6efe0;border-radius:8px;box-shadow:0 0 14px rgba(255,59,48,.35);background:#1a0508;color:#f6efe0}
 .clock,body.G-full .phead .sc{background:#1a0508!important;color:#fde047!important;box-shadow:inset 0 0 0 2px #f6efe0}.clock b{color:#fde047!important}
 """,rad='10px',veil='rgba(26,5,8,.8)',goInk='#2a0a0f',cardInk='#f6efe0',qbg='#1a0508',qink='#f6efe0',accInk='#fff')
+
+mk('paintshop','Nanum Pen Script','family=Nanum+Pen+Script&family=Gowun+Dodum','#b5543a','#3b1d10','#fff6e8','#f59e0b','#7c3aed','#f59e0b','#5a2a18','#3b1d10',
+ extra="""body{background:#b5543a;background-image:linear-gradient(rgba(0,0,0,.18) 3px,transparent 3px),linear-gradient(90deg,rgba(0,0,0,.18) 3px,transparent 3px);background-size:64px 32px}
+.sign h1{text-shadow:0 4px 0 #5a2a18;-webkit-text-stroke:2px #5a2a18;font-size:1.3em}
+.sign .sub{border:3px solid #5a2a18;background:#fff6e8;color:#3b1d10;box-shadow:0 4px 0 #3b1d10;border-radius:12px;font-size:1.15em}
+.chip{border-radius:14px;font-size:1.1em}.fire,.wz-next{border-radius:14px;font-size:44px}
+.qbox.ask{border:3px solid #5a2a18;border-radius:14px;box-shadow:0 5px 0 #3b1d10;background:#fff6e8;font-size:1.2em}
+""",rad='16px',veil='rgba(60,25,15,.65)')

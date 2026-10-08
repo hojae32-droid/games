@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gowun+Dodum&display=swap');
+@font-face{font-family:'DH-fb';src:local('Noto Sans CJK KR Black'),local('Noto Sans KR Black'),local('Malgun Gothic Bold'),local('AppleSDGothicNeo-Heavy');}
+:root{
+ --disp:'Nanum Pen Script','DH-fb','Noto Sans CJK KR','Malgun Gothic',sans-serif; --sans:'Gowun Dodum','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+ --page:#b5543a;
+ --ink:#3b1d10;
+ --sub:#3b1d10;
+ --focus:#ffb703;
+ --bw:3px;
+ --line:#3b1d10;
+ --rad:16px;
+ --rad-s:12px;
+ --card:#fff6e8;
+ --card-ink:#3b1d10;
+ --hl:#f59e0b;
+ --sh-card:0 6px 0 #3b1d10;
+ --sh-btn:0 4px 0 #3b1d10;
+ --sh-btn-down:0 1px 0 #3b1d10;
+ --sh-go:0 7px 0 #3b1d10;
+ --btn-bg:#fff6e8;
+ --btn-ink:#3b1d10;
+ --stage:#fff6e8;
+ --tag-bg:#7c3aed;
+ --tag-ink:#fff;
+ --title:#fff;
+ --title1:#fff;
+ --title2:#fff;
+ --lamp-r:50%;
+ --lamp-bg:#fff6e8;
+ --lamp-ink:#3b1d10;
+ --lamp-on:#2fbf71;
+ --bad:#e5383b;
+ --chip-bg:#fff6e8;
+ --chip-ink:#3b1d10;
+ --chip-line:#3b1d10;
+ --chip-sub:#3b1d10;
+ --sel-bg:#7c3aed;
+ --sel-ink:#fff;
+ --sel-line:#3b1d10;
+ --sel-sub:#fff;
+ --input-bg:#fff;
+ --input-ink:#3b1d10;
+ --input-ph:#9aa;
+ --go-bg:#f59e0b;
+ --go-ink:#fff;
+ --bar-bg:#5a2a18;
+ --bar-ink:#fff;
+ --bar-sub:#ddd;
+ --clock-bg:#fff;
+ --clock-ring:#7c3aed;
+ --clock-track:rgba(0,0,0,.15);
+ --clock-ink:#3b1d10;
+ --arena:#5a2a18;
+ --gap:3px;
+ --phead-ink:#fff;
+ --no-r:50%;
+ --sc-bg:#fff;
+ --sc-ink:#3b1d10;
+ --sc-sub:#3b1d10;
+ --sc-r:999px;
+ --prog-bg:rgba(255,255,255,.25);
+ --prog-fill:linear-gradient(90deg,#f59e0b,#7c3aed);
+ --q-bg:#fff6e8;
+ --q-ink:#3b1d10;
+ --q-hl:#f59e0b;
+ --q-sub:#3b1d10;
+ --tip-bg:#fff;
+ --tip-ink:#3b1d10;
+ --tip-hl:#f59e0b;
+ --tip-bad:#ffe3e0;
+ --tip-good:#dcf7ea;
+ --streak-bg:#7c3aed;
+ --streak-ink:#fff;
+ --tools-bg:#5a2a18;
+ --tool-bg:#fff;
+ --tool-ink:#3b1d10;
+ --tool-line:#3b1d10;
+ --tool-sel:#7c3aed;
+ --tool-sel-ink:#fff;
+ --veil:rgba(60,25,15,.65);
+ --num:#f59e0b;
+ --done-bg:rgba(60,25,15,.935);
+ --done-ink:#fff;
+ --done-hl:#7c3aed;
+ --res-title:#f59e0b;
+ --pname-b:.9;
+ --acc:#7c3aed;
+ --hud-bg:#5a2a18;
+ --wz-bg:#fff6e8;
+ --tools-fade:linear-gradient(transparent,rgba(0,0,0,.45));
+}
+/*==EXTRA==*/
+body{background:#b5543a;background-image:linear-gradient(rgba(0,0,0,.18) 3px,transparent 3px),linear-gradient(90deg,rgba(0,0,0,.18) 3px,transparent 3px);background-size:64px 32px}
+.sign h1{text-shadow:0 4px 0 #5a2a18;-webkit-text-stroke:2px #5a2a18;font-size:1.3em}
+.sign .sub{border:3px solid #5a2a18;background:#fff6e8;color:#3b1d10;box-shadow:0 4px 0 #3b1d10;border-radius:12px;font-size:1.15em}
+.chip{border-radius:14px;font-size:1.1em}.fire,.wz-next{border-radius:14px;font-size:44px}
+.qbox.ask{border:3px solid #5a2a18;border-radius:14px;box-shadow:0 5px 0 #3b1d10;background:#fff6e8;font-size:1.2em}
