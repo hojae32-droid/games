@@ -100,7 +100,7 @@ const GAME={
   verdict(p,i,timeout){const st=p.state,q=st.q;if(st.lock)return;st.lock=true;st.pick=i;const ok=!timeout&&q.choices[i]===q.ans;const frac=clamp(st.qt/st.qmax,0,1);
     st.mood=ok?'happy':'oops';st.gMood=ok?'happy':'sad';st.mT=2;st.ring=.5;st.react=ok?q.g.happy:q.g.sad;
     const tip=ok?Math.round(q.price*(.5+.5*frac)/10)*10:0;if(ok){st.money+=tip;st.coins.push({t:0,n:Math.min(6,2+Math.floor(frac*4))});st.served++;}
-    const G=this.geo(p);p.hit(ok,{pts:ok?Math.round(60+90*frac):undefined,x:p.W/2,y:G.Z0+G.sh*.4,tip:ok?`팁 ${tip}원!`:`${timeout?'손님이 기다리다 지쳤어요! ':'예의 바르지 않아요! '}바른 말: ${q.reveal}`,review:q.review,tipMs:ok?1100:3000});
+    const G=this.geo(p);p.hit(ok,{pts:ok?Math.round(60+90*frac):undefined,x:p.W/2,y:G.Z0+G.sh*.4,tip:ok?`팁 ${tip.toLocaleString()}원!`:`${timeout?'손님이 기다리다 지쳤어요! ':'예의 바르지 않아요! '}바른 말: ${q.reveal}`,review:q.review,tipMs:ok?1100:3000});
     setTimeout(()=>{st.exit=.01;},ok?1100:2200);setTimeout(()=>{if(p.active)this.newQ(p);},ok?1700:2800);},
   update(p,dt){const st=p.state;st.T+=dt;if(st.mT>0){st.mT-=dt;if(st.mT<=0)st.mood='neutral';}if(st.ring>0)st.ring-=dt;
     if(st.enter>0)st.enter=Math.max(0,st.enter-dt*1.4);if(st.exit>0&&st.exit<1)st.exit=Math.min(1,st.exit+dt*1.6);
@@ -131,7 +131,7 @@ const GAME={
     /* 참을성 막대 */
     if(!st.lock&&st.enter<.2){const f=clamp(st.qt/st.qmax,0,1),pw=Math.min(W*.5,u*10),ph=Math.max(5,u*.15);const py=G.cy0-u*.35;K.rr(g,W/2-pw/2,py,pw,ph,ph/2);g.fillStyle='rgba(255,255,255,.15)';g.fill();K.rr(g,W/2-pw/2,py,Math.max(ph,pw*f),ph,ph/2);g.fillStyle=f>.5?'#86efac':(f>.25?'#fde047':'#f87171');g.fill();K.txt(g,'손님 인내심',W/2-pw/2-u*1.3,py+ph/2,{size:u*.3,color:'#fdeccf',maxW:u*2.4});}
     /* 팁 */
-    K.card(g,W-u*4.4,G.Z0-u*.05,u*4.1,u*.8,u*.2,'rgba(29,7,16,.9)',{stroke:GOLD,lw:2,blur:u*.2,dy:u*.05});K.txt(g,`💰 팁 ${Math.round(st.shown)}원`,W-u*2.35,G.Z0+u*.35,{size:u*.42,color:'#fde68a',maxW:u*3.8});
+    K.card(g,W-u*4.4,G.Z0-u*.05,u*4.1,u*.8,u*.2,'rgba(29,7,16,.9)',{stroke:GOLD,lw:2,blur:u*.2,dy:u*.05});K.txt(g,`💰 팁 ${Math.round(st.shown).toLocaleString()}원`,W-u*2.35,G.Z0+u*.35,{size:u*.42,color:'#fde68a',maxW:u*3.8});
     for(const c of st.coins)for(let k=0;k<c.n;k++){const f=clamp(c.t*1.4-k*.08,0,1);if(f<=0)continue;const x=gx+(W-u*2.3-gx)*f,y=fy-s*.5+(G.Z0+u*.35-(fy-s*.5))*f-Math.sin(f*Math.PI)*u;g.fillStyle=GOLD;g.strokeStyle=INK;g.lineWidth=2;g.beginPath();g.arc(x,y,u*.17,0,TAU);g.fill();g.stroke();}
     /* 보기 */
     const rs=this.ctrlRects(p);rs.forEach((r,i)=>{const c=q.choices[i];let stt='idle';if(st.lock){if(c===q.ans)stt='ok';else if(st.pick===i)stt='bad';else stt='dim';}

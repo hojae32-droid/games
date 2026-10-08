@@ -100,7 +100,7 @@ const GAME={
       st.links.forEach((l,i)=>{const a=C.L[q.L.indexOf(l[0])],b=C.R[q.Rr.indexOf(l[1])];g.strokeStyle=COL[i];g.lineWidth=Math.max(4,u*.12);g.lineCap='round';g.beginPath();g.moveTo(a.x+a.w,a.y+a.h/2);g.bezierCurveTo(a.x+a.w+u*.8,a.y+a.h/2,b.x-u*.8,b.y+b.h/2,b.x,b.y+b.h/2);g.stroke();
         if(st.rev){const ok=l[0]===l[1];K.emo(g,ok?'✅':'❌',(a.x+a.w+b.x)/2,(a.y+b.y+a.h/2+b.h/2)/2,u*.7);}});}
     reporter(g,u*.9,H-u*.9,Math.min(u*1.3,H*.1),st.mood,t);
-    K.card(g,W-u*4.0,H-u*1.1,u*3.7,u*.85,u*.15,'rgba(255,255,250,.95)',{stroke:INK,lw:2,blur:u*.15,dy:u*.05});K.txt(g,`🗞️ ${Math.round(st.shown)}부`,W-u*2.15,H-u*.67,{size:u*.5,color:INK,maxW:u*3.4});},
+    K.card(g,W-u*4.0,H-u*1.1,u*3.7,u*.85,u*.15,'rgba(255,255,250,.95)',{stroke:INK,lw:2,blur:u*.15,dy:u*.05});K.txt(g,`🗞️ ${Math.round(st.shown).toLocaleString()}부`,W-u*2.15,H-u*.67,{size:u*.5,color:INK,maxW:u*3.4});},
 };
 function u0(p){return p.u;}
 

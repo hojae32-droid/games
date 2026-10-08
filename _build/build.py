@@ -14,7 +14,7 @@ else:
 eng=open(C+'engine_body.js',encoding='utf8').read()
 net=open(C+'net_body.js',encoding='utf8').read()
 setup=open(C+('wiz.js' if cfg.get('full') else 'setup_new.js'),encoding='utf8').read()
-game=''.join(open(f'{gd}/game_{x}.js',encoding='utf8').read()+'\n' for x in cfg['parts'])
+game=('window.NOCOMMA=true;\n' if cfg.get('nocomma') else '')+''.join(open(f'{gd}/game_{x}.js',encoding='utf8').read()+'\n' for x in cfg['parts'])
 if cfg.get('emoji_src'):
     emo=open(U+cfg['emoji_src'],encoding='utf8').read().split('\n')[cfg.get('emoji_line',280)].rstrip()
     if emo.startswith('<script>'):emo=emo[8:]

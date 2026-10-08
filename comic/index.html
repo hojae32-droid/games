@@ -705,7 +705,7 @@ const ADJ=['날쌘','용감한','반짝이는','씩씩한','슬기로운','튼�
 const NOUN=['수달','펭귄','다람쥐','고래','부엉이','치타','판다','거북이','여우','돌고래','햄스터','코알라','기린','오리','사자','토끼','고슴도치','너구리','미어캣','알파카'];
 function randNick(used){for(let k=0;k<50;k++){const n=ADJ[Math.floor(Math.random()*ADJ.length)]+' '+NOUN[Math.floor(Math.random()*NOUN.length)];if(!used.includes(n))return n;}return '친구'+Math.floor(Math.random()*100);}
 
-const N={comma:n=>String(n)};
+const N={comma:n=>window.NOCOMMA?String(n):String(n).replace(/\B(?=(\d{3})+(?!\d))/g,",")};
 function hasB(w){w=String(w).replace(/<[^>]+>/g,'').trim().replace(/\s*\([^)]*\)$/,'');const c=w[w.length-1];if(!c)return false;if(/[0-9]/.test(c))return '013678'.includes(c);if(/[a-zA-Z]/.test(c))return false;
   const k=c.charCodeAt(0)-0xAC00;if(k<0||k>11171)return false;return k%28!==0;}
 function J(w,t){const b=hasB(w);const m={'은':['은','는'],'이':['이','가'],'을':['을','를'],'과':['과','와'],'아':['아','야'],'으로':['으로','로']}[t];
@@ -1603,7 +1603,7 @@ const GAME={
         K.txt(g,op.t,r.x+r.w/2,r.y+r.h/2,{size:Math.min(u*.8,r.h*.5),color:INK,maxW:r.w-u*.6});if(st.lock&&(op.ok||st.pick===i))K.emo(g,op.ok?'✅':'❌',r.x+r.w-u*.4,r.y+u*.4,u*.5);g.restore();});}
     /* 편집장 + 판매 부수 */
     cat(g,u*.9,G.by+G.botH*.5,u*1.05,st.mood,t);
-    const mx=W-u*3.6;magazine(g,mx,G.by+G.botH*.5,u*.8,'#e11d48');K.txt(g,`판매 ${Math.round(st.shown)}부`,mx+u*2.1,G.by+G.botH*.5,{size:u*.5,color:INK,maxW:u*3.2});
+    const mx=W-u*3.6;magazine(g,mx,G.by+G.botH*.5,u*.8,'#e11d48');K.txt(g,`판매 ${Math.round(st.shown).toLocaleString()}부`,mx+u*2.1,G.by+G.botH*.5,{size:u*.5,color:INK,maxW:u*3.2});
     if(st.pow>0)burst(g,W/2,G.Z0+G.availH*.4,u*(st.pow>1.1?2.2-(st.pow-1.1)*2:2.2),st.mood==='happy'?'#e11d48':'#6b7280',st.powTxt,t,-.12);},
 };
 
