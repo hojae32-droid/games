@@ -1483,3 +1483,12 @@ mk('mondrian','Jua','family=Jua&family=Gowun+Dodum','#f6f2e8','#111111','#ffffff
 .fire,.wz-next{border-radius:0;font-size:36px;box-shadow:6px 6px 0 #111}
 .qbox.ask{border:4px solid #111;border-radius:0;box-shadow:6px 6px 0 #f7b801;background:#fff}
 """,rad='0px',veil='rgba(17,17,17,.7)',bw='4px',goInk='#fff')
+
+mk('blueprint','Sunflower','family=Sunflower:wght@700&family=Gowun+Dodum','#10315c','#eaf4ff','#17407a','#ffd23f','#2563eb','#ffd23f','#0a1f3d','#07162d',
+ extra="""body{background:#10315c;background-image:linear-gradient(rgba(255,255,255,.08) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.08) 2px,transparent 2px);background-size:36px 36px}
+.sign h1{text-shadow:3px 3px 0 #07162d;-webkit-text-stroke:0}
+.sign .sub{border:2px dashed #eaf4ff;background:transparent;color:#eaf4ff;box-shadow:none;border-radius:6px}
+.chip{border-radius:6px;border-style:dashed}.fire,.wz-next{border-radius:6px;font-size:32px;color:#0a1f3d}
+.qbox.ask{border:2px dashed #eaf4ff;border-radius:6px;box-shadow:none;background:#0a1f3d;color:#eaf4ff}
+.clock,body.G-full .phead .sc{background:#0a1f3d!important;color:#ffd23f!important;box-shadow:inset 0 0 0 2px #eaf4ff}.clock b{color:#ffd23f!important}
+""",rad='8px',veil='rgba(7,22,45,.8)',goInk='#0a1f3d',cardInk='#eaf4ff',qbg='#0a1f3d',qink='#eaf4ff',accInk='#fff',bw='2px')
