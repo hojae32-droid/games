@@ -37,7 +37,7 @@ const GAME={
   subtitle:'5~6학년 실과 · 정보 윤리와 개인정보 보호',
   howto:'🕵️ 친구가 올리려는 게시글에서 <b>인터넷에 올리면 위험한 정보</b>를 눌러 <b>검은 줄</b>로 가려요! 올려도 괜찮은 문장을 가리면 감점이에요. 위험한 것은 <b>3개씩</b> 숨어 있어요. 모두 가리면 게시글 통과! 빠르게 찾을수록 점수가 커요.',
   how:p=>LV[p.levelId].t+' — '+LV[p.levelId].d,
-  theme:{c1:'#16a34a',c2:GRN},hero:gkHero(hero),vignette:.04,durs:[120,180,300],levelTitle:'어떤 임무를 맡을까요?',
+  theme:{c1:'#16a34a',c2:GRN},hero:gkHero(hero),vignette:.04,durs:[90,120,180],levelTitle:'어떤 임무를 맡을까요?',
   txt:{who:'누가 요원일까요?',dur:'임무 시간',pace:'제한 시간',seat:'번 요원 ',go:'임무 시작!',s1:'1. 임무',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:v.g,t:v.t,d:v.d})),
   summary:`<ul><li><b>개인정보</b>는 이름·전화번호·주소·주민등록번호·비밀번호처럼 나를 알아볼 수 있는 정보예요. 인터넷에 올리면 누구나 볼 수 있어요.</li>

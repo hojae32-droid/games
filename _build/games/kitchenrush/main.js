@@ -27,7 +27,7 @@ const GAME={
   subtitle:'5~6학년 실과 · 간단한 조리와 위생',
   howto:'🍳 손님의 <b>주문표</b>대로 요리해요. 아래 도구와 재료에서 <b>알맞은 순서대로</b> 눌러요. 요리 전에는 <b>손 씻기</b>부터! 엉뚱한 재료나 순서를 누르면 흔들려요. 6학년은 요리 이름만 나오니 순서를 기억해서 만들어요.',
   how:p=>LV[p.levelId].t+' — '+LV[p.levelId].d,
-  theme:{c1:RED,c2:'#f59e0b'},hero:gkHero(hero),vignette:.03,durs:[120,180,300],levelTitle:'어떤 주문을 받을까요?',
+  theme:{c1:RED,c2:'#f59e0b'},hero:gkHero(hero),vignette:.03,durs:[90,120,180],levelTitle:'어떤 주문을 받을까요?',
   txt:{who:'누가 요리사일까요?',dur:'영업 시간',pace:'손님의 인내심',seat:'번 요리사 ',go:'영업 시작!',s1:'1. 주문',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:v.g,t:v.t,d:v.d})),
   summary:`<ul><li>요리를 시작하기 전에는 <b>손을 비누로 깨끗이 씻어요</b>. 음식을 만들 때 위생이 가장 중요해요.</li>

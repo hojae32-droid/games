@@ -1474,7 +1474,7 @@ const GAME={
   subtitle:'5~6학년 실과 · 식물 가꾸기',
   howto:'🌻 화분 3개가 차례로 열려요. 식물 위 <b>말풍선(식물의 신호)</b>을 읽고 아래의 <b>알맞은 돌봄 버튼</b>을 눌러요. 제때 돌보지 않으면 하트 ❤️가 줄어요! 돌봄을 3번 성공하면 꽃이 피어 보너스! 빨리 돌볼수록 점수가 커요.',
   how:p=>LV[p.levelId].t+' — '+LV[p.levelId].d,
-  theme:{c1:GRN,c2:ORG},hero:gkHero(hero),vignette:.02,durs:[120,180,300],levelTitle:'어떤 화분을 돌볼까요?',
+  theme:{c1:GRN,c2:ORG},hero:gkHero(hero),vignette:.02,durs:[90,120,180],levelTitle:'어떤 화분을 돌볼까요?',
   txt:{who:'누가 농부일까요?',dur:'농사 시간',pace:'식물의 인내심',seat:'번 농부 ',go:'농사 시작!',s1:'1. 농장',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:v.g,t:v.t,d:v.d})),
   summary:`<ul><li>식물은 <b>물·햇빛·양분(비료)·알맞은 온도</b>가 있어야 잘 자라요. 흙이 마르면 물을, 웃자라면 햇빛을 주어요.</li>

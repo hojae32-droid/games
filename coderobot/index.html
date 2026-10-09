@@ -1468,7 +1468,7 @@ const GAME={
   subtitle:'5~6학년 실과 · 소프트웨어와 코딩 (순차·반복)',
   howto:'🤖 로봇(빨간 화살표가 앞)을 <b>명령 블록</b>으로 ⭐ 목적지까지 안내해요. 블록을 눌러 쌓고 <b>▶ 실행</b>! 바위나 벽에 부딪히면 실패예요. 6학년은 블록 개수가 정해져 있어서 <b>"앞으로 ×3"</b> 같은 반복 블록을 써야 해요.',
   how:p=>LV[p.levelId].t+' — '+LV[p.levelId].d,
-  theme:{c1:RED,c2:ORG},hero:gkHero(hero),vignette:.03,durs:[120,180,300],levelTitle:'어떤 코딩을 할까요?',
+  theme:{c1:RED,c2:ORG},hero:gkHero(hero),vignette:.03,durs:[90,120,180],levelTitle:'어떤 코딩을 할까요?',
   txt:{who:'누가 프로그래머일까요?',dur:'탐사 시간',pace:'생각하는 시간',seat:'번 프로그래머 ',go:'탐사 시작!',s1:'1. 코딩',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:v.g,t:v.t,d:v.d})),
   summary:`<ul><li><b>순차</b>는 명령을 차례대로 실행하는 거예요. 순서가 바뀌면 결과도 달라져요.</li>

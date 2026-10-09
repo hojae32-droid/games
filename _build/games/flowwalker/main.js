@@ -31,7 +31,7 @@ const GAME={
   subtitle:'5~6학년 실과 · 순서도로 문제 해결하기',
   howto:'🔀 위에 <b>오늘의 상황</b>이 나와요. 순서도의 노란 <b>마름모(조건)</b>에서 상황에 맞게 <b>[예]</b> 또는 <b>[아니요]</b>를 눌러 말을 움직여요. 끝까지 따라가 도착한 칸이 오늘 내가 할 일이에요! 3번 연속이면 보너스!',
   how:p=>LV[p.levelId].t+' — '+LV[p.levelId].d,
-  theme:{c1:'#2563eb',c2:YEL},hero:gkHero(hero),vignette:.03,durs:[120,180,300],levelTitle:'어떤 순서도를 읽을까요?',
+  theme:{c1:'#2563eb',c2:YEL},hero:gkHero(hero),vignette:.03,durs:[90,120,180],levelTitle:'어떤 순서도를 읽을까요?',
   txt:{who:'누가 길잡이일까요?',dur:'탐험 시간',pace:'생각하는 시간',seat:'번 길잡이 ',go:'출발!',s1:'1. 순서도',s2:'2. 방법',s3:'3. 이름'},
   levels:Object.entries(LV).map(([k,v])=>({id:k,g:v.g,t:v.t,d:v.d})),
   summary:`<ul><li><b>순서도</b>는 어떤 일을 해결하는 순서를 그림 기호로 나타낸 것이에요. 둥근 칸은 시작·끝, 네모 칸은 할 일, <b>마름모는 조건</b>(예/아니요로 갈라지는 곳)이에요.</li>
