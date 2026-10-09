@@ -1492,3 +1492,11 @@ mk('blueprint','Sunflower','family=Sunflower:wght@700&family=Gowun+Dodum','#1031
 .qbox.ask{border:2px dashed #eaf4ff;border-radius:6px;box-shadow:none;background:#0a1f3d;color:#eaf4ff}
 .clock,body.G-full .phead .sc{background:#0a1f3d!important;color:#ffd23f!important;box-shadow:inset 0 0 0 2px #eaf4ff}.clock b{color:#ffd23f!important}
 """,rad='8px',veil='rgba(7,22,45,.8)',goInk='#0a1f3d',cardInk='#eaf4ff',qbg='#0a1f3d',qink='#eaf4ff',accInk='#fff',bw='2px')
+
+mk('market','Yeon Sung','family=Yeon+Sung&family=Gowun+Dodum','#e8f5d8','#2f4a1a','#fffdf2','#f97316','#16a34a','#f97316','#2f6b1f','#24541a',
+ extra="""body{background:#cfe8b0;background-image:repeating-linear-gradient(90deg,#e8f5d8 0 40px,#dcefc3 40px 80px)}
+.sign h1{text-shadow:0 4px 0 #2f6b1f;-webkit-text-stroke:2px #2f6b1f}
+.sign .sub{border:3px solid #2f6b1f;background:#fffdf2;color:#2f4a1a;box-shadow:0 4px 0 #24541a;border-radius:14px}
+.chip{border-radius:14px}.fire,.wz-next{border-radius:14px;font-size:34px}
+.qbox.ask{border:3px solid #2f6b1f;border-radius:14px;box-shadow:0 5px 0 #24541a;background:#fffdf2}
+""",rad='16px',veil='rgba(30,70,20,.62)')
