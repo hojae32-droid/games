@@ -1513,14 +1513,14 @@ const GAME={
   dia(g,c,w,h,t,u,on,done){g.beginPath();g.moveTo(c.x,c.y-h/2);g.lineTo(c.x+w/2,c.y);g.lineTo(c.x,c.y+h/2);g.lineTo(c.x-w/2,c.y);g.closePath();g.fillStyle=on?'rgba(255,210,63,.25)':'rgba(255,210,63,.08)';g.fill();g.lineWidth=on?5:2.5;g.strokeStyle=on?YEL:done?'#86efac':INK;if(on){g.shadowColor=YEL;g.shadowBlur=u*.6;}g.stroke();g.shadowBlur=0;
     const fs=Math.min(u*.5,h*.2);g.font=K.font(fs);g.fillStyle=on?YEL:INK;g.textAlign='center';g.textBaseline='middle';const ls=wrapKo(g,t,w*.58);ls.slice(0,3).forEach((l,i)=>g.fillText(l,c.x,c.y+(i-(Math.min(ls.length,3)-1)/2)*fs*1.2));},
   line(g,a,b,lab,col,u,mid){g.strokeStyle=col;g.lineWidth=2.5;g.beginPath();g.moveTo(a.x,a.y);if(mid){g.lineTo(mid.x,mid.y);g.lineTo(b.x,b.y);}else g.lineTo(b.x,b.y);g.stroke();
-    const e=mid||a;if(lab)K.txt(g,lab,(a.x+(mid?mid.x:b.x))/2,(a.y+(mid?mid.y:b.y))/2-u*.3,{size:u*.5,color:lab==='예'?'#86efac':'#fda4af',stroke:BG,lw:u*.1});},
+    const e=mid||a;if(lab)K.txt(g,lab,(a.x+(mid?mid.x:b.x))/2,(a.y+(mid?mid.y:b.y))/2-u*.62,{size:u*.42,color:lab==='예'?'#86efac':'#fda4af',stroke:BG,lw:u*.1});},
   draw(p,g){const st=p.state,G=this.geo(p),W=G.W,H=G.H,u=G.u,f=st.f;if(!f)return;
     g.fillStyle=BG;g.fillRect(0,0,W,H);g.strokeStyle='rgba(255,255,255,.07)';g.lineWidth=1;for(let x=0;x<W;x+=u*.8){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke();}for(let y=0;y<H;y+=u*.8){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke();}
     /* 상황 카드 */
     const S=G.sit;K.card(g,S.x,S.y,S.w,S.h,u*.25,'#0a1f3d',{stroke:INK,lw:2,blur:0,dy:0});K.txt(g,f[0]+' '+f[1]+' · 오늘의 상황',S.x+u*.5,S.y+u*.55,{size:u*.42,color:YEL,align:'left',maxW:S.w-u});
     g.font=K.font(Math.min(u*.62,S.w/20));g.fillStyle='#fff';g.textAlign='left';g.textBaseline='middle';const fs2=Math.min(u*.62,S.w/20);st.facts.forEach((t,i)=>{g.fillText('• '+t,S.x+u*.6,S.y+u*1.3+i*fs2*1.35);});
     /* 순서도 */
-    const N=G.N,P=id=>this.pos(p,id),bw=Math.min(G.ch.w*.27,u*6.5),bh=Math.min(G.ch.h*.18,u*2.4),dw=Math.min(G.ch.w*.46,u*10),dh=Math.min(G.ch.h*.28,u*3.6);
+    const N=G.N,P=id=>this.pos(p,id),bw=Math.min(G.ch.w*.27,u*6.5),bh=Math.min(G.ch.h*.18,u*2.4),dw=Math.min(G.ch.w*(G.two?.5:.46),u*10),dh=Math.min(G.ch.h*.28,u*3.6);
     const hit=k=>st.hits.includes(k);const on0=st.node==='d0'&&!st.done,on1=st.node==='d1'&&!st.done;
     const col=(k)=>hit(k)?'#86efac':INK;
     K.card(g,G.ch.x,G.ch.y,G.ch.w,G.ch.h,u*.2,'rgba(0,0,0,0)',{stroke:'rgba(255,255,255,.18)',lw:1,blur:0,dy:0});
