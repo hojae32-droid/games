@@ -1500,3 +1500,11 @@ mk('market','Yeon Sung','family=Yeon+Sung&family=Gowun+Dodum','#e8f5d8','#2f4a1a
 .chip{border-radius:14px}.fire,.wz-next{border-radius:14px;font-size:34px}
 .qbox.ask{border:3px solid #2f6b1f;border-radius:14px;box-shadow:0 5px 0 #24541a;background:#fffdf2}
 """,rad='16px',veil='rgba(30,70,20,.62)')
+
+mk('kitchen','Gasoek One','family=Gasoek+One&family=Gowun+Dodum','#d9dee5','#2b2f36','#f7f9fb','#ef4444','#ef4444','#ef4444','#454c57','#2b2f36',
+ extra="""body{background:#c9d0d9;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 2px,transparent 2px 24px)}
+.sign h1{text-shadow:0 4px 0 #2b2f36;-webkit-text-stroke:2px #2b2f36}
+.sign .sub{border:3px solid #2b2f36;background:#fff7d6;color:#2b2f36;box-shadow:0 4px 0 #2b2f36;border-radius:8px}
+.chip{border-radius:10px}.fire,.wz-next{border-radius:10px;font-size:30px}
+.qbox.ask{border:3px solid #2b2f36;border-radius:8px;box-shadow:0 5px 0 #2b2f36;background:#fff7d6}
+""",rad='12px',veil='rgba(30,35,45,.7)')
