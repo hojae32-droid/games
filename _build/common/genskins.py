@@ -1536,3 +1536,11 @@ mk('mars','Black Han Sans','family=Black+Han+Sans&family=Gowun+Dodum','#3a1410',
 .qbox.ask{border:3px solid #ffb347;border-radius:10px;box-shadow:0 0 14px rgba(255,140,60,.35);background:#1e0a07;color:#ffe9d6}
 .clock,body.G-full .phead .sc{background:#1e0a07!important;color:#ffb347!important;box-shadow:inset 0 0 0 2px #ffb347}.clock b{color:#ffb347!important}
 """,rad='12px',veil='rgba(30,10,7,.8)',goInk='#1e0a07',cardInk='#ffe9d6',qbg='#1e0a07',qink='#ffe9d6',accInk='#fff')
+
+mk('circus','Jua','family=Jua&family=Gowun+Dodum','#fff4d6','#4a1a12','#fffaf0','#e11d48','#2563eb','#e11d48','#7f1d1d','#5a0f0f',
+ extra="""body{background:repeating-linear-gradient(90deg,#e11d48 0 60px,#fff 60px 120px)}
+.sign h1{text-shadow:0 4px 0 #7f1d1d;-webkit-text-stroke:2px #7f1d1d;font-size:1.2em}
+.sign .sub{border:3px solid #7f1d1d;background:#fff4d6;color:#4a1a12;box-shadow:0 4px 0 #5a0f0f;border-radius:999px}
+.chip{border-radius:22px}.fire,.wz-next{border-radius:999px;font-size:38px}
+.qbox.ask{border:3px solid #7f1d1d;border-radius:22px;box-shadow:0 5px 0 #5a0f0f;background:#fffaf0}
+""",rad='24px',veil='rgba(90,15,15,.6)')
