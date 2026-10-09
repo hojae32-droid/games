@@ -1544,3 +1544,12 @@ mk('circus','Jua','family=Jua&family=Gowun+Dodum','#fff4d6','#4a1a12','#fffaf0',
 .chip{border-radius:22px}.fire,.wz-next{border-radius:999px;font-size:38px}
 .qbox.ask{border:3px solid #7f1d1d;border-radius:22px;box-shadow:0 5px 0 #5a0f0f;background:#fffaf0}
 """,rad='24px',veil='rgba(90,15,15,.6)')
+
+mk('sushi','Sunflower','family=Sunflower:wght@700&family=Gowun+Dodum','#1a2a4a','#fff4e0','#233a63','#ef4444','#ef4444','#ef4444','#0e1830','#0a1224',
+ extra="""body{background:#1a2a4a;background-image:repeating-linear-gradient(90deg,#14233f 0 60px,#1a2a4a 60px 120px)}
+.sign h1{text-shadow:0 4px 0 #0e1830;-webkit-text-stroke:0}
+.sign .sub{border:3px solid #fff4e0;background:#ef4444;color:#fff;box-shadow:0 4px 0 #0e1830;border-radius:8px}
+.chip{border-radius:10px}.fire,.wz-next{border-radius:10px;font-size:32px}
+.qbox.ask{border:3px solid #fff4e0;border-radius:10px;box-shadow:0 5px 0 #0a1224;background:#233a63;color:#fff4e0}
+.clock,body.G-full .phead .sc{background:#0e1830!important;color:#fff4e0!important;box-shadow:inset 0 0 0 2px #ef4444}.clock b{color:#fff4e0!important}
+""",rad='12px',veil='rgba(10,18,36,.8)',goInk='#fff',cardInk='#fff4e0',qbg='#233a63',qink='#fff4e0',accInk='#fff')
