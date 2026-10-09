@@ -1508,3 +1508,13 @@ mk('kitchen','Gasoek One','family=Gasoek+One&family=Gowun+Dodum','#d9dee5','#2b2
 .chip{border-radius:10px}.fire,.wz-next{border-radius:10px;font-size:30px}
 .qbox.ask{border:3px solid #2b2f36;border-radius:8px;box-shadow:0 5px 0 #2b2f36;background:#fff7d6}
 """,rad='12px',veil='rgba(30,35,45,.7)')
+
+mk('cyber','Do Hyeon','family=Do+Hyeon&family=Gowun+Dodum','#05140c','#b7ffd6','#0b2417','#39ff88','#16a34a','#39ff88','#021008','#010a05',
+ extra="""body{background:#05140c;background-image:linear-gradient(rgba(57,255,136,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(57,255,136,.07) 1px,transparent 1px);background-size:28px 28px}
+.sign h1{text-shadow:0 0 18px #39ff88;-webkit-text-stroke:0}
+.sign .sub{border:2px solid #39ff88;background:#021008;color:#b7ffd6;box-shadow:0 0 14px rgba(57,255,136,.45);border-radius:4px}
+.chip{border-radius:4px}.chip.sel{box-shadow:0 0 14px rgba(57,255,136,.6)}
+.fire,.wz-next{border-radius:4px;font-size:34px;color:#021008}
+.qbox.ask{border:2px solid #39ff88;border-radius:4px;box-shadow:0 0 16px rgba(57,255,136,.4);background:#021008;color:#b7ffd6}
+.clock,body.G-full .phead .sc{background:#021008!important;color:#39ff88!important;box-shadow:inset 0 0 0 2px #39ff88}.clock b{color:#39ff88!important}
+""",rad='6px',veil='rgba(1,10,5,.85)',goInk='#021008',cardInk='#b7ffd6',qbg='#021008',qink='#b7ffd6',accInk='#021008',bw='2px')
