@@ -46,6 +46,9 @@ th{background:#ffd0e2}td,th{border:2px solid #ffb3cf}
 #coinFx{position:fixed;font-size:30px;pointer-events:none;z-index:30;animation:coin 1s ease-in forwards}
 @keyframes coin{0%{transform:translateY(-80px) rotate(0);opacity:1}100%{transform:translateY(60px) rotate(360deg);opacity:0}}
 .foot{color:#9a5b7c}
+.f{grid-template-columns:minmax(170px,190px) 1fr 120px 120px auto}
+#d{min-width:170px;font-size:16px;padding:8px 6px}
+@media(max-width:700px){.f{grid-template-columns:1fr 1fr}#d{grid-column:1/-1;width:100%}}
 
 </style></head><body><div class="w">
 <div class="card"><h1>용돈 <em>기입장</em></h1><p>받은 돈(수입)과 쓴 돈(지출)을 적으면 남은 돈이 자동으로 계산돼요. 이 기기에 저장돼요.</p>
